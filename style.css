@@ -28,9 +28,14 @@ pre code {
 }
 
 
+/* 페이지 전체에 대해 스크롤을 막음 */
+body, html {
+    overflow: hidden;
+}
+
 /* 오른쪽 이중 스크롤 제거 */
 .book-body {
-    overflow: hidden !important;
+    overflow: auto !important;
 }
 
 

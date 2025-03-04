@@ -8,7 +8,7 @@ bookdown::gitbook:
     toolbar:
       position: fixed
     includes:
-      in_footer: |
+      in_header: |
         <script src="toc.js"></script>
 
 bookdown::pdf_book:
