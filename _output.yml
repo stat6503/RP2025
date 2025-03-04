@@ -4,10 +4,11 @@ bookdown::gitbook:
     toc:
       before: |
         <li><a href="./">R 프로그래밍</a></li>
+      collapse: section
     toolbar:
       position: fixed
     includes:
-      in_header: |
+      in_footer: |
         <script src="toc.js"></script>
 
 bookdown::pdf_book:
