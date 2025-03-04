@@ -4,26 +4,26 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>Chapter 7 R Markdown | R 입문</title>
-  <meta name="description" content="Chapter 7 R Markdown | R 입문" />
-  <meta name="generator" content="bookdown 0.31 and GitBook 2.6.7" />
+  <title>Chapter 7 R Markdown | R 프로그래밍</title>
+  <meta name="description" content="Chapter 7 R Markdown | R 프로그래밍" />
+  <meta name="generator" content="bookdown 0.42 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="Chapter 7 R Markdown | R 입문" />
+  <meta property="og:title" content="Chapter 7 R Markdown | R 프로그래밍" />
   <meta property="og:type" content="book" />
   
   
   
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="Chapter 7 R Markdown | R 입문" />
+  <meta name="twitter:title" content="Chapter 7 R Markdown | R 프로그래밍" />
   
   
   
 
-<meta name="author" content="Park Sejin" />
+<meta name="author" content="Park (stat6503@gmail.com)" />
 
 
-<meta name="date" content="2022-12-23" />
+<meta name="date" content="2025-03-04" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -31,7 +31,7 @@
   
   
 <link rel="prev" href="데이터-시각화.html"/>
-<link rel="next" href="공지-과제-및-기말고사.html"/>
+
 <script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
@@ -56,7 +56,7 @@
 
 <style type="text/css">
 pre > code.sourceCode { white-space: pre; position: relative; }
-pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span { line-height: 1.25; }
 pre > code.sourceCode > span:empty { height: 1.2em; }
 .sourceCode { overflow: visible; }
 code.sourceCode > span { color: inherit; text-decoration: inherit; }
@@ -66,7 +66,7 @@ div.sourceCode { overflow: auto; }
 }
 @media print {
 pre > code.sourceCode { white-space: pre-wrap; }
-pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
 }
 pre.numberSource code
   { counter-reset: source-line 0; }
@@ -119,6 +119,10 @@ code span.vs { color: #4070a0; } /* VerbatimString */
 code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
 </style>
 
+<style type="text/css">
+  
+  div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+</style>
 
 <link rel="stylesheet" href="style.css" type="text/css" />
 </head>
@@ -133,15 +137,9 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
       <nav role="navigation">
 
 <ul class="summary">
-<li><a href="./">R 입문</a></li>
+<li><a href="./">R 프로그래밍</a></li>
 
 <li class="divider"></li>
-<li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>강의 소개</a>
-<ul>
-<li class="chapter" data-level="" data-path="index.html"><a href="index.html#교과-목표"><i class="fa fa-check"></i>교과 목표</a></li>
-<li class="chapter" data-level="" data-path="index.html"><a href="index.html#평가-방법"><i class="fa fa-check"></i>평가 방법</a></li>
-<li class="chapter" data-level="" data-path="index.html"><a href="index.html#참고-문헌"><i class="fa fa-check"></i>참고 문헌</a></li>
-</ul></li>
 <li class="chapter" data-level="1" data-path="r-소개-및-기초.html"><a href="r-소개-및-기초.html"><i class="fa fa-check"></i><b>1</b> R 소개 및 기초</a>
 <ul>
 <li class="chapter" data-level="1.1" data-path="r-소개-및-기초.html"><a href="r-소개-및-기초.html#r-및-r-studio-설치"><i class="fa fa-check"></i><b>1.1</b> R 및 R Studio 설치</a>
@@ -307,11 +305,6 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="7.4.6" data-path="r-markdown.html"><a href="r-markdown.html#인라인-코드inline-code"><i class="fa fa-check"></i><b>7.4.6</b> 인라인 코드(inline code)</a></li>
 </ul></li>
 </ul></li>
-<li class="chapter" data-level="" data-path="공지-과제-및-기말고사.html"><a href="공지-과제-및-기말고사.html"><i class="fa fa-check"></i>[공지] 과제 및 기말고사</a>
-<ul>
-<li class="chapter" data-level="" data-path="공지-과제-및-기말고사.html"><a href="공지-과제-및-기말고사.html#과제"><i class="fa fa-check"></i>◎ 과제</a></li>
-<li class="chapter" data-level="" data-path="공지-과제-및-기말고사.html"><a href="공지-과제-및-기말고사.html#기말고사"><i class="fa fa-check"></i>◎ 기말고사</a></li>
-</ul></li>
 </ul>
 
       </nav>
@@ -321,7 +314,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
       <div class="body-inner">
         <div class="book-header" role="navigation">
           <h1>
-            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">R 입문</a>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">R 프로그래밍</a>
           </h1>
         </div>
 
@@ -551,9 +544,9 @@ subscript~2~
 <ul>
 <li>이미지(images)</li>
 </ul>
-<div class="figure">
-<img src="img/fig7-3.png" style="width:50.0%" alt="" />
-<p class="caption">RStudio logo</p>
+<div class="float">
+<img src="img/fig7-3.png" style="width:50.0%" alt="RStudio logo" />
+<div class="figcaption">RStudio logo</div>
 </div>
 <pre><code>![RStudio logo](RStudio-logo.png)</code></pre>
 <p><br></p>
@@ -585,9 +578,9 @@ subscript~2~
 <li>단축키 <code>ctrl</code> + <code>alt</code> + <code>i</code></li>
 <li>청크 옵션을 통해 코드 출력, 코드 출력 형태, 코드 결과 출력 등을 설정할 수 있음</li>
 </ul>
-<div class="sourceCode" id="cb133"><pre class="sourceCode markdown"><code class="sourceCode markdown"><span id="cb133-1"><a href="r-markdown.html#cb133-1" aria-hidden="true" tabindex="-1"></a><span class="in">```{r, chunk_name, chunk_options, ...}</span></span>
-<span id="cb133-2"><a href="r-markdown.html#cb133-2" aria-hidden="true" tabindex="-1"></a><span class="in">codes</span></span>
-<span id="cb133-3"><a href="r-markdown.html#cb133-3" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span></code></pre></div>
+<div class="sourceCode" id="cb133"><pre class="sourceCode markdown"><code class="sourceCode markdown"><span id="cb133-1"><a href="r-markdown.html#cb133-1" tabindex="-1"></a><span class="in">```{r, chunk_name, chunk_options, ...}</span></span>
+<span id="cb133-2"><a href="r-markdown.html#cb133-2" tabindex="-1"></a><span class="in">codes</span></span>
+<span id="cb133-3"><a href="r-markdown.html#cb133-3" tabindex="-1"></a><span class="in">```</span></span></code></pre></div>
 </div>
 <div id="청크-이름chunk-name" class="section level3 hasAnchor" number="7.4.2">
 <h3><span class="header-section-number">7.4.2</span> 청크 이름(chunk name)<a href="r-markdown.html#청크-이름chunk-name" class="anchor-section" aria-label="Anchor link to header"></a></h3>
@@ -748,23 +741,23 @@ subscript~2~
 </tbody>
 </table>
 <p><br></p>
-<div class="sourceCode" id="cb134"><pre class="sourceCode markdown"><code class="sourceCode markdown"><span id="cb134-1"><a href="r-markdown.html#cb134-1" aria-hidden="true" tabindex="-1"></a><span class="fu"># results = &quot;markup&quot;(default)</span></span>
-<span id="cb134-2"><a href="r-markdown.html#cb134-2" aria-hidden="true" tabindex="-1"></a><span class="in">```{r, results = &quot;markup&quot;}</span></span>
-<span id="cb134-3"><a href="r-markdown.html#cb134-3" aria-hidden="true" tabindex="-1"></a><span class="in">cat(&quot;I&#39;m raw **Markdown** content.\n&quot;)</span></span>
-<span id="cb134-4"><a href="r-markdown.html#cb134-4" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb134-5"><a href="r-markdown.html#cb134-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb134-6"><a href="r-markdown.html#cb134-6" aria-hidden="true" tabindex="-1"></a><span class="fu"># results = &quot;asis&quot;</span></span>
-<span id="cb134-7"><a href="r-markdown.html#cb134-7" aria-hidden="true" tabindex="-1"></a><span class="in">```{r, results = &quot;asis&quot;}</span></span>
-<span id="cb134-8"><a href="r-markdown.html#cb134-8" aria-hidden="true" tabindex="-1"></a><span class="in">cat(&quot;I&#39;m raw **Markdown** content.\n&quot;)</span></span>
-<span id="cb134-9"><a href="r-markdown.html#cb134-9" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span></code></pre></div>
+<div class="sourceCode" id="cb134"><pre class="sourceCode markdown"><code class="sourceCode markdown"><span id="cb134-1"><a href="r-markdown.html#cb134-1" tabindex="-1"></a><span class="fu"># results = &quot;markup&quot;(default)</span></span>
+<span id="cb134-2"><a href="r-markdown.html#cb134-2" tabindex="-1"></a><span class="in">```{r, results = &quot;markup&quot;}</span></span>
+<span id="cb134-3"><a href="r-markdown.html#cb134-3" tabindex="-1"></a><span class="in">cat(&quot;I&#39;m raw **Markdown** content.\n&quot;)</span></span>
+<span id="cb134-4"><a href="r-markdown.html#cb134-4" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb134-5"><a href="r-markdown.html#cb134-5" tabindex="-1"></a></span>
+<span id="cb134-6"><a href="r-markdown.html#cb134-6" tabindex="-1"></a><span class="fu"># results = &quot;asis&quot;</span></span>
+<span id="cb134-7"><a href="r-markdown.html#cb134-7" tabindex="-1"></a><span class="in">```{r, results = &quot;asis&quot;}</span></span>
+<span id="cb134-8"><a href="r-markdown.html#cb134-8" tabindex="-1"></a><span class="in">cat(&quot;I&#39;m raw **Markdown** content.\n&quot;)</span></span>
+<span id="cb134-9"><a href="r-markdown.html#cb134-9" tabindex="-1"></a><span class="in">```</span></span></code></pre></div>
 </div>
 <div id="표table-삽입" class="section level3 hasAnchor" number="7.4.4">
 <h3><span class="header-section-number">7.4.4</span> 표(table) 삽입<a href="r-markdown.html#표table-삽입" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <ul>
 <li>간단한 형태의 표 생성 - <code>knitr::kable()</code> 함수</li>
 </ul>
-<div class="sourceCode" id="cb135"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb135-1"><a href="r-markdown.html#cb135-1" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(iris)</span>
-<span id="cb135-2"><a href="r-markdown.html#cb135-2" aria-hidden="true" tabindex="-1"></a><span class="fu">kable</span>(<span class="fu">head</span>(iris))</span></code></pre></div>
+<div class="sourceCode" id="cb135"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb135-1"><a href="r-markdown.html#cb135-1" tabindex="-1"></a><span class="fu">head</span>(iris)</span>
+<span id="cb135-2"><a href="r-markdown.html#cb135-2" tabindex="-1"></a><span class="fu">kable</span>(<span class="fu">head</span>(iris))</span></code></pre></div>
 </div>
 <div id="전역-옵션global-option" class="section level3 hasAnchor" number="7.4.5">
 <h3><span class="header-section-number">7.4.5</span> 전역 옵션(global option)<a href="r-markdown.html#전역-옵션global-option" class="anchor-section" aria-label="Anchor link to header"></a></h3>
@@ -777,25 +770,25 @@ subscript~2~
 <li><code>opts_chunk$restore()</code> - 기본 설정으로 변경</li>
 </ul></li>
 </ul>
-<div class="sourceCode" id="cb136"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb136-1"><a href="r-markdown.html#cb136-1" aria-hidden="true" tabindex="-1"></a>opts_chunk<span class="sc">$</span><span class="fu">get</span>(<span class="st">&quot;warning&quot;</span>)</span>
-<span id="cb136-2"><a href="r-markdown.html#cb136-2" aria-hidden="true" tabindex="-1"></a>opts_chunk<span class="sc">$</span><span class="fu">set</span>(<span class="st">&quot;warning&quot;</span> <span class="ot">=</span> <span class="cn">FALSE</span>)</span>
-<span id="cb136-3"><a href="r-markdown.html#cb136-3" aria-hidden="true" tabindex="-1"></a>opts_chunk<span class="sc">$</span><span class="fu">get</span>(<span class="st">&quot;warning&quot;</span>)</span>
-<span id="cb136-4"><a href="r-markdown.html#cb136-4" aria-hidden="true" tabindex="-1"></a>opts_chunk<span class="sc">$</span><span class="fu">restore</span>()</span>
-<span id="cb136-5"><a href="r-markdown.html#cb136-5" aria-hidden="true" tabindex="-1"></a>opts_chunk<span class="sc">$</span><span class="fu">get</span>(<span class="st">&quot;warning&quot;</span>)</span></code></pre></div>
-<div class="sourceCode" id="cb137"><pre class="sourceCode markdown"><code class="sourceCode markdown"><span id="cb137-1"><a href="r-markdown.html#cb137-1" aria-hidden="true" tabindex="-1"></a><span class="fu"># 전역 옵션 설정 : warning = FALSE</span></span>
-<span id="cb137-2"><a href="r-markdown.html#cb137-2" aria-hidden="true" tabindex="-1"></a><span class="in">```{r, include = FALSE}</span></span>
-<span id="cb137-3"><a href="r-markdown.html#cb137-3" aria-hidden="true" tabindex="-1"></a><span class="in">opts_chunk$set(warning = FALSE)</span></span>
-<span id="cb137-4"><a href="r-markdown.html#cb137-4" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb137-5"><a href="r-markdown.html#cb137-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb137-6"><a href="r-markdown.html#cb137-6" aria-hidden="true" tabindex="-1"></a><span class="fu"># 개별 청크에서 warning 옵션을 설정하지 않은 경우, 전역 옵션 설정을 따름</span></span>
-<span id="cb137-7"><a href="r-markdown.html#cb137-7" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb137-8"><a href="r-markdown.html#cb137-8" aria-hidden="true" tabindex="-1"></a><span class="in">as.numeric(c(1, 2, &quot;a&quot;))</span></span>
-<span id="cb137-9"><a href="r-markdown.html#cb137-9" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb137-10"><a href="r-markdown.html#cb137-10" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb137-11"><a href="r-markdown.html#cb137-11" aria-hidden="true" tabindex="-1"></a><span class="fu"># 개별 청크에서 warning 옵션을 설정하는 경우, 해당 옵션 설정을 따름</span></span>
-<span id="cb137-12"><a href="r-markdown.html#cb137-12" aria-hidden="true" tabindex="-1"></a><span class="in">```{r, warning = TRUE}</span></span>
-<span id="cb137-13"><a href="r-markdown.html#cb137-13" aria-hidden="true" tabindex="-1"></a><span class="in">as.numeric(c(1, 2, &quot;a&quot;))</span></span>
-<span id="cb137-14"><a href="r-markdown.html#cb137-14" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span></code></pre></div>
+<div class="sourceCode" id="cb136"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb136-1"><a href="r-markdown.html#cb136-1" tabindex="-1"></a>opts_chunk<span class="sc">$</span><span class="fu">get</span>(<span class="st">&quot;warning&quot;</span>)</span>
+<span id="cb136-2"><a href="r-markdown.html#cb136-2" tabindex="-1"></a>opts_chunk<span class="sc">$</span><span class="fu">set</span>(<span class="st">&quot;warning&quot;</span> <span class="ot">=</span> <span class="cn">FALSE</span>)</span>
+<span id="cb136-3"><a href="r-markdown.html#cb136-3" tabindex="-1"></a>opts_chunk<span class="sc">$</span><span class="fu">get</span>(<span class="st">&quot;warning&quot;</span>)</span>
+<span id="cb136-4"><a href="r-markdown.html#cb136-4" tabindex="-1"></a>opts_chunk<span class="sc">$</span><span class="fu">restore</span>()</span>
+<span id="cb136-5"><a href="r-markdown.html#cb136-5" tabindex="-1"></a>opts_chunk<span class="sc">$</span><span class="fu">get</span>(<span class="st">&quot;warning&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb137"><pre class="sourceCode markdown"><code class="sourceCode markdown"><span id="cb137-1"><a href="r-markdown.html#cb137-1" tabindex="-1"></a><span class="fu"># 전역 옵션 설정 : warning = FALSE</span></span>
+<span id="cb137-2"><a href="r-markdown.html#cb137-2" tabindex="-1"></a><span class="in">```{r, include = FALSE}</span></span>
+<span id="cb137-3"><a href="r-markdown.html#cb137-3" tabindex="-1"></a><span class="in">opts_chunk$set(warning = FALSE)</span></span>
+<span id="cb137-4"><a href="r-markdown.html#cb137-4" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb137-5"><a href="r-markdown.html#cb137-5" tabindex="-1"></a></span>
+<span id="cb137-6"><a href="r-markdown.html#cb137-6" tabindex="-1"></a><span class="fu"># 개별 청크에서 warning 옵션을 설정하지 않은 경우, 전역 옵션 설정을 따름</span></span>
+<span id="cb137-7"><a href="r-markdown.html#cb137-7" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb137-8"><a href="r-markdown.html#cb137-8" tabindex="-1"></a><span class="in">as.numeric(c(1, 2, &quot;a&quot;))</span></span>
+<span id="cb137-9"><a href="r-markdown.html#cb137-9" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb137-10"><a href="r-markdown.html#cb137-10" tabindex="-1"></a></span>
+<span id="cb137-11"><a href="r-markdown.html#cb137-11" tabindex="-1"></a><span class="fu"># 개별 청크에서 warning 옵션을 설정하는 경우, 해당 옵션 설정을 따름</span></span>
+<span id="cb137-12"><a href="r-markdown.html#cb137-12" tabindex="-1"></a><span class="in">```{r, warning = TRUE}</span></span>
+<span id="cb137-13"><a href="r-markdown.html#cb137-13" tabindex="-1"></a><span class="in">as.numeric(c(1, 2, &quot;a&quot;))</span></span>
+<span id="cb137-14"><a href="r-markdown.html#cb137-14" tabindex="-1"></a><span class="in">```</span></span></code></pre></div>
 </div>
 <div id="인라인-코드inline-code" class="section level3 hasAnchor" number="7.4.6">
 <h3><span class="header-section-number">7.4.6</span> 인라인 코드(inline code)<a href="r-markdown.html#인라인-코드inline-code" class="anchor-section" aria-label="Anchor link to header"></a></h3>
@@ -806,7 +799,7 @@ subscript~2~
 <blockquote>
 <p>iris 데이터셋에는 150개의 관측값과 5개의 변수가 있습니다.</p>
 </blockquote>
-<div class="sourceCode" id="cb138"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb138-1"><a href="r-markdown.html#cb138-1" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> iris 데이터셋에는 <span class="st">`</span><span class="at">r nrow(iris)</span><span class="st">`</span>개의 관측값과 <span class="st">`</span><span class="at">r ncol(iris)</span><span class="st">`</span>개의 변수가 있습니다.</span></code></pre></div>
+<div class="sourceCode" id="cb138"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb138-1"><a href="r-markdown.html#cb138-1" tabindex="-1"></a><span class="sc">&gt;</span> iris 데이터셋에는 <span class="st">`</span><span class="at">r nrow(iris)</span><span class="st">`</span>개의 관측값과 <span class="st">`</span><span class="at">r ncol(iris)</span><span class="st">`</span>개의 변수가 있습니다.</span></code></pre></div>
 
 </div>
 </div>
@@ -816,8 +809,8 @@ subscript~2~
           </div>
         </div>
       </div>
-<a href="데이터-시각화.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="공지-과제-및-기말고사.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="데이터-시각화.html" class="navigation navigation-prev navigation-unique" aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
@@ -831,42 +824,48 @@ subscript~2~
 <script>
 gitbook.require(["gitbook"], function(gitbook) {
 gitbook.start({
-"sharing": {
-"github": false,
-"facebook": true,
-"twitter": true,
-"linkedin": false,
-"weibo": false,
-"instapaper": false,
-"vk": false,
-"whatsapp": false,
-"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
-},
-"fontsettings": {
-"theme": "white",
-"family": "sans",
-"size": 2
-},
-"edit": {
-"link": null,
-"text": null
-},
-"history": {
-"link": null,
-"text": null
-},
-"view": {
-"link": null,
-"text": null
-},
-"download": null,
-"search": {
-"engine": "fuse",
-"options": null
-},
-"toc": {
-"collapse": "subsection"
-}
+  "sharing": {
+    "github": false,
+    "facebook": true,
+    "twitter": true,
+    "linkedin": false,
+    "weibo": false,
+    "instapaper": false,
+    "vk": false,
+    "whatsapp": false,
+    "all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+  },
+  "fontsettings": {
+    "theme": "white",
+    "family": "sans",
+    "size": 2
+  },
+  "edit": {
+    "link": null,
+    "text": null
+  },
+  "history": {
+    "link": null,
+    "text": null
+  },
+  "view": {
+    "link": null,
+    "text": null
+  },
+  "download": null,
+  "search": {
+    "engine": "fuse",
+    "options": null
+  },
+  "toc": {
+    "collapse": "subsection"
+  },
+  "toolbar": {
+    "position": "fixed"
+  },
+  "includes": {
+    "in_header": "<script src="toc.js"></script>n"
+  }
 });
 });
 </script>

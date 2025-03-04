@@ -141,5 +141,3 @@ r-코드-청크-이해
 표table-삽입
 전역-옵션global-option
 인라인-코드inline-code
-교과-목표
-강의-소개

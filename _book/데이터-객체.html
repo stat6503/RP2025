@@ -4,26 +4,26 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>Chapter 2 데이터 객체 | R 입문</title>
-  <meta name="description" content="Chapter 2 데이터 객체 | R 입문" />
-  <meta name="generator" content="bookdown 0.31 and GitBook 2.6.7" />
+  <title>Chapter 2 데이터 객체 | R 프로그래밍</title>
+  <meta name="description" content="Chapter 2 데이터 객체 | R 프로그래밍" />
+  <meta name="generator" content="bookdown 0.42 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="Chapter 2 데이터 객체 | R 입문" />
+  <meta property="og:title" content="Chapter 2 데이터 객체 | R 프로그래밍" />
   <meta property="og:type" content="book" />
   
   
   
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="Chapter 2 데이터 객체 | R 입문" />
+  <meta name="twitter:title" content="Chapter 2 데이터 객체 | R 프로그래밍" />
   
   
   
 
-<meta name="author" content="Park Sejin" />
+<meta name="author" content="Park (stat6503@gmail.com)" />
 
 
-<meta name="date" content="2022-12-23" />
+<meta name="date" content="2025-03-04" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -56,7 +56,7 @@
 
 <style type="text/css">
 pre > code.sourceCode { white-space: pre; position: relative; }
-pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span { line-height: 1.25; }
 pre > code.sourceCode > span:empty { height: 1.2em; }
 .sourceCode { overflow: visible; }
 code.sourceCode > span { color: inherit; text-decoration: inherit; }
@@ -66,7 +66,7 @@ div.sourceCode { overflow: auto; }
 }
 @media print {
 pre > code.sourceCode { white-space: pre-wrap; }
-pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
 }
 pre.numberSource code
   { counter-reset: source-line 0; }
@@ -119,6 +119,10 @@ code span.vs { color: #4070a0; } /* VerbatimString */
 code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
 </style>
 
+<style type="text/css">
+  
+  div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+</style>
 
 <link rel="stylesheet" href="style.css" type="text/css" />
 </head>
@@ -133,15 +137,9 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
       <nav role="navigation">
 
 <ul class="summary">
-<li><a href="./">R 입문</a></li>
+<li><a href="./">R 프로그래밍</a></li>
 
 <li class="divider"></li>
-<li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>강의 소개</a>
-<ul>
-<li class="chapter" data-level="" data-path="index.html"><a href="index.html#교과-목표"><i class="fa fa-check"></i>교과 목표</a></li>
-<li class="chapter" data-level="" data-path="index.html"><a href="index.html#평가-방법"><i class="fa fa-check"></i>평가 방법</a></li>
-<li class="chapter" data-level="" data-path="index.html"><a href="index.html#참고-문헌"><i class="fa fa-check"></i>참고 문헌</a></li>
-</ul></li>
 <li class="chapter" data-level="1" data-path="r-소개-및-기초.html"><a href="r-소개-및-기초.html"><i class="fa fa-check"></i><b>1</b> R 소개 및 기초</a>
 <ul>
 <li class="chapter" data-level="1.1" data-path="r-소개-및-기초.html"><a href="r-소개-및-기초.html#r-및-r-studio-설치"><i class="fa fa-check"></i><b>1.1</b> R 및 R Studio 설치</a>
@@ -307,11 +305,6 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="7.4.6" data-path="r-markdown.html"><a href="r-markdown.html#인라인-코드inline-code"><i class="fa fa-check"></i><b>7.4.6</b> 인라인 코드(inline code)</a></li>
 </ul></li>
 </ul></li>
-<li class="chapter" data-level="" data-path="공지-과제-및-기말고사.html"><a href="공지-과제-및-기말고사.html"><i class="fa fa-check"></i>[공지] 과제 및 기말고사</a>
-<ul>
-<li class="chapter" data-level="" data-path="공지-과제-및-기말고사.html"><a href="공지-과제-및-기말고사.html#과제"><i class="fa fa-check"></i>◎ 과제</a></li>
-<li class="chapter" data-level="" data-path="공지-과제-및-기말고사.html"><a href="공지-과제-및-기말고사.html#기말고사"><i class="fa fa-check"></i>◎ 기말고사</a></li>
-</ul></li>
 </ul>
 
       </nav>
@@ -321,7 +314,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
       <div class="body-inner">
         <div class="book-header" role="navigation">
           <h1>
-            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">R 입문</a>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">R 프로그래밍</a>
           </h1>
         </div>
 
@@ -366,20 +359,20 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li>문자와 숫자를 함께 사용하여 벡터에 저장하면, 숫자는 모두 문자로 바뀜</li>
 </ul></li>
 </ul>
-<div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb4-1"><a href="데이터-객체.html#cb4-1" aria-hidden="true" tabindex="-1"></a>v1 <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">4</span>, <span class="dv">5</span>)                    <span class="co"># 숫자형 벡터</span></span>
-<span id="cb4-2"><a href="데이터-객체.html#cb4-2" aria-hidden="true" tabindex="-1"></a>v2 <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&quot;a,&quot;</span>, <span class="st">&quot;b&quot;</span>, <span class="st">&quot;c&quot;</span>)                   <span class="co"># 문자형 벡터</span></span>
-<span id="cb4-3"><a href="데이터-객체.html#cb4-3" aria-hidden="true" tabindex="-1"></a>v3 <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="cn">TRUE</span>, <span class="cn">FALSE</span>, <span class="cn">FALSE</span>)               <span class="co"># 논리형 벡터</span></span>
-<span id="cb4-4"><a href="데이터-객체.html#cb4-4" aria-hidden="true" tabindex="-1"></a>v4 <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>, <span class="st">&quot;a&quot;</span>, <span class="st">&quot;b,&quot;</span>, <span class="st">&quot;c&quot;</span>)          <span class="co"># 문자형 벡터</span></span></code></pre></div>
+<div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb4-1"><a href="데이터-객체.html#cb4-1" tabindex="-1"></a>v1 <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">4</span>, <span class="dv">5</span>)                    <span class="co"># 숫자형 벡터</span></span>
+<span id="cb4-2"><a href="데이터-객체.html#cb4-2" tabindex="-1"></a>v2 <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&quot;a,&quot;</span>, <span class="st">&quot;b&quot;</span>, <span class="st">&quot;c&quot;</span>)                   <span class="co"># 문자형 벡터</span></span>
+<span id="cb4-3"><a href="데이터-객체.html#cb4-3" tabindex="-1"></a>v3 <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="cn">TRUE</span>, <span class="cn">FALSE</span>, <span class="cn">FALSE</span>)               <span class="co"># 논리형 벡터</span></span>
+<span id="cb4-4"><a href="데이터-객체.html#cb4-4" tabindex="-1"></a>v4 <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>, <span class="st">&quot;a&quot;</span>, <span class="st">&quot;b,&quot;</span>, <span class="st">&quot;c&quot;</span>)          <span class="co"># 문자형 벡터</span></span></code></pre></div>
 <p><br></p>
 <ul>
 <li>연속적인 숫자로 이루어진 벡터 생성 - <code>:</code></li>
 <li>일정한 간격의 숫자로 이루어진 벡터 생성 - <code>seq(시작값, 종료값, 간격)</code></li>
 <li>반복된 숫자로 이루어진 벡터 생성 - <code>rep(반복대상값, 반복횟수)</code> 함수</li>
 </ul>
-<div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb5-1"><a href="데이터-객체.html#cb5-1" aria-hidden="true" tabindex="-1"></a>v5 <span class="ot">&lt;-</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">10</span>                        <span class="co"># 1~10 값을 출력</span></span>
-<span id="cb5-2"><a href="데이터-객체.html#cb5-2" aria-hidden="true" tabindex="-1"></a>v6 <span class="ot">&lt;-</span> <span class="fu">seq</span>(<span class="dv">1</span>, <span class="dv">10</span>, <span class="dv">2</span>)               <span class="co"># 1~10 사이의 홀수만 출력</span></span>
-<span id="cb5-3"><a href="데이터-객체.html#cb5-3" aria-hidden="true" tabindex="-1"></a>v7 <span class="ot">&lt;-</span> <span class="fu">rep</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">5</span>, <span class="at">times =</span> <span class="dv">3</span>)         <span class="co"># 1~5 값을 3번 반복</span></span>
-<span id="cb5-4"><a href="데이터-객체.html#cb5-4" aria-hidden="true" tabindex="-1"></a>v8 <span class="ot">&lt;-</span> <span class="fu">rep</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">5</span>, <span class="at">each =</span> <span class="dv">3</span>)          <span class="co"># 1~5 값을 각각 3번 반복</span></span></code></pre></div>
+<div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb5-1"><a href="데이터-객체.html#cb5-1" tabindex="-1"></a>v5 <span class="ot">&lt;-</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">10</span>                        <span class="co"># 1~10 값을 출력</span></span>
+<span id="cb5-2"><a href="데이터-객체.html#cb5-2" tabindex="-1"></a>v6 <span class="ot">&lt;-</span> <span class="fu">seq</span>(<span class="dv">1</span>, <span class="dv">10</span>, <span class="dv">2</span>)               <span class="co"># 1~10 사이의 홀수만 출력</span></span>
+<span id="cb5-3"><a href="데이터-객체.html#cb5-3" tabindex="-1"></a>v7 <span class="ot">&lt;-</span> <span class="fu">rep</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">5</span>, <span class="at">times =</span> <span class="dv">3</span>)         <span class="co"># 1~5 값을 3번 반복</span></span>
+<span id="cb5-4"><a href="데이터-객체.html#cb5-4" tabindex="-1"></a>v8 <span class="ot">&lt;-</span> <span class="fu">rep</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">5</span>, <span class="at">each =</span> <span class="dv">3</span>)          <span class="co"># 1~5 값을 각각 3번 반복</span></span></code></pre></div>
 </div>
 <div id="인덱스index" class="section level3 hasAnchor" number="2.2.2">
 <h3><span class="header-section-number">2.2.2</span> 인덱스(index)<a href="데이터-객체.html#인덱스index" class="anchor-section" aria-label="Anchor link to header"></a></h3>
@@ -388,9 +381,9 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li>인덱스를 통해 벡터의 특정 위치에 저장된 값들을 하나 또는 여러 개 추출할 수 있음</li>
 <li>인덱스는 <code>[ ]</code>를 이용하여 나타냄</li>
 </ul>
-<div class="sourceCode" id="cb6"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb6-1"><a href="데이터-객체.html#cb6-1" aria-hidden="true" tabindex="-1"></a>v <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">6</span>, <span class="dv">8</span>, <span class="dv">1</span>, <span class="dv">9</span>, <span class="dv">7</span>)</span>
-<span id="cb6-2"><a href="데이터-객체.html#cb6-2" aria-hidden="true" tabindex="-1"></a>v[<span class="dv">1</span>]                    <span class="co"># 6</span></span>
-<span id="cb6-3"><a href="데이터-객체.html#cb6-3" aria-hidden="true" tabindex="-1"></a>v[<span class="dv">6</span>]                    <span class="co"># NA</span></span></code></pre></div>
+<div class="sourceCode" id="cb6"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb6-1"><a href="데이터-객체.html#cb6-1" tabindex="-1"></a>v <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">6</span>, <span class="dv">8</span>, <span class="dv">1</span>, <span class="dv">9</span>, <span class="dv">7</span>)</span>
+<span id="cb6-2"><a href="데이터-객체.html#cb6-2" tabindex="-1"></a>v[<span class="dv">1</span>]                    <span class="co"># 6</span></span>
+<span id="cb6-3"><a href="데이터-객체.html#cb6-3" tabindex="-1"></a>v[<span class="dv">6</span>]                    <span class="co"># NA</span></span></code></pre></div>
 <p><img src="img/fig2-2.png" /></p>
 </div>
 <div id="원소값-추출" class="section level3 hasAnchor" number="2.2.3">
@@ -399,9 +392,9 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li>벡터에서 가져오고 싶은 값들의 인덱스를 <code>c()</code> 함수로 묶어서 <code>[]</code> 안에 입력 가능</li>
 <li>인덱스 부분에 <code>-</code>를 사용하면 해당 인덱스를 제외한 나머지 값을 출력함</li>
 </ul>
-<div class="sourceCode" id="cb7"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb7-1"><a href="데이터-객체.html#cb7-1" aria-hidden="true" tabindex="-1"></a>v <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">6</span>, <span class="dv">8</span>, <span class="dv">1</span>, <span class="dv">9</span>, <span class="dv">7</span>)</span>
-<span id="cb7-2"><a href="데이터-객체.html#cb7-2" aria-hidden="true" tabindex="-1"></a>v[<span class="dv">1</span><span class="sc">:</span><span class="dv">3</span>]                    <span class="co"># 6, 8, 1 값을 출력</span></span>
-<span id="cb7-3"><a href="데이터-객체.html#cb7-3" aria-hidden="true" tabindex="-1"></a>v[<span class="sc">-</span><span class="dv">5</span>]                     <span class="co"># 5번째 인덱스만 제외하고 출력</span></span></code></pre></div>
+<div class="sourceCode" id="cb7"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb7-1"><a href="데이터-객체.html#cb7-1" tabindex="-1"></a>v <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">6</span>, <span class="dv">8</span>, <span class="dv">1</span>, <span class="dv">9</span>, <span class="dv">7</span>)</span>
+<span id="cb7-2"><a href="데이터-객체.html#cb7-2" tabindex="-1"></a>v[<span class="dv">1</span><span class="sc">:</span><span class="dv">3</span>]                    <span class="co"># 6, 8, 1 값을 출력</span></span>
+<span id="cb7-3"><a href="데이터-객체.html#cb7-3" tabindex="-1"></a>v[<span class="sc">-</span><span class="dv">5</span>]                     <span class="co"># 5번째 인덱스만 제외하고 출력</span></span></code></pre></div>
 </div>
 <div id="벡터-산술연산" class="section level3 hasAnchor" number="2.2.4">
 <h3><span class="header-section-number">2.2.4</span> 벡터 산술연산<a href="데이터-객체.html#벡터-산술연산" class="anchor-section" aria-label="Anchor link to header"></a></h3>
@@ -409,10 +402,10 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li>벡터에 대한 산술연산은 벡터 안에 포함된 모든 값들에 대한 연산으로 바뀌어 실행됨</li>
 <li>벡터와 벡터 간의 연산은 대응되는 위치에 있는 값끼리의 연산으로 바뀌어 실행됨</li>
 </ul>
-<div class="sourceCode" id="cb8"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb8-1"><a href="데이터-객체.html#cb8-1" aria-hidden="true" tabindex="-1"></a>v9 <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">3</span>, <span class="dv">7</span>, <span class="dv">6</span>)</span>
-<span id="cb8-2"><a href="데이터-객체.html#cb8-2" aria-hidden="true" tabindex="-1"></a>v10 <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">4</span>, <span class="dv">2</span>, <span class="dv">8</span>)</span>
-<span id="cb8-3"><a href="데이터-객체.html#cb8-3" aria-hidden="true" tabindex="-1"></a>v9 <span class="sc">+</span> <span class="dv">2</span>                    <span class="co"># 5, 9, 8 값을 출력</span></span>
-<span id="cb8-4"><a href="데이터-객체.html#cb8-4" aria-hidden="true" tabindex="-1"></a>v9 <span class="sc">-</span> v10                  <span class="co"># -1, 5, -2 값을 출력</span></span></code></pre></div>
+<div class="sourceCode" id="cb8"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb8-1"><a href="데이터-객체.html#cb8-1" tabindex="-1"></a>v9 <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">3</span>, <span class="dv">7</span>, <span class="dv">6</span>)</span>
+<span id="cb8-2"><a href="데이터-객체.html#cb8-2" tabindex="-1"></a>v10 <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">4</span>, <span class="dv">2</span>, <span class="dv">8</span>)</span>
+<span id="cb8-3"><a href="데이터-객체.html#cb8-3" tabindex="-1"></a>v9 <span class="sc">+</span> <span class="dv">2</span>                    <span class="co"># 5, 9, 8 값을 출력</span></span>
+<span id="cb8-4"><a href="데이터-객체.html#cb8-4" tabindex="-1"></a>v9 <span class="sc">-</span> v10                  <span class="co"># -1, 5, -2 값을 출력</span></span></code></pre></div>
 <p><br></p>
 <ul>
 <li>벡터에 적용 가능한 함수</li>
@@ -521,11 +514,11 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li>논리연산도 벡터에 포함된 각각의 값에 대한 연산으로 바뀌어 실행됨</li>
 <li>논리값이 산술연산에 사용되면 FALSE는 0으로, TRUE는 1로 간주됨</li>
 </ul>
-<div class="sourceCode" id="cb9"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb9-1"><a href="데이터-객체.html#cb9-1" aria-hidden="true" tabindex="-1"></a>v11 <span class="ot">&lt;-</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">10</span></span>
-<span id="cb9-2"><a href="데이터-객체.html#cb9-2" aria-hidden="true" tabindex="-1"></a>v11 <span class="sc">&gt;=</span> <span class="dv">5</span>                    <span class="co"># 각 원소가 5보다 크거나 같으면 TRUE, 아니면 FALSE 출력</span></span>
-<span id="cb9-3"><a href="데이터-객체.html#cb9-3" aria-hidden="true" tabindex="-1"></a>v11[v11 <span class="sc">&gt;=</span> <span class="dv">5</span>]               <span class="co"># 5보다 크거나 같은 값 출력</span></span>
-<span id="cb9-4"><a href="데이터-객체.html#cb9-4" aria-hidden="true" tabindex="-1"></a><span class="fu">sum</span>(v11 <span class="sc">&lt;</span> <span class="dv">5</span>)                <span class="co"># 5보다 작은 값의 개수 출력</span></span>
-<span id="cb9-5"><a href="데이터-객체.html#cb9-5" aria-hidden="true" tabindex="-1"></a><span class="fu">sum</span>(v11[v11 <span class="sc">&lt;</span> <span class="dv">5</span>])           <span class="co"># 5보다 작은 값의 합계 출력</span></span></code></pre></div>
+<div class="sourceCode" id="cb9"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb9-1"><a href="데이터-객체.html#cb9-1" tabindex="-1"></a>v11 <span class="ot">&lt;-</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">10</span></span>
+<span id="cb9-2"><a href="데이터-객체.html#cb9-2" tabindex="-1"></a>v11 <span class="sc">&gt;=</span> <span class="dv">5</span>                    <span class="co"># 각 원소가 5보다 크거나 같으면 TRUE, 아니면 FALSE 출력</span></span>
+<span id="cb9-3"><a href="데이터-객체.html#cb9-3" tabindex="-1"></a>v11[v11 <span class="sc">&gt;=</span> <span class="dv">5</span>]               <span class="co"># 5보다 크거나 같은 값 출력</span></span>
+<span id="cb9-4"><a href="데이터-객체.html#cb9-4" tabindex="-1"></a><span class="fu">sum</span>(v11 <span class="sc">&lt;</span> <span class="dv">5</span>)                <span class="co"># 5보다 작은 값의 개수 출력</span></span>
+<span id="cb9-5"><a href="데이터-객체.html#cb9-5" tabindex="-1"></a><span class="fu">sum</span>(v11[v11 <span class="sc">&lt;</span> <span class="dv">5</span>])           <span class="co"># 5보다 작은 값의 합계 출력</span></span></code></pre></div>
 </div>
 <div id="리스트list" class="section level3 hasAnchor" number="2.2.6">
 <h3><span class="header-section-number">2.2.6</span> 리스트(list)<a href="데이터-객체.html#리스트list" class="anchor-section" aria-label="Anchor link to header"></a></h3>
@@ -534,9 +527,9 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li><code>list()</code> 함수를 이용하여 리스트를 생성</li>
 <li>리스트에 저장된 값은 <code>[[ ]]</code>를 사용하거나, ’리스트이름$값의이름’의 형태로 추출할 수 있음</li>
 </ul>
-<div class="sourceCode" id="cb10"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb10-1"><a href="데이터-객체.html#cb10-1" aria-hidden="true" tabindex="-1"></a>myinfo <span class="ot">&lt;-</span> <span class="fu">list</span>(<span class="at">name =</span> <span class="st">&quot;Kim&quot;</span>, <span class="at">age =</span> <span class="dv">25</span>, <span class="at">status =</span> <span class="cn">TRUE</span>, <span class="at">score =</span> <span class="fu">c</span>(<span class="dv">70</span>, <span class="dv">85</span>, <span class="dv">90</span>))</span>
-<span id="cb10-2"><a href="데이터-객체.html#cb10-2" aria-hidden="true" tabindex="-1"></a>myinfo[[<span class="dv">1</span>]]                    <span class="co"># 첫번째 값인 &quot;Kim&quot; 출력</span></span>
-<span id="cb10-3"><a href="데이터-객체.html#cb10-3" aria-hidden="true" tabindex="-1"></a>myinfo<span class="sc">$</span>score                   <span class="co"># 이름이 score인 벡터 값 출력</span></span></code></pre></div>
+<div class="sourceCode" id="cb10"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb10-1"><a href="데이터-객체.html#cb10-1" tabindex="-1"></a>myinfo <span class="ot">&lt;-</span> <span class="fu">list</span>(<span class="at">name =</span> <span class="st">&quot;Kim&quot;</span>, <span class="at">age =</span> <span class="dv">25</span>, <span class="at">status =</span> <span class="cn">TRUE</span>, <span class="at">score =</span> <span class="fu">c</span>(<span class="dv">70</span>, <span class="dv">85</span>, <span class="dv">90</span>))</span>
+<span id="cb10-2"><a href="데이터-객체.html#cb10-2" tabindex="-1"></a>myinfo[[<span class="dv">1</span>]]                    <span class="co"># 첫번째 값인 &quot;Kim&quot; 출력</span></span>
+<span id="cb10-3"><a href="데이터-객체.html#cb10-3" tabindex="-1"></a>myinfo<span class="sc">$</span>score                   <span class="co"># 이름이 score인 벡터 값 출력</span></span></code></pre></div>
 </div>
 <div id="팩터factor" class="section level3 hasAnchor" number="2.2.7">
 <h3><span class="header-section-number">2.2.7</span> 팩터(factor)<a href="데이터-객체.html#팩터factor" class="anchor-section" aria-label="Anchor link to header"></a></h3>
@@ -547,12 +540,12 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li><code>levels()</code> 함수는 팩터에 저장된 값들의 종류를 알려줌</li>
 <li>팩터는 사전에 정의된 값 외에 다른 값들은 입력하지 못하도록 함</li>
 </ul>
-<div class="sourceCode" id="cb11"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb11-1"><a href="데이터-객체.html#cb11-1" aria-hidden="true" tabindex="-1"></a>season <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&quot;spring&quot;</span>, <span class="st">&quot;fall&quot;</span>, <span class="st">&quot;winter&quot;</span>, <span class="st">&quot;summer&quot;</span>, <span class="st">&quot;summer&quot;</span>, <span class="st">&quot;spring&quot;</span>)</span>
-<span id="cb11-2"><a href="데이터-객체.html#cb11-2" aria-hidden="true" tabindex="-1"></a>season.new <span class="ot">&lt;-</span> <span class="fu">factor</span>(season)</span>
-<span id="cb11-3"><a href="데이터-객체.html#cb11-3" aria-hidden="true" tabindex="-1"></a><span class="fu">levels</span>(season.new)</span>
-<span id="cb11-4"><a href="데이터-객체.html#cb11-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb11-5"><a href="데이터-객체.html#cb11-5" aria-hidden="true" tabindex="-1"></a>season.new2 <span class="ot">&lt;-</span> <span class="fu">factor</span>(season, <span class="at">levels =</span> <span class="fu">c</span>(<span class="st">&quot;spring&quot;</span>, <span class="st">&quot;summer&quot;</span>, <span class="st">&quot;fall&quot;</span>, <span class="st">&quot;winter&quot;</span>))</span>
-<span id="cb11-6"><a href="데이터-객체.html#cb11-6" aria-hidden="true" tabindex="-1"></a><span class="fu">levels</span>(season.new2)</span></code></pre></div>
+<div class="sourceCode" id="cb11"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb11-1"><a href="데이터-객체.html#cb11-1" tabindex="-1"></a>season <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&quot;spring&quot;</span>, <span class="st">&quot;fall&quot;</span>, <span class="st">&quot;winter&quot;</span>, <span class="st">&quot;summer&quot;</span>, <span class="st">&quot;summer&quot;</span>, <span class="st">&quot;spring&quot;</span>)</span>
+<span id="cb11-2"><a href="데이터-객체.html#cb11-2" tabindex="-1"></a>season.new <span class="ot">&lt;-</span> <span class="fu">factor</span>(season)</span>
+<span id="cb11-3"><a href="데이터-객체.html#cb11-3" tabindex="-1"></a><span class="fu">levels</span>(season.new)</span>
+<span id="cb11-4"><a href="데이터-객체.html#cb11-4" tabindex="-1"></a></span>
+<span id="cb11-5"><a href="데이터-객체.html#cb11-5" tabindex="-1"></a>season.new2 <span class="ot">&lt;-</span> <span class="fu">factor</span>(season, <span class="at">levels =</span> <span class="fu">c</span>(<span class="st">&quot;spring&quot;</span>, <span class="st">&quot;summer&quot;</span>, <span class="st">&quot;fall&quot;</span>, <span class="st">&quot;winter&quot;</span>))</span>
+<span id="cb11-6"><a href="데이터-객체.html#cb11-6" tabindex="-1"></a><span class="fu">levels</span>(season.new2)</span></code></pre></div>
 <hr />
 </div>
 </div>
@@ -573,8 +566,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li>매개변수 byrow - TRUE인 경우 행렬에 저장될 값들을 행 방향으로 채움, 기본값(default)은 FALSE</li>
 </ul></li>
 </ul>
-<div class="sourceCode" id="cb12"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb12-1"><a href="데이터-객체.html#cb12-1" aria-hidden="true" tabindex="-1"></a>m1 <span class="ot">&lt;-</span> <span class="fu">matrix</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">20</span>, <span class="at">nrow =</span> <span class="dv">4</span>, <span class="at">ncol =</span> <span class="dv">5</span>)</span>
-<span id="cb12-2"><a href="데이터-객체.html#cb12-2" aria-hidden="true" tabindex="-1"></a>m1</span></code></pre></div>
+<div class="sourceCode" id="cb12"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb12-1"><a href="데이터-객체.html#cb12-1" tabindex="-1"></a>m1 <span class="ot">&lt;-</span> <span class="fu">matrix</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">20</span>, <span class="at">nrow =</span> <span class="dv">4</span>, <span class="at">ncol =</span> <span class="dv">5</span>)</span>
+<span id="cb12-2"><a href="데이터-객체.html#cb12-2" tabindex="-1"></a>m1</span></code></pre></div>
 <pre><code>##      [,1] [,2] [,3] [,4] [,5]
 ## [1,]    1    5    9   13   17
 ## [2,]    2    6   10   14   18
@@ -584,19 +577,19 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <ul>
 <li>행과 열의 위치에 대한 2개의 인덱스값으로 특정 위치의 값을 추출할 수 있음</li>
 </ul>
-<div class="sourceCode" id="cb14"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb14-1"><a href="데이터-객체.html#cb14-1" aria-hidden="true" tabindex="-1"></a>m1[<span class="dv">2</span>, <span class="dv">4</span>]                    <span class="co"># 2행 4열에 위치한 값인 14 출력</span></span>
-<span id="cb14-2"><a href="데이터-객체.html#cb14-2" aria-hidden="true" tabindex="-1"></a>m1[<span class="dv">3</span>, ]                     <span class="co"># 3행에 있는 모든 값 출력</span></span>
-<span id="cb14-3"><a href="데이터-객체.html#cb14-3" aria-hidden="true" tabindex="-1"></a>m1[, <span class="dv">5</span>]                     <span class="co"># 5열에 있는 모든 값 출력</span></span></code></pre></div>
+<div class="sourceCode" id="cb14"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb14-1"><a href="데이터-객체.html#cb14-1" tabindex="-1"></a>m1[<span class="dv">2</span>, <span class="dv">4</span>]                    <span class="co"># 2행 4열에 위치한 값인 14 출력</span></span>
+<span id="cb14-2"><a href="데이터-객체.html#cb14-2" tabindex="-1"></a>m1[<span class="dv">3</span>, ]                     <span class="co"># 3행에 있는 모든 값 출력</span></span>
+<span id="cb14-3"><a href="데이터-객체.html#cb14-3" tabindex="-1"></a>m1[, <span class="dv">5</span>]                     <span class="co"># 5열에 있는 모든 값 출력</span></span></code></pre></div>
 <p><br></p>
 <ul>
 <li><code>rbind()</code>, <code>cbind()</code> 함수를 이용하여 벡터 또는 행렬을 결합</li>
 </ul>
-<div class="sourceCode" id="cb15"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb15-1"><a href="데이터-객체.html#cb15-1" aria-hidden="true" tabindex="-1"></a>m2 <span class="ot">&lt;-</span> <span class="fu">matrix</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">12</span>, <span class="at">nrow =</span> <span class="dv">4</span>, <span class="at">ncol =</span> <span class="dv">3</span>, <span class="at">byrow =</span> <span class="cn">TRUE</span>)     <span class="co"># 4x3 행렬</span></span>
-<span id="cb15-2"><a href="데이터-객체.html#cb15-2" aria-hidden="true" tabindex="-1"></a>m3 <span class="ot">&lt;-</span> <span class="fu">matrix</span>(<span class="dv">13</span><span class="sc">:</span><span class="dv">18</span>, <span class="at">nrow =</span> <span class="dv">2</span>, <span class="at">ncol =</span> <span class="dv">3</span>)                  <span class="co"># 2x3 행렬</span></span>
-<span id="cb15-3"><a href="데이터-객체.html#cb15-3" aria-hidden="true" tabindex="-1"></a>m4 <span class="ot">&lt;-</span> <span class="fu">rbind</span>(m2, m3)                                      <span class="co"># 6x3 행렬</span></span>
-<span id="cb15-4"><a href="데이터-객체.html#cb15-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb15-5"><a href="데이터-객체.html#cb15-5" aria-hidden="true" tabindex="-1"></a>v <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">6</span>)                                              <span class="co"># 원소가 6개인 벡터</span></span>
-<span id="cb15-6"><a href="데이터-객체.html#cb15-6" aria-hidden="true" tabindex="-1"></a><span class="fu">cbind</span>(m4, v)                                             <span class="co"># 6x4 행렬</span></span></code></pre></div>
+<div class="sourceCode" id="cb15"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb15-1"><a href="데이터-객체.html#cb15-1" tabindex="-1"></a>m2 <span class="ot">&lt;-</span> <span class="fu">matrix</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">12</span>, <span class="at">nrow =</span> <span class="dv">4</span>, <span class="at">ncol =</span> <span class="dv">3</span>, <span class="at">byrow =</span> <span class="cn">TRUE</span>)     <span class="co"># 4x3 행렬</span></span>
+<span id="cb15-2"><a href="데이터-객체.html#cb15-2" tabindex="-1"></a>m3 <span class="ot">&lt;-</span> <span class="fu">matrix</span>(<span class="dv">13</span><span class="sc">:</span><span class="dv">18</span>, <span class="at">nrow =</span> <span class="dv">2</span>, <span class="at">ncol =</span> <span class="dv">3</span>)                  <span class="co"># 2x3 행렬</span></span>
+<span id="cb15-3"><a href="데이터-객체.html#cb15-3" tabindex="-1"></a>m4 <span class="ot">&lt;-</span> <span class="fu">rbind</span>(m2, m3)                                      <span class="co"># 6x3 행렬</span></span>
+<span id="cb15-4"><a href="데이터-객체.html#cb15-4" tabindex="-1"></a></span>
+<span id="cb15-5"><a href="데이터-객체.html#cb15-5" tabindex="-1"></a>v <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">6</span>)                                              <span class="co"># 원소가 6개인 벡터</span></span>
+<span id="cb15-6"><a href="데이터-객체.html#cb15-6" tabindex="-1"></a><span class="fu">cbind</span>(m4, v)                                             <span class="co"># 6x4 행렬</span></span></code></pre></div>
 <p><br></p>
 <ul>
 <li><code>rownames()</code>, <code>colnames()</code> 함수를 이용하여 행과 열에 각각 이름을 지정
@@ -604,13 +597,13 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li>데이터를 이해하는데 도움이 됨</li>
 </ul></li>
 </ul>
-<div class="sourceCode" id="cb16"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb16-1"><a href="데이터-객체.html#cb16-1" aria-hidden="true" tabindex="-1"></a>score <span class="ot">&lt;-</span> <span class="fu">matrix</span>(<span class="fu">c</span>(<span class="dv">80</span>, <span class="dv">67</span>, <span class="dv">74</span>,</span>
-<span id="cb16-2"><a href="데이터-객체.html#cb16-2" aria-hidden="true" tabindex="-1"></a>                  <span class="dv">82</span>, <span class="dv">95</span>, <span class="dv">88</span>,</span>
-<span id="cb16-3"><a href="데이터-객체.html#cb16-3" aria-hidden="true" tabindex="-1"></a>                  <span class="dv">75</span>, <span class="dv">84</span>, <span class="dv">82</span>),</span>
-<span id="cb16-4"><a href="데이터-객체.html#cb16-4" aria-hidden="true" tabindex="-1"></a>                <span class="at">nrow =</span> <span class="dv">3</span>, <span class="at">ncol =</span> <span class="dv">3</span>, <span class="at">byrow =</span> <span class="cn">TRUE</span>)</span>
-<span id="cb16-5"><a href="데이터-객체.html#cb16-5" aria-hidden="true" tabindex="-1"></a><span class="fu">rownames</span>(score) <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&quot;Kim&quot;</span>, <span class="st">&quot;Lee&quot;</span>, <span class="st">&quot;Park&quot;</span>)</span>
-<span id="cb16-6"><a href="데이터-객체.html#cb16-6" aria-hidden="true" tabindex="-1"></a><span class="fu">colnames</span>(score) <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&quot;Kor&quot;</span>, <span class="st">&quot;Eng&quot;</span>, <span class="st">&quot;Math&quot;</span>)</span>
-<span id="cb16-7"><a href="데이터-객체.html#cb16-7" aria-hidden="true" tabindex="-1"></a>score</span></code></pre></div>
+<div class="sourceCode" id="cb16"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb16-1"><a href="데이터-객체.html#cb16-1" tabindex="-1"></a>score <span class="ot">&lt;-</span> <span class="fu">matrix</span>(<span class="fu">c</span>(<span class="dv">80</span>, <span class="dv">67</span>, <span class="dv">74</span>,</span>
+<span id="cb16-2"><a href="데이터-객체.html#cb16-2" tabindex="-1"></a>                  <span class="dv">82</span>, <span class="dv">95</span>, <span class="dv">88</span>,</span>
+<span id="cb16-3"><a href="데이터-객체.html#cb16-3" tabindex="-1"></a>                  <span class="dv">75</span>, <span class="dv">84</span>, <span class="dv">82</span>),</span>
+<span id="cb16-4"><a href="데이터-객체.html#cb16-4" tabindex="-1"></a>                <span class="at">nrow =</span> <span class="dv">3</span>, <span class="at">ncol =</span> <span class="dv">3</span>, <span class="at">byrow =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb16-5"><a href="데이터-객체.html#cb16-5" tabindex="-1"></a><span class="fu">rownames</span>(score) <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&quot;Kim&quot;</span>, <span class="st">&quot;Lee&quot;</span>, <span class="st">&quot;Park&quot;</span>)</span>
+<span id="cb16-6"><a href="데이터-객체.html#cb16-6" tabindex="-1"></a><span class="fu">colnames</span>(score) <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&quot;Kor&quot;</span>, <span class="st">&quot;Eng&quot;</span>, <span class="st">&quot;Math&quot;</span>)</span>
+<span id="cb16-7"><a href="데이터-객체.html#cb16-7" tabindex="-1"></a>score</span></code></pre></div>
 <pre><code>##      Kor Eng Math
 ## Kim   80  67   74
 ## Lee   82  95   88
@@ -626,24 +619,24 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li>일반적으로 여러 개의 벡터를 결합하는 형태</li>
 <li>데이터프레임은 행렬과 동일한 방법으로 특정 위치의 값을 추출하거나, 행과 열의 이름을 지정할 수 있음</li>
 </ul>
-<div class="sourceCode" id="cb18"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb18-1"><a href="데이터-객체.html#cb18-1" aria-hidden="true" tabindex="-1"></a>df1 <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="at">name =</span> <span class="fu">c</span>(<span class="st">&quot;Kim&quot;</span>, <span class="st">&quot;Lee&quot;</span>, <span class="st">&quot;Park&quot;</span>, <span class="st">&quot;Choi&quot;</span>),</span>
-<span id="cb18-2"><a href="데이터-객체.html#cb18-2" aria-hidden="true" tabindex="-1"></a>                  <span class="at">age =</span> <span class="fu">c</span>(<span class="dv">24</span>, <span class="dv">25</span>, <span class="dv">22</span>, <span class="dv">27</span>),</span>
-<span id="cb18-3"><a href="데이터-객체.html#cb18-3" aria-hidden="true" tabindex="-1"></a>                  <span class="at">btype =</span> <span class="fu">factor</span>(<span class="fu">c</span>(<span class="st">&quot;A&quot;</span>, <span class="st">&quot;B&quot;</span>, <span class="st">&quot;O&quot;</span>, <span class="st">&quot;B&quot;</span>)),</span>
-<span id="cb18-4"><a href="데이터-객체.html#cb18-4" aria-hidden="true" tabindex="-1"></a>                  <span class="at">religion =</span> <span class="fu">c</span>(<span class="cn">TRUE</span>, <span class="cn">FALSE</span>, <span class="cn">TRUE</span>, <span class="cn">TRUE</span>))</span>
-<span id="cb18-5"><a href="데이터-객체.html#cb18-5" aria-hidden="true" tabindex="-1"></a>df1</span></code></pre></div>
+<div class="sourceCode" id="cb18"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb18-1"><a href="데이터-객체.html#cb18-1" tabindex="-1"></a>df1 <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="at">name =</span> <span class="fu">c</span>(<span class="st">&quot;Kim&quot;</span>, <span class="st">&quot;Lee&quot;</span>, <span class="st">&quot;Park&quot;</span>, <span class="st">&quot;Choi&quot;</span>),</span>
+<span id="cb18-2"><a href="데이터-객체.html#cb18-2" tabindex="-1"></a>                  <span class="at">age =</span> <span class="fu">c</span>(<span class="dv">24</span>, <span class="dv">25</span>, <span class="dv">22</span>, <span class="dv">27</span>),</span>
+<span id="cb18-3"><a href="데이터-객체.html#cb18-3" tabindex="-1"></a>                  <span class="at">btype =</span> <span class="fu">factor</span>(<span class="fu">c</span>(<span class="st">&quot;A&quot;</span>, <span class="st">&quot;B&quot;</span>, <span class="st">&quot;O&quot;</span>, <span class="st">&quot;B&quot;</span>)),</span>
+<span id="cb18-4"><a href="데이터-객체.html#cb18-4" tabindex="-1"></a>                  <span class="at">religion =</span> <span class="fu">c</span>(<span class="cn">TRUE</span>, <span class="cn">FALSE</span>, <span class="cn">TRUE</span>, <span class="cn">TRUE</span>))</span>
+<span id="cb18-5"><a href="데이터-객체.html#cb18-5" tabindex="-1"></a>df1</span></code></pre></div>
 <pre><code>##   name age btype religion
 ## 1  Kim  24     A     TRUE
 ## 2  Lee  25     B    FALSE
 ## 3 Park  22     O     TRUE
 ## 4 Choi  27     B     TRUE</code></pre>
-<div class="sourceCode" id="cb20"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb20-1"><a href="데이터-객체.html#cb20-1" aria-hidden="true" tabindex="-1"></a>df1[<span class="dv">1</span>, <span class="dv">2</span>]                    <span class="co"># 1행 2열에 위치한 값인 24 출력</span></span>
-<span id="cb20-2"><a href="데이터-객체.html#cb20-2" aria-hidden="true" tabindex="-1"></a>df1[, <span class="dv">3</span>]                     <span class="co"># 3열에 있는 btype 모든 값 출력</span></span>
-<span id="cb20-3"><a href="데이터-객체.html#cb20-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb20-4"><a href="데이터-객체.html#cb20-4" aria-hidden="true" tabindex="-1"></a><span class="co"># 데이터프레임에서는 &#39;(데이터프레임 이름)$(열 이름)&#39;의 형태로 열 데이터를 추출할 수 있음</span></span>
-<span id="cb20-5"><a href="데이터-객체.html#cb20-5" aria-hidden="true" tabindex="-1"></a>df1<span class="sc">$</span>btype</span>
-<span id="cb20-6"><a href="데이터-객체.html#cb20-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb20-7"><a href="데이터-객체.html#cb20-7" aria-hidden="true" tabindex="-1"></a>df2 <span class="ot">&lt;-</span> <span class="fu">cbind</span>(df1, <span class="fu">c</span>(<span class="st">&quot;dog&quot;</span>, <span class="st">&quot;cat&quot;</span>, <span class="st">&quot;bird&quot;</span>, <span class="st">&quot;dog&quot;</span>))</span>
-<span id="cb20-8"><a href="데이터-객체.html#cb20-8" aria-hidden="true" tabindex="-1"></a><span class="fu">colnames</span>(df2)[<span class="dv">5</span>] <span class="ot">&lt;-</span> <span class="st">&quot;pet&quot;</span></span></code></pre></div>
+<div class="sourceCode" id="cb20"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb20-1"><a href="데이터-객체.html#cb20-1" tabindex="-1"></a>df1[<span class="dv">1</span>, <span class="dv">2</span>]                    <span class="co"># 1행 2열에 위치한 값인 24 출력</span></span>
+<span id="cb20-2"><a href="데이터-객체.html#cb20-2" tabindex="-1"></a>df1[, <span class="dv">3</span>]                     <span class="co"># 3열에 있는 btype 모든 값 출력</span></span>
+<span id="cb20-3"><a href="데이터-객체.html#cb20-3" tabindex="-1"></a></span>
+<span id="cb20-4"><a href="데이터-객체.html#cb20-4" tabindex="-1"></a><span class="co"># 데이터프레임에서는 &#39;(데이터프레임 이름)$(열 이름)&#39;의 형태로 열 데이터를 추출할 수 있음</span></span>
+<span id="cb20-5"><a href="데이터-객체.html#cb20-5" tabindex="-1"></a>df1<span class="sc">$</span>btype</span>
+<span id="cb20-6"><a href="데이터-객체.html#cb20-6" tabindex="-1"></a></span>
+<span id="cb20-7"><a href="데이터-객체.html#cb20-7" tabindex="-1"></a>df2 <span class="ot">&lt;-</span> <span class="fu">cbind</span>(df1, <span class="fu">c</span>(<span class="st">&quot;dog&quot;</span>, <span class="st">&quot;cat&quot;</span>, <span class="st">&quot;bird&quot;</span>, <span class="st">&quot;dog&quot;</span>))</span>
+<span id="cb20-8"><a href="데이터-객체.html#cb20-8" tabindex="-1"></a><span class="fu">colnames</span>(df2)[<span class="dv">5</span>] <span class="ot">&lt;-</span> <span class="st">&quot;pet&quot;</span></span></code></pre></div>
 </div>
 <div id="행렬과-데이터프레임-다루기" class="section level3 hasAnchor" number="2.3.3">
 <h3><span class="header-section-number">2.3.3</span> 행렬과 데이터프레임 다루기<a href="데이터-객체.html#행렬과-데이터프레임-다루기" class="anchor-section" aria-label="Anchor link to header"></a></h3>
@@ -652,16 +645,16 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <ul>
 <li>행렬과 데이터프레임은 모두 2차원 형태의 데이터를 저장하는 자료구조이기 때문에 다루는 방법이 대부분 동일함</li>
 </ul>
-<div class="sourceCode" id="cb21"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb21-1"><a href="데이터-객체.html#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="fu">dim</span>(iris)                     <span class="co"># 행과 열의 개수 출력 </span></span>
-<span id="cb21-2"><a href="데이터-객체.html#cb21-2" aria-hidden="true" tabindex="-1"></a><span class="fu">nrow</span>(iris)                    <span class="co"># 행의 개수 출력 </span></span>
-<span id="cb21-3"><a href="데이터-객체.html#cb21-3" aria-hidden="true" tabindex="-1"></a><span class="fu">ncol</span>(iris)                    <span class="co"># 열의 개수 출력 </span></span>
-<span id="cb21-4"><a href="데이터-객체.html#cb21-4" aria-hidden="true" tabindex="-1"></a><span class="fu">colnames</span>(iris)                <span class="co"># 열 이름 출력, names( )와 결과 동일 </span></span>
-<span id="cb21-5"><a href="데이터-객체.html#cb21-5" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(iris)                    <span class="co"># 데이터셋의 앞부분 일부 출력 </span></span>
-<span id="cb21-6"><a href="데이터-객체.html#cb21-6" aria-hidden="true" tabindex="-1"></a><span class="fu">tail</span>(iris)                    <span class="co"># 데이터셋의 뒷부분 일부 출력</span></span></code></pre></div>
-<div class="sourceCode" id="cb22"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb22-1"><a href="데이터-객체.html#cb22-1" aria-hidden="true" tabindex="-1"></a><span class="fu">str</span>(iris)                     <span class="co"># 데이터셋 요약 정보 보기 </span></span>
-<span id="cb22-2"><a href="데이터-객체.html#cb22-2" aria-hidden="true" tabindex="-1"></a>iris[, <span class="dv">5</span>]                     <span class="co"># 품종 데이터 보기 </span></span>
-<span id="cb22-3"><a href="데이터-객체.html#cb22-3" aria-hidden="true" tabindex="-1"></a><span class="fu">unique</span>(iris[, <span class="dv">5</span>])             <span class="co"># 품종의 종류 보기(중복 제거) </span></span>
-<span id="cb22-4"><a href="데이터-객체.html#cb22-4" aria-hidden="true" tabindex="-1"></a><span class="fu">table</span>(iris[, <span class="st">&quot;Species&quot;</span>])      <span class="co"># 품종의 종류별 행의 개수 세기</span></span></code></pre></div>
+<div class="sourceCode" id="cb21"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb21-1"><a href="데이터-객체.html#cb21-1" tabindex="-1"></a><span class="fu">dim</span>(iris)                     <span class="co"># 행과 열의 개수 출력 </span></span>
+<span id="cb21-2"><a href="데이터-객체.html#cb21-2" tabindex="-1"></a><span class="fu">nrow</span>(iris)                    <span class="co"># 행의 개수 출력 </span></span>
+<span id="cb21-3"><a href="데이터-객체.html#cb21-3" tabindex="-1"></a><span class="fu">ncol</span>(iris)                    <span class="co"># 열의 개수 출력 </span></span>
+<span id="cb21-4"><a href="데이터-객체.html#cb21-4" tabindex="-1"></a><span class="fu">colnames</span>(iris)                <span class="co"># 열 이름 출력, names( )와 결과 동일 </span></span>
+<span id="cb21-5"><a href="데이터-객체.html#cb21-5" tabindex="-1"></a><span class="fu">head</span>(iris)                    <span class="co"># 데이터셋의 앞부분 일부 출력 </span></span>
+<span id="cb21-6"><a href="데이터-객체.html#cb21-6" tabindex="-1"></a><span class="fu">tail</span>(iris)                    <span class="co"># 데이터셋의 뒷부분 일부 출력</span></span></code></pre></div>
+<div class="sourceCode" id="cb22"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb22-1"><a href="데이터-객체.html#cb22-1" tabindex="-1"></a><span class="fu">str</span>(iris)                     <span class="co"># 데이터셋 요약 정보 보기 </span></span>
+<span id="cb22-2"><a href="데이터-객체.html#cb22-2" tabindex="-1"></a>iris[, <span class="dv">5</span>]                     <span class="co"># 품종 데이터 보기 </span></span>
+<span id="cb22-3"><a href="데이터-객체.html#cb22-3" tabindex="-1"></a><span class="fu">unique</span>(iris[, <span class="dv">5</span>])             <span class="co"># 품종의 종류 보기(중복 제거) </span></span>
+<span id="cb22-4"><a href="데이터-객체.html#cb22-4" tabindex="-1"></a><span class="fu">table</span>(iris[, <span class="st">&quot;Species&quot;</span>])      <span class="co"># 품종의 종류별 행의 개수 세기</span></span></code></pre></div>
 </div>
 <div id="원소값-추출-1" class="section level4 hasAnchor" number="2.3.3.2">
 <h4><span class="header-section-number">2.3.3.2</span> 원소값 추출<a href="데이터-객체.html#원소값-추출-1" class="anchor-section" aria-label="Anchor link to header"></a></h4>
@@ -672,9 +665,9 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li>매개변수 select - 추출하고자 하는 열을 지정</li>
 </ul></li>
 </ul>
-<div class="sourceCode" id="cb23"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb23-1"><a href="데이터-객체.html#cb23-1" aria-hidden="true" tabindex="-1"></a>iris.new1 <span class="ot">&lt;-</span> <span class="fu">subset</span>(iris, Species <span class="sc">==</span> <span class="st">&quot;setosa&quot;</span>)</span>
-<span id="cb23-2"><a href="데이터-객체.html#cb23-2" aria-hidden="true" tabindex="-1"></a>iris.new2 <span class="ot">&lt;-</span> <span class="fu">subset</span>(iris, <span class="at">subset =</span> Sepal.Length<span class="sc">&gt;</span><span class="fl">5.0</span> <span class="sc">&amp;</span> Sepal.Width<span class="sc">&gt;</span><span class="fl">4.0</span>)</span>
-<span id="cb23-3"><a href="데이터-객체.html#cb23-3" aria-hidden="true" tabindex="-1"></a>iris.new3 <span class="ot">&lt;-</span> <span class="fu">subset</span>(iris, <span class="at">select =</span> <span class="fu">c</span>(<span class="st">&quot;Sepal.Length&quot;</span>, <span class="st">&quot;Sepal.Width&quot;</span>))</span></code></pre></div>
+<div class="sourceCode" id="cb23"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb23-1"><a href="데이터-객체.html#cb23-1" tabindex="-1"></a>iris.new1 <span class="ot">&lt;-</span> <span class="fu">subset</span>(iris, Species <span class="sc">==</span> <span class="st">&quot;setosa&quot;</span>)</span>
+<span id="cb23-2"><a href="데이터-객체.html#cb23-2" tabindex="-1"></a>iris.new2 <span class="ot">&lt;-</span> <span class="fu">subset</span>(iris, <span class="at">subset =</span> Sepal.Length<span class="sc">&gt;</span><span class="fl">5.0</span> <span class="sc">&amp;</span> Sepal.Width<span class="sc">&gt;</span><span class="fl">4.0</span>)</span>
+<span id="cb23-3"><a href="데이터-객체.html#cb23-3" tabindex="-1"></a>iris.new3 <span class="ot">&lt;-</span> <span class="fu">subset</span>(iris, <span class="at">select =</span> <span class="fu">c</span>(<span class="st">&quot;Sepal.Length&quot;</span>, <span class="st">&quot;Sepal.Width&quot;</span>))</span></code></pre></div>
 </div>
 <div id="행렬-및-데이터프레임-산술연산" class="section level4 hasAnchor" number="2.3.3.3">
 <h4><span class="header-section-number">2.3.3.3</span> 행렬 및 데이터프레임 산술연산<a href="데이터-객체.html#행렬-및-데이터프레임-산술연산" class="anchor-section" aria-label="Anchor link to header"></a></h4>
@@ -682,24 +675,24 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li>벡터와 같이 숫자로 구성된 행렬이나 데이터프레임도 각 원소에 대한 연산으로 바뀌어 실행됨</li>
 <li>행렬과 행렬 간의 연산은 동일한 위치에 있는 값끼리의 연산으로 바뀌어 실행되므로, <strong>두 행렬의 크기(행과 열의 개수)가 같아야</strong> 함</li>
 </ul>
-<div class="sourceCode" id="cb24"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb24-1"><a href="데이터-객체.html#cb24-1" aria-hidden="true" tabindex="-1"></a>m1 <span class="ot">&lt;-</span> <span class="fu">matrix</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">20</span>, <span class="at">nrow =</span> <span class="dv">4</span>, <span class="at">ncol =</span> <span class="dv">5</span>)                <span class="co"># 4x5 행렬</span></span>
-<span id="cb24-2"><a href="데이터-객체.html#cb24-2" aria-hidden="true" tabindex="-1"></a>m2 <span class="ot">&lt;-</span> <span class="fu">matrix</span>(<span class="dv">21</span><span class="sc">:</span><span class="dv">40</span>, <span class="at">nrow =</span> <span class="dv">4</span>, <span class="at">ncol =</span> <span class="dv">5</span>)               <span class="co"># 4x5 행렬</span></span>
-<span id="cb24-3"><a href="데이터-객체.html#cb24-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb24-4"><a href="데이터-객체.html#cb24-4" aria-hidden="true" tabindex="-1"></a><span class="dv">2</span> <span class="sc">+</span> m1</span>
-<span id="cb24-5"><a href="데이터-객체.html#cb24-5" aria-hidden="true" tabindex="-1"></a><span class="dv">3</span> <span class="sc">*</span> m2</span>
-<span id="cb24-6"><a href="데이터-객체.html#cb24-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb24-7"><a href="데이터-객체.html#cb24-7" aria-hidden="true" tabindex="-1"></a>m1 <span class="sc">+</span> m2</span>
-<span id="cb24-8"><a href="데이터-객체.html#cb24-8" aria-hidden="true" tabindex="-1"></a>m1 <span class="sc">-</span> m2</span>
-<span id="cb24-9"><a href="데이터-객체.html#cb24-9" aria-hidden="true" tabindex="-1"></a>m1 <span class="sc">*</span> m2</span>
-<span id="cb24-10"><a href="데이터-객체.html#cb24-10" aria-hidden="true" tabindex="-1"></a>m1 <span class="sc">/</span> m2</span></code></pre></div>
+<div class="sourceCode" id="cb24"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb24-1"><a href="데이터-객체.html#cb24-1" tabindex="-1"></a>m1 <span class="ot">&lt;-</span> <span class="fu">matrix</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">20</span>, <span class="at">nrow =</span> <span class="dv">4</span>, <span class="at">ncol =</span> <span class="dv">5</span>)                <span class="co"># 4x5 행렬</span></span>
+<span id="cb24-2"><a href="데이터-객체.html#cb24-2" tabindex="-1"></a>m2 <span class="ot">&lt;-</span> <span class="fu">matrix</span>(<span class="dv">21</span><span class="sc">:</span><span class="dv">40</span>, <span class="at">nrow =</span> <span class="dv">4</span>, <span class="at">ncol =</span> <span class="dv">5</span>)               <span class="co"># 4x5 행렬</span></span>
+<span id="cb24-3"><a href="데이터-객체.html#cb24-3" tabindex="-1"></a></span>
+<span id="cb24-4"><a href="데이터-객체.html#cb24-4" tabindex="-1"></a><span class="dv">2</span> <span class="sc">+</span> m1</span>
+<span id="cb24-5"><a href="데이터-객체.html#cb24-5" tabindex="-1"></a><span class="dv">3</span> <span class="sc">*</span> m2</span>
+<span id="cb24-6"><a href="데이터-객체.html#cb24-6" tabindex="-1"></a></span>
+<span id="cb24-7"><a href="데이터-객체.html#cb24-7" tabindex="-1"></a>m1 <span class="sc">+</span> m2</span>
+<span id="cb24-8"><a href="데이터-객체.html#cb24-8" tabindex="-1"></a>m1 <span class="sc">-</span> m2</span>
+<span id="cb24-9"><a href="데이터-객체.html#cb24-9" tabindex="-1"></a>m1 <span class="sc">*</span> m2</span>
+<span id="cb24-10"><a href="데이터-객체.html#cb24-10" tabindex="-1"></a>m1 <span class="sc">/</span> m2</span></code></pre></div>
 <p><br></p>
 <ul>
 <li><code>colSums()</code>, <code>colMeans()</code>, <code>rowSums()</code>, <code>rowMeans()</code> 함수 이용하여 행별, 열별 합계 및 평균을 계산할 수 있음</li>
 </ul>
-<div class="sourceCode" id="cb25"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb25-1"><a href="데이터-객체.html#cb25-1" aria-hidden="true" tabindex="-1"></a><span class="fu">colSums</span>(iris[, <span class="sc">-</span><span class="dv">5</span>])           <span class="co"># 열별 합계 </span></span>
-<span id="cb25-2"><a href="데이터-객체.html#cb25-2" aria-hidden="true" tabindex="-1"></a><span class="fu">colMeans</span>(iris[, <span class="sc">-</span><span class="dv">5</span>])          <span class="co"># 열별 평균 </span></span>
-<span id="cb25-3"><a href="데이터-객체.html#cb25-3" aria-hidden="true" tabindex="-1"></a><span class="fu">rowSums</span>(iris[, <span class="sc">-</span><span class="dv">5</span>])           <span class="co"># 행별 합계 </span></span>
-<span id="cb25-4"><a href="데이터-객체.html#cb25-4" aria-hidden="true" tabindex="-1"></a><span class="fu">rowMeans</span>(iris[, <span class="sc">-</span><span class="dv">5</span>])          <span class="co"># 행별 평균</span></span></code></pre></div>
+<div class="sourceCode" id="cb25"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb25-1"><a href="데이터-객체.html#cb25-1" tabindex="-1"></a><span class="fu">colSums</span>(iris[, <span class="sc">-</span><span class="dv">5</span>])           <span class="co"># 열별 합계 </span></span>
+<span id="cb25-2"><a href="데이터-객체.html#cb25-2" tabindex="-1"></a><span class="fu">colMeans</span>(iris[, <span class="sc">-</span><span class="dv">5</span>])          <span class="co"># 열별 평균 </span></span>
+<span id="cb25-3"><a href="데이터-객체.html#cb25-3" tabindex="-1"></a><span class="fu">rowSums</span>(iris[, <span class="sc">-</span><span class="dv">5</span>])           <span class="co"># 행별 합계 </span></span>
+<span id="cb25-4"><a href="데이터-객체.html#cb25-4" tabindex="-1"></a><span class="fu">rowMeans</span>(iris[, <span class="sc">-</span><span class="dv">5</span>])          <span class="co"># 행별 평균</span></span></code></pre></div>
 <hr />
 </div>
 </div>
@@ -711,7 +704,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <ul>
 <li><code>setwd()</code> 함수를 이용하여 작업할 폴더의 경로를 지정</li>
 </ul>
-<div class="sourceCode" id="cb26"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb26-1"><a href="데이터-객체.html#cb26-1" aria-hidden="true" tabindex="-1"></a><span class="fu">setwd</span>(<span class="st">&quot;D:/jbnu-R&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb26"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb26-1"><a href="데이터-객체.html#cb26-1" tabindex="-1"></a><span class="fu">setwd</span>(<span class="st">&quot;D:/jbnu-R&quot;</span>)</span></code></pre></div>
 </div>
 <div id="외부-파일-읽기" class="section level3 hasAnchor" number="2.4.2">
 <h3><span class="header-section-number">2.4.2</span> 외부 파일 읽기<a href="데이터-객체.html#외부-파일-읽기" class="anchor-section" aria-label="Anchor link to header"></a></h3>
@@ -719,16 +712,16 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li><code>read.csv()</code> 함수를 이용하여 외부에 있는 csv 파일을 불러옴</li>
 <li>예제 - <a href="./dataset/StudentSurvey.csv">StudentSurvey.csv</a></li>
 </ul>
-<div class="sourceCode" id="cb27"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb27-1"><a href="데이터-객체.html#cb27-1" aria-hidden="true" tabindex="-1"></a>data <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">&quot;StudentSurvey.csv&quot;</span>)</span>
-<span id="cb27-2"><a href="데이터-객체.html#cb27-2" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(data)</span></code></pre></div>
+<div class="sourceCode" id="cb27"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb27-1"><a href="데이터-객체.html#cb27-1" tabindex="-1"></a>data <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">&quot;StudentSurvey.csv&quot;</span>)</span>
+<span id="cb27-2"><a href="데이터-객체.html#cb27-2" tabindex="-1"></a><span class="fu">head</span>(data)</span></code></pre></div>
 </div>
 <div id="외부-파일-쓰기" class="section level3 hasAnchor" number="2.4.3">
 <h3><span class="header-section-number">2.4.3</span> 외부 파일 쓰기<a href="데이터-객체.html#외부-파일-쓰기" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <ul>
 <li><code>write.csv()</code> 함수를 이용하여 외부로 csv 파일을 저장</li>
 </ul>
-<div class="sourceCode" id="cb28"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb28-1"><a href="데이터-객체.html#cb28-1" aria-hidden="true" tabindex="-1"></a>smoking <span class="ot">&lt;-</span> <span class="fu">subset</span>(data, Smoke <span class="sc">==</span> <span class="st">&quot;Yes&quot;</span>)</span>
-<span id="cb28-2"><a href="데이터-객체.html#cb28-2" aria-hidden="true" tabindex="-1"></a><span class="fu">write.csv</span>(smoking, <span class="st">&quot;smoking.csv&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb28"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb28-1"><a href="데이터-객체.html#cb28-1" tabindex="-1"></a>smoking <span class="ot">&lt;-</span> <span class="fu">subset</span>(data, Smoke <span class="sc">==</span> <span class="st">&quot;Yes&quot;</span>)</span>
+<span id="cb28-2"><a href="데이터-객체.html#cb28-2" tabindex="-1"></a><span class="fu">write.csv</span>(smoking, <span class="st">&quot;smoking.csv&quot;</span>)</span></code></pre></div>
 
 </div>
 </div>
@@ -753,42 +746,48 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <script>
 gitbook.require(["gitbook"], function(gitbook) {
 gitbook.start({
-"sharing": {
-"github": false,
-"facebook": true,
-"twitter": true,
-"linkedin": false,
-"weibo": false,
-"instapaper": false,
-"vk": false,
-"whatsapp": false,
-"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
-},
-"fontsettings": {
-"theme": "white",
-"family": "sans",
-"size": 2
-},
-"edit": {
-"link": null,
-"text": null
-},
-"history": {
-"link": null,
-"text": null
-},
-"view": {
-"link": null,
-"text": null
-},
-"download": null,
-"search": {
-"engine": "fuse",
-"options": null
-},
-"toc": {
-"collapse": "subsection"
-}
+  "sharing": {
+    "github": false,
+    "facebook": true,
+    "twitter": true,
+    "linkedin": false,
+    "weibo": false,
+    "instapaper": false,
+    "vk": false,
+    "whatsapp": false,
+    "all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+  },
+  "fontsettings": {
+    "theme": "white",
+    "family": "sans",
+    "size": 2
+  },
+  "edit": {
+    "link": null,
+    "text": null
+  },
+  "history": {
+    "link": null,
+    "text": null
+  },
+  "view": {
+    "link": null,
+    "text": null
+  },
+  "download": null,
+  "search": {
+    "engine": "fuse",
+    "options": null
+  },
+  "toc": {
+    "collapse": "subsection"
+  },
+  "toolbar": {
+    "position": "fixed"
+  },
+  "includes": {
+    "in_header": "<script src="toc.js"></script>n"
+  }
 });
 });
 </script>

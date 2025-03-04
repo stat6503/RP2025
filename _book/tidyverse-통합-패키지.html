@@ -4,26 +4,26 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>Chapter 4 tidyverse 통합 패키지 | R 입문</title>
-  <meta name="description" content="Chapter 4 tidyverse 통합 패키지 | R 입문" />
-  <meta name="generator" content="bookdown 0.31 and GitBook 2.6.7" />
+  <title>Chapter 4 tidyverse 통합 패키지 | R 프로그래밍</title>
+  <meta name="description" content="Chapter 4 tidyverse 통합 패키지 | R 프로그래밍" />
+  <meta name="generator" content="bookdown 0.42 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="Chapter 4 tidyverse 통합 패키지 | R 입문" />
+  <meta property="og:title" content="Chapter 4 tidyverse 통합 패키지 | R 프로그래밍" />
   <meta property="og:type" content="book" />
   
   
   
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="Chapter 4 tidyverse 통합 패키지 | R 입문" />
+  <meta name="twitter:title" content="Chapter 4 tidyverse 통합 패키지 | R 프로그래밍" />
   
   
   
 
-<meta name="author" content="Park Sejin" />
+<meta name="author" content="Park (stat6503@gmail.com)" />
 
 
-<meta name="date" content="2022-12-23" />
+<meta name="date" content="2025-03-04" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -56,7 +56,7 @@
 
 <style type="text/css">
 pre > code.sourceCode { white-space: pre; position: relative; }
-pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span { line-height: 1.25; }
 pre > code.sourceCode > span:empty { height: 1.2em; }
 .sourceCode { overflow: visible; }
 code.sourceCode > span { color: inherit; text-decoration: inherit; }
@@ -66,7 +66,7 @@ div.sourceCode { overflow: auto; }
 }
 @media print {
 pre > code.sourceCode { white-space: pre-wrap; }
-pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
 }
 pre.numberSource code
   { counter-reset: source-line 0; }
@@ -119,6 +119,10 @@ code span.vs { color: #4070a0; } /* VerbatimString */
 code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
 </style>
 
+<style type="text/css">
+  
+  div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+</style>
 
 <link rel="stylesheet" href="style.css" type="text/css" />
 </head>
@@ -133,15 +137,9 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
       <nav role="navigation">
 
 <ul class="summary">
-<li><a href="./">R 입문</a></li>
+<li><a href="./">R 프로그래밍</a></li>
 
 <li class="divider"></li>
-<li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>강의 소개</a>
-<ul>
-<li class="chapter" data-level="" data-path="index.html"><a href="index.html#교과-목표"><i class="fa fa-check"></i>교과 목표</a></li>
-<li class="chapter" data-level="" data-path="index.html"><a href="index.html#평가-방법"><i class="fa fa-check"></i>평가 방법</a></li>
-<li class="chapter" data-level="" data-path="index.html"><a href="index.html#참고-문헌"><i class="fa fa-check"></i>참고 문헌</a></li>
-</ul></li>
 <li class="chapter" data-level="1" data-path="r-소개-및-기초.html"><a href="r-소개-및-기초.html"><i class="fa fa-check"></i><b>1</b> R 소개 및 기초</a>
 <ul>
 <li class="chapter" data-level="1.1" data-path="r-소개-및-기초.html"><a href="r-소개-및-기초.html#r-및-r-studio-설치"><i class="fa fa-check"></i><b>1.1</b> R 및 R Studio 설치</a>
@@ -307,11 +305,6 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="7.4.6" data-path="r-markdown.html"><a href="r-markdown.html#인라인-코드inline-code"><i class="fa fa-check"></i><b>7.4.6</b> 인라인 코드(inline code)</a></li>
 </ul></li>
 </ul></li>
-<li class="chapter" data-level="" data-path="공지-과제-및-기말고사.html"><a href="공지-과제-및-기말고사.html"><i class="fa fa-check"></i>[공지] 과제 및 기말고사</a>
-<ul>
-<li class="chapter" data-level="" data-path="공지-과제-및-기말고사.html"><a href="공지-과제-및-기말고사.html#과제"><i class="fa fa-check"></i>◎ 과제</a></li>
-<li class="chapter" data-level="" data-path="공지-과제-및-기말고사.html"><a href="공지-과제-및-기말고사.html#기말고사"><i class="fa fa-check"></i>◎ 기말고사</a></li>
-</ul></li>
 </ul>
 
       </nav>
@@ -321,7 +314,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
       <div class="body-inner">
         <div class="book-header" role="navigation">
           <h1>
-            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">R 입문</a>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">R 프로그래밍</a>
           </h1>
         </div>
 
@@ -433,18 +426,18 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li>2014년 개발된 magrittr 패키지에 포함되어 있음</li>
 <li>2021년 R version 4.1.0부터는 기본 파이프 연산자 <code>|&gt;</code> 새롭게 추가됨</li>
 </ul>
-<div class="sourceCode" id="cb62"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb62-1"><a href="tidyverse-통합-패키지.html#cb62-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 데이터프레임 x에 f(), g(), h() 함수를 순차적으로 적용</span></span>
-<span id="cb62-2"><a href="tidyverse-통합-패키지.html#cb62-2" aria-hidden="true" tabindex="-1"></a><span class="co"># 일반적인 경우: 함수를 중첩해서 사용</span></span>
-<span id="cb62-3"><a href="tidyverse-통합-패키지.html#cb62-3" aria-hidden="true" tabindex="-1"></a><span class="fu">h</span>(<span class="fu">g</span>(<span class="fu">f</span>(x)))</span>
-<span id="cb62-4"><a href="tidyverse-통합-패키지.html#cb62-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb62-5"><a href="tidyverse-통합-패키지.html#cb62-5" aria-hidden="true" tabindex="-1"></a><span class="co"># 파이프 연산자를 사용하는 경우: 연쇄적인 연산의 결합으로 표현</span></span>
-<span id="cb62-6"><a href="tidyverse-통합-패키지.html#cb62-6" aria-hidden="true" tabindex="-1"></a>x <span class="sc">%&gt;%</span> </span>
-<span id="cb62-7"><a href="tidyverse-통합-패키지.html#cb62-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">f</span>() <span class="sc">%&gt;%</span> </span>
-<span id="cb62-8"><a href="tidyverse-통합-패키지.html#cb62-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">g</span>() <span class="sc">%&gt;%</span> </span>
-<span id="cb62-9"><a href="tidyverse-통합-패키지.html#cb62-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">h</span>()</span></code></pre></div>
-<div class="sourceCode" id="cb63"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb63-1"><a href="tidyverse-통합-패키지.html#cb63-1" aria-hidden="true" tabindex="-1"></a>iris <span class="sc">%&gt;%</span> head</span>
-<span id="cb63-2"><a href="tidyverse-통합-패키지.html#cb63-2" aria-hidden="true" tabindex="-1"></a>iris <span class="sc">%&gt;%</span> <span class="fu">head</span>(<span class="dv">10</span>)</span>
-<span id="cb63-3"><a href="tidyverse-통합-패키지.html#cb63-3" aria-hidden="true" tabindex="-1"></a><span class="st">&quot;World&quot;</span> <span class="sc">%&gt;%</span> <span class="fu">cat</span>(<span class="st">&quot;Hello,&quot;</span>, .)</span></code></pre></div>
+<div class="sourceCode" id="cb62"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb62-1"><a href="tidyverse-통합-패키지.html#cb62-1" tabindex="-1"></a><span class="co"># 데이터프레임 x에 f(), g(), h() 함수를 순차적으로 적용</span></span>
+<span id="cb62-2"><a href="tidyverse-통합-패키지.html#cb62-2" tabindex="-1"></a><span class="co"># 일반적인 경우: 함수를 중첩해서 사용</span></span>
+<span id="cb62-3"><a href="tidyverse-통합-패키지.html#cb62-3" tabindex="-1"></a><span class="fu">h</span>(<span class="fu">g</span>(<span class="fu">f</span>(x)))</span>
+<span id="cb62-4"><a href="tidyverse-통합-패키지.html#cb62-4" tabindex="-1"></a></span>
+<span id="cb62-5"><a href="tidyverse-통합-패키지.html#cb62-5" tabindex="-1"></a><span class="co"># 파이프 연산자를 사용하는 경우: 연쇄적인 연산의 결합으로 표현</span></span>
+<span id="cb62-6"><a href="tidyverse-통합-패키지.html#cb62-6" tabindex="-1"></a>x <span class="sc">%&gt;%</span> </span>
+<span id="cb62-7"><a href="tidyverse-통합-패키지.html#cb62-7" tabindex="-1"></a>  <span class="fu">f</span>() <span class="sc">%&gt;%</span> </span>
+<span id="cb62-8"><a href="tidyverse-통합-패키지.html#cb62-8" tabindex="-1"></a>  <span class="fu">g</span>() <span class="sc">%&gt;%</span> </span>
+<span id="cb62-9"><a href="tidyverse-통합-패키지.html#cb62-9" tabindex="-1"></a>  <span class="fu">h</span>()</span></code></pre></div>
+<div class="sourceCode" id="cb63"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb63-1"><a href="tidyverse-통합-패키지.html#cb63-1" tabindex="-1"></a>iris <span class="sc">%&gt;%</span> head</span>
+<span id="cb63-2"><a href="tidyverse-통합-패키지.html#cb63-2" tabindex="-1"></a>iris <span class="sc">%&gt;%</span> <span class="fu">head</span>(<span class="dv">10</span>)</span>
+<span id="cb63-3"><a href="tidyverse-통합-패키지.html#cb63-3" tabindex="-1"></a><span class="st">&quot;World&quot;</span> <span class="sc">%&gt;%</span> <span class="fu">cat</span>(<span class="st">&quot;Hello,&quot;</span>, .)</span></code></pre></div>
 <hr />
 </div>
 <div id="tibble-패키지" class="section level2 hasAnchor" number="4.5">
@@ -506,9 +499,9 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </tbody>
 </table>
 <p><br></p>
-<div class="sourceCode" id="cb64"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb64-1"><a href="tidyverse-통합-패키지.html#cb64-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(nycflights13)</span>
-<span id="cb64-2"><a href="tidyverse-통합-패키지.html#cb64-2" aria-hidden="true" tabindex="-1"></a>flights</span>
-<span id="cb64-3"><a href="tidyverse-통합-패키지.html#cb64-3" aria-hidden="true" tabindex="-1"></a>fligths <span class="sc">%&gt;%</span> <span class="fu">View</span>()</span></code></pre></div>
+<div class="sourceCode" id="cb64"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb64-1"><a href="tidyverse-통합-패키지.html#cb64-1" tabindex="-1"></a><span class="fu">library</span>(nycflights13)</span>
+<span id="cb64-2"><a href="tidyverse-통합-패키지.html#cb64-2" tabindex="-1"></a>flights</span>
+<span id="cb64-3"><a href="tidyverse-통합-패키지.html#cb64-3" tabindex="-1"></a>fligths <span class="sc">%&gt;%</span> <span class="fu">View</span>()</span></code></pre></div>
 </div>
 <div id="tibble-이해" class="section level3 hasAnchor" number="4.5.2">
 <h3><span class="header-section-number">4.5.2</span> tibble 이해<a href="tidyverse-통합-패키지.html#tibble-이해" class="anchor-section" aria-label="Anchor link to header"></a></h3>
@@ -519,15 +512,15 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li>변수명 지정이 훨씬 유연함 - <code>``</code>(backticks) 사용</li>
 </ul></li>
 </ul>
-<div class="sourceCode" id="cb65"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb65-1"><a href="tidyverse-통합-패키지.html#cb65-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tibble)</span>
-<span id="cb65-2"><a href="tidyverse-통합-패키지.html#cb65-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb65-3"><a href="tidyverse-통합-패키지.html#cb65-3" aria-hidden="true" tabindex="-1"></a>mytbl <span class="ot">&lt;-</span> <span class="fu">tibble</span>(</span>
-<span id="cb65-4"><a href="tidyverse-통합-패키지.html#cb65-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">x =</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">5</span>, </span>
-<span id="cb65-5"><a href="tidyverse-통합-패키지.html#cb65-5" aria-hidden="true" tabindex="-1"></a>  <span class="at">y =</span> <span class="dv">1</span>, </span>
-<span id="cb65-6"><a href="tidyverse-통합-패키지.html#cb65-6" aria-hidden="true" tabindex="-1"></a>  <span class="at">z =</span> x <span class="sc">^</span> <span class="dv">2</span> <span class="sc">+</span> y</span>
-<span id="cb65-7"><a href="tidyverse-통합-패키지.html#cb65-7" aria-hidden="true" tabindex="-1"></a>)</span>
-<span id="cb65-8"><a href="tidyverse-통합-패키지.html#cb65-8" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb65-9"><a href="tidyverse-통합-패키지.html#cb65-9" aria-hidden="true" tabindex="-1"></a>mytbl</span></code></pre></div>
+<div class="sourceCode" id="cb65"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb65-1"><a href="tidyverse-통합-패키지.html#cb65-1" tabindex="-1"></a><span class="fu">library</span>(tibble)</span>
+<span id="cb65-2"><a href="tidyverse-통합-패키지.html#cb65-2" tabindex="-1"></a></span>
+<span id="cb65-3"><a href="tidyverse-통합-패키지.html#cb65-3" tabindex="-1"></a>mytbl <span class="ot">&lt;-</span> <span class="fu">tibble</span>(</span>
+<span id="cb65-4"><a href="tidyverse-통합-패키지.html#cb65-4" tabindex="-1"></a>  <span class="at">x =</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">5</span>, </span>
+<span id="cb65-5"><a href="tidyverse-통합-패키지.html#cb65-5" tabindex="-1"></a>  <span class="at">y =</span> <span class="dv">1</span>, </span>
+<span id="cb65-6"><a href="tidyverse-통합-패키지.html#cb65-6" tabindex="-1"></a>  <span class="at">z =</span> x <span class="sc">^</span> <span class="dv">2</span> <span class="sc">+</span> y</span>
+<span id="cb65-7"><a href="tidyverse-통합-패키지.html#cb65-7" tabindex="-1"></a>)</span>
+<span id="cb65-8"><a href="tidyverse-통합-패키지.html#cb65-8" tabindex="-1"></a></span>
+<span id="cb65-9"><a href="tidyverse-통합-패키지.html#cb65-9" tabindex="-1"></a>mytbl</span></code></pre></div>
 <pre><code>## # A tibble: 5 × 3
 ##       x     y     z
 ##   &lt;int&gt; &lt;dbl&gt; &lt;dbl&gt;
@@ -541,23 +534,23 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li>데이터프레임을 tibble로 변환 - <code>as_tibble()</code> 함수</li>
 <li>tibble을 데이터프레임으로 변환 - <code>as.data.frame()</code> 함수</li>
 </ul>
-<div class="sourceCode" id="cb67"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb67-1"><a href="tidyverse-통합-패키지.html#cb67-1" aria-hidden="true" tabindex="-1"></a><span class="fu">as_tibble</span>(iris)</span>
-<span id="cb67-2"><a href="tidyverse-통합-패키지.html#cb67-2" aria-hidden="true" tabindex="-1"></a><span class="fu">as.data.frame</span>(flights)</span></code></pre></div>
+<div class="sourceCode" id="cb67"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb67-1"><a href="tidyverse-통합-패키지.html#cb67-1" tabindex="-1"></a><span class="fu">as_tibble</span>(iris)</span>
+<span id="cb67-2"><a href="tidyverse-통합-패키지.html#cb67-2" tabindex="-1"></a><span class="fu">as.data.frame</span>(flights)</span></code></pre></div>
 <p><br></p>
 <ul>
 <li>부분집합(subset)에 엄격하며, <code>[]</code>은 항상 tibble을 반환함</li>
 <li>하나의 열만 추출하려면 <code>[[]]</code> 또는 <code>$</code>을 사용</li>
 </ul>
-<div class="sourceCode" id="cb68"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb68-1"><a href="tidyverse-통합-패키지.html#cb68-1" aria-hidden="true" tabindex="-1"></a>df <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="at">x =</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">3</span>, <span class="at">y =</span> <span class="dv">3</span><span class="sc">:</span><span class="dv">1</span>)</span>
-<span id="cb68-2"><a href="tidyverse-통합-패키지.html#cb68-2" aria-hidden="true" tabindex="-1"></a><span class="fu">class</span>(df[, <span class="dv">1</span><span class="sc">:</span><span class="dv">2</span>])                    <span class="co"># &quot;data.frame&quot;</span></span>
-<span id="cb68-3"><a href="tidyverse-통합-패키지.html#cb68-3" aria-hidden="true" tabindex="-1"></a><span class="fu">class</span>(df[, <span class="dv">1</span>])                      <span class="co"># &quot;integer&quot;</span></span>
-<span id="cb68-4"><a href="tidyverse-통합-패키지.html#cb68-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb68-5"><a href="tidyverse-통합-패키지.html#cb68-5" aria-hidden="true" tabindex="-1"></a>tbl <span class="ot">&lt;-</span> <span class="fu">tibble</span>(<span class="at">x =</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">3</span>, <span class="at">y =</span> <span class="dv">3</span><span class="sc">:</span><span class="dv">1</span>)</span>
-<span id="cb68-6"><a href="tidyverse-통합-패키지.html#cb68-6" aria-hidden="true" tabindex="-1"></a><span class="fu">class</span>(tbl[, <span class="dv">1</span><span class="sc">:</span><span class="dv">2</span>])                    <span class="co"># &quot;tbl_df&quot;  &quot;tbl&quot;  &quot;data.frame&quot;</span></span>
-<span id="cb68-7"><a href="tidyverse-통합-패키지.html#cb68-7" aria-hidden="true" tabindex="-1"></a><span class="fu">class</span>(tbl[, <span class="dv">1</span>])                      <span class="co"># &quot;tbl_df&quot;  &quot;tbl&quot;  &quot;data.frame&quot;</span></span>
-<span id="cb68-8"><a href="tidyverse-통합-패키지.html#cb68-8" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb68-9"><a href="tidyverse-통합-패키지.html#cb68-9" aria-hidden="true" tabindex="-1"></a><span class="fu">class</span>(tbl[[<span class="dv">1</span>]])                      <span class="co"># &quot;integer&quot;</span></span>
-<span id="cb68-10"><a href="tidyverse-통합-패키지.html#cb68-10" aria-hidden="true" tabindex="-1"></a><span class="fu">class</span>(tbl<span class="sc">$</span>x)                         <span class="co"># &quot;integer&quot;</span></span></code></pre></div>
+<div class="sourceCode" id="cb68"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb68-1"><a href="tidyverse-통합-패키지.html#cb68-1" tabindex="-1"></a>df <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="at">x =</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">3</span>, <span class="at">y =</span> <span class="dv">3</span><span class="sc">:</span><span class="dv">1</span>)</span>
+<span id="cb68-2"><a href="tidyverse-통합-패키지.html#cb68-2" tabindex="-1"></a><span class="fu">class</span>(df[, <span class="dv">1</span><span class="sc">:</span><span class="dv">2</span>])                    <span class="co"># &quot;data.frame&quot;</span></span>
+<span id="cb68-3"><a href="tidyverse-통합-패키지.html#cb68-3" tabindex="-1"></a><span class="fu">class</span>(df[, <span class="dv">1</span>])                      <span class="co"># &quot;integer&quot;</span></span>
+<span id="cb68-4"><a href="tidyverse-통합-패키지.html#cb68-4" tabindex="-1"></a></span>
+<span id="cb68-5"><a href="tidyverse-통합-패키지.html#cb68-5" tabindex="-1"></a>tbl <span class="ot">&lt;-</span> <span class="fu">tibble</span>(<span class="at">x =</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">3</span>, <span class="at">y =</span> <span class="dv">3</span><span class="sc">:</span><span class="dv">1</span>)</span>
+<span id="cb68-6"><a href="tidyverse-통합-패키지.html#cb68-6" tabindex="-1"></a><span class="fu">class</span>(tbl[, <span class="dv">1</span><span class="sc">:</span><span class="dv">2</span>])                    <span class="co"># &quot;tbl_df&quot;  &quot;tbl&quot;  &quot;data.frame&quot;</span></span>
+<span id="cb68-7"><a href="tidyverse-통합-패키지.html#cb68-7" tabindex="-1"></a><span class="fu">class</span>(tbl[, <span class="dv">1</span>])                      <span class="co"># &quot;tbl_df&quot;  &quot;tbl&quot;  &quot;data.frame&quot;</span></span>
+<span id="cb68-8"><a href="tidyverse-통합-패키지.html#cb68-8" tabindex="-1"></a></span>
+<span id="cb68-9"><a href="tidyverse-통합-패키지.html#cb68-9" tabindex="-1"></a><span class="fu">class</span>(tbl[[<span class="dv">1</span>]])                      <span class="co"># &quot;integer&quot;</span></span>
+<span id="cb68-10"><a href="tidyverse-통합-패키지.html#cb68-10" tabindex="-1"></a><span class="fu">class</span>(tbl<span class="sc">$</span>x)                         <span class="co"># &quot;integer&quot;</span></span></code></pre></div>
 <hr />
 </div>
 </div>
@@ -617,9 +610,9 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li>매개변수 <code>na</code> - 특정값을 결측값으로 지정</li>
 <li>예제 - <a href="./dataset/StudentSurvey.csv">StudentSurvey.csv</a></li>
 </ul>
-<div class="sourceCode" id="cb69"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb69-1"><a href="tidyverse-통합-패키지.html#cb69-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(readr)</span>
-<span id="cb69-2"><a href="tidyverse-통합-패키지.html#cb69-2" aria-hidden="true" tabindex="-1"></a>data <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">&quot;StudentSurvey.csv&quot;</span>)</span>
-<span id="cb69-3"><a href="tidyverse-통합-패키지.html#cb69-3" aria-hidden="true" tabindex="-1"></a>data</span></code></pre></div>
+<div class="sourceCode" id="cb69"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb69-1"><a href="tidyverse-통합-패키지.html#cb69-1" tabindex="-1"></a><span class="fu">library</span>(readr)</span>
+<span id="cb69-2"><a href="tidyverse-통합-패키지.html#cb69-2" tabindex="-1"></a>data <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">&quot;StudentSurvey.csv&quot;</span>)</span>
+<span id="cb69-3"><a href="tidyverse-통합-패키지.html#cb69-3" tabindex="-1"></a>data</span></code></pre></div>
 
 </div>
 </div>
@@ -644,42 +637,48 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <script>
 gitbook.require(["gitbook"], function(gitbook) {
 gitbook.start({
-"sharing": {
-"github": false,
-"facebook": true,
-"twitter": true,
-"linkedin": false,
-"weibo": false,
-"instapaper": false,
-"vk": false,
-"whatsapp": false,
-"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
-},
-"fontsettings": {
-"theme": "white",
-"family": "sans",
-"size": 2
-},
-"edit": {
-"link": null,
-"text": null
-},
-"history": {
-"link": null,
-"text": null
-},
-"view": {
-"link": null,
-"text": null
-},
-"download": null,
-"search": {
-"engine": "fuse",
-"options": null
-},
-"toc": {
-"collapse": "subsection"
-}
+  "sharing": {
+    "github": false,
+    "facebook": true,
+    "twitter": true,
+    "linkedin": false,
+    "weibo": false,
+    "instapaper": false,
+    "vk": false,
+    "whatsapp": false,
+    "all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+  },
+  "fontsettings": {
+    "theme": "white",
+    "family": "sans",
+    "size": 2
+  },
+  "edit": {
+    "link": null,
+    "text": null
+  },
+  "history": {
+    "link": null,
+    "text": null
+  },
+  "view": {
+    "link": null,
+    "text": null
+  },
+  "download": null,
+  "search": {
+    "engine": "fuse",
+    "options": null
+  },
+  "toc": {
+    "collapse": "subsection"
+  },
+  "toolbar": {
+    "position": "fixed"
+  },
+  "includes": {
+    "in_header": "<script src="toc.js"></script>n"
+  }
 });
 });
 </script>
