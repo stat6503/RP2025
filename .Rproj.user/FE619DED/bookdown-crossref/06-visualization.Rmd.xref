@@ -1,0 +1,14 @@
+h1:데이터-시각화 데이터 시각화
+h2:데이터-시각화-이해 데이터 시각화 이해
+h3:데이터-시각화data-visualization 데이터 시각화(data visualization)
+h3:데이터-유형에-따른-시각화-방법 데이터 유형에 따른 시각화 방법
+h2:r-base-graphics R base graphics
+h2:ggplot2-패키지 ggplot2 패키지
+h3:ggplot2-패키지-소개 ggplot2 패키지 소개
+h3:ggplot2-기본-구조 ggplot2 기본 구조
+h3:막대-그래프bar-chart 막대 그래프(bar chart)
+h3:히스토그램histogram 히스토그램(histogram)
+h3:상자-그림box-plot 상자 그림(box plot)
+h3:산점도scatter-plot 산점도(scatter plot)
+h3:선-그래프line-plot 선 그래프(line plot)
+

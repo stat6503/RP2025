@@ -1,0 +1,29 @@
+p.caption {
+  color: #777;
+  margin-top: 10px;
+}
+p code {
+  white-space: inherit;
+}
+pre {
+  word-break: normal;
+  word-wrap: normal;
+}
+pre code {
+  white-space: inherit;
+}
+
+
+/* 목차 스타일 */
+.book .book-summary ul.summary li ul {
+    display: none; /* 기본적으로 숨김 */
+}
+
+.book .book-summary ul.summary li.active > ul {
+    display: block; /* 활성화된 경우 보이기 */
+}
+
+.book .book-summary ul.summary li a {
+  margin-left: 5px;
+}
+

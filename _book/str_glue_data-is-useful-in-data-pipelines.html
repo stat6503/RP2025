@@ -1,0 +1,483 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>Chapter 7 str_glue_data() is useful in data pipelines | R 입문</title>
+  <meta name="description" content="Chapter 7 str_glue_data() is useful in data pipelines | R 입문" />
+  <meta name="generator" content="bookdown 0.31 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="Chapter 7 str_glue_data() is useful in data pipelines | R 입문" />
+  <meta property="og:type" content="book" />
+  
+  
+  
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Chapter 7 str_glue_data() is useful in data pipelines | R 입문" />
+  
+  
+  
+
+<meta name="author" content="Park Sejin" />
+
+
+<meta name="date" content="2022-12-23" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="missing-inputs-give-missing-outputs.html"/>
+
+<script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+<link href="libs/anchor-sections-1.1.0/anchor-sections.css" rel="stylesheet" />
+<link href="libs/anchor-sections-1.1.0/anchor-sections-hash.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.1.0/anchor-sections.js"></script>
+
+
+<style type="text/css">
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { color: #008000; } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { color: #008000; font-weight: bold; } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+
+<link rel="stylesheet" href="style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="./">R 입문</a></li>
+
+<li class="divider"></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>강의 소개</a>
+<ul>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#교과-목표"><i class="fa fa-check"></i>교과 목표</a></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#평가-방법"><i class="fa fa-check"></i>평가 방법</a></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#참고-문헌"><i class="fa fa-check"></i>참고 문헌</a></li>
+</ul></li>
+<li class="chapter" data-level="1" data-path="r-소개-및-기초.html"><a href="r-소개-및-기초.html"><i class="fa fa-check"></i><b>1</b> R 소개 및 기초</a>
+<ul>
+<li class="chapter" data-level="1.1" data-path="r-소개-및-기초.html"><a href="r-소개-및-기초.html#r-및-r-studio-설치"><i class="fa fa-check"></i><b>1.1</b> R 및 R Studio 설치</a>
+<ul>
+<li class="chapter" data-level="1.1.1" data-path="r-소개-및-기초.html"><a href="r-소개-및-기초.html#r"><i class="fa fa-check"></i><b>1.1.1</b> R</a></li>
+<li class="chapter" data-level="1.1.2" data-path="r-소개-및-기초.html"><a href="r-소개-및-기초.html#r-studio"><i class="fa fa-check"></i><b>1.1.2</b> R Studio</a></li>
+<li class="chapter" data-level="1.1.3" data-path="r-소개-및-기초.html"><a href="r-소개-및-기초.html#프로그램-설치"><i class="fa fa-check"></i><b>1.1.3</b> 프로그램 설치</a></li>
+<li class="chapter" data-level="1.1.4" data-path="r-소개-및-기초.html"><a href="r-소개-및-기초.html#r-studio-화면-구성"><i class="fa fa-check"></i><b>1.1.4</b> R Studio 화면 구성</a></li>
+</ul></li>
+<li class="chapter" data-level="1.2" data-path="r-소개-및-기초.html"><a href="r-소개-및-기초.html#r-기초"><i class="fa fa-check"></i><b>1.2</b> R 기초</a>
+<ul>
+<li class="chapter" data-level="1.2.1" data-path="r-소개-및-기초.html"><a href="r-소개-및-기초.html#산술연산"><i class="fa fa-check"></i><b>1.2.1</b> 산술연산</a></li>
+<li class="chapter" data-level="1.2.2" data-path="r-소개-및-기초.html"><a href="r-소개-및-기초.html#주석comment"><i class="fa fa-check"></i><b>1.2.2</b> 주석(comment)</a></li>
+<li class="chapter" data-level="1.2.3" data-path="r-소개-및-기초.html"><a href="r-소개-및-기초.html#함수function"><i class="fa fa-check"></i><b>1.2.3</b> 함수(function)</a></li>
+<li class="chapter" data-level="1.2.4" data-path="r-소개-및-기초.html"><a href="r-소개-및-기초.html#산술연산-함수"><i class="fa fa-check"></i><b>1.2.4</b> 산술연산 함수</a></li>
+<li class="chapter" data-level="1.2.5" data-path="r-소개-및-기초.html"><a href="r-소개-및-기초.html#변수"><i class="fa fa-check"></i><b>1.2.5</b> 변수</a></li>
+<li class="chapter" data-level="1.2.6" data-path="r-소개-및-기초.html"><a href="r-소개-및-기초.html#자료형data-type"><i class="fa fa-check"></i><b>1.2.6</b> 자료형(data type)</a></li>
+<li class="chapter" data-level="1.2.7" data-path="r-소개-및-기초.html"><a href="r-소개-및-기초.html#변수-값-변경"><i class="fa fa-check"></i><b>1.2.7</b> 변수 값 변경</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="2" data-path="데이터-객체.html"><a href="데이터-객체.html"><i class="fa fa-check"></i><b>2</b> 데이터 객체</a>
+<ul>
+<li class="chapter" data-level="2.1" data-path="데이터-객체.html"><a href="데이터-객체.html#데이터-이해"><i class="fa fa-check"></i><b>2.1</b> 데이터 이해</a>
+<ul>
+<li class="chapter" data-level="2.1.1" data-path="데이터-객체.html"><a href="데이터-객체.html#데이터-구조화"><i class="fa fa-check"></i><b>2.1.1</b> 데이터 구조화</a></li>
+<li class="chapter" data-level="2.1.2" data-path="데이터-객체.html"><a href="데이터-객체.html#테이블table"><i class="fa fa-check"></i><b>2.1.2</b> 테이블(table)</a></li>
+</ul></li>
+<li class="chapter" data-level="2.2" data-path="데이터-객체.html"><a href="데이터-객체.html#벡터vector"><i class="fa fa-check"></i><b>2.2</b> 벡터(vector)</a>
+<ul>
+<li class="chapter" data-level="2.2.1" data-path="데이터-객체.html"><a href="데이터-객체.html#벡터-이해"><i class="fa fa-check"></i><b>2.2.1</b> 벡터 이해</a></li>
+<li class="chapter" data-level="2.2.2" data-path="데이터-객체.html"><a href="데이터-객체.html#인덱스index"><i class="fa fa-check"></i><b>2.2.2</b> 인덱스(index)</a></li>
+<li class="chapter" data-level="2.2.3" data-path="데이터-객체.html"><a href="데이터-객체.html#원소값-추출"><i class="fa fa-check"></i><b>2.2.3</b> 원소값 추출</a></li>
+<li class="chapter" data-level="2.2.4" data-path="데이터-객체.html"><a href="데이터-객체.html#벡터-산술연산"><i class="fa fa-check"></i><b>2.2.4</b> 벡터 산술연산</a></li>
+<li class="chapter" data-level="2.2.5" data-path="데이터-객체.html"><a href="데이터-객체.html#논리연산자"><i class="fa fa-check"></i><b>2.2.5</b> 논리연산자</a></li>
+<li class="chapter" data-level="2.2.6" data-path="데이터-객체.html"><a href="데이터-객체.html#리스트list"><i class="fa fa-check"></i><b>2.2.6</b> 리스트(list)</a></li>
+<li class="chapter" data-level="2.2.7" data-path="데이터-객체.html"><a href="데이터-객체.html#팩터factor"><i class="fa fa-check"></i><b>2.2.7</b> 팩터(factor)</a></li>
+</ul></li>
+<li class="chapter" data-level="2.3" data-path="데이터-객체.html"><a href="데이터-객체.html#행렬matrix과-데이터프레임data-frame"><i class="fa fa-check"></i><b>2.3</b> 행렬(matrix)과 데이터프레임(data frame)</a>
+<ul>
+<li class="chapter" data-level="2.3.1" data-path="데이터-객체.html"><a href="데이터-객체.html#행렬-이해"><i class="fa fa-check"></i><b>2.3.1</b> 행렬 이해</a></li>
+<li class="chapter" data-level="2.3.2" data-path="데이터-객체.html"><a href="데이터-객체.html#데이터프레임-이해"><i class="fa fa-check"></i><b>2.3.2</b> 데이터프레임 이해</a></li>
+<li class="chapter" data-level="2.3.3" data-path="데이터-객체.html"><a href="데이터-객체.html#행렬과-데이터프레임-다루기"><i class="fa fa-check"></i><b>2.3.3</b> 행렬과 데이터프레임 다루기</a></li>
+</ul></li>
+<li class="chapter" data-level="2.4" data-path="데이터-객체.html"><a href="데이터-객체.html#외부-파일-읽기-및-쓰기"><i class="fa fa-check"></i><b>2.4</b> 외부 파일 읽기 및 쓰기</a>
+<ul>
+<li class="chapter" data-level="2.4.1" data-path="데이터-객체.html"><a href="데이터-객체.html#작업폴더-설정"><i class="fa fa-check"></i><b>2.4.1</b> 작업폴더 설정</a></li>
+<li class="chapter" data-level="2.4.2" data-path="데이터-객체.html"><a href="데이터-객체.html#외부-파일-읽기"><i class="fa fa-check"></i><b>2.4.2</b> 외부 파일 읽기</a></li>
+<li class="chapter" data-level="2.4.3" data-path="데이터-객체.html"><a href="데이터-객체.html#외부-파일-쓰기"><i class="fa fa-check"></i><b>2.4.3</b> 외부 파일 쓰기</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="프로그래밍-구조.html"><a href="프로그래밍-구조.html"><i class="fa fa-check"></i><b>3</b> 프로그래밍 구조</a>
+<ul>
+<li class="chapter" data-level="3.1" data-path="프로그래밍-구조.html"><a href="프로그래밍-구조.html#조건문conditional-statement"><i class="fa fa-check"></i><b>3.1</b> 조건문(conditional statement)</a>
+<ul>
+<li class="chapter" data-level="3.1.1" data-path="프로그래밍-구조.html"><a href="프로그래밍-구조.html#if-else-문"><i class="fa fa-check"></i><b>3.1.1</b> if-else 문</a></li>
+<li class="chapter" data-level="3.1.2" data-path="프로그래밍-구조.html"><a href="프로그래밍-구조.html#다중-if-else-문"><i class="fa fa-check"></i><b>3.1.2</b> 다중 if-else 문</a></li>
+<li class="chapter" data-level="3.1.3" data-path="프로그래밍-구조.html"><a href="프로그래밍-구조.html#조건문에서-논리연산자-사용"><i class="fa fa-check"></i><b>3.1.3</b> 조건문에서 논리연산자 사용</a></li>
+</ul></li>
+<li class="chapter" data-level="3.2" data-path="프로그래밍-구조.html"><a href="프로그래밍-구조.html#반복문repetitive-statement"><i class="fa fa-check"></i><b>3.2</b> 반복문(repetitive statement)</a>
+<ul>
+<li class="chapter" data-level="3.2.1" data-path="프로그래밍-구조.html"><a href="프로그래밍-구조.html#for-문"><i class="fa fa-check"></i><b>3.2.1</b> for 문</a></li>
+<li class="chapter" data-level="3.2.2" data-path="프로그래밍-구조.html"><a href="프로그래밍-구조.html#while-문"><i class="fa fa-check"></i><b>3.2.2</b> while 문</a></li>
+<li class="chapter" data-level="3.2.3" data-path="프로그래밍-구조.html"><a href="프로그래밍-구조.html#break와-next"><i class="fa fa-check"></i><b>3.2.3</b> break와 next</a></li>
+</ul></li>
+<li class="chapter" data-level="3.3" data-path="프로그래밍-구조.html"><a href="프로그래밍-구조.html#사용자-정의-함수"><i class="fa fa-check"></i><b>3.3</b> 사용자 정의 함수</a></li>
+<li class="chapter" data-level="3.4" data-path="프로그래밍-구조.html"><a href="프로그래밍-구조.html#r-패키지r-package"><i class="fa fa-check"></i><b>3.4</b> R 패키지(R package)</a></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="tidyverse-통합-패키지.html"><a href="tidyverse-통합-패키지.html"><i class="fa fa-check"></i><b>4</b> tidyverse 통합 패키지</a>
+<ul>
+<li class="chapter" data-level="4.1" data-path="tidyverse-통합-패키지.html"><a href="tidyverse-통합-패키지.html#tidyverse-이해"><i class="fa fa-check"></i><b>4.1</b> tidyverse 이해</a></li>
+<li class="chapter" data-level="4.2" data-path="tidyverse-통합-패키지.html"><a href="tidyverse-통합-패키지.html#tidyverse-작업-흐름"><i class="fa fa-check"></i><b>4.2</b> tidyverse 작업 흐름</a></li>
+<li class="chapter" data-level="4.3" data-path="tidyverse-통합-패키지.html"><a href="tidyverse-통합-패키지.html#타이디-데이터tidy-data"><i class="fa fa-check"></i><b>4.3</b> 타이디 데이터(tidy data)</a></li>
+<li class="chapter" data-level="4.4" data-path="tidyverse-통합-패키지.html"><a href="tidyverse-통합-패키지.html#파이프pipe-연산자"><i class="fa fa-check"></i><b>4.4</b> 파이프(pipe) 연산자</a></li>
+<li class="chapter" data-level="4.5" data-path="tidyverse-통합-패키지.html"><a href="tidyverse-통합-패키지.html#tibble-패키지"><i class="fa fa-check"></i><b>4.5</b> tibble 패키지</a>
+<ul>
+<li class="chapter" data-level="4.5.1" data-path="tidyverse-통합-패키지.html"><a href="tidyverse-통합-패키지.html#tibble-object"><i class="fa fa-check"></i><b>4.5.1</b> tibble object</a></li>
+<li class="chapter" data-level="4.5.2" data-path="tidyverse-통합-패키지.html"><a href="tidyverse-통합-패키지.html#tibble-이해"><i class="fa fa-check"></i><b>4.5.2</b> tibble 이해</a></li>
+</ul></li>
+<li class="chapter" data-level="4.6" data-path="tidyverse-통합-패키지.html"><a href="tidyverse-통합-패키지.html#readr-패키지"><i class="fa fa-check"></i><b>4.6</b> readr 패키지</a>
+<ul>
+<li class="chapter" data-level="4.6.1" data-path="tidyverse-통합-패키지.html"><a href="tidyverse-통합-패키지.html#readr-패키지-소개"><i class="fa fa-check"></i><b>4.6.1</b> readr 패키지 소개</a></li>
+<li class="chapter" data-level="4.6.2" data-path="tidyverse-통합-패키지.html"><a href="tidyverse-통합-패키지.html#read_csv-함수"><i class="fa fa-check"></i><b>4.6.2</b> read_csv() 함수</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="5" data-path="데이터-전처리.html"><a href="데이터-전처리.html"><i class="fa fa-check"></i><b>5</b> 데이터 전처리</a>
+<ul>
+<li class="chapter" data-level="5.1" data-path="데이터-전처리.html"><a href="데이터-전처리.html#dplyr-패키지"><i class="fa fa-check"></i><b>5.1</b> dplyr 패키지</a>
+<ul>
+<li class="chapter" data-level="5.1.1" data-path="데이터-전처리.html"><a href="데이터-전처리.html#dplyr-패키지-소개"><i class="fa fa-check"></i><b>5.1.1</b> dplyr 패키지 소개</a></li>
+<li class="chapter" data-level="5.1.2" data-path="데이터-전처리.html"><a href="데이터-전처리.html#행-관련-함수"><i class="fa fa-check"></i><b>5.1.2</b> 행 관련 함수</a></li>
+<li class="chapter" data-level="5.1.3" data-path="데이터-전처리.html"><a href="데이터-전처리.html#열-관련-함수"><i class="fa fa-check"></i><b>5.1.3</b> 열 관련 함수</a></li>
+<li class="chapter" data-level="5.1.4" data-path="데이터-전처리.html"><a href="데이터-전처리.html#그룹-관련-함수"><i class="fa fa-check"></i><b>5.1.4</b> 그룹 관련 함수</a></li>
+</ul></li>
+<li class="chapter" data-level="5.2" data-path="데이터-전처리.html"><a href="데이터-전처리.html#tidyr-패키지"><i class="fa fa-check"></i><b>5.2</b> tidyr 패키지</a>
+<ul>
+<li class="chapter" data-level="5.2.1" data-path="데이터-전처리.html"><a href="데이터-전처리.html#wide-format과-long-format"><i class="fa fa-check"></i><b>5.2.1</b> wide format과 long format</a></li>
+<li class="chapter" data-level="5.2.2" data-path="데이터-전처리.html"><a href="데이터-전처리.html#long-format으로의-변환"><i class="fa fa-check"></i><b>5.2.2</b> long format으로의 변환</a></li>
+<li class="chapter" data-level="5.2.3" data-path="데이터-전처리.html"><a href="데이터-전처리.html#wide-format으로의-변환"><i class="fa fa-check"></i><b>5.2.3</b> wide format으로의 변환</a></li>
+<li class="chapter" data-level="5.2.4" data-path="데이터-전처리.html"><a href="데이터-전처리.html#열의-분리-및-결합"><i class="fa fa-check"></i><b>5.2.4</b> 열의 분리 및 결합</a></li>
+<li class="chapter" data-level="5.2.5" data-path="데이터-전처리.html"><a href="데이터-전처리.html#결측값missing-value-처리"><i class="fa fa-check"></i><b>5.2.5</b> 결측값(missing value) 처리</a></li>
+</ul></li>
+<li class="chapter" data-level="5.3" data-path="데이터-전처리.html"><a href="데이터-전처리.html#stringr-패키지"><i class="fa fa-check"></i><b>5.3</b> stringr 패키지</a>
+<ul>
+<li class="chapter" data-level="5.3.1" data-path="데이터-전처리.html"><a href="데이터-전처리.html#stringr-패키지-소개"><i class="fa fa-check"></i><b>5.3.1</b> stringr 패키지 소개</a></li>
+<li class="chapter" data-level="5.3.2" data-path="데이터-전처리.html"><a href="데이터-전처리.html#데이터에서-문자열-생성"><i class="fa fa-check"></i><b>5.3.2</b> 데이터에서 문자열 생성</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="6" data-path="missing-inputs-give-missing-outputs.html"><a href="missing-inputs-give-missing-outputs.html"><i class="fa fa-check"></i><b>6</b> Missing inputs give missing outputs</a></li>
+<li class="chapter" data-level="7" data-path="str_glue_data-is-useful-in-data-pipelines.html"><a href="str_glue_data-is-useful-in-data-pipelines.html"><i class="fa fa-check"></i><b>7</b> <code>str_glue_data()</code> is useful in data pipelines</a>
+<ul>
+<li class="chapter" data-level="7.0.1" data-path="str_glue_data-is-useful-in-data-pipelines.html"><a href="str_glue_data-is-useful-in-data-pipelines.html#패턴으로-작업"><i class="fa fa-check"></i><b>7.0.1</b> 패턴으로 작업</a></li>
+<li class="chapter" data-level="7.1" data-path="str_glue_data-is-useful-in-data-pipelines.html"><a href="str_glue_data-is-useful-in-data-pipelines.html#forcats-패키지"><i class="fa fa-check"></i><b>7.1</b> forcats 패키지</a></li>
+<li class="chapter" data-level="7.2" data-path="str_glue_data-is-useful-in-data-pipelines.html"><a href="str_glue_data-is-useful-in-data-pipelines.html#lubridate-패키지와-hms-패키지"><i class="fa fa-check"></i><b>7.2</b> lubridate 패키지와 hms 패키지</a></li>
+<li class="chapter" data-level="7.3" data-path="str_glue_data-is-useful-in-data-pipelines.html"><a href="str_glue_data-is-useful-in-data-pipelines.html#purrr-패키지"><i class="fa fa-check"></i><b>7.3</b> purrr 패키지</a></li>
+</ul></li>
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">R 입문</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="str_glue_data-is-useful-in-data-pipelines" class="section level1 hasAnchor" number="7">
+<h1><span class="header-section-number">Chapter 7</span> <code>str_glue_data()</code> is useful in data pipelines<a href="str_glue_data-is-useful-in-data-pipelines.html#str_glue_data-is-useful-in-data-pipelines" class="anchor-section" aria-label="Anchor link to header"></a></h1>
+<p>mtcars %&gt;% str_glue_data(“{rownames(.)} has {hp} hp”)</p>
+<ul>
+<li><code>str_flatten()</code> 함수 - summarise()와 잘 작동! 즉 항상 하나의 문자열을 반환</li>
+<li>문자열 벡터를 입력으로 벡터의 각 요소를 하나의 문자열로 결합</li>
+</ul>
+<p>str_flatten(c(“x”, “y”, “z”))
+str_flatten(c(“x”, “y”, “z”), collapse = “,”)
+str_flatten(c(“x”, “y”, “z”), collapse = “,”, last = “, and”)</p>
+<dl>
+<dt>df &lt;- tribble(</dt>
+<dd>
+name, ~ fruit,
+“Carmen”, “banana”,
+“Carmen”, “apple”,
+“Marvin”, “nectarine”,
+“Terence”, “cantaloupe”,
+“Terence”, “papaya”,
+“Terence”, “madarine”
+)
+df %&gt;%
+group_by(name) %&gt;%
+summarize(fruits = str_flatten(fruit, “,”))
+</dd>
+</dl>
+<div id="패턴으로-작업" class="section level3 hasAnchor" number="7.0.1">
+<h3><span class="header-section-number">7.0.1</span> 패턴으로 작업<a href="str_glue_data-is-useful-in-data-pipelines.html#패턴으로-작업" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<ul>
+<li>정규표현식! 문자열의 패턴을 기술하는 매우 정갈한 언어</li>
+<li><code>str_detect()</code> - “이 패턴이 내 벡터 어딘가에 있는가?”</li>
+<li>filter()와 짝을 잘 이룸
+x &lt;- c(“apple”, “banana”, “pear”)
+str_detect(x, “e”)
+str_detect(x, “b”)
+str_detect(x, “x”)</li>
+</ul>
+<p>babynames %&gt;% filter(str_detect(name, “x”))</p>
+<p>babynames %&gt;%
+group_by(year) %&gt;%
+summarise(prop_x = mean(str_detect(name, “x”)))</p>
+<div id="정규-표현식regular-expression-regex-regexp" class="section level4 hasAnchor" number="7.0.1.1">
+<h4><span class="header-section-number">7.0.1.1</span> 정규 표현식(regular expression; regex, regexp)<a href="str_glue_data-is-useful-in-data-pipelines.html#정규-표현식regular-expression-regex-regexp" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<ul>
+<li>주어진 문자열에 특정한 패턴이 있는 경우, 해당 패턴을 일반화(수식화)한 문자열</li>
+<li>특정 패턴을 표현한 문자열을 메타 문자(meta character)라 함</li>
+<li>일반적으로 특정 패턴을 가지는 문자열을 찾고, 다른 값으로 대체하기 위해 사용</li>
+<li>기본 메타 문자</li>
+</ul>
+<table>
+<thead>
+<tr class="header">
+<th align="center">기호?</th>
+<th align="left">설명</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="center">.</td>
+<td align="left">무엇이든 한 글자를 의미</td>
+</tr>
+<tr class="even">
+<td align="center">+</td>
+<td align="left">+ 앞에 오는 표현이 하나 이상 포함</td>
+</tr>
+<tr class="odd">
+<td align="center">*</td>
+<td align="left">* 앞에 오는 표현이 0 또는 하나 이상 포함</td>
+</tr>
+<tr class="even">
+<td align="center">?</td>
+<td align="left">? 앞에 오는 표현이 0 또는 하나 포함</td>
+</tr>
+<tr class="odd">
+<td align="center">^</td>
+<td align="left">^ 뒤에 오는 표현으로 시작</td>
+</tr>
+<tr class="even">
+<td align="center">$</td>
+<td align="left">$ 앞에 오는 표현으로 끝나는 경우</td>
+</tr>
+<tr class="odd">
+<td align="center">{}</td>
+<td align="left"></td>
+</tr>
+<tr class="even">
+<td align="center">()</td>
+<td align="left"></td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li><p>정규표현식 기초</p></li>
+<li><p>가장 간단한 패턴 exact - 패턴에서 문자형 서열을 그대로 포함하는 문자열을 매칭</p></li>
+<li><p><code>.</code>, <code>+</code>, <code>*</code>, <code>[</code>, <code>]</code>, <code>?</code>과 같은 구두점(punctuation)은 특별한 의미가 있음</p></li>
+<li><p><code>.</code>은 임의의 문자에 매칭, 예: “a.”는 a가 있고 임의의 문자가 따라오는 문자열에 매칭
+str_detect(c(“a”, “ab”, “ae”, “bd”, “ea”, “eab”), “a.”)</p></li>
+<li><p>quantifiers : 한 요소가 다른 패턴에 얼마나 많이 적용될 수 있는지 컨트롤</p></li>
+<li><p>str_view_all() 매치된 문자들을 &lt;&gt;로 둘어싸고 파란색으로 보여줌
+str_view_all(c(“a”, “ab”, “ae”, “bd”, “ea”, “eab”), “a.”)</p></li>
+<li><p>?는 패턴을 선택사항으로 만듬(0 혹은 1회 매치)</p></li>
+<li><p>+는 패턴을 반복(적어도 한 번 매치)</p></li>
+<li><p><em>은 패턴을 선택사항으로 만들거나 반복(0회를 포함하여 어떤 횟수나 매칭)
+str_detect(c(“a”, “ab”, “ae”, “bd”, “ea”, “eab”), “a?”)
+str_detect(c(“a”, “ab”, “ae”, “bd”, “ea”, “eab”), “a+”)
+str_detect(c(“a”, “ab”, “ae”, “bd”, “ea”, “eab”), “a</em>”)</p></li>
+<li><p>character classes</p></li>
+<li><p><code>[]</code>가 정의하고 문자 집합을 매칭</p></li>
+<li><p>[abcd]는 “a”,“b”,“c”,“d” 중 하나(이상)과 매칭</p></li>
+<li><p>^로 시작하여 매치를 뒤집을 수도 있음</p></li>
+<li><p>[^abcd]는 “a”,“b”,“c”,“d”를 제외한 어느 것과도 매칭, 특정 이름에 모음을 찾기 위해 사용할 수 있음</p></li>
+</ul>
+<p>names &lt;- c(“Hadley”, “Mine”, “Garrett”)
+str_view_all(names, “[aeiou]”)</p>
+<ul>
+<li>매치 카운트</li>
+<li>str_count()는 st_detect()의 변형 - 문자열에 얼마나 많이 매칭되어 있는지 알려줌 / st_detect()는 T/F 반환</li>
+</ul>
+<p>babynames %&gt;%
+count(name) %&gt;%
+mutate(
+vowels = str_count(name, “[aeiou]”),
+consonants = str_count(name, “[^aeiou]”)
+)</p>
+<p>–&gt; 정규표현식은 대소문자를 구분함!</p>
+<ul>
+<li>매칭 치환</li>
+</ul>
+<hr />
+</div>
+</div>
+<div id="forcats-패키지" class="section level2 hasAnchor" number="7.1">
+<h2><span class="header-section-number">7.1</span> forcats 패키지<a href="str_glue_data-is-useful-in-data-pipelines.html#forcats-패키지" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<hr />
+</div>
+<div id="lubridate-패키지와-hms-패키지" class="section level2 hasAnchor" number="7.2">
+<h2><span class="header-section-number">7.2</span> lubridate 패키지와 hms 패키지<a href="str_glue_data-is-useful-in-data-pipelines.html#lubridate-패키지와-hms-패키지" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<hr />
+</div>
+<div id="purrr-패키지" class="section level2 hasAnchor" number="7.3">
+<h2><span class="header-section-number">7.3</span> purrr 패키지<a href="str_glue_data-is-useful-in-data-pipelines.html#purrr-패키지" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+
+</div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="missing-inputs-give-missing-outputs.html" class="navigation navigation-prev navigation-unique" aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"whatsapp": false,
+"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": null,
+"text": null
+},
+"history": {
+"link": null,
+"text": null
+},
+"view": {
+"link": null,
+"text": null
+},
+"download": null,
+"search": {
+"engine": "fuse",
+"options": null
+},
+"toc": {
+"collapse": "subsection"
+}
+});
+});
+</script>
+
+</body>
+
+</html>

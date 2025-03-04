@@ -1,0 +1,7 @@
+"0","x <- ""1888 is the longest year in Roman numerals: MDCCCLXXXVIII""
+str_view_all(x, ""CC?"")
+"
+"2","Registered S3 method overwritten by 'htmlwidgets':
+  method           from         
+  print.htmlwidget tools:rstudio
+"

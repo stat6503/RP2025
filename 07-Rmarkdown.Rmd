@@ -1,0 +1,385 @@
+# R Markdown
+
+
+## R Markdown 이해
+
+
+### Markdown과 R Markdown
++ Markdown
+  + 일반 텍스트 기반의 경량 마크업 언어(markup language)
+  + 특수 기호와 문자를 이용한 간단한 구조의 문법을 사용하여 웹에서 빠르게 컨텐츠를 작성
+  + 일반 마크업 언어에 비해 문법이 쉽고 간단하며 직관적임
+  + 마크업 언어 - 태그(tag) 등을 이용하여 문서나 데이터의 구조를 명기하는 언어의 일종
++ R Markdown
+  + Markdown을 기반으로 만든 **데이터 과학을 위한 통합 저작 프레임워크**
+  + R 코드와 분석 결과(표, 그래프 등)를 포함하는 컨텐츠 제작 도구
+  + 완벽하게 재현 가능하며, HTML, PDF, MS Word 등 다양한 출력 형식을 지원
+  + 파일 확장자 - ```.Rmd```
+  + R Markdown 사용 방식
+    1. 분석 결과에만 관심이 있는 의사결정권자와의 소통(for communicating)
+    2. 분석 결과와 그 과정에 관심이 있는 다른 데이터 과학자와의 협업(for collaborating)
+    3. 데이터 과학을 수행하는 환경으로써 현대식 실험실 노트와 같은 용도
+  + 대표적인 3가지 활용 방법
+    + 문서(pdf, html, docx) - bookdown 패키지
+    + 프리젠테이션(pdf, html, pptx) - xaringan 패키지
+    + 웹, 블로그(html) - blogdown 패키지, distill 패키지
+  + [참고] [R Markdown Cheat Sheet](./file/rmarkdown-2.0.pdf)
+  + [참고] [R Markdown Reference Guide](./file/rmarkdown-reference.pdf)
+  + [참고] [R Markdown: The Definitive Guide (2022)](https://bookdown.org/yihui/rmarkdown/)
+
+
+### R Markdown 시작하기
+
+
+#### R Markdown 파일 생성
++ rmarkdown 패키지, knitr 패키지 사용
++ R Markdown 파일 생성 - **[File] - [New File] - [R Markdown...]**
++ 최종 결과물(HTML, PDF, MS Word) 생성
+  + ```Knit``` 아이콘
+  + 단축키 ```ctrl``` + ```shift``` + ```k```
+
+
+#### R Markdown 구조
++ ```---```으로 둘러싸인 **YAML**(Yet Another Markup Language)(option)
++ **Markdown 텍스트**
++ ``` ` ```(backtick)으로 둘러싸인 **R 코드 청크(code chunk)**
+
+
+<br>
+
+![](img/fig7-1.png)
+
+
+#### R Markdown 작업 흐름
+1. R Markdown 파일(.Rmd) 생성
+2. 문서를 니트(knit)하면 코드 청크(code chunk)에 있는 모든 R 코드를 순차적으로 실행
+3. knitr는 코드 청크가 출력한 코드, 텍스트, 그래프 등을 변형 및 결합해 새로운 Markdown 파일(.md) 생성
+4. pandoc 문서 변환기를 통해 Markdown 파일을 다양한 문서 형식(HTML, PDF, MS Word, ...)으로 출력
+
+
+<br>
+
+![](img/fig7-2.png)
+
+
+----------------------------------------------------------------------
+
+
+## YAML Header
++ R Markdown 문서의 메타 데이터(meta data)로, 문서의 맨 처음에 포함되어야 함
++ 제목, 저자, 날짜, 최종 출력 형태 등의 정보를 포함
++ 문서 형태 및 생성을 위해 사용하는 R 패키지(bookdown, rticles 등)에 따라 구성요소가 달라짐
++ 기본적으로 ```key: value``` 쌍으로 구성
+  + ```:``` 바로 다음에는 반드시 공백(space)이 있어야 함
+
+```
+---
+title: "제목"
+subtitle: "부제목"
+author: "작성자"
+date: "작성일" 
+output: 
+   - "html_document"
+   - "word_document"
+   - "pdf_document"
+   - "md_document"
+   - "isoslides_presentation"
+   - "slidy_presentation"
+   - "beamer_presentation"
+etc...
+---
+```
+
+
+----------------------------------------------------------------------
+
+
+## Markdown 문법
+
+
+### 인라인 서식(inline formatting)
++ 강조(emphasis)
+  + 이탤릭체 - *italic*, _italic_
+  + 굵은글씨 - **bold**, __bold__
+
+```
+*italic*     _italic_
+**bold**     __bold__
+```
+
+
+<br>
+
++ 인라인 코드(inline code) : ``` ` ```(backtick)으로 묶음
+
+```
+We defined the `add` function to compute the sum of two numbers.
+```
+
+
+<br>
+
++ 고정된 코드 블록(plain code blocks) : ```` ``` ````(backticks)으로 묶음
+
+````
+```
+This text is displayed verbatim / preformatted
+```
+````
+
+
+<br>
+
++ 줄 바꿈(manual line breks) : 줄 마지막에 두 개 이상의 공백(space) 입력
++ 가로줄(horizontal rule) : 세 개 이상의 ```***```(asterisks), ```---```(dashes) 입력
+
+
+******
+
+------
+
+
+```
+******
+------
+```
+
+
+<br>
+
++ 표(tables)
+
+ First Header |  Second Header  | Third Header
+:-------------|:---------------:|--------------:
+ Left-aligned |    Centered     | Right-aligned
+ Content Cell |  Content Cell   |  Content Cell
+
+```
+ First Header |  Second Header  | Third Header
+:-------------|:---------------:|--------------:
+ Left-aligned |    Centered     | Right-aligned
+ Content Cell |  Content Cell   |  Content Cell
+```
+
+
+<br>
+
++ 그 외 서식(miscellaneous)
+  + 위 첨자 superscript^2^
+  + 아래 첨자 subscript~2~
+  + 삭제 표시 ~~strikethrough~~
+
+```
+superscript^2^
+subscript~2~
+~~strikethrough~~
+```
+
+
+<br>
+
+
+### 블록 요소(block-level elements)
+
+
++ 장/절(headers) : ```#```기호의 숫자로 표시하며, 최대 6단계까지 있음
+
+```
+# First-level header
+## Second-level header
+### Third-level header
+```
+
+
+<br>
+
++ 목록(list)
+  + 순서가 없는 목록 : ```-```, ```+```, ```*``` 기호 중 하나를 사용
+  + 순서가 있는 목록 : 숫자로 표현
+
+```
+* Item 1
+* Item 2
+    + Item 2a
+    + Item 2b
+
+1. Item 1
+2. Item 2
+3. Item 3
+    + Item 3a
+    + Item 3b
+```
+
+
+<br>
+
++ 인용구(blockquotes) : ```>``` 기호로 표시
+
+> "Blaze with the fire that is never extinguished."
+>
+> ---Luisa Sigea de Velasco(1521~1577)
+
+```
+> "Blaze with the fire that is never extinguished."
+>
+> ---Luisa Sigea de Velasco(1521~1577)
+```
+
+
+<br>
+
++ 이미지(images)
+
+![RStudio logo](img/fig7-3.png){width=50%}
+
+```
+![RStudio logo](RStudio-logo.png)
+```
+
+
+<br>
+
++ 링크(links) : [RStudio](https://posit.co/)
+
+```
+[RStudio](https://posit.co/)
+```
+
+
+<br>
+
+
+### 수학 표현식(math expressions)
++ inline equation : ```$```으로 묶음
++ display equation : ```$$```으로 묶음
++ 수학 표현식은 LaTeX 문법을 따름
+$$f(k) = {n \choose k} p^{k} (1-p)^{n-k}$$
+
+```
+$$f(k) = {n \choose k} p^{k} (1-p)^{n-k}$$
+```
+
+
+----------------------------------------------------------------------
+
+
+## R 코드 청크(code chunk)
+
+
+### R 코드 청크 이해
++ 실제 R 코드가 실행되는 부분으로, 일종의 계산용 코드 덩어리
++ ```` ```{r} ````와 ```` ``` ````사이에 코드 청크 입력
++ 단축키 ```ctrl``` + ```alt``` + ```i```
++ 청크 옵션을 통해 코드 출력, 코드 출력 형태, 코드 결과 출력 등을 설정할 수 있음
+
+````markdown
+```{r, chunk_name, chunk_options, ...}`r ''`
+codes
+```
+````
+
+
+### 청크 이름(chunk name)
++ 청크 이름 사용의 3가지 이점
+  1. 스크립트 편집기의왼쪽 하단에 있는 드롭다운 코드 탐색기를 사용하여 특정 청크로 쉽게 이동 가능
+  2. 청크에 의해 생성된 그래프가 유용한 이름을 가지게 되어 다른 곳에서 쉽게 사용 가능
+  3. 캐시된 청크 네트워크를 설정하여 불필요한 계산을 피할 수 있음
+
+
+### 청크 옵션(chunk options)
++ [참고] [Options (2020)](https://yihui.org/knitr/options/)
+
+|옵션|기본 값|자료형|설명|
+|:--:|:--:|:--:|:--------------------|
+|eval|TRUE|logical|코드 실행 여부|
+|include|TRUE|logical|최종 문서에 코드와 출력 결과 포함 여부|
+|echo|TRUE|logical|코드 출력 여부|
+|results|'markup'|character|출력 결과 포맷 지정을 위한 옵션 <br>ㆍ'markup' : 출력 형식에 따라 적절한 환경으로 텍스트를 마크업 <br>ㆍ'asis' : 변환하지 않은 원래 R 출력 결과를 그대로(as is) 출력 <br>ㆍ'hide' : 출력 결과를 숨김 <br>ㆍ'hold' : 생성된 모든 코드와 출력을 단일 블록으로 축소|
+|message|TRUE|logical|코드로부터 생성된 메세지 출력 여부|
+|warning|TRUE|logical|경고 메세지 출력 여부|
+|error|TRUE|logical|에러 메세지 출력 여부|
+
+
+
+<br>
+
++ 청크 옵션이 제어 가능한 출력 유형
+
+|Option|Run code|Show code|Output|Plots|Messages|Warnings|
+|:---:|:---:|:---:|:---:|:---:|:---:|:---:|
+|eval = FALSE|○||○|○|○|○|
+|include = FALSE||○|○|○|○|○|
+|echo = FALSE||○|||||
+|results = "hide"|||○||||
+|fig.show = "hide"||||○|||
+|message = FALSE|||||○||
+|warning = FALSE||||||○|
+
+
+<br>
+
+````markdown
+# results = "markup"(default)
+```{r, results = "markup"}`r ''`
+cat("I'm raw **Markdown** content.\n")
+```
+
+# results = "asis"
+```{r, results = "asis"}`r ''`
+cat("I'm raw **Markdown** content.\n")
+```
+````
+
+
+### 표(table) 삽입
++ 간단한 형태의 표 생성 - ```knitr::kable()``` 함수
+
+```{r eval = FALSE}
+head(iris)
+kable(head(iris))
+```
+
+
+### 전역 옵션(global option)
++ 문서 전체에 적용되는 기본(default) 옵션을 설정할 수 있음
++ 청크 옵션을 모을 수 있는 객체 ```knitr::opts_chunk```
+  + ```opts_chunk$set()``` - 전역 옵션 설정
+  + ```opts_chunk$get()``` - 설정된 값 확인
+  + ```opts_chunk$restore()``` - 기본 설정으로 변경
+
+```{r eval = FALSE}
+opts_chunk$get("warning")
+opts_chunk$set("warning" = FALSE)
+opts_chunk$get("warning")
+opts_chunk$restore()
+opts_chunk$get("warning")
+```
+
+````markdown
+# 전역 옵션 설정 : warning = FALSE
+```{r, include = FALSE}`r ''`
+opts_chunk$set(warning = FALSE)
+```
+
+# 개별 청크에서 warning 옵션을 설정하지 않은 경우, 전역 옵션 설정을 따름
+```{r}`r ''`
+as.numeric(c(1, 2, "a"))
+```
+
+# 개별 청크에서 warning 옵션을 설정하는 경우, 해당 옵션 설정을 따름
+```{r, warning = TRUE}`r ''`
+as.numeric(c(1, 2, "a"))
+```
+````
+
+
+### 인라인 코드(inline code)
++ R 코드를 텍스트에 직접 입력 - ``` `r ```와 ``` ` ``` 사이에 코드 입력
++ 텍스트에서 데이터의 속성을 언급할 때 매우 유용
+
+> iris 데이터셋에는 `r nrow(iris)`개의 관측값과 `r ncol(iris)`개의 변수가 있습니다.
+
+```{r eval = FALSE}
+> iris 데이터셋에는 `r nrow(iris)`개의 관측값과 `r ncol(iris)`개의 변수가 있습니다.
+```
+

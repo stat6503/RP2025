@@ -1,0 +1,53 @@
+h1:데이터-전처리 데이터 전처리
+h2:dplyr-패키지 dplyr 패키지
+h3:dplyr-패키지-소개 dplyr 패키지 소개
+h3:행-관련-함수 행 관련 함수
+h4:filter-함수 filter() 함수
+h4:arrange-함수 arrange() 함수
+h3:열-관련-함수 열 관련 함수
+h4:select-함수 select() 함수
+h4:rename-함수 rename() 함수
+h4:mutate-함수 mutate() 함수
+h4:relocate-함수 relocate() 함수
+h3:그룹-관련-함수 그룹 관련 함수
+h4:summarise-함수 summarise() 함수
+h4:group_by-함수 group_by() 함수
+h2:tidyr-패키지 tidyr 패키지
+h3:wide-format과-long-format wide format과 long format
+h3:long-format으로-변환 long format으로 변환
+h3:wide-format으로-변환 wide format으로 변환
+h3:열의-분리-및-결합 열의 분리 및 결합
+h3:결측값missing-value-처리 결측값(missing value) 처리
+h2:stringr-패키지 stringr 패키지
+h3:stringr-패키지-소개 stringr 패키지 소개
+h3:문자열-기초 문자열 기초
+h4:str_length-함수 str_length() 함수
+h4:str_sub-함수 str_sub() 함수
+h4:str_to_lower-str_to_upper-함수 str_to_lower(), str_to_upper() 함수
+h3:데이터에서-문자열-생성 데이터에서 문자열 생성
+h4:str_c-함수 str_c() 함수
+h4:str_glue-함수 str_glue() 함수
+h4:str_flatten-함수 str_flatten() 함수
+h3:정규-표현식을-이용한-패턴-매칭 정규 표현식을 이용한 패턴 매칭
+h4:정규-표현식regular-expression-regex-regexp 정규 표현식(regular expression; regex, regexp)
+h4:str_detect-함수 str_detect() 함수
+h4:str_count-함수 str_count() 함수
+h4:str_replace-str_replace_all-함수 str_replace(), str_replace_all() 함수
+h2:forcats-패키지 forcats 패키지
+h3:forcats-패키지-소개 forcats 패키지 소개
+h3:팩터-수준levels-재정렬 팩터 수준(levels) 재정렬
+h3:팩터-수준levels-변경 팩터 수준(levels) 변경
+h2:lubridate-패키지 lubridate 패키지
+h3:lubridate-패키지-소개 lubridate 패키지 소개
+h3:날짜시간-object 날짜/시간 object
+h4:날짜시간-object-유형 날짜/시간 object 유형
+h4:문자열string로부터-날짜시간-object-생성 문자열(string)로부터 날짜/시간 object 생성
+h4:개별-구성요소로부터-날짜시간-object-생성 개별 구성요소로부터 날짜/시간 object 생성
+h4:기존의-날짜시간-object로부터-날짜시간-object-생성 기존의 날짜/시간 object로부터 날짜/시간 object 생성
+h3:날짜시간-구성요소 날짜/시간 구성요소
+h3:시간-범위time-spans-object 시간 범위(time spans) object
+h4:시간-범위-object-유형 시간 범위 object 유형
+h4:duration-object duration object
+h4:period-object period object
+h4:interval-object interval object
+

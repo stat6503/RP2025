@@ -1,0 +1,6 @@
+"0","score <- 85"
+"0",""
+"0","result <- ifelse(score >= 80, ""Pass"", ""Fail"")"
+"1"," ""Pass"""
+"1","
+"

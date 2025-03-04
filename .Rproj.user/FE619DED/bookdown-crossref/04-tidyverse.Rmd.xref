@@ -1,0 +1,12 @@
+h1:tidyverse-통합-패키지 tidyverse 통합 패키지
+h2:tidyverse-이해 tidyverse 이해
+h2:tidyverse-작업-흐름 tidyverse 작업 흐름
+h2:타이디-데이터tidy-data 타이디 데이터(tidy data)
+h2:파이프pipe-연산자 파이프(pipe) 연산자
+h2:tibble-패키지 tibble 패키지
+h3:tibble-object tibble object
+h3:tibble-이해 tibble 이해
+h2:readr-패키지 readr 패키지
+h3:readr-패키지-소개 readr 패키지 소개
+h3:read_csv-함수 read_csv() 함수
+
