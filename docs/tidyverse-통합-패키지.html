@@ -1,0 +1,707 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>Chapter 5 tidyverse 통합 패키지 | R 프로그래밍</title>
+  <meta name="description" content="Chapter 5 tidyverse 통합 패키지 | R 프로그래밍" />
+  <meta name="generator" content="bookdown 0.42 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="Chapter 5 tidyverse 통합 패키지 | R 프로그래밍" />
+  <meta property="og:type" content="book" />
+  
+  
+  
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Chapter 5 tidyverse 통합 패키지 | R 프로그래밍" />
+  
+  
+  
+
+<meta name="author" content="Park Sejin" />
+
+
+<meta name="date" content="2025-03-03" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="프로그래밍-구조.html"/>
+<link rel="next" href="데이터-전처리.html"/>
+<script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+<link href="libs/anchor-sections-1.1.0/anchor-sections.css" rel="stylesheet" />
+<link href="libs/anchor-sections-1.1.0/anchor-sections-hash.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.1.0/anchor-sections.js"></script>
+
+
+<style type="text/css">
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { color: #008000; } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { color: #008000; font-weight: bold; } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+<style type="text/css">
+  
+  div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+</style>
+
+<link rel="stylesheet" href="style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="index.html">R 프로그래밍</a></li>
+
+<li class="divider"></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>강의 소개</a></li>
+<li class="chapter" data-level="1" data-path="데이터-분석과-r.html"><a href="데이터-분석과-r.html"><i class="fa fa-check"></i><b>1</b> 데이터 분석과 R</a>
+<ul>
+<li class="chapter" data-level="1.1" data-path="데이터-분석과-r.html"><a href="데이터-분석과-r.html#데이터의-이해"><i class="fa fa-check"></i><b>1.1</b> 데이터의 이해</a>
+<ul>
+<li class="chapter" data-level="1.1.1" data-path="데이터-분석과-r.html"><a href="데이터-분석과-r.html#데이터의-시대"><i class="fa fa-check"></i><b>1.1.1</b> 데이터의 시대</a></li>
+<li class="chapter" data-level="1.1.2" data-path="데이터-분석과-r.html"><a href="데이터-분석과-r.html#데이터-과학"><i class="fa fa-check"></i><b>1.1.2</b> 데이터 과학</a></li>
+</ul></li>
+<li class="chapter" data-level="1.2" data-path="데이터-분석과-r.html"><a href="데이터-분석과-r.html#r-및-r-studio-설치"><i class="fa fa-check"></i><b>1.2</b> R 및 R Studio 설치</a>
+<ul>
+<li class="chapter" data-level="1.2.1" data-path="데이터-분석과-r.html"><a href="데이터-분석과-r.html#r"><i class="fa fa-check"></i><b>1.2.1</b> R</a></li>
+<li class="chapter" data-level="1.2.2" data-path="데이터-분석과-r.html"><a href="데이터-분석과-r.html#r-studio"><i class="fa fa-check"></i><b>1.2.2</b> R Studio</a></li>
+<li class="chapter" data-level="1.2.3" data-path="데이터-분석과-r.html"><a href="데이터-분석과-r.html#프로그램-설치"><i class="fa fa-check"></i><b>1.2.3</b> 프로그램 설치</a></li>
+<li class="chapter" data-level="1.2.4" data-path="데이터-분석과-r.html"><a href="데이터-분석과-r.html#r-studio-화면-구성"><i class="fa fa-check"></i><b>1.2.4</b> R Studio 화면 구성</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="2" data-path="r-기초.html"><a href="r-기초.html"><i class="fa fa-check"></i><b>2</b> R 기초</a>
+<ul>
+<li class="chapter" data-level="2.1" data-path="r-기초.html"><a href="r-기초.html#산술연산"><i class="fa fa-check"></i><b>2.1</b> 산술연산</a></li>
+<li class="chapter" data-level="2.2" data-path="r-기초.html"><a href="r-기초.html#산술연산-함수"><i class="fa fa-check"></i><b>2.2</b> 산술연산 함수</a></li>
+<li class="chapter" data-level="2.3" data-path="r-기초.html"><a href="r-기초.html#주석comment"><i class="fa fa-check"></i><b>2.3</b> 주석(comment)</a></li>
+<li class="chapter" data-level="2.4" data-path="r-기초.html"><a href="r-기초.html#자료형data-type"><i class="fa fa-check"></i><b>2.4</b> 자료형(data type)</a></li>
+<li class="chapter" data-level="2.5" data-path="r-기초.html"><a href="r-기초.html#논리연산"><i class="fa fa-check"></i><b>2.5</b> 논리연산</a></li>
+<li class="chapter" data-level="2.6" data-path="r-기초.html"><a href="r-기초.html#함수function"><i class="fa fa-check"></i><b>2.6</b> 함수(function)</a></li>
+<li class="chapter" data-level="2.7" data-path="r-기초.html"><a href="r-기초.html#변수"><i class="fa fa-check"></i><b>2.7</b> 변수</a>
+<ul>
+<li class="chapter" data-level="2.7.1" data-path="r-기초.html"><a href="r-기초.html#변수-값-할당"><i class="fa fa-check"></i><b>2.7.1</b> 변수 값 할당</a></li>
+<li class="chapter" data-level="2.7.2" data-path="r-기초.html"><a href="r-기초.html#변수-값-변경"><i class="fa fa-check"></i><b>2.7.2</b> 변수 값 변경</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="데이터와-자료구조.html"><a href="데이터와-자료구조.html"><i class="fa fa-check"></i><b>3</b> 데이터와 자료구조</a>
+<ul>
+<li class="chapter" data-level="3.1" data-path="데이터와-자료구조.html"><a href="데이터와-자료구조.html#데이터-이해"><i class="fa fa-check"></i><b>3.1</b> 데이터 이해</a>
+<ul>
+<li class="chapter" data-level="3.1.1" data-path="데이터와-자료구조.html"><a href="데이터와-자료구조.html#데이터-구조화"><i class="fa fa-check"></i><b>3.1.1</b> 데이터 구조화</a></li>
+<li class="chapter" data-level="3.1.2" data-path="데이터와-자료구조.html"><a href="데이터와-자료구조.html#테이블table"><i class="fa fa-check"></i><b>3.1.2</b> 테이블(table)</a></li>
+</ul></li>
+<li class="chapter" data-level="3.2" data-path="데이터와-자료구조.html"><a href="데이터와-자료구조.html#벡터vector"><i class="fa fa-check"></i><b>3.2</b> 벡터(vector)</a>
+<ul>
+<li class="chapter" data-level="3.2.1" data-path="데이터와-자료구조.html"><a href="데이터와-자료구조.html#벡터-이해"><i class="fa fa-check"></i><b>3.2.1</b> 벡터 이해</a></li>
+<li class="chapter" data-level="3.2.2" data-path="데이터와-자료구조.html"><a href="데이터와-자료구조.html#인덱스index"><i class="fa fa-check"></i><b>3.2.2</b> 인덱스(index)</a></li>
+<li class="chapter" data-level="3.2.3" data-path="데이터와-자료구조.html"><a href="데이터와-자료구조.html#원소값-추출"><i class="fa fa-check"></i><b>3.2.3</b> 원소값 추출</a></li>
+<li class="chapter" data-level="3.2.4" data-path="데이터와-자료구조.html"><a href="데이터와-자료구조.html#벡터-산술연산"><i class="fa fa-check"></i><b>3.2.4</b> 벡터 산술연산</a></li>
+<li class="chapter" data-level="3.2.5" data-path="데이터와-자료구조.html"><a href="데이터와-자료구조.html#논리연산자"><i class="fa fa-check"></i><b>3.2.5</b> 논리연산자</a></li>
+<li class="chapter" data-level="3.2.6" data-path="데이터와-자료구조.html"><a href="데이터와-자료구조.html#리스트list"><i class="fa fa-check"></i><b>3.2.6</b> 리스트(list)</a></li>
+<li class="chapter" data-level="3.2.7" data-path="데이터와-자료구조.html"><a href="데이터와-자료구조.html#팩터factor"><i class="fa fa-check"></i><b>3.2.7</b> 팩터(factor)</a></li>
+</ul></li>
+<li class="chapter" data-level="3.3" data-path="데이터와-자료구조.html"><a href="데이터와-자료구조.html#행렬matrix과-데이터프레임data-frame"><i class="fa fa-check"></i><b>3.3</b> 행렬(matrix)과 데이터프레임(data frame)</a>
+<ul>
+<li class="chapter" data-level="3.3.1" data-path="데이터와-자료구조.html"><a href="데이터와-자료구조.html#행렬-이해"><i class="fa fa-check"></i><b>3.3.1</b> 행렬 이해</a></li>
+<li class="chapter" data-level="3.3.2" data-path="데이터와-자료구조.html"><a href="데이터와-자료구조.html#데이터프레임-이해"><i class="fa fa-check"></i><b>3.3.2</b> 데이터프레임 이해</a></li>
+<li class="chapter" data-level="3.3.3" data-path="데이터와-자료구조.html"><a href="데이터와-자료구조.html#행렬과-데이터프레임-다루기"><i class="fa fa-check"></i><b>3.3.3</b> 행렬과 데이터프레임 다루기</a></li>
+</ul></li>
+<li class="chapter" data-level="3.4" data-path="데이터와-자료구조.html"><a href="데이터와-자료구조.html#외부-파일-읽기-및-쓰기"><i class="fa fa-check"></i><b>3.4</b> 외부 파일 읽기 및 쓰기</a>
+<ul>
+<li class="chapter" data-level="3.4.1" data-path="데이터와-자료구조.html"><a href="데이터와-자료구조.html#작업폴더-설정"><i class="fa fa-check"></i><b>3.4.1</b> 작업폴더 설정</a></li>
+<li class="chapter" data-level="3.4.2" data-path="데이터와-자료구조.html"><a href="데이터와-자료구조.html#외부-파일-읽기"><i class="fa fa-check"></i><b>3.4.2</b> 외부 파일 읽기</a></li>
+<li class="chapter" data-level="3.4.3" data-path="데이터와-자료구조.html"><a href="데이터와-자료구조.html#외부-파일-쓰기"><i class="fa fa-check"></i><b>3.4.3</b> 외부 파일 쓰기</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="프로그래밍-구조.html"><a href="프로그래밍-구조.html"><i class="fa fa-check"></i><b>4</b> 프로그래밍 구조</a>
+<ul>
+<li class="chapter" data-level="4.1" data-path="프로그래밍-구조.html"><a href="프로그래밍-구조.html#조건문conditional-statement"><i class="fa fa-check"></i><b>4.1</b> 조건문(conditional statement)</a>
+<ul>
+<li class="chapter" data-level="4.1.1" data-path="프로그래밍-구조.html"><a href="프로그래밍-구조.html#if-else-문"><i class="fa fa-check"></i><b>4.1.1</b> if-else 문</a></li>
+<li class="chapter" data-level="4.1.2" data-path="프로그래밍-구조.html"><a href="프로그래밍-구조.html#다중-if-else-문"><i class="fa fa-check"></i><b>4.1.2</b> 다중 if-else 문</a></li>
+<li class="chapter" data-level="4.1.3" data-path="프로그래밍-구조.html"><a href="프로그래밍-구조.html#조건문에서-논리연산자-사용"><i class="fa fa-check"></i><b>4.1.3</b> 조건문에서 논리연산자 사용</a></li>
+</ul></li>
+<li class="chapter" data-level="4.2" data-path="프로그래밍-구조.html"><a href="프로그래밍-구조.html#반복문repetitive-statement"><i class="fa fa-check"></i><b>4.2</b> 반복문(repetitive statement)</a>
+<ul>
+<li class="chapter" data-level="4.2.1" data-path="프로그래밍-구조.html"><a href="프로그래밍-구조.html#for-문"><i class="fa fa-check"></i><b>4.2.1</b> for 문</a></li>
+<li class="chapter" data-level="4.2.2" data-path="프로그래밍-구조.html"><a href="프로그래밍-구조.html#while-문"><i class="fa fa-check"></i><b>4.2.2</b> while 문</a></li>
+<li class="chapter" data-level="4.2.3" data-path="프로그래밍-구조.html"><a href="프로그래밍-구조.html#break와-next"><i class="fa fa-check"></i><b>4.2.3</b> break와 next</a></li>
+</ul></li>
+<li class="chapter" data-level="4.3" data-path="프로그래밍-구조.html"><a href="프로그래밍-구조.html#사용자-정의-함수"><i class="fa fa-check"></i><b>4.3</b> 사용자 정의 함수</a></li>
+<li class="chapter" data-level="4.4" data-path="프로그래밍-구조.html"><a href="프로그래밍-구조.html#r-패키지r-package"><i class="fa fa-check"></i><b>4.4</b> R 패키지(R package)</a></li>
+</ul></li>
+<li class="chapter" data-level="5" data-path="tidyverse-통합-패키지.html"><a href="tidyverse-통합-패키지.html"><i class="fa fa-check"></i><b>5</b> tidyverse 통합 패키지</a>
+<ul>
+<li class="chapter" data-level="5.1" data-path="tidyverse-통합-패키지.html"><a href="tidyverse-통합-패키지.html#tidyverse-이해"><i class="fa fa-check"></i><b>5.1</b> tidyverse 이해</a></li>
+<li class="chapter" data-level="5.2" data-path="tidyverse-통합-패키지.html"><a href="tidyverse-통합-패키지.html#tidyverse-작업-흐름"><i class="fa fa-check"></i><b>5.2</b> tidyverse 작업 흐름</a></li>
+<li class="chapter" data-level="5.3" data-path="tidyverse-통합-패키지.html"><a href="tidyverse-통합-패키지.html#타이디-데이터tidy-data"><i class="fa fa-check"></i><b>5.3</b> 타이디 데이터(tidy data)</a></li>
+<li class="chapter" data-level="5.4" data-path="tidyverse-통합-패키지.html"><a href="tidyverse-통합-패키지.html#파이프pipe-연산자"><i class="fa fa-check"></i><b>5.4</b> 파이프(pipe) 연산자</a></li>
+<li class="chapter" data-level="5.5" data-path="tidyverse-통합-패키지.html"><a href="tidyverse-통합-패키지.html#tibble-패키지"><i class="fa fa-check"></i><b>5.5</b> tibble 패키지</a>
+<ul>
+<li class="chapter" data-level="5.5.1" data-path="tidyverse-통합-패키지.html"><a href="tidyverse-통합-패키지.html#tibble-object"><i class="fa fa-check"></i><b>5.5.1</b> tibble object</a></li>
+<li class="chapter" data-level="5.5.2" data-path="tidyverse-통합-패키지.html"><a href="tidyverse-통합-패키지.html#tibble-이해"><i class="fa fa-check"></i><b>5.5.2</b> tibble 이해</a></li>
+</ul></li>
+<li class="chapter" data-level="5.6" data-path="tidyverse-통합-패키지.html"><a href="tidyverse-통합-패키지.html#readr-패키지"><i class="fa fa-check"></i><b>5.6</b> readr 패키지</a>
+<ul>
+<li class="chapter" data-level="5.6.1" data-path="tidyverse-통합-패키지.html"><a href="tidyverse-통합-패키지.html#readr-패키지-소개"><i class="fa fa-check"></i><b>5.6.1</b> readr 패키지 소개</a></li>
+<li class="chapter" data-level="5.6.2" data-path="tidyverse-통합-패키지.html"><a href="tidyverse-통합-패키지.html#read_csv-함수"><i class="fa fa-check"></i><b>5.6.2</b> read_csv() 함수</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="6" data-path="데이터-전처리.html"><a href="데이터-전처리.html"><i class="fa fa-check"></i><b>6</b> 데이터 전처리</a>
+<ul>
+<li class="chapter" data-level="6.1" data-path="데이터-전처리.html"><a href="데이터-전처리.html#dplyr-패키지"><i class="fa fa-check"></i><b>6.1</b> dplyr 패키지</a>
+<ul>
+<li class="chapter" data-level="6.1.1" data-path="데이터-전처리.html"><a href="데이터-전처리.html#dplyr-패키지-소개"><i class="fa fa-check"></i><b>6.1.1</b> dplyr 패키지 소개</a></li>
+<li class="chapter" data-level="6.1.2" data-path="데이터-전처리.html"><a href="데이터-전처리.html#행-관련-함수"><i class="fa fa-check"></i><b>6.1.2</b> 행 관련 함수</a></li>
+<li class="chapter" data-level="6.1.3" data-path="데이터-전처리.html"><a href="데이터-전처리.html#열-관련-함수"><i class="fa fa-check"></i><b>6.1.3</b> 열 관련 함수</a></li>
+<li class="chapter" data-level="6.1.4" data-path="데이터-전처리.html"><a href="데이터-전처리.html#그룹-관련-함수"><i class="fa fa-check"></i><b>6.1.4</b> 그룹 관련 함수</a></li>
+</ul></li>
+<li class="chapter" data-level="6.2" data-path="데이터-전처리.html"><a href="데이터-전처리.html#tidyr-패키지"><i class="fa fa-check"></i><b>6.2</b> tidyr 패키지</a>
+<ul>
+<li class="chapter" data-level="6.2.1" data-path="데이터-전처리.html"><a href="데이터-전처리.html#wide-format과-long-format"><i class="fa fa-check"></i><b>6.2.1</b> wide format과 long format</a></li>
+<li class="chapter" data-level="6.2.2" data-path="데이터-전처리.html"><a href="데이터-전처리.html#long-format으로-변환"><i class="fa fa-check"></i><b>6.2.2</b> long format으로 변환</a></li>
+<li class="chapter" data-level="6.2.3" data-path="데이터-전처리.html"><a href="데이터-전처리.html#wide-format으로-변환"><i class="fa fa-check"></i><b>6.2.3</b> wide format으로 변환</a></li>
+<li class="chapter" data-level="6.2.4" data-path="데이터-전처리.html"><a href="데이터-전처리.html#열의-분리-및-결합"><i class="fa fa-check"></i><b>6.2.4</b> 열의 분리 및 결합</a></li>
+<li class="chapter" data-level="6.2.5" data-path="데이터-전처리.html"><a href="데이터-전처리.html#결측값missing-value-처리"><i class="fa fa-check"></i><b>6.2.5</b> 결측값(missing value) 처리</a></li>
+</ul></li>
+<li class="chapter" data-level="6.3" data-path="데이터-전처리.html"><a href="데이터-전처리.html#stringr-패키지"><i class="fa fa-check"></i><b>6.3</b> stringr 패키지</a>
+<ul>
+<li class="chapter" data-level="6.3.1" data-path="데이터-전처리.html"><a href="데이터-전처리.html#stringr-패키지-소개"><i class="fa fa-check"></i><b>6.3.1</b> stringr 패키지 소개</a></li>
+<li class="chapter" data-level="6.3.2" data-path="데이터-전처리.html"><a href="데이터-전처리.html#문자열-기초"><i class="fa fa-check"></i><b>6.3.2</b> 문자열 기초</a></li>
+<li class="chapter" data-level="6.3.3" data-path="데이터-전처리.html"><a href="데이터-전처리.html#데이터에서-문자열-생성"><i class="fa fa-check"></i><b>6.3.3</b> 데이터에서 문자열 생성</a></li>
+<li class="chapter" data-level="6.3.4" data-path="데이터-전처리.html"><a href="데이터-전처리.html#정규-표현식을-이용한-패턴-매칭"><i class="fa fa-check"></i><b>6.3.4</b> 정규 표현식을 이용한 패턴 매칭</a></li>
+</ul></li>
+<li class="chapter" data-level="6.4" data-path="데이터-전처리.html"><a href="데이터-전처리.html#forcats-패키지"><i class="fa fa-check"></i><b>6.4</b> forcats 패키지</a>
+<ul>
+<li class="chapter" data-level="6.4.1" data-path="데이터-전처리.html"><a href="데이터-전처리.html#forcats-패키지-소개"><i class="fa fa-check"></i><b>6.4.1</b> forcats 패키지 소개</a></li>
+<li class="chapter" data-level="6.4.2" data-path="데이터-전처리.html"><a href="데이터-전처리.html#팩터-수준levels-재정렬"><i class="fa fa-check"></i><b>6.4.2</b> 팩터 수준(levels) 재정렬</a></li>
+<li class="chapter" data-level="6.4.3" data-path="데이터-전처리.html"><a href="데이터-전처리.html#팩터-수준levels-변경"><i class="fa fa-check"></i><b>6.4.3</b> 팩터 수준(levels) 변경</a></li>
+</ul></li>
+<li class="chapter" data-level="6.5" data-path="데이터-전처리.html"><a href="데이터-전처리.html#lubridate-패키지"><i class="fa fa-check"></i><b>6.5</b> lubridate 패키지</a>
+<ul>
+<li class="chapter" data-level="6.5.1" data-path="데이터-전처리.html"><a href="데이터-전처리.html#lubridate-패키지-소개"><i class="fa fa-check"></i><b>6.5.1</b> lubridate 패키지 소개</a></li>
+<li class="chapter" data-level="6.5.2" data-path="데이터-전처리.html"><a href="데이터-전처리.html#날짜시간-object"><i class="fa fa-check"></i><b>6.5.2</b> 날짜/시간 object</a></li>
+<li class="chapter" data-level="6.5.3" data-path="데이터-전처리.html"><a href="데이터-전처리.html#날짜시간-구성요소"><i class="fa fa-check"></i><b>6.5.3</b> 날짜/시간 구성요소</a></li>
+<li class="chapter" data-level="6.5.4" data-path="데이터-전처리.html"><a href="데이터-전처리.html#시간-범위time-spans-object"><i class="fa fa-check"></i><b>6.5.4</b> 시간 범위(time spans) object</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="7" data-path="데이터-시각화.html"><a href="데이터-시각화.html"><i class="fa fa-check"></i><b>7</b> 데이터 시각화</a>
+<ul>
+<li class="chapter" data-level="7.1" data-path="데이터-시각화.html"><a href="데이터-시각화.html#데이터-시각화-이해"><i class="fa fa-check"></i><b>7.1</b> 데이터 시각화 이해</a>
+<ul>
+<li class="chapter" data-level="7.1.1" data-path="데이터-시각화.html"><a href="데이터-시각화.html#데이터-시각화data-visualization"><i class="fa fa-check"></i><b>7.1.1</b> 데이터 시각화(data visualization)</a></li>
+<li class="chapter" data-level="7.1.2" data-path="데이터-시각화.html"><a href="데이터-시각화.html#데이터-유형에-따른-시각화-방법"><i class="fa fa-check"></i><b>7.1.2</b> 데이터 유형에 따른 시각화 방법</a></li>
+</ul></li>
+<li class="chapter" data-level="7.2" data-path="데이터-시각화.html"><a href="데이터-시각화.html#r-base-graphics"><i class="fa fa-check"></i><b>7.2</b> R base graphics</a></li>
+<li class="chapter" data-level="7.3" data-path="데이터-시각화.html"><a href="데이터-시각화.html#ggplot2-패키지"><i class="fa fa-check"></i><b>7.3</b> ggplot2 패키지</a>
+<ul>
+<li class="chapter" data-level="7.3.1" data-path="데이터-시각화.html"><a href="데이터-시각화.html#ggplot2-패키지-소개"><i class="fa fa-check"></i><b>7.3.1</b> ggplot2 패키지 소개</a></li>
+<li class="chapter" data-level="7.3.2" data-path="데이터-시각화.html"><a href="데이터-시각화.html#ggplot2-기본-구조"><i class="fa fa-check"></i><b>7.3.2</b> ggplot2 기본 구조</a></li>
+<li class="chapter" data-level="7.3.3" data-path="데이터-시각화.html"><a href="데이터-시각화.html#막대-그래프bar-chart"><i class="fa fa-check"></i><b>7.3.3</b> 막대 그래프(bar chart)</a></li>
+<li class="chapter" data-level="7.3.4" data-path="데이터-시각화.html"><a href="데이터-시각화.html#히스토그램histogram"><i class="fa fa-check"></i><b>7.3.4</b> 히스토그램(histogram)</a></li>
+<li class="chapter" data-level="7.3.5" data-path="데이터-시각화.html"><a href="데이터-시각화.html#상자-그림box-plot"><i class="fa fa-check"></i><b>7.3.5</b> 상자 그림(box plot)</a></li>
+<li class="chapter" data-level="7.3.6" data-path="데이터-시각화.html"><a href="데이터-시각화.html#산점도scatter-plot"><i class="fa fa-check"></i><b>7.3.6</b> 산점도(scatter plot)</a></li>
+<li class="chapter" data-level="7.3.7" data-path="데이터-시각화.html"><a href="데이터-시각화.html#선-그래프line-plot"><i class="fa fa-check"></i><b>7.3.7</b> 선 그래프(line plot)</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="8" data-path="r-markdown.html"><a href="r-markdown.html"><i class="fa fa-check"></i><b>8</b> R Markdown</a>
+<ul>
+<li class="chapter" data-level="8.1" data-path="r-markdown.html"><a href="r-markdown.html#r-markdown-이해"><i class="fa fa-check"></i><b>8.1</b> R Markdown 이해</a>
+<ul>
+<li class="chapter" data-level="8.1.1" data-path="r-markdown.html"><a href="r-markdown.html#markdown과-r-markdown"><i class="fa fa-check"></i><b>8.1.1</b> Markdown과 R Markdown</a></li>
+<li class="chapter" data-level="8.1.2" data-path="r-markdown.html"><a href="r-markdown.html#r-markdown-시작하기"><i class="fa fa-check"></i><b>8.1.2</b> R Markdown 시작하기</a></li>
+</ul></li>
+<li class="chapter" data-level="8.2" data-path="r-markdown.html"><a href="r-markdown.html#yaml-header"><i class="fa fa-check"></i><b>8.2</b> YAML Header</a></li>
+<li class="chapter" data-level="8.3" data-path="r-markdown.html"><a href="r-markdown.html#markdown-문법"><i class="fa fa-check"></i><b>8.3</b> Markdown 문법</a>
+<ul>
+<li class="chapter" data-level="8.3.1" data-path="r-markdown.html"><a href="r-markdown.html#인라인-서식inline-formatting"><i class="fa fa-check"></i><b>8.3.1</b> 인라인 서식(inline formatting)</a></li>
+<li class="chapter" data-level="8.3.2" data-path="r-markdown.html"><a href="r-markdown.html#블록-요소block-level-elements"><i class="fa fa-check"></i><b>8.3.2</b> 블록 요소(block-level elements)</a></li>
+<li class="chapter" data-level="8.3.3" data-path="r-markdown.html"><a href="r-markdown.html#수학-표현식math-expressions"><i class="fa fa-check"></i><b>8.3.3</b> 수학 표현식(math expressions)</a></li>
+</ul></li>
+<li class="chapter" data-level="8.4" data-path="r-markdown.html"><a href="r-markdown.html#r-코드-청크code-chunk"><i class="fa fa-check"></i><b>8.4</b> R 코드 청크(code chunk)</a>
+<ul>
+<li class="chapter" data-level="8.4.1" data-path="r-markdown.html"><a href="r-markdown.html#r-코드-청크-이해"><i class="fa fa-check"></i><b>8.4.1</b> R 코드 청크 이해</a></li>
+<li class="chapter" data-level="8.4.2" data-path="r-markdown.html"><a href="r-markdown.html#청크-이름chunk-name"><i class="fa fa-check"></i><b>8.4.2</b> 청크 이름(chunk name)</a></li>
+<li class="chapter" data-level="8.4.3" data-path="r-markdown.html"><a href="r-markdown.html#청크-옵션chunk-options"><i class="fa fa-check"></i><b>8.4.3</b> 청크 옵션(chunk options)</a></li>
+<li class="chapter" data-level="8.4.4" data-path="r-markdown.html"><a href="r-markdown.html#표table-삽입"><i class="fa fa-check"></i><b>8.4.4</b> 표(table) 삽입</a></li>
+<li class="chapter" data-level="8.4.5" data-path="r-markdown.html"><a href="r-markdown.html#전역-옵션global-option"><i class="fa fa-check"></i><b>8.4.5</b> 전역 옵션(global option)</a></li>
+<li class="chapter" data-level="8.4.6" data-path="r-markdown.html"><a href="r-markdown.html#인라인-코드inline-code"><i class="fa fa-check"></i><b>8.4.6</b> 인라인 코드(inline code)</a></li>
+</ul></li>
+</ul></li>
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">R 프로그래밍</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="tidyverse-통합-패키지" class="section level1 hasAnchor" number="5">
+<h1><span class="header-section-number">Chapter 5</span> tidyverse 통합 패키지<a href="tidyverse-통합-패키지.html#tidyverse-통합-패키지" class="anchor-section" aria-label="Anchor link to header"></a></h1>
+<div id="tidyverse-이해" class="section level2 hasAnchor" number="5.1">
+<h2><span class="header-section-number">5.1</span> tidyverse 이해<a href="tidyverse-통합-패키지.html#tidyverse-이해" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<ul>
+<li>Hadley Wickham이 개발한 데이터 과학을 위한 R 패키지의 집합체(collection)</li>
+<li>모든 패키지는 공통적이고 일관된 설계 철학, 문법, 데이터 구조를 공유함</li>
+<li>정돈된 세계(tidy + universe)를 구성하여 작업을 직관적이고 일관성있게 수행하도록 도와줌</li>
+<li>tidy API의 4가지 원칙
+<ul>
+<li>기존 자료구조의 재사용(reuse existing data structures)</li>
+<li>파이프 연산자를 이용한 단순한 함수 조합(compose simple function with pipe)</li>
+<li>함수형 프로그래밍을 적극 포용(embrace functional programming)</li>
+<li>사람을 위한 설계(design for humans)</li>
+</ul></li>
+</ul>
+<table>
+<thead>
+<tr class="header">
+<th align="center">패키지</th>
+<th align="left">설명</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="center">tibble</td>
+<td align="left">tidyverse에서 사용하는 R 데이터 객체 제공</td>
+</tr>
+<tr class="even">
+<td align="center">readr</td>
+<td align="left">tibble 객체로 외부 파일을 불러오거나 저장하는 함수 제공</td>
+</tr>
+<tr class="odd">
+<td align="center">dplyr</td>
+<td align="left">데이터 가공, 탐색적 자료분석 등을 위한 함수 제공</td>
+</tr>
+<tr class="even">
+<td align="center">tidyr</td>
+<td align="left">타이디 데이터(tidy data)를 구현하는 함수 제공</td>
+</tr>
+<tr class="odd">
+<td align="center">stringr</td>
+<td align="left">문자열(string)을 다루는 함수 제공</td>
+</tr>
+<tr class="even">
+<td align="center">forcats</td>
+<td align="left">팩터(factor)를 다루는 함수 제공</td>
+</tr>
+<tr class="odd">
+<td align="center">lubridate, hms</td>
+<td align="left">날짜, 시간을 다루는 함수 제공</td>
+</tr>
+<tr class="even">
+<td align="center">purrr</td>
+<td align="left">함수형 프로그래밍 도구 제공</td>
+</tr>
+<tr class="odd">
+<td align="center">ggplot2</td>
+<td align="left">데이터 시각화를 위한 함수 제공</td>
+</tr>
+</tbody>
+</table>
+<p><br></p>
+<p><img src="img/fig4-1.png" /></p>
+<hr />
+</div>
+<div id="tidyverse-작업-흐름" class="section level2 hasAnchor" number="5.2">
+<h2><span class="header-section-number">5.2</span> tidyverse 작업 흐름<a href="tidyverse-통합-패키지.html#tidyverse-작업-흐름" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<ul>
+<li>tidyverse 통합 패키지는 다음과 같은 데이터 분석 프로젝트의 작업 흐름을 지원하도록 설계됨</li>
+</ul>
+<p><img src="img/fig4-2.png" /></p>
+<hr />
+</div>
+<div id="타이디-데이터tidy-data" class="section level2 hasAnchor" number="5.3">
+<h2><span class="header-section-number">5.3</span> 타이디 데이터(tidy data)<a href="tidyverse-통합-패키지.html#타이디-데이터tidy-data" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<ul>
+<li>tidyverse에서 사용되는 데이터 표준 저장 형태로, 분석에 용이하고 깔끔한(tidy) 데이터</li>
+<li>타이디 데이터의 3가지 규칙
+<ol style="list-style-type: decimal">
+<li>모든 열은 변수이다(Every column is variable).</li>
+<li>모든 행은 관측값이다(Every row is an observation).</li>
+<li>모든 셀은 단일 값을 가진다(Every cell is a single value).</li>
+</ol></li>
+</ul>
+<p><img src="img/fig4-4.png" /></p>
+<hr />
+</div>
+<div id="파이프pipe-연산자" class="section level2 hasAnchor" number="5.4">
+<h2><span class="header-section-number">5.4</span> 파이프(pipe) 연산자<a href="tidyverse-통합-패키지.html#파이프pipe-연산자" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<ul>
+<li><code>%&gt;%</code> - 다중 연산을 하나의 순차적인 연산의 결합으로 표현하는 강력한 도구</li>
+<li>단축키 <code>ctrl</code> + <code>shift</code> + <code>m</code></li>
+<li>데이터 연산의 흐름을 좌에서 우로 변경(기존 방식은 안에서 밖임)
+<ul>
+<li>왼쪽 표현식(left-hand side expression)의 결과를 오른쪽 표현식(right-hand side expression)으로 전달함</li>
+<li>이때, lhs은 rhs의 첫번째 매개변수로 사용됨</li>
+<li>lhs가 사용될 위치를 지정하기 위해서는 rhs에서 place-holder <code>.</code>를 사용해야 함</li>
+</ul></li>
+<li>연산 작업 중 어느 위치에서나 쉽게 단계를 추가할 수 있음</li>
+<li>복잡한 코드를 단순화시켜 가독성 크게 향상시킴</li>
+<li>2014년 개발된 magrittr 패키지에 포함되어 있음</li>
+<li>2021년 R version 4.1.0부터는 기본 파이프 연산자 <code>|&gt;</code> 새롭게 추가됨</li>
+</ul>
+<div class="sourceCode" id="cb63"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb63-1"><a href="tidyverse-통합-패키지.html#cb63-1" tabindex="-1"></a><span class="co"># 데이터프레임 x에 f(), g(), h() 함수를 순차적으로 적용</span></span>
+<span id="cb63-2"><a href="tidyverse-통합-패키지.html#cb63-2" tabindex="-1"></a><span class="co"># 일반적인 경우: 함수를 중첩해서 사용</span></span>
+<span id="cb63-3"><a href="tidyverse-통합-패키지.html#cb63-3" tabindex="-1"></a><span class="fu">h</span>(<span class="fu">g</span>(<span class="fu">f</span>(x)))</span>
+<span id="cb63-4"><a href="tidyverse-통합-패키지.html#cb63-4" tabindex="-1"></a></span>
+<span id="cb63-5"><a href="tidyverse-통합-패키지.html#cb63-5" tabindex="-1"></a><span class="co"># 파이프 연산자를 사용하는 경우: 연쇄적인 연산의 결합으로 표현</span></span>
+<span id="cb63-6"><a href="tidyverse-통합-패키지.html#cb63-6" tabindex="-1"></a>x <span class="sc">%&gt;%</span> </span>
+<span id="cb63-7"><a href="tidyverse-통합-패키지.html#cb63-7" tabindex="-1"></a>  <span class="fu">f</span>() <span class="sc">%&gt;%</span> </span>
+<span id="cb63-8"><a href="tidyverse-통합-패키지.html#cb63-8" tabindex="-1"></a>  <span class="fu">g</span>() <span class="sc">%&gt;%</span> </span>
+<span id="cb63-9"><a href="tidyverse-통합-패키지.html#cb63-9" tabindex="-1"></a>  <span class="fu">h</span>()</span></code></pre></div>
+<div class="sourceCode" id="cb64"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb64-1"><a href="tidyverse-통합-패키지.html#cb64-1" tabindex="-1"></a>iris <span class="sc">%&gt;%</span> head</span>
+<span id="cb64-2"><a href="tidyverse-통합-패키지.html#cb64-2" tabindex="-1"></a>iris <span class="sc">%&gt;%</span> <span class="fu">head</span>(<span class="dv">10</span>)</span>
+<span id="cb64-3"><a href="tidyverse-통합-패키지.html#cb64-3" tabindex="-1"></a><span class="st">&quot;World&quot;</span> <span class="sc">%&gt;%</span> <span class="fu">cat</span>(<span class="st">&quot;Hello,&quot;</span>, .)</span></code></pre></div>
+<hr />
+</div>
+<div id="tibble-패키지" class="section level2 hasAnchor" number="5.5">
+<h2><span class="header-section-number">5.5</span> tibble 패키지<a href="tidyverse-통합-패키지.html#tibble-패키지" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div id="tibble-object" class="section level3 hasAnchor" number="5.5.1">
+<h3><span class="header-section-number">5.5.1</span> tibble object<a href="tidyverse-통합-패키지.html#tibble-object" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<ul>
+<li>tidyverse에서 사용하는 R 데이터 객체</li>
+<li>좀 더 편리하게 사용할 수 있도록 수정된 특수한 종류의 데이터프레임으로, 데이터프레임과 근본적으로 큰 차이는 없음</li>
+<li>데이터를 출력할 때 콘솔 창이 넘어가지 않도록 설계되어 있음
+<ul>
+<li><code>str()</code> 함수 기능을 가져와 각 변수(열)의 유형을 변수명과 함께 표시</li>
+<li>처음 10개의 행과 한 화면에 들어갈 수 있는 열만 표시</li>
+<li>전체 데이터셋을 보기 위해서는 <code>View()</code> 함수 사용</li>
+</ul></li>
+<li>입력 유형(input’s type)이 변하지 않음</li>
+<li>변수명을 수정할 수 없으며, 행 이름과 산술연산을 지원하지 않음</li>
+</ul>
+<table>
+<thead>
+<tr class="header">
+<th align="center">변수 라벨</th>
+<th align="left">설명</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="center">&lt;chr&gt;</td>
+<td align="left">문자형(character)</td>
+</tr>
+<tr class="even">
+<td align="center">&lt;int&gt;</td>
+<td align="left">정수형(integer)</td>
+</tr>
+<tr class="odd">
+<td align="center">&lt;dbl&gt;</td>
+<td align="left">실수형(double)</td>
+</tr>
+<tr class="even">
+<td align="center">&lt;date&gt;</td>
+<td align="left">날짜(date)</td>
+</tr>
+<tr class="odd">
+<td align="center">&lt;time&gt;</td>
+<td align="left">시간(time)</td>
+</tr>
+<tr class="even">
+<td align="center">&lt;dttm&gt;</td>
+<td align="left">날짜와 시간(date-time)</td>
+</tr>
+<tr class="odd">
+<td align="center">&lt;lgl&gt;</td>
+<td align="left">논리형(logical)</td>
+</tr>
+<tr class="even">
+<td align="center">+lbl</td>
+<td align="left">변수의 값에 부여된 라벨 값이 추가되어 있음을 표시</td>
+</tr>
+</tbody>
+</table>
+<p><br></p>
+<div class="sourceCode" id="cb65"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb65-1"><a href="tidyverse-통합-패키지.html#cb65-1" tabindex="-1"></a><span class="fu">library</span>(nycflights13)</span>
+<span id="cb65-2"><a href="tidyverse-통합-패키지.html#cb65-2" tabindex="-1"></a>flights</span>
+<span id="cb65-3"><a href="tidyverse-통합-패키지.html#cb65-3" tabindex="-1"></a>fligths <span class="sc">%&gt;%</span> <span class="fu">View</span>()</span></code></pre></div>
+</div>
+<div id="tibble-이해" class="section level3 hasAnchor" number="5.5.2">
+<h3><span class="header-section-number">5.5.2</span> tibble 이해<a href="tidyverse-통합-패키지.html#tibble-이해" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<ul>
+<li>새로운 tibble 생성 - <code>tibble()</code> 함수
+<ul>
+<li>길이가 1인 입력은 자동으로 재사용함</li>
+<li>변수명 지정이 훨씬 유연함 - <code>``</code>(backticks) 사용</li>
+</ul></li>
+</ul>
+<div class="sourceCode" id="cb66"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb66-1"><a href="tidyverse-통합-패키지.html#cb66-1" tabindex="-1"></a><span class="fu">library</span>(tibble)</span>
+<span id="cb66-2"><a href="tidyverse-통합-패키지.html#cb66-2" tabindex="-1"></a></span>
+<span id="cb66-3"><a href="tidyverse-통합-패키지.html#cb66-3" tabindex="-1"></a>mytbl <span class="ot">&lt;-</span> <span class="fu">tibble</span>(</span>
+<span id="cb66-4"><a href="tidyverse-통합-패키지.html#cb66-4" tabindex="-1"></a>  <span class="at">x =</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">5</span>, </span>
+<span id="cb66-5"><a href="tidyverse-통합-패키지.html#cb66-5" tabindex="-1"></a>  <span class="at">y =</span> <span class="dv">1</span>, </span>
+<span id="cb66-6"><a href="tidyverse-통합-패키지.html#cb66-6" tabindex="-1"></a>  <span class="at">z =</span> x <span class="sc">^</span> <span class="dv">2</span> <span class="sc">+</span> y</span>
+<span id="cb66-7"><a href="tidyverse-통합-패키지.html#cb66-7" tabindex="-1"></a>)</span>
+<span id="cb66-8"><a href="tidyverse-통합-패키지.html#cb66-8" tabindex="-1"></a></span>
+<span id="cb66-9"><a href="tidyverse-통합-패키지.html#cb66-9" tabindex="-1"></a>mytbl</span></code></pre></div>
+<pre><code>## # A tibble: 5 × 3
+##       x     y     z
+##   &lt;int&gt; &lt;dbl&gt; &lt;dbl&gt;
+## 1     1     1     2
+## 2     2     1     5
+## 3     3     1    10
+## 4     4     1    17
+## 5     5     1    26</code></pre>
+<p><br></p>
+<ul>
+<li>데이터프레임을 tibble로 변환 - <code>as_tibble()</code> 함수</li>
+<li>tibble을 데이터프레임으로 변환 - <code>as.data.frame()</code> 함수</li>
+</ul>
+<div class="sourceCode" id="cb68"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb68-1"><a href="tidyverse-통합-패키지.html#cb68-1" tabindex="-1"></a><span class="fu">as_tibble</span>(iris)</span>
+<span id="cb68-2"><a href="tidyverse-통합-패키지.html#cb68-2" tabindex="-1"></a><span class="fu">as.data.frame</span>(flights)</span></code></pre></div>
+<p><br></p>
+<ul>
+<li>부분집합(subset)에 엄격하며, <code>[]</code>은 항상 tibble을 반환함</li>
+<li>하나의 열만 추출하려면 <code>[[]]</code> 또는 <code>$</code>을 사용</li>
+</ul>
+<div class="sourceCode" id="cb69"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb69-1"><a href="tidyverse-통합-패키지.html#cb69-1" tabindex="-1"></a>df <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="at">x =</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">3</span>, <span class="at">y =</span> <span class="dv">3</span><span class="sc">:</span><span class="dv">1</span>)</span>
+<span id="cb69-2"><a href="tidyverse-통합-패키지.html#cb69-2" tabindex="-1"></a><span class="fu">class</span>(df[, <span class="dv">1</span><span class="sc">:</span><span class="dv">2</span>])                    <span class="co"># &quot;data.frame&quot;</span></span>
+<span id="cb69-3"><a href="tidyverse-통합-패키지.html#cb69-3" tabindex="-1"></a><span class="fu">class</span>(df[, <span class="dv">1</span>])                      <span class="co"># &quot;integer&quot;</span></span>
+<span id="cb69-4"><a href="tidyverse-통합-패키지.html#cb69-4" tabindex="-1"></a></span>
+<span id="cb69-5"><a href="tidyverse-통합-패키지.html#cb69-5" tabindex="-1"></a>tbl <span class="ot">&lt;-</span> <span class="fu">tibble</span>(<span class="at">x =</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">3</span>, <span class="at">y =</span> <span class="dv">3</span><span class="sc">:</span><span class="dv">1</span>)</span>
+<span id="cb69-6"><a href="tidyverse-통합-패키지.html#cb69-6" tabindex="-1"></a><span class="fu">class</span>(tbl[, <span class="dv">1</span><span class="sc">:</span><span class="dv">2</span>])                    <span class="co"># &quot;tbl_df&quot;  &quot;tbl&quot;  &quot;data.frame&quot;</span></span>
+<span id="cb69-7"><a href="tidyverse-통합-패키지.html#cb69-7" tabindex="-1"></a><span class="fu">class</span>(tbl[, <span class="dv">1</span>])                      <span class="co"># &quot;tbl_df&quot;  &quot;tbl&quot;  &quot;data.frame&quot;</span></span>
+<span id="cb69-8"><a href="tidyverse-통합-패키지.html#cb69-8" tabindex="-1"></a></span>
+<span id="cb69-9"><a href="tidyverse-통합-패키지.html#cb69-9" tabindex="-1"></a><span class="fu">class</span>(tbl[[<span class="dv">1</span>]])                      <span class="co"># &quot;integer&quot;</span></span>
+<span id="cb69-10"><a href="tidyverse-통합-패키지.html#cb69-10" tabindex="-1"></a><span class="fu">class</span>(tbl<span class="sc">$</span>x)                         <span class="co"># &quot;integer&quot;</span></span></code></pre></div>
+<hr />
+</div>
+</div>
+<div id="readr-패키지" class="section level2 hasAnchor" number="5.6">
+<h2><span class="header-section-number">5.6</span> readr 패키지<a href="tidyverse-통합-패키지.html#readr-패키지" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div id="readr-패키지-소개" class="section level3 hasAnchor" number="5.6.1">
+<h3><span class="header-section-number">5.6.1</span> readr 패키지 소개<a href="tidyverse-통합-패키지.html#readr-패키지-소개" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<ul>
+<li><strong>tibble 객체</strong>로 외부 파일을 불러오거나 저장하는 함수를 제공하는 패키지</li>
+</ul>
+<table>
+<thead>
+<tr class="header">
+<th align="center">함수</th>
+<th align="left">설명</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="center">read_csv()</td>
+<td align="left">쉼표로 구분된 파일 불러오기</td>
+</tr>
+<tr class="even">
+<td align="center">read_tsv()</td>
+<td align="left">탭으로 구분된 파일 불러오기</td>
+</tr>
+<tr class="odd">
+<td align="center">read_delim()</td>
+<td align="left">임의의 구분자로 구분된 파일 불러오기</td>
+</tr>
+<tr class="even">
+<td align="center">read_table()</td>
+<td align="left">공백으로 구분된 파일 불러오기</td>
+</tr>
+<tr class="odd">
+<td align="center">read_spss()</td>
+<td align="left">spss 데이터 파일 불러오기</td>
+</tr>
+<tr class="even">
+<td align="center">read_sas()</td>
+<td align="left">sas 데이터 파일 불러오기(haven 패키지)</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div id="read_csv-함수" class="section level3 hasAnchor" number="5.6.2">
+<h3><span class="header-section-number">5.6.2</span> read_csv() 함수<a href="tidyverse-통합-패키지.html#read_csv-함수" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<ul>
+<li><code>read.csv()</code> 함수에 비해 약 10배 정도 빠르며, 좀 더 재현성이 뛰어남</li>
+<li>첫번째 줄은 변수명(header)으로 사용</li>
+<li>매개변수 <code>col_names</code> - 변수명(header)이 없는 경우 사용
+<ul>
+<li><code>col_names = FALSE</code> - 변수명을 X1부터 Xn까지 순차적으로 붙여줌</li>
+<li><code>col_names = c("x", "y", "z")</code>와 같이 변수명으로 사용할 문자형 벡터를 입력 가능</li>
+</ul></li>
+<li>매개변수 <code>skip</code> - 파일의 첫 n줄 생략</li>
+<li>매개변수 <code>na</code> - 특정값을 결측값으로 지정</li>
+<li>예제 - <a href="./dataset/StudentSurvey.csv">StudentSurvey.csv</a></li>
+</ul>
+<div class="sourceCode" id="cb70"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb70-1"><a href="tidyverse-통합-패키지.html#cb70-1" tabindex="-1"></a><span class="fu">library</span>(readr)</span>
+<span id="cb70-2"><a href="tidyverse-통합-패키지.html#cb70-2" tabindex="-1"></a>data <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">&quot;StudentSurvey.csv&quot;</span>)</span>
+<span id="cb70-3"><a href="tidyverse-통합-패키지.html#cb70-3" tabindex="-1"></a>data</span></code></pre></div>
+
+</div>
+</div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="프로그래밍-구조.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="데이터-전처리.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"whatsapp": false,
+"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": null,
+"text": null
+},
+"history": {
+"link": null,
+"text": null
+},
+"view": {
+"link": null,
+"text": null
+},
+"download": null,
+"search": {
+"engine": "fuse",
+"options": null
+},
+"toc": {
+"collapse": "section",
+"scroll_highlight": true
+}
+});
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.9/latest.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:")
+      if (/^https?:/.test(src))
+        src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+</body>
+
+</html>

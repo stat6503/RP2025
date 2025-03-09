@@ -1,0 +1,10 @@
+bookdown::gitbook:
+  css: style.css
+  config:
+    toc:
+      collapse: section
+      scroll_highlight: true
+      before: |
+        <li><a href="index.html">R 프로그래밍</a></li>
+  toolbar:
+    position: fixed
