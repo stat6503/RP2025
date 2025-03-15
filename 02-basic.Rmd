@@ -67,12 +67,12 @@ sin(pi/2)
 |!=|A != B|A와 B가 같지 않으면 TRUE|
 
 ```{r, eval = FALSE}
-2 < 5                                 # TRUE
-2 <= 5                                # TRUE
-2 > 5                                 # FALSE
-2 >= 5                                # FALSE
-2 == 5                                # FALSE
-2 != 5                                # TRUE
+2 < 5                                       # TRUE
+2 <= 5                                      # TRUE
+2 > 5                                       # FALSE
+2 >= 5                                      # FALSE
+2 == 5                                      # FALSE
+2 != 5                                      # TRUE
 ```
 
 <br>
@@ -86,8 +86,8 @@ sin(pi/2)
 |&|A & B|A와 B 모두 TRUE일 때만 TRUE|
 
 ```{r, eval = FALSE}
-(2 < 5) | (10 <= 3)                   # TRUE | FALSE -> TRUE
-(2 < 5) & (10 <= 3)                   # TRUE & FALSE -> FALSE
+(2 < 5) | (10 <= 3)                         # TRUE | FALSE -> TRUE
+(2 < 5) & (10 <= 3)                         # TRUE & FALSE -> FALSE
 ```
 
 <br>
@@ -131,9 +131,9 @@ total <- var1 + var2
 ```{r eval = FALSE}
 var1 <- 10
 var2 <- 20
-total <- var1 + var2          # var1 + var2 결과 출력
+total <- var1 + var2                        # var1 + var2 결과 출력
 
-var1 <- "a"                   # var1를 문자 a로 변경
-total <- var1 + var2          # error 발생
+var1 <- "a"                                 # var1를 문자 a로 변경
+total <- var1 + var2                        # error 발생
 ```
 

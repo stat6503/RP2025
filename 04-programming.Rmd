@@ -295,7 +295,6 @@ mapply(sum, iris$Sepal.Length, iris$Sepal.Width)
 ```{r eval = FALSE}
 함수명 <- function(매개변수 목록) {
   실행할 명령문
-
   return(반환 값)
 }
 ```
@@ -309,7 +308,6 @@ mymax <- function(x, y) {
   if (y > x) {
     max.value <- y
   }
-
   return(max.value)
 }
 
@@ -324,7 +322,6 @@ mymax(10, 20)
 ## 매개변수 x, y를 입력 받아 x/y 값을 반환하는 함수(단, y의 초기값은 2)
 mydiv <- function(x, y=2) {
   result <- x / y
-
   return(result)
 }
 
@@ -342,7 +339,6 @@ mydiv(10)                                   # x에 대한 값만 입력(y 값 �
 myfunc <- function(x, y) {
   sum.value <- x + y
   mul.value <- x * y
-  
   return(list(sum = sum.value, mul = mul.value)) 
 }
 
