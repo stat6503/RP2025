@@ -171,7 +171,7 @@ flights %>% group_by(month) %>% ungroup() %>% summarise(n = n())     # 그룹화
   + 각 행은 wide format에서 특정 셀의 정보를 반영하며, 각 열은 요인(factor)으로 표현된 형태
   + wide format보다 유연하여 데이터 추가 및 삭제 용이
 
-![](./img/fig5-1.png)
+![](./img/fig6-1.png)
 
 
 <br>

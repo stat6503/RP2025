@@ -47,7 +47,7 @@
 
 <br>
 
-![](img/fig7-1.png)
+![](img/fig8-1.png)
 
 
 #### R Markdown 작업 흐름
@@ -59,7 +59,7 @@
 
 <br>
 
-![](img/fig7-2.png)
+![](img/fig8-2.png)
 
 
 ----------------------------------------------------------------------
@@ -230,7 +230,7 @@ subscript~2~
 
 + 이미지(images)
 
-![RStudio logo](img/fig7-3.png){width=50%}
+![RStudio logo](img/fig8-3.png){width=50%}
 
 ```
 ![RStudio logo](RStudio-logo.png)

@@ -58,7 +58,7 @@
 
 <br>
 
-![](./img/fig6-1.png)
+![](./img/fig7-1.png)
 
 
 ### ggplot2 기본 구조
@@ -180,7 +180,7 @@ ggplot(birthwt, aes(x = bwt, fill = smoke)) +
 
 <br>
 
-![](./img/fig6-2.png){width=70%}
+![](./img/fig7-2.png){width=70%}
 
 
 <br>
@@ -218,7 +218,7 @@ bp + geom_jitter(color = "red", alpha = 0.5)  # 관측값을 상자 그림 위�
   + 15~20 : 채우기 색상만 ```color```로 설정, 테두리 없음
   + 21~24 : 채우기 색상은 ```fill```, 테두리 색상은 ```color```로 설정
 
-![](./img/fig6-3.png)
+![](./img/fig7-3.png)
 
 
 <br>
