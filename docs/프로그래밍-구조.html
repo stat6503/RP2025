@@ -371,19 +371,19 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li>중괄호 <code>{}</code>로 구분된 코드로, 여러 명령문을 하나로 묶은 실행 단위</li>
 </ul></li>
 </ul>
-<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1-1"><a href="프로그래밍-구조.html#cb1-1" tabindex="-1"></a><span class="cf">if</span>(조건) {</span>
-<span id="cb1-2"><a href="프로그래밍-구조.html#cb1-2" tabindex="-1"></a>  조건이 참일 때 실행할 명령문</span>
-<span id="cb1-3"><a href="프로그래밍-구조.html#cb1-3" tabindex="-1"></a>}</span></code></pre></div>
-<div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2-1"><a href="프로그래밍-구조.html#cb2-1" tabindex="-1"></a><span class="do">## 시험 점수가 80점 이상이면 합격(Pass) 출력</span></span>
-<span id="cb2-2"><a href="프로그래밍-구조.html#cb2-2" tabindex="-1"></a>score <span class="ot">&lt;-</span> <span class="dv">85</span></span>
-<span id="cb2-3"><a href="프로그래밍-구조.html#cb2-3" tabindex="-1"></a></span>
-<span id="cb2-4"><a href="프로그래밍-구조.html#cb2-4" tabindex="-1"></a><span class="cf">if</span>(score <span class="sc">&gt;=</span> <span class="dv">80</span>) {</span>
-<span id="cb2-5"><a href="프로그래밍-구조.html#cb2-5" tabindex="-1"></a>  result <span class="ot">&lt;-</span> <span class="st">&quot;Pass&quot;</span></span>
-<span id="cb2-6"><a href="프로그래밍-구조.html#cb2-6" tabindex="-1"></a>} <span class="cf">else</span> {</span>
-<span id="cb2-7"><a href="프로그래밍-구조.html#cb2-7" tabindex="-1"></a>  result <span class="ot">&lt;-</span> <span class="st">&quot;Fail&quot;</span></span>
-<span id="cb2-8"><a href="프로그래밍-구조.html#cb2-8" tabindex="-1"></a>}</span>
-<span id="cb2-9"><a href="프로그래밍-구조.html#cb2-9" tabindex="-1"></a></span>
-<span id="cb2-10"><a href="프로그래밍-구조.html#cb2-10" tabindex="-1"></a><span class="fu">print</span>(result)</span></code></pre></div>
+<div class="sourceCode" id="cb30"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb30-1"><a href="프로그래밍-구조.html#cb30-1" tabindex="-1"></a><span class="cf">if</span>(조건) {</span>
+<span id="cb30-2"><a href="프로그래밍-구조.html#cb30-2" tabindex="-1"></a>  조건이 참일 때 실행할 명령문</span>
+<span id="cb30-3"><a href="프로그래밍-구조.html#cb30-3" tabindex="-1"></a>}</span></code></pre></div>
+<div class="sourceCode" id="cb31"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb31-1"><a href="프로그래밍-구조.html#cb31-1" tabindex="-1"></a><span class="do">## 시험 점수가 80점 이상이면 합격(Pass) 출력</span></span>
+<span id="cb31-2"><a href="프로그래밍-구조.html#cb31-2" tabindex="-1"></a>score <span class="ot">&lt;-</span> <span class="dv">85</span></span>
+<span id="cb31-3"><a href="프로그래밍-구조.html#cb31-3" tabindex="-1"></a></span>
+<span id="cb31-4"><a href="프로그래밍-구조.html#cb31-4" tabindex="-1"></a><span class="cf">if</span>(score <span class="sc">&gt;=</span> <span class="dv">80</span>) {</span>
+<span id="cb31-5"><a href="프로그래밍-구조.html#cb31-5" tabindex="-1"></a>  result <span class="ot">&lt;-</span> <span class="st">&quot;Pass&quot;</span></span>
+<span id="cb31-6"><a href="프로그래밍-구조.html#cb31-6" tabindex="-1"></a>} <span class="cf">else</span> {</span>
+<span id="cb31-7"><a href="프로그래밍-구조.html#cb31-7" tabindex="-1"></a>  result <span class="ot">&lt;-</span> <span class="st">&quot;Fail&quot;</span></span>
+<span id="cb31-8"><a href="프로그래밍-구조.html#cb31-8" tabindex="-1"></a>}</span>
+<span id="cb31-9"><a href="프로그래밍-구조.html#cb31-9" tabindex="-1"></a></span>
+<span id="cb31-10"><a href="프로그래밍-구조.html#cb31-10" tabindex="-1"></a><span class="fu">print</span>(result)</span></code></pre></div>
 <pre><code>## [1] &quot;Pass&quot;</code></pre>
 <p><br></p>
 </div>
@@ -393,21 +393,21 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li>조건이 참(TRUE)이면 첫 번째 코드블록을 실행하고, 거짓(FALSE)이면 두 번째 코드블록을 실행하는 조건문</li>
 <li>if-else 문에서 else는 반드시 if 문의 코드블록을 닫는<code>}</code>와 같은 줄에 작성해야 함</li>
 </ul>
-<div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb4-1"><a href="프로그래밍-구조.html#cb4-1" tabindex="-1"></a><span class="cf">if</span>(조건) {</span>
-<span id="cb4-2"><a href="프로그래밍-구조.html#cb4-2" tabindex="-1"></a>  조건이 참일 때 실행할 명령문</span>
-<span id="cb4-3"><a href="프로그래밍-구조.html#cb4-3" tabindex="-1"></a>} <span class="cf">else</span> {</span>
-<span id="cb4-4"><a href="프로그래밍-구조.html#cb4-4" tabindex="-1"></a>  조건이 거짓일 때 실행할 명령문</span>
-<span id="cb4-5"><a href="프로그래밍-구조.html#cb4-5" tabindex="-1"></a>}</span></code></pre></div>
-<div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb5-1"><a href="프로그래밍-구조.html#cb5-1" tabindex="-1"></a><span class="do">## 시험 점수가 80점 이상이면 합격(Pass), 80점 미만이면 불합격(Fail) 출력</span></span>
-<span id="cb5-2"><a href="프로그래밍-구조.html#cb5-2" tabindex="-1"></a>score <span class="ot">&lt;-</span> <span class="dv">65</span></span>
-<span id="cb5-3"><a href="프로그래밍-구조.html#cb5-3" tabindex="-1"></a></span>
-<span id="cb5-4"><a href="프로그래밍-구조.html#cb5-4" tabindex="-1"></a><span class="cf">if</span>(score <span class="sc">&gt;=</span> <span class="dv">80</span>) {</span>
-<span id="cb5-5"><a href="프로그래밍-구조.html#cb5-5" tabindex="-1"></a>  result <span class="ot">&lt;-</span> <span class="st">&quot;Pass&quot;</span></span>
-<span id="cb5-6"><a href="프로그래밍-구조.html#cb5-6" tabindex="-1"></a>} <span class="cf">else</span> {</span>
-<span id="cb5-7"><a href="프로그래밍-구조.html#cb5-7" tabindex="-1"></a>  result <span class="ot">&lt;-</span> <span class="st">&quot;Fail&quot;</span></span>
-<span id="cb5-8"><a href="프로그래밍-구조.html#cb5-8" tabindex="-1"></a>}</span>
-<span id="cb5-9"><a href="프로그래밍-구조.html#cb5-9" tabindex="-1"></a></span>
-<span id="cb5-10"><a href="프로그래밍-구조.html#cb5-10" tabindex="-1"></a><span class="fu">print</span>(result)</span></code></pre></div>
+<div class="sourceCode" id="cb33"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb33-1"><a href="프로그래밍-구조.html#cb33-1" tabindex="-1"></a><span class="cf">if</span>(조건) {</span>
+<span id="cb33-2"><a href="프로그래밍-구조.html#cb33-2" tabindex="-1"></a>  조건이 참일 때 실행할 명령문</span>
+<span id="cb33-3"><a href="프로그래밍-구조.html#cb33-3" tabindex="-1"></a>} <span class="cf">else</span> {</span>
+<span id="cb33-4"><a href="프로그래밍-구조.html#cb33-4" tabindex="-1"></a>  조건이 거짓일 때 실행할 명령문</span>
+<span id="cb33-5"><a href="프로그래밍-구조.html#cb33-5" tabindex="-1"></a>}</span></code></pre></div>
+<div class="sourceCode" id="cb34"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb34-1"><a href="프로그래밍-구조.html#cb34-1" tabindex="-1"></a><span class="do">## 시험 점수가 80점 이상이면 합격(Pass), 80점 미만이면 불합격(Fail) 출력</span></span>
+<span id="cb34-2"><a href="프로그래밍-구조.html#cb34-2" tabindex="-1"></a>score <span class="ot">&lt;-</span> <span class="dv">65</span></span>
+<span id="cb34-3"><a href="프로그래밍-구조.html#cb34-3" tabindex="-1"></a></span>
+<span id="cb34-4"><a href="프로그래밍-구조.html#cb34-4" tabindex="-1"></a><span class="cf">if</span>(score <span class="sc">&gt;=</span> <span class="dv">80</span>) {</span>
+<span id="cb34-5"><a href="프로그래밍-구조.html#cb34-5" tabindex="-1"></a>  result <span class="ot">&lt;-</span> <span class="st">&quot;Pass&quot;</span></span>
+<span id="cb34-6"><a href="프로그래밍-구조.html#cb34-6" tabindex="-1"></a>} <span class="cf">else</span> {</span>
+<span id="cb34-7"><a href="프로그래밍-구조.html#cb34-7" tabindex="-1"></a>  result <span class="ot">&lt;-</span> <span class="st">&quot;Fail&quot;</span></span>
+<span id="cb34-8"><a href="프로그래밍-구조.html#cb34-8" tabindex="-1"></a>}</span>
+<span id="cb34-9"><a href="프로그래밍-구조.html#cb34-9" tabindex="-1"></a></span>
+<span id="cb34-10"><a href="프로그래밍-구조.html#cb34-10" tabindex="-1"></a><span class="fu">print</span>(result)</span></code></pre></div>
 <pre><code>## [1] &quot;Fail&quot;</code></pre>
 <p><br></p>
 </div>
@@ -416,10 +416,10 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <ul>
 <li>조건에 따라 두 값 중 하나를 선택하는 경우, ifelse() 함수를 이용하면 편리함</li>
 </ul>
-<div class="sourceCode" id="cb7"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb7-1"><a href="프로그래밍-구조.html#cb7-1" tabindex="-1"></a><span class="fu">ifelse</span>(조건, 조건이 참일 때 선택할 값, 조건이 거짓일 때 선택할 값)</span></code></pre></div>
-<div class="sourceCode" id="cb8"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb8-1"><a href="프로그래밍-구조.html#cb8-1" tabindex="-1"></a>score <span class="ot">&lt;-</span> <span class="dv">85</span></span>
-<span id="cb8-2"><a href="프로그래밍-구조.html#cb8-2" tabindex="-1"></a>result <span class="ot">&lt;-</span> <span class="fu">ifelse</span>(score <span class="sc">&gt;=</span> <span class="dv">80</span>, <span class="st">&quot;Pass&quot;</span>, <span class="st">&quot;Fail&quot;</span>)</span>
-<span id="cb8-3"><a href="프로그래밍-구조.html#cb8-3" tabindex="-1"></a><span class="fu">print</span>(result)</span></code></pre></div>
+<div class="sourceCode" id="cb36"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb36-1"><a href="프로그래밍-구조.html#cb36-1" tabindex="-1"></a><span class="fu">ifelse</span>(조건, 조건이 참일 때 선택할 값, 조건이 거짓일 때 선택할 값)</span></code></pre></div>
+<div class="sourceCode" id="cb37"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb37-1"><a href="프로그래밍-구조.html#cb37-1" tabindex="-1"></a>score <span class="ot">&lt;-</span> <span class="dv">85</span></span>
+<span id="cb37-2"><a href="프로그래밍-구조.html#cb37-2" tabindex="-1"></a>result <span class="ot">&lt;-</span> <span class="fu">ifelse</span>(score <span class="sc">&gt;=</span> <span class="dv">80</span>, <span class="st">&quot;Pass&quot;</span>, <span class="st">&quot;Fail&quot;</span>)</span>
+<span id="cb37-3"><a href="프로그래밍-구조.html#cb37-3" tabindex="-1"></a><span class="fu">print</span>(result)</span></code></pre></div>
 <pre><code>## [1] &quot;Pass&quot;</code></pre>
 <p><br></p>
 </div>
@@ -429,33 +429,33 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li>첫 번째 조건이 거짓(FALSE)이면 두 번째 조건을 검사하고, 두 번째 조건이 참(TRUE)이면 해당 코드블록을 실행하는 조건문</li>
 <li>여러 조건을 순차적으로 검사할 때 사용함</li>
 </ul>
-<div class="sourceCode" id="cb10"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb10-1"><a href="프로그래밍-구조.html#cb10-1" tabindex="-1"></a><span class="cf">if</span>(조건1) {</span>
-<span id="cb10-2"><a href="프로그래밍-구조.html#cb10-2" tabindex="-1"></a>  조건1이 참일 때 실행할 명령문</span>
-<span id="cb10-3"><a href="프로그래밍-구조.html#cb10-3" tabindex="-1"></a>} <span class="cf">else</span> <span class="cf">if</span>(조건2) {</span>
-<span id="cb10-4"><a href="프로그래밍-구조.html#cb10-4" tabindex="-1"></a>  조건1은 거짓이고 조건 <span class="dv">2</span>는 참일 때 실행할 명령문</span>
-<span id="cb10-5"><a href="프로그래밍-구조.html#cb10-5" tabindex="-1"></a>} <span class="cf">else</span> <span class="cf">if</span>(조건3) {</span>
-<span id="cb10-6"><a href="프로그래밍-구조.html#cb10-6" tabindex="-1"></a>  조건1, 조건2는 거짓이고 조건 <span class="dv">3</span>은 참일 때 실행할 명령문</span>
-<span id="cb10-7"><a href="프로그래밍-구조.html#cb10-7" tabindex="-1"></a>} ... {</span>
-<span id="cb10-8"><a href="프로그래밍-구조.html#cb10-8" tabindex="-1"></a>} <span class="cf">else</span> {</span>
-<span id="cb10-9"><a href="프로그래밍-구조.html#cb10-9" tabindex="-1"></a>  모든 조건이 거짓일 때 실행할 명령문</span>
-<span id="cb10-10"><a href="프로그래밍-구조.html#cb10-10" tabindex="-1"></a>}</span></code></pre></div>
-<div class="sourceCode" id="cb11"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb11-1"><a href="프로그래밍-구조.html#cb11-1" tabindex="-1"></a><span class="do">## 시험 점수가 90점 이상이면 A학점, 80~90점 미만이면 B학점,</span></span>
-<span id="cb11-2"><a href="프로그래밍-구조.html#cb11-2" tabindex="-1"></a><span class="do">## 70~80점 미만이면 C학점, 60~70점 미만이면 D학점, 60점 미만이면 F학점 출력</span></span>
-<span id="cb11-3"><a href="프로그래밍-구조.html#cb11-3" tabindex="-1"></a>score <span class="ot">&lt;-</span> <span class="dv">85</span></span>
-<span id="cb11-4"><a href="프로그래밍-구조.html#cb11-4" tabindex="-1"></a></span>
-<span id="cb11-5"><a href="프로그래밍-구조.html#cb11-5" tabindex="-1"></a><span class="cf">if</span>(score <span class="sc">&gt;=</span> <span class="dv">90</span>) {</span>
-<span id="cb11-6"><a href="프로그래밍-구조.html#cb11-6" tabindex="-1"></a>    grade <span class="ot">&lt;-</span> <span class="st">&#39;A&#39;</span></span>
-<span id="cb11-7"><a href="프로그래밍-구조.html#cb11-7" tabindex="-1"></a>} <span class="cf">else</span> <span class="cf">if</span>(score <span class="sc">&gt;=</span> <span class="dv">80</span>) {</span>
-<span id="cb11-8"><a href="프로그래밍-구조.html#cb11-8" tabindex="-1"></a>    grade <span class="ot">&lt;-</span> <span class="st">&#39;B&#39;</span></span>
-<span id="cb11-9"><a href="프로그래밍-구조.html#cb11-9" tabindex="-1"></a>} <span class="cf">else</span> <span class="cf">if</span>(score <span class="sc">&gt;=</span> <span class="dv">70</span>) { </span>
-<span id="cb11-10"><a href="프로그래밍-구조.html#cb11-10" tabindex="-1"></a>    grade <span class="ot">&lt;-</span> <span class="st">&#39;C&#39;</span></span>
-<span id="cb11-11"><a href="프로그래밍-구조.html#cb11-11" tabindex="-1"></a>} <span class="cf">else</span> <span class="cf">if</span>(score <span class="sc">&gt;=</span> <span class="dv">60</span>) { </span>
-<span id="cb11-12"><a href="프로그래밍-구조.html#cb11-12" tabindex="-1"></a>    grade <span class="ot">&lt;-</span> <span class="st">&#39;D&#39;</span> </span>
-<span id="cb11-13"><a href="프로그래밍-구조.html#cb11-13" tabindex="-1"></a>} <span class="cf">else</span> { </span>
-<span id="cb11-14"><a href="프로그래밍-구조.html#cb11-14" tabindex="-1"></a>    grade <span class="ot">&lt;-</span> <span class="st">&#39;F&#39;</span> </span>
-<span id="cb11-15"><a href="프로그래밍-구조.html#cb11-15" tabindex="-1"></a>}</span>
-<span id="cb11-16"><a href="프로그래밍-구조.html#cb11-16" tabindex="-1"></a></span>
-<span id="cb11-17"><a href="프로그래밍-구조.html#cb11-17" tabindex="-1"></a><span class="fu">print</span>(grade)</span></code></pre></div>
+<div class="sourceCode" id="cb39"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb39-1"><a href="프로그래밍-구조.html#cb39-1" tabindex="-1"></a><span class="cf">if</span>(조건1) {</span>
+<span id="cb39-2"><a href="프로그래밍-구조.html#cb39-2" tabindex="-1"></a>  조건1이 참일 때 실행할 명령문</span>
+<span id="cb39-3"><a href="프로그래밍-구조.html#cb39-3" tabindex="-1"></a>} <span class="cf">else</span> <span class="cf">if</span>(조건2) {</span>
+<span id="cb39-4"><a href="프로그래밍-구조.html#cb39-4" tabindex="-1"></a>  조건1은 거짓이고 조건 <span class="dv">2</span>는 참일 때 실행할 명령문</span>
+<span id="cb39-5"><a href="프로그래밍-구조.html#cb39-5" tabindex="-1"></a>} <span class="cf">else</span> <span class="cf">if</span>(조건3) {</span>
+<span id="cb39-6"><a href="프로그래밍-구조.html#cb39-6" tabindex="-1"></a>  조건1, 조건2는 거짓이고 조건 <span class="dv">3</span>은 참일 때 실행할 명령문</span>
+<span id="cb39-7"><a href="프로그래밍-구조.html#cb39-7" tabindex="-1"></a>} ... {</span>
+<span id="cb39-8"><a href="프로그래밍-구조.html#cb39-8" tabindex="-1"></a>} <span class="cf">else</span> {</span>
+<span id="cb39-9"><a href="프로그래밍-구조.html#cb39-9" tabindex="-1"></a>  모든 조건이 거짓일 때 실행할 명령문</span>
+<span id="cb39-10"><a href="프로그래밍-구조.html#cb39-10" tabindex="-1"></a>}</span></code></pre></div>
+<div class="sourceCode" id="cb40"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb40-1"><a href="프로그래밍-구조.html#cb40-1" tabindex="-1"></a><span class="do">## 시험 점수가 90점 이상이면 A학점, 80~90점 미만이면 B학점,</span></span>
+<span id="cb40-2"><a href="프로그래밍-구조.html#cb40-2" tabindex="-1"></a><span class="do">## 70~80점 미만이면 C학점, 60~70점 미만이면 D학점, 60점 미만이면 F학점 출력</span></span>
+<span id="cb40-3"><a href="프로그래밍-구조.html#cb40-3" tabindex="-1"></a>score <span class="ot">&lt;-</span> <span class="dv">85</span></span>
+<span id="cb40-4"><a href="프로그래밍-구조.html#cb40-4" tabindex="-1"></a></span>
+<span id="cb40-5"><a href="프로그래밍-구조.html#cb40-5" tabindex="-1"></a><span class="cf">if</span>(score <span class="sc">&gt;=</span> <span class="dv">90</span>) {</span>
+<span id="cb40-6"><a href="프로그래밍-구조.html#cb40-6" tabindex="-1"></a>    grade <span class="ot">&lt;-</span> <span class="st">&#39;A&#39;</span></span>
+<span id="cb40-7"><a href="프로그래밍-구조.html#cb40-7" tabindex="-1"></a>} <span class="cf">else</span> <span class="cf">if</span>(score <span class="sc">&gt;=</span> <span class="dv">80</span>) {</span>
+<span id="cb40-8"><a href="프로그래밍-구조.html#cb40-8" tabindex="-1"></a>    grade <span class="ot">&lt;-</span> <span class="st">&#39;B&#39;</span></span>
+<span id="cb40-9"><a href="프로그래밍-구조.html#cb40-9" tabindex="-1"></a>} <span class="cf">else</span> <span class="cf">if</span>(score <span class="sc">&gt;=</span> <span class="dv">70</span>) { </span>
+<span id="cb40-10"><a href="프로그래밍-구조.html#cb40-10" tabindex="-1"></a>    grade <span class="ot">&lt;-</span> <span class="st">&#39;C&#39;</span></span>
+<span id="cb40-11"><a href="프로그래밍-구조.html#cb40-11" tabindex="-1"></a>} <span class="cf">else</span> <span class="cf">if</span>(score <span class="sc">&gt;=</span> <span class="dv">60</span>) { </span>
+<span id="cb40-12"><a href="프로그래밍-구조.html#cb40-12" tabindex="-1"></a>    grade <span class="ot">&lt;-</span> <span class="st">&#39;D&#39;</span> </span>
+<span id="cb40-13"><a href="프로그래밍-구조.html#cb40-13" tabindex="-1"></a>} <span class="cf">else</span> { </span>
+<span id="cb40-14"><a href="프로그래밍-구조.html#cb40-14" tabindex="-1"></a>    grade <span class="ot">&lt;-</span> <span class="st">&#39;F&#39;</span> </span>
+<span id="cb40-15"><a href="프로그래밍-구조.html#cb40-15" tabindex="-1"></a>}</span>
+<span id="cb40-16"><a href="프로그래밍-구조.html#cb40-16" tabindex="-1"></a></span>
+<span id="cb40-17"><a href="프로그래밍-구조.html#cb40-17" tabindex="-1"></a><span class="fu">print</span>(grade)</span></code></pre></div>
 <pre><code>## [1] &quot;B&quot;</code></pre>
 <p><br></p>
 <hr />
@@ -472,13 +472,13 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li>지정된 횟수만큼 반복하여 코드블록을 실행하는 반복문</li>
 </ul>
 <p><img src="img/fig4-3.png" /></p>
-<div class="sourceCode" id="cb13"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb13-1"><a href="프로그래밍-구조.html#cb13-1" tabindex="-1"></a><span class="cf">for</span>(반복변수 <span class="cf">in</span> 반복범위) {</span>
-<span id="cb13-2"><a href="프로그래밍-구조.html#cb13-2" tabindex="-1"></a>  반복할 명령문</span>
-<span id="cb13-3"><a href="프로그래밍-구조.html#cb13-3" tabindex="-1"></a>} </span></code></pre></div>
-<div class="sourceCode" id="cb14"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb14-1"><a href="프로그래밍-구조.html#cb14-1" tabindex="-1"></a><span class="do">## *을 5번 출력</span></span>
-<span id="cb14-2"><a href="프로그래밍-구조.html#cb14-2" tabindex="-1"></a><span class="cf">for</span>(i <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">5</span>) {</span>
-<span id="cb14-3"><a href="프로그래밍-구조.html#cb14-3" tabindex="-1"></a>  <span class="fu">print</span>(<span class="st">&quot;*&quot;</span>)</span>
-<span id="cb14-4"><a href="프로그래밍-구조.html#cb14-4" tabindex="-1"></a>}</span></code></pre></div>
+<div class="sourceCode" id="cb42"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb42-1"><a href="프로그래밍-구조.html#cb42-1" tabindex="-1"></a><span class="cf">for</span>(반복변수 <span class="cf">in</span> 반복범위) {</span>
+<span id="cb42-2"><a href="프로그래밍-구조.html#cb42-2" tabindex="-1"></a>  반복할 명령문</span>
+<span id="cb42-3"><a href="프로그래밍-구조.html#cb42-3" tabindex="-1"></a>} </span></code></pre></div>
+<div class="sourceCode" id="cb43"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb43-1"><a href="프로그래밍-구조.html#cb43-1" tabindex="-1"></a><span class="do">## *을 5번 출력</span></span>
+<span id="cb43-2"><a href="프로그래밍-구조.html#cb43-2" tabindex="-1"></a><span class="cf">for</span>(i <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">5</span>) {</span>
+<span id="cb43-3"><a href="프로그래밍-구조.html#cb43-3" tabindex="-1"></a>  <span class="fu">print</span>(<span class="st">&quot;*&quot;</span>)</span>
+<span id="cb43-4"><a href="프로그래밍-구조.html#cb43-4" tabindex="-1"></a>}</span></code></pre></div>
 <pre><code>## [1] &quot;*&quot;
 ## [1] &quot;*&quot;
 ## [1] &quot;*&quot;
@@ -493,9 +493,9 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li><code>\n</code> - 줄바꿈을 하도록 하는 특수문자</li>
 </ul></li>
 </ul>
-<div class="sourceCode" id="cb16"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb16-1"><a href="프로그래밍-구조.html#cb16-1" tabindex="-1"></a><span class="cf">for</span>(i <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">9</span>) {</span>
-<span id="cb16-2"><a href="프로그래밍-구조.html#cb16-2" tabindex="-1"></a>  <span class="fu">cat</span>(<span class="st">&quot;2 *&quot;</span>, i, <span class="st">&quot;=&quot;</span>, <span class="dv">2</span><span class="sc">*</span>i, <span class="st">&quot;</span><span class="sc">\n</span><span class="st">&quot;</span>)</span>
-<span id="cb16-3"><a href="프로그래밍-구조.html#cb16-3" tabindex="-1"></a>}</span></code></pre></div>
+<div class="sourceCode" id="cb45"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb45-1"><a href="프로그래밍-구조.html#cb45-1" tabindex="-1"></a><span class="cf">for</span>(i <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">9</span>) {</span>
+<span id="cb45-2"><a href="프로그래밍-구조.html#cb45-2" tabindex="-1"></a>  <span class="fu">cat</span>(<span class="st">&quot;2 *&quot;</span>, i, <span class="st">&quot;=&quot;</span>, <span class="dv">2</span><span class="sc">*</span>i, <span class="st">&quot;</span><span class="sc">\n</span><span class="st">&quot;</span>)</span>
+<span id="cb45-3"><a href="프로그래밍-구조.html#cb45-3" tabindex="-1"></a>}</span></code></pre></div>
 <pre><code>## 2 * 1 = 2 
 ## 2 * 2 = 4 
 ## 2 * 3 = 6 
@@ -509,11 +509,11 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <ul>
 <li>[예제] 1~20 사이의 숫자 중 짝수만 출력</li>
 </ul>
-<div class="sourceCode" id="cb18"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb18-1"><a href="프로그래밍-구조.html#cb18-1" tabindex="-1"></a><span class="cf">for</span>(i <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">20</span>) {</span>
-<span id="cb18-2"><a href="프로그래밍-구조.html#cb18-2" tabindex="-1"></a>  <span class="cf">if</span>(i<span class="sc">%%</span><span class="dv">2</span> <span class="sc">==</span> <span class="dv">0</span>) {</span>
-<span id="cb18-3"><a href="프로그래밍-구조.html#cb18-3" tabindex="-1"></a>    <span class="fu">print</span>(i)</span>
-<span id="cb18-4"><a href="프로그래밍-구조.html#cb18-4" tabindex="-1"></a>  }</span>
-<span id="cb18-5"><a href="프로그래밍-구조.html#cb18-5" tabindex="-1"></a>}</span></code></pre></div>
+<div class="sourceCode" id="cb47"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb47-1"><a href="프로그래밍-구조.html#cb47-1" tabindex="-1"></a><span class="cf">for</span>(i <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">20</span>) {</span>
+<span id="cb47-2"><a href="프로그래밍-구조.html#cb47-2" tabindex="-1"></a>  <span class="cf">if</span>(i<span class="sc">%%</span><span class="dv">2</span> <span class="sc">==</span> <span class="dv">0</span>) {</span>
+<span id="cb47-3"><a href="프로그래밍-구조.html#cb47-3" tabindex="-1"></a>    <span class="fu">print</span>(i)</span>
+<span id="cb47-4"><a href="프로그래밍-구조.html#cb47-4" tabindex="-1"></a>  }</span>
+<span id="cb47-5"><a href="프로그래밍-구조.html#cb47-5" tabindex="-1"></a>}</span></code></pre></div>
 <pre><code>## [1] 2
 ## [1] 4
 ## [1] 6
@@ -531,13 +531,13 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li>어떤 변수를 계산에서 사용하려면, 그 변수를 먼저 선언해야 함</li>
 </ul></li>
 </ul>
-<div class="sourceCode" id="cb20"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb20-1"><a href="프로그래밍-구조.html#cb20-1" tabindex="-1"></a>sum <span class="ot">&lt;-</span> <span class="dv">0</span></span>
-<span id="cb20-2"><a href="프로그래밍-구조.html#cb20-2" tabindex="-1"></a></span>
-<span id="cb20-3"><a href="프로그래밍-구조.html#cb20-3" tabindex="-1"></a><span class="cf">for</span>(i <span class="cf">in</span> <span class="dv">100</span>) {</span>
-<span id="cb20-4"><a href="프로그래밍-구조.html#cb20-4" tabindex="-1"></a>  sum <span class="ot">&lt;-</span> sum <span class="sc">+</span> i</span>
-<span id="cb20-5"><a href="프로그래밍-구조.html#cb20-5" tabindex="-1"></a>}</span>
-<span id="cb20-6"><a href="프로그래밍-구조.html#cb20-6" tabindex="-1"></a></span>
-<span id="cb20-7"><a href="프로그래밍-구조.html#cb20-7" tabindex="-1"></a><span class="fu">print</span>(sum)</span></code></pre></div>
+<div class="sourceCode" id="cb49"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb49-1"><a href="프로그래밍-구조.html#cb49-1" tabindex="-1"></a>sum <span class="ot">&lt;-</span> <span class="dv">0</span></span>
+<span id="cb49-2"><a href="프로그래밍-구조.html#cb49-2" tabindex="-1"></a></span>
+<span id="cb49-3"><a href="프로그래밍-구조.html#cb49-3" tabindex="-1"></a><span class="cf">for</span>(i <span class="cf">in</span> <span class="dv">100</span>) {</span>
+<span id="cb49-4"><a href="프로그래밍-구조.html#cb49-4" tabindex="-1"></a>  sum <span class="ot">&lt;-</span> sum <span class="sc">+</span> i</span>
+<span id="cb49-5"><a href="프로그래밍-구조.html#cb49-5" tabindex="-1"></a>}</span>
+<span id="cb49-6"><a href="프로그래밍-구조.html#cb49-6" tabindex="-1"></a></span>
+<span id="cb49-7"><a href="프로그래밍-구조.html#cb49-7" tabindex="-1"></a><span class="fu">print</span>(sum)</span></code></pre></div>
 <pre><code>## [1] 100</code></pre>
 <p><br></p>
 <ul>
@@ -555,18 +555,18 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p>※ 주의 : 영원히 실행되는 반복문을 ’무한루프(infinite loop)’라 하며, 컴퓨터의 작동을 멈출 수 있음</p>
 </blockquote>
 <p><img src="img/fig4-4.png" /></p>
-<div class="sourceCode" id="cb22"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb22-1"><a href="프로그래밍-구조.html#cb22-1" tabindex="-1"></a><span class="cf">while</span>(조건) {</span>
-<span id="cb22-2"><a href="프로그래밍-구조.html#cb22-2" tabindex="-1"></a>  반복할 명령문</span>
-<span id="cb22-3"><a href="프로그래밍-구조.html#cb22-3" tabindex="-1"></a>}</span></code></pre></div>
-<div class="sourceCode" id="cb23"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb23-1"><a href="프로그래밍-구조.html#cb23-1" tabindex="-1"></a>sum <span class="ot">&lt;-</span> <span class="dv">0</span></span>
-<span id="cb23-2"><a href="프로그래밍-구조.html#cb23-2" tabindex="-1"></a>i <span class="ot">&lt;-</span> i</span>
-<span id="cb23-3"><a href="프로그래밍-구조.html#cb23-3" tabindex="-1"></a></span>
-<span id="cb23-4"><a href="프로그래밍-구조.html#cb23-4" tabindex="-1"></a><span class="cf">while</span>(i <span class="sc">&lt;=</span> <span class="dv">100</span>) {</span>
-<span id="cb23-5"><a href="프로그래밍-구조.html#cb23-5" tabindex="-1"></a>  sum <span class="ot">&lt;-</span> sum <span class="sc">+</span> i</span>
-<span id="cb23-6"><a href="프로그래밍-구조.html#cb23-6" tabindex="-1"></a>  i <span class="ot">&lt;-</span> i <span class="sc">+</span> <span class="dv">1</span></span>
-<span id="cb23-7"><a href="프로그래밍-구조.html#cb23-7" tabindex="-1"></a>}</span>
-<span id="cb23-8"><a href="프로그래밍-구조.html#cb23-8" tabindex="-1"></a></span>
-<span id="cb23-9"><a href="프로그래밍-구조.html#cb23-9" tabindex="-1"></a><span class="fu">print</span>(sum)</span></code></pre></div>
+<div class="sourceCode" id="cb51"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb51-1"><a href="프로그래밍-구조.html#cb51-1" tabindex="-1"></a><span class="cf">while</span>(조건) {</span>
+<span id="cb51-2"><a href="프로그래밍-구조.html#cb51-2" tabindex="-1"></a>  반복할 명령문</span>
+<span id="cb51-3"><a href="프로그래밍-구조.html#cb51-3" tabindex="-1"></a>}</span></code></pre></div>
+<div class="sourceCode" id="cb52"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb52-1"><a href="프로그래밍-구조.html#cb52-1" tabindex="-1"></a>sum <span class="ot">&lt;-</span> <span class="dv">0</span></span>
+<span id="cb52-2"><a href="프로그래밍-구조.html#cb52-2" tabindex="-1"></a>i <span class="ot">&lt;-</span> i</span>
+<span id="cb52-3"><a href="프로그래밍-구조.html#cb52-3" tabindex="-1"></a></span>
+<span id="cb52-4"><a href="프로그래밍-구조.html#cb52-4" tabindex="-1"></a><span class="cf">while</span>(i <span class="sc">&lt;=</span> <span class="dv">100</span>) {</span>
+<span id="cb52-5"><a href="프로그래밍-구조.html#cb52-5" tabindex="-1"></a>  sum <span class="ot">&lt;-</span> sum <span class="sc">+</span> i</span>
+<span id="cb52-6"><a href="프로그래밍-구조.html#cb52-6" tabindex="-1"></a>  i <span class="ot">&lt;-</span> i <span class="sc">+</span> <span class="dv">1</span></span>
+<span id="cb52-7"><a href="프로그래밍-구조.html#cb52-7" tabindex="-1"></a>}</span>
+<span id="cb52-8"><a href="프로그래밍-구조.html#cb52-8" tabindex="-1"></a></span>
+<span id="cb52-9"><a href="프로그래밍-구조.html#cb52-9" tabindex="-1"></a><span class="fu">print</span>(sum)</span></code></pre></div>
 <pre><code>## [1] 100</code></pre>
 <p><br></p>
 </div>
@@ -576,23 +576,23 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li>break 문 : 반복문을 중단시키고, 반복문 이후의 첫 번째 명령문으로 이동시킴</li>
 <li>next 문 : 현재 반복을 건너뛰고, 반복문의 시작 지점으로 되돌려 다음 반복을 진행함</li>
 </ul>
-<div class="sourceCode" id="cb25"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb25-1"><a href="프로그래밍-구조.html#cb25-1" tabindex="-1"></a>sum <span class="ot">&lt;-</span> <span class="dv">0</span></span>
-<span id="cb25-2"><a href="프로그래밍-구조.html#cb25-2" tabindex="-1"></a></span>
-<span id="cb25-3"><a href="프로그래밍-구조.html#cb25-3" tabindex="-1"></a><span class="cf">for</span>(i <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">10</span>) {</span>
-<span id="cb25-4"><a href="프로그래밍-구조.html#cb25-4" tabindex="-1"></a>    sum <span class="ot">&lt;-</span> sum <span class="sc">+</span> i</span>
-<span id="cb25-5"><a href="프로그래밍-구조.html#cb25-5" tabindex="-1"></a>    <span class="cf">if</span>(i <span class="sc">&gt;=</span> <span class="dv">5</span>) <span class="cf">break</span></span>
-<span id="cb25-6"><a href="프로그래밍-구조.html#cb25-6" tabindex="-1"></a>}</span>
-<span id="cb25-7"><a href="프로그래밍-구조.html#cb25-7" tabindex="-1"></a></span>
-<span id="cb25-8"><a href="프로그래밍-구조.html#cb25-8" tabindex="-1"></a><span class="fu">print</span>(sum)                                  <span class="co"># 1~5 사이의 값의 합계</span></span></code></pre></div>
+<div class="sourceCode" id="cb54"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb54-1"><a href="프로그래밍-구조.html#cb54-1" tabindex="-1"></a>sum <span class="ot">&lt;-</span> <span class="dv">0</span></span>
+<span id="cb54-2"><a href="프로그래밍-구조.html#cb54-2" tabindex="-1"></a></span>
+<span id="cb54-3"><a href="프로그래밍-구조.html#cb54-3" tabindex="-1"></a><span class="cf">for</span>(i <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">10</span>) {</span>
+<span id="cb54-4"><a href="프로그래밍-구조.html#cb54-4" tabindex="-1"></a>    sum <span class="ot">&lt;-</span> sum <span class="sc">+</span> i</span>
+<span id="cb54-5"><a href="프로그래밍-구조.html#cb54-5" tabindex="-1"></a>    <span class="cf">if</span>(i <span class="sc">&gt;=</span> <span class="dv">5</span>) <span class="cf">break</span></span>
+<span id="cb54-6"><a href="프로그래밍-구조.html#cb54-6" tabindex="-1"></a>}</span>
+<span id="cb54-7"><a href="프로그래밍-구조.html#cb54-7" tabindex="-1"></a></span>
+<span id="cb54-8"><a href="프로그래밍-구조.html#cb54-8" tabindex="-1"></a><span class="fu">print</span>(sum)                                  <span class="co"># 1~5 사이의 값의 합계</span></span></code></pre></div>
 <pre><code>## [1] 15</code></pre>
-<div class="sourceCode" id="cb27"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb27-1"><a href="프로그래밍-구조.html#cb27-1" tabindex="-1"></a>sum <span class="ot">&lt;-</span> <span class="dv">0</span></span>
-<span id="cb27-2"><a href="프로그래밍-구조.html#cb27-2" tabindex="-1"></a></span>
-<span id="cb27-3"><a href="프로그래밍-구조.html#cb27-3" tabindex="-1"></a><span class="cf">for</span>(i <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">10</span>) {</span>
-<span id="cb27-4"><a href="프로그래밍-구조.html#cb27-4" tabindex="-1"></a>    <span class="cf">if</span> (i<span class="sc">%%</span><span class="dv">2</span> <span class="sc">==</span> <span class="dv">0</span>) <span class="cf">next</span></span>
-<span id="cb27-5"><a href="프로그래밍-구조.html#cb27-5" tabindex="-1"></a>    sum <span class="ot">&lt;-</span> sum <span class="sc">+</span> i</span>
-<span id="cb27-6"><a href="프로그래밍-구조.html#cb27-6" tabindex="-1"></a>}</span>
-<span id="cb27-7"><a href="프로그래밍-구조.html#cb27-7" tabindex="-1"></a></span>
-<span id="cb27-8"><a href="프로그래밍-구조.html#cb27-8" tabindex="-1"></a><span class="fu">print</span>(sum)                                  <span class="co"># 1~10 사이의 숫자 중 홀수의 합계</span></span></code></pre></div>
+<div class="sourceCode" id="cb56"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb56-1"><a href="프로그래밍-구조.html#cb56-1" tabindex="-1"></a>sum <span class="ot">&lt;-</span> <span class="dv">0</span></span>
+<span id="cb56-2"><a href="프로그래밍-구조.html#cb56-2" tabindex="-1"></a></span>
+<span id="cb56-3"><a href="프로그래밍-구조.html#cb56-3" tabindex="-1"></a><span class="cf">for</span>(i <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">10</span>) {</span>
+<span id="cb56-4"><a href="프로그래밍-구조.html#cb56-4" tabindex="-1"></a>    <span class="cf">if</span> (i<span class="sc">%%</span><span class="dv">2</span> <span class="sc">==</span> <span class="dv">0</span>) <span class="cf">next</span></span>
+<span id="cb56-5"><a href="프로그래밍-구조.html#cb56-5" tabindex="-1"></a>    sum <span class="ot">&lt;-</span> sum <span class="sc">+</span> i</span>
+<span id="cb56-6"><a href="프로그래밍-구조.html#cb56-6" tabindex="-1"></a>}</span>
+<span id="cb56-7"><a href="프로그래밍-구조.html#cb56-7" tabindex="-1"></a></span>
+<span id="cb56-8"><a href="프로그래밍-구조.html#cb56-8" tabindex="-1"></a><span class="fu">print</span>(sum)                                  <span class="co"># 1~10 사이의 숫자 중 홀수의 합계</span></span></code></pre></div>
 <pre><code>## [1] 25</code></pre>
 <p><br></p>
 </div>
@@ -640,23 +640,23 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </tr>
 </tbody>
 </table>
-<div class="sourceCode" id="cb29"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb29-1"><a href="프로그래밍-구조.html#cb29-1" tabindex="-1"></a><span class="co"># apply() 예제: 행렬에서 각 열의 평균 계산</span></span>
-<span id="cb29-2"><a href="프로그래밍-구조.html#cb29-2" tabindex="-1"></a><span class="fu">apply</span>(iris[, <span class="dv">1</span><span class="sc">:</span><span class="dv">4</span>], <span class="dv">2</span>, mean)</span>
-<span id="cb29-3"><a href="프로그래밍-구조.html#cb29-3" tabindex="-1"></a></span>
-<span id="cb29-4"><a href="프로그래밍-구조.html#cb29-4" tabindex="-1"></a><span class="co"># lapply() 예제: 각 열의 요약 통계량 계산</span></span>
-<span id="cb29-5"><a href="프로그래밍-구조.html#cb29-5" tabindex="-1"></a><span class="fu">lapply</span>(iris[, <span class="dv">1</span><span class="sc">:</span><span class="dv">4</span>], summary)</span>
-<span id="cb29-6"><a href="프로그래밍-구조.html#cb29-6" tabindex="-1"></a></span>
-<span id="cb29-7"><a href="프로그래밍-구조.html#cb29-7" tabindex="-1"></a><span class="co"># sapply() 예제: 각 열의 요약 통계량 계산 (벡터로 반환)</span></span>
-<span id="cb29-8"><a href="프로그래밍-구조.html#cb29-8" tabindex="-1"></a><span class="fu">sapply</span>(iris[, <span class="dv">1</span><span class="sc">:</span><span class="dv">4</span>], summary)</span>
-<span id="cb29-9"><a href="프로그래밍-구조.html#cb29-9" tabindex="-1"></a></span>
-<span id="cb29-10"><a href="프로그래밍-구조.html#cb29-10" tabindex="-1"></a><span class="co"># vapply() 예제: 각 열의 평균을 숫자로 반환</span></span>
-<span id="cb29-11"><a href="프로그래밍-구조.html#cb29-11" tabindex="-1"></a><span class="fu">vapply</span>(iris[, <span class="dv">1</span><span class="sc">:</span><span class="dv">4</span>], mean, <span class="fu">numeric</span>(<span class="dv">1</span>))</span>
-<span id="cb29-12"><a href="프로그래밍-구조.html#cb29-12" tabindex="-1"></a></span>
-<span id="cb29-13"><a href="프로그래밍-구조.html#cb29-13" tabindex="-1"></a><span class="co"># tapply() 예제: Species별로 Sepal.Length의 평균 계산</span></span>
-<span id="cb29-14"><a href="프로그래밍-구조.html#cb29-14" tabindex="-1"></a><span class="fu">tapply</span>(iris<span class="sc">$</span>Sepal.Length, iris<span class="sc">$</span>Species, mean)</span>
-<span id="cb29-15"><a href="프로그래밍-구조.html#cb29-15" tabindex="-1"></a></span>
-<span id="cb29-16"><a href="프로그래밍-구조.html#cb29-16" tabindex="-1"></a><span class="co"># mapply() 예제: Sepal.Length와 Sepal.Width의 합을 구하는 함수 적용</span></span>
-<span id="cb29-17"><a href="프로그래밍-구조.html#cb29-17" tabindex="-1"></a><span class="fu">mapply</span>(sum, iris<span class="sc">$</span>Sepal.Length, iris<span class="sc">$</span>Sepal.Width)</span></code></pre></div>
+<div class="sourceCode" id="cb58"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb58-1"><a href="프로그래밍-구조.html#cb58-1" tabindex="-1"></a><span class="co"># apply() 예제: 행렬에서 각 열의 평균 계산</span></span>
+<span id="cb58-2"><a href="프로그래밍-구조.html#cb58-2" tabindex="-1"></a><span class="fu">apply</span>(iris[, <span class="dv">1</span><span class="sc">:</span><span class="dv">4</span>], <span class="dv">2</span>, mean)</span>
+<span id="cb58-3"><a href="프로그래밍-구조.html#cb58-3" tabindex="-1"></a></span>
+<span id="cb58-4"><a href="프로그래밍-구조.html#cb58-4" tabindex="-1"></a><span class="co"># lapply() 예제: 각 열의 요약 통계량 계산</span></span>
+<span id="cb58-5"><a href="프로그래밍-구조.html#cb58-5" tabindex="-1"></a><span class="fu">lapply</span>(iris[, <span class="dv">1</span><span class="sc">:</span><span class="dv">4</span>], summary)</span>
+<span id="cb58-6"><a href="프로그래밍-구조.html#cb58-6" tabindex="-1"></a></span>
+<span id="cb58-7"><a href="프로그래밍-구조.html#cb58-7" tabindex="-1"></a><span class="co"># sapply() 예제: 각 열의 요약 통계량 계산 (벡터로 반환)</span></span>
+<span id="cb58-8"><a href="프로그래밍-구조.html#cb58-8" tabindex="-1"></a><span class="fu">sapply</span>(iris[, <span class="dv">1</span><span class="sc">:</span><span class="dv">4</span>], summary)</span>
+<span id="cb58-9"><a href="프로그래밍-구조.html#cb58-9" tabindex="-1"></a></span>
+<span id="cb58-10"><a href="프로그래밍-구조.html#cb58-10" tabindex="-1"></a><span class="co"># vapply() 예제: 각 열의 평균을 숫자로 반환</span></span>
+<span id="cb58-11"><a href="프로그래밍-구조.html#cb58-11" tabindex="-1"></a><span class="fu">vapply</span>(iris[, <span class="dv">1</span><span class="sc">:</span><span class="dv">4</span>], mean, <span class="fu">numeric</span>(<span class="dv">1</span>))</span>
+<span id="cb58-12"><a href="프로그래밍-구조.html#cb58-12" tabindex="-1"></a></span>
+<span id="cb58-13"><a href="프로그래밍-구조.html#cb58-13" tabindex="-1"></a><span class="co"># tapply() 예제: Species별로 Sepal.Length의 평균 계산</span></span>
+<span id="cb58-14"><a href="프로그래밍-구조.html#cb58-14" tabindex="-1"></a><span class="fu">tapply</span>(iris<span class="sc">$</span>Sepal.Length, iris<span class="sc">$</span>Species, mean)</span>
+<span id="cb58-15"><a href="프로그래밍-구조.html#cb58-15" tabindex="-1"></a></span>
+<span id="cb58-16"><a href="프로그래밍-구조.html#cb58-16" tabindex="-1"></a><span class="co"># mapply() 예제: Sepal.Length와 Sepal.Width의 합을 구하는 함수 적용</span></span>
+<span id="cb58-17"><a href="프로그래밍-구조.html#cb58-17" tabindex="-1"></a><span class="fu">mapply</span>(sum, iris<span class="sc">$</span>Sepal.Length, iris<span class="sc">$</span>Sepal.Width)</span></code></pre></div>
 <p><br></p>
 <hr />
 </div>
@@ -667,49 +667,49 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li>사용자가 직접 작성하여 필요한 작업을 수행하는 함수</li>
 <li>코드의 재사용성(reusability), 가독성(readability)을 높임</li>
 </ul>
-<div class="sourceCode" id="cb30"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb30-1"><a href="프로그래밍-구조.html#cb30-1" tabindex="-1"></a>함수명 <span class="ot">&lt;-</span> <span class="cf">function</span>(매개변수 목록) {</span>
-<span id="cb30-2"><a href="프로그래밍-구조.html#cb30-2" tabindex="-1"></a>  실행할 명령문</span>
-<span id="cb30-3"><a href="프로그래밍-구조.html#cb30-3" tabindex="-1"></a>  <span class="fu">return</span>(반환 값)</span>
-<span id="cb30-4"><a href="프로그래밍-구조.html#cb30-4" tabindex="-1"></a>}</span></code></pre></div>
+<div class="sourceCode" id="cb59"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb59-1"><a href="프로그래밍-구조.html#cb59-1" tabindex="-1"></a>함수명 <span class="ot">&lt;-</span> <span class="cf">function</span>(매개변수 목록) {</span>
+<span id="cb59-2"><a href="프로그래밍-구조.html#cb59-2" tabindex="-1"></a>  실행할 명령문</span>
+<span id="cb59-3"><a href="프로그래밍-구조.html#cb59-3" tabindex="-1"></a>  <span class="fu">return</span>(반환 값)</span>
+<span id="cb59-4"><a href="프로그래밍-구조.html#cb59-4" tabindex="-1"></a>}</span></code></pre></div>
 <p><br></p>
-<div class="sourceCode" id="cb31"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb31-1"><a href="프로그래밍-구조.html#cb31-1" tabindex="-1"></a><span class="do">## 두 개의 값을 입력받아 큰 수를 반환하는 함수</span></span>
-<span id="cb31-2"><a href="프로그래밍-구조.html#cb31-2" tabindex="-1"></a>mymax <span class="ot">&lt;-</span> <span class="cf">function</span>(x, y) {</span>
-<span id="cb31-3"><a href="프로그래밍-구조.html#cb31-3" tabindex="-1"></a>  max.value <span class="ot">&lt;-</span> x</span>
-<span id="cb31-4"><a href="프로그래밍-구조.html#cb31-4" tabindex="-1"></a>  <span class="cf">if</span> (y <span class="sc">&gt;</span> x) {</span>
-<span id="cb31-5"><a href="프로그래밍-구조.html#cb31-5" tabindex="-1"></a>    max.value <span class="ot">&lt;-</span> y</span>
-<span id="cb31-6"><a href="프로그래밍-구조.html#cb31-6" tabindex="-1"></a>  }</span>
-<span id="cb31-7"><a href="프로그래밍-구조.html#cb31-7" tabindex="-1"></a>  <span class="fu">return</span>(max.value)</span>
-<span id="cb31-8"><a href="프로그래밍-구조.html#cb31-8" tabindex="-1"></a>}</span>
-<span id="cb31-9"><a href="프로그래밍-구조.html#cb31-9" tabindex="-1"></a></span>
-<span id="cb31-10"><a href="프로그래밍-구조.html#cb31-10" tabindex="-1"></a><span class="fu">mymax</span>(<span class="dv">10</span>, <span class="dv">20</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb60"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb60-1"><a href="프로그래밍-구조.html#cb60-1" tabindex="-1"></a><span class="do">## 두 개의 값을 입력받아 큰 수를 반환하는 함수</span></span>
+<span id="cb60-2"><a href="프로그래밍-구조.html#cb60-2" tabindex="-1"></a>mymax <span class="ot">&lt;-</span> <span class="cf">function</span>(x, y) {</span>
+<span id="cb60-3"><a href="프로그래밍-구조.html#cb60-3" tabindex="-1"></a>  max.value <span class="ot">&lt;-</span> x</span>
+<span id="cb60-4"><a href="프로그래밍-구조.html#cb60-4" tabindex="-1"></a>  <span class="cf">if</span> (y <span class="sc">&gt;</span> x) {</span>
+<span id="cb60-5"><a href="프로그래밍-구조.html#cb60-5" tabindex="-1"></a>    max.value <span class="ot">&lt;-</span> y</span>
+<span id="cb60-6"><a href="프로그래밍-구조.html#cb60-6" tabindex="-1"></a>  }</span>
+<span id="cb60-7"><a href="프로그래밍-구조.html#cb60-7" tabindex="-1"></a>  <span class="fu">return</span>(max.value)</span>
+<span id="cb60-8"><a href="프로그래밍-구조.html#cb60-8" tabindex="-1"></a>}</span>
+<span id="cb60-9"><a href="프로그래밍-구조.html#cb60-9" tabindex="-1"></a></span>
+<span id="cb60-10"><a href="프로그래밍-구조.html#cb60-10" tabindex="-1"></a><span class="fu">mymax</span>(<span class="dv">10</span>, <span class="dv">20</span>)</span></code></pre></div>
 <pre><code>## [1] 20</code></pre>
 <p><br></p>
 <ul>
 <li>사용자 정의 함수에서도 매개변수의 초기값(default value)을 설정할 수 있음</li>
 </ul>
-<div class="sourceCode" id="cb33"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb33-1"><a href="프로그래밍-구조.html#cb33-1" tabindex="-1"></a><span class="do">## 매개변수 x, y를 입력 받아 x/y 값을 반환하는 함수(단, y의 초기값은 2)</span></span>
-<span id="cb33-2"><a href="프로그래밍-구조.html#cb33-2" tabindex="-1"></a>mydiv <span class="ot">&lt;-</span> <span class="cf">function</span>(x, <span class="at">y=</span><span class="dv">2</span>) {</span>
-<span id="cb33-3"><a href="프로그래밍-구조.html#cb33-3" tabindex="-1"></a>  result <span class="ot">&lt;-</span> x <span class="sc">/</span> y</span>
-<span id="cb33-4"><a href="프로그래밍-구조.html#cb33-4" tabindex="-1"></a>  <span class="fu">return</span>(result)</span>
-<span id="cb33-5"><a href="프로그래밍-구조.html#cb33-5" tabindex="-1"></a>}</span>
-<span id="cb33-6"><a href="프로그래밍-구조.html#cb33-6" tabindex="-1"></a></span>
-<span id="cb33-7"><a href="프로그래밍-구조.html#cb33-7" tabindex="-1"></a><span class="fu">mydiv</span>(<span class="at">x =</span> <span class="dv">10</span>, <span class="at">y =</span> <span class="dv">3</span>)                        <span class="co"># 매개변수 이름과 매개변수 값을 쌍으로 입력</span></span>
-<span id="cb33-8"><a href="프로그래밍-구조.html#cb33-8" tabindex="-1"></a><span class="fu">mydiv</span>(<span class="dv">10</span>, <span class="dv">3</span>)                                <span class="co"># 매개변수 값만 입력</span></span>
-<span id="cb33-9"><a href="프로그래밍-구조.html#cb33-9" tabindex="-1"></a><span class="fu">mydiv</span>(<span class="dv">10</span>)                                   <span class="co"># x에 대한 값만 입력(y 값 생략)</span></span></code></pre></div>
+<div class="sourceCode" id="cb62"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb62-1"><a href="프로그래밍-구조.html#cb62-1" tabindex="-1"></a><span class="do">## 매개변수 x, y를 입력 받아 x/y 값을 반환하는 함수(단, y의 초기값은 2)</span></span>
+<span id="cb62-2"><a href="프로그래밍-구조.html#cb62-2" tabindex="-1"></a>mydiv <span class="ot">&lt;-</span> <span class="cf">function</span>(x, <span class="at">y=</span><span class="dv">2</span>) {</span>
+<span id="cb62-3"><a href="프로그래밍-구조.html#cb62-3" tabindex="-1"></a>  result <span class="ot">&lt;-</span> x <span class="sc">/</span> y</span>
+<span id="cb62-4"><a href="프로그래밍-구조.html#cb62-4" tabindex="-1"></a>  <span class="fu">return</span>(result)</span>
+<span id="cb62-5"><a href="프로그래밍-구조.html#cb62-5" tabindex="-1"></a>}</span>
+<span id="cb62-6"><a href="프로그래밍-구조.html#cb62-6" tabindex="-1"></a></span>
+<span id="cb62-7"><a href="프로그래밍-구조.html#cb62-7" tabindex="-1"></a><span class="fu">mydiv</span>(<span class="at">x =</span> <span class="dv">10</span>, <span class="at">y =</span> <span class="dv">3</span>)                        <span class="co"># 매개변수 이름과 매개변수 값을 쌍으로 입력</span></span>
+<span id="cb62-8"><a href="프로그래밍-구조.html#cb62-8" tabindex="-1"></a><span class="fu">mydiv</span>(<span class="dv">10</span>, <span class="dv">3</span>)                                <span class="co"># 매개변수 값만 입력</span></span>
+<span id="cb62-9"><a href="프로그래밍-구조.html#cb62-9" tabindex="-1"></a><span class="fu">mydiv</span>(<span class="dv">10</span>)                                   <span class="co"># x에 대한 값만 입력(y 값 생략)</span></span></code></pre></div>
 <p><br></p>
 <ul>
 <li>여러 개의 값을 반환해야 하는 경우에는 이를 리스트로 묶어 반환함</li>
 </ul>
-<div class="sourceCode" id="cb34"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb34-1"><a href="프로그래밍-구조.html#cb34-1" tabindex="-1"></a><span class="do">## 매개변수 x, y를 입력 받아 두 변수의 합과 곱을 리스트로 반환하는 함수</span></span>
-<span id="cb34-2"><a href="프로그래밍-구조.html#cb34-2" tabindex="-1"></a>myfunc <span class="ot">&lt;-</span> <span class="cf">function</span>(x, y) {</span>
-<span id="cb34-3"><a href="프로그래밍-구조.html#cb34-3" tabindex="-1"></a>  sum.value <span class="ot">&lt;-</span> x <span class="sc">+</span> y</span>
-<span id="cb34-4"><a href="프로그래밍-구조.html#cb34-4" tabindex="-1"></a>  mul.value <span class="ot">&lt;-</span> x <span class="sc">*</span> y</span>
-<span id="cb34-5"><a href="프로그래밍-구조.html#cb34-5" tabindex="-1"></a>  <span class="fu">return</span>(<span class="fu">list</span>(<span class="at">sum =</span> sum.value, <span class="at">mul =</span> mul.value)) </span>
-<span id="cb34-6"><a href="프로그래밍-구조.html#cb34-6" tabindex="-1"></a>}</span>
-<span id="cb34-7"><a href="프로그래밍-구조.html#cb34-7" tabindex="-1"></a></span>
-<span id="cb34-8"><a href="프로그래밍-구조.html#cb34-8" tabindex="-1"></a>result <span class="ot">&lt;-</span> <span class="fu">myfunc</span>(<span class="dv">5</span>, <span class="dv">8</span>)</span>
-<span id="cb34-9"><a href="프로그래밍-구조.html#cb34-9" tabindex="-1"></a>result<span class="sc">$</span>sum                                  <span class="co"># 5, 8의 합</span></span>
-<span id="cb34-10"><a href="프로그래밍-구조.html#cb34-10" tabindex="-1"></a>result<span class="sc">$</span>mul                                  <span class="co"># 5, 8의 곱</span></span></code></pre></div>
+<div class="sourceCode" id="cb63"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb63-1"><a href="프로그래밍-구조.html#cb63-1" tabindex="-1"></a><span class="do">## 매개변수 x, y를 입력 받아 두 변수의 합과 곱을 리스트로 반환하는 함수</span></span>
+<span id="cb63-2"><a href="프로그래밍-구조.html#cb63-2" tabindex="-1"></a>myfunc <span class="ot">&lt;-</span> <span class="cf">function</span>(x, y) {</span>
+<span id="cb63-3"><a href="프로그래밍-구조.html#cb63-3" tabindex="-1"></a>  sum.value <span class="ot">&lt;-</span> x <span class="sc">+</span> y</span>
+<span id="cb63-4"><a href="프로그래밍-구조.html#cb63-4" tabindex="-1"></a>  mul.value <span class="ot">&lt;-</span> x <span class="sc">*</span> y</span>
+<span id="cb63-5"><a href="프로그래밍-구조.html#cb63-5" tabindex="-1"></a>  <span class="fu">return</span>(<span class="fu">list</span>(<span class="at">sum =</span> sum.value, <span class="at">mul =</span> mul.value)) </span>
+<span id="cb63-6"><a href="프로그래밍-구조.html#cb63-6" tabindex="-1"></a>}</span>
+<span id="cb63-7"><a href="프로그래밍-구조.html#cb63-7" tabindex="-1"></a></span>
+<span id="cb63-8"><a href="프로그래밍-구조.html#cb63-8" tabindex="-1"></a>result <span class="ot">&lt;-</span> <span class="fu">myfunc</span>(<span class="dv">5</span>, <span class="dv">8</span>)</span>
+<span id="cb63-9"><a href="프로그래밍-구조.html#cb63-9" tabindex="-1"></a>result<span class="sc">$</span>sum                                  <span class="co"># 5, 8의 합</span></span>
+<span id="cb63-10"><a href="프로그래밍-구조.html#cb63-10" tabindex="-1"></a>result<span class="sc">$</span>mul                                  <span class="co"># 5, 8의 곱</span></span></code></pre></div>
 <p><br></p>
 <hr />
 </div>
@@ -809,6 +809,20 @@ gitbook.start({
 });
 </script>
 
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.9/latest.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:")
+      if (/^https?:/.test(src))
+        src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
 </body>
 
 </html>
