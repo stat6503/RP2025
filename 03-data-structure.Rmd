@@ -112,8 +112,10 @@ v[c(TRUE, TRUE, FALSE, TRUE, FALSE)]        # TRUE에 해당하는 인덱스 값
 ```{r eval = FALSE}
 v9 <- c(3, 7, 6)
 v10 <- c(4, 2, 8)
-v9 + 2                                      # 5, 9, 8
+
+v9 + 2                                      # 5, 9, 8 - 벡터화(vectorization)
 v9 - v10                                    # -1, 5, -2
+v9 * c(10, 5)                               # 경고: 30, 35, 60 - 재활용 규칙(recycling rule) 적용
 ```
 
 <br>

@@ -497,8 +497,10 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </ul>
 <div class="sourceCode" id="cb9"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb9-1"><a href="데이터와-자료구조.html#cb9-1" tabindex="-1"></a>v9 <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">3</span>, <span class="dv">7</span>, <span class="dv">6</span>)</span>
 <span id="cb9-2"><a href="데이터와-자료구조.html#cb9-2" tabindex="-1"></a>v10 <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">4</span>, <span class="dv">2</span>, <span class="dv">8</span>)</span>
-<span id="cb9-3"><a href="데이터와-자료구조.html#cb9-3" tabindex="-1"></a>v9 <span class="sc">+</span> <span class="dv">2</span>                                      <span class="co"># 5, 9, 8</span></span>
-<span id="cb9-4"><a href="데이터와-자료구조.html#cb9-4" tabindex="-1"></a>v9 <span class="sc">-</span> v10                                    <span class="co"># -1, 5, -2</span></span></code></pre></div>
+<span id="cb9-3"><a href="데이터와-자료구조.html#cb9-3" tabindex="-1"></a></span>
+<span id="cb9-4"><a href="데이터와-자료구조.html#cb9-4" tabindex="-1"></a>v9 <span class="sc">+</span> <span class="dv">2</span>                                      <span class="co"># 5, 9, 8 - 벡터화(vectorization)</span></span>
+<span id="cb9-5"><a href="데이터와-자료구조.html#cb9-5" tabindex="-1"></a>v9 <span class="sc">-</span> v10                                    <span class="co"># -1, 5, -2</span></span>
+<span id="cb9-6"><a href="데이터와-자료구조.html#cb9-6" tabindex="-1"></a>v9 <span class="sc">*</span> <span class="fu">c</span>(<span class="dv">10</span>, <span class="dv">5</span>)                               <span class="co"># 경고: 30, 35, 60 - 재활용 규칙(recycling rule) 적용</span></span></code></pre></div>
 <p><br></p>
 <ul>
 <li>벡터에 적용 가능한 함수</li>
