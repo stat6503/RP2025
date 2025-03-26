@@ -238,7 +238,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="5.4" data-path="tidyverse-통합-패키지.html"><a href="tidyverse-통합-패키지.html#파이프pipe-연산자"><i class="fa fa-check"></i><b>5.4</b> 파이프(pipe) 연산자</a></li>
 <li class="chapter" data-level="5.5" data-path="tidyverse-통합-패키지.html"><a href="tidyverse-통합-패키지.html#tibble-패키지"><i class="fa fa-check"></i><b>5.5</b> tibble 패키지</a>
 <ul>
-<li class="chapter" data-level="5.5.1" data-path="tidyverse-통합-패키지.html"><a href="tidyverse-통합-패키지.html#tibble-object"><i class="fa fa-check"></i><b>5.5.1</b> tibble object</a></li>
+<li class="chapter" data-level="5.5.1" data-path="tidyverse-통합-패키지.html"><a href="tidyverse-통합-패키지.html#tibble"><i class="fa fa-check"></i><b>5.5.1</b> tibble</a></li>
 <li class="chapter" data-level="5.5.2" data-path="tidyverse-통합-패키지.html"><a href="tidyverse-통합-패키지.html#tibble-이해"><i class="fa fa-check"></i><b>5.5.2</b> tibble 이해</a></li>
 </ul></li>
 <li class="chapter" data-level="5.6" data-path="tidyverse-통합-패키지.html"><a href="tidyverse-통합-패키지.html#readr-패키지"><i class="fa fa-check"></i><b>5.6</b> readr 패키지</a>
@@ -490,50 +490,50 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li>clarity : a measurement of how clear the diamond is (I1 (worst), SI2, SI1, VS2, VS1, VVS2, VVS1, IF (best))</li>
 </ul></li>
 </ul>
-<div class="sourceCode" id="cb114"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb114-1"><a href="데이터-시각화.html#cb114-1" tabindex="-1"></a><span class="do">## Example 1</span></span>
-<span id="cb114-2"><a href="데이터-시각화.html#cb114-2" tabindex="-1"></a><span class="fu">library</span>(ggplot2)</span>
-<span id="cb114-3"><a href="데이터-시각화.html#cb114-3" tabindex="-1"></a><span class="fu">ggplot</span>(diamonds, <span class="fu">aes</span>(<span class="at">x =</span> cut)) <span class="sc">+</span> <span class="fu">geom_bar</span>()</span>
-<span id="cb114-4"><a href="데이터-시각화.html#cb114-4" tabindex="-1"></a><span class="fu">ggplot</span>(diamonds, <span class="fu">aes</span>(<span class="at">x =</span> cut)) <span class="sc">+</span> <span class="fu">geom_bar</span>(<span class="at">fill =</span><span class="st">&quot;orange&quot;</span>)</span>
-<span id="cb114-5"><a href="데이터-시각화.html#cb114-5" tabindex="-1"></a><span class="fu">ggplot</span>(diamonds, <span class="fu">aes</span>(<span class="at">x =</span> cut, <span class="at">fill =</span> cut)) <span class="sc">+</span> <span class="fu">geom_bar</span>()</span>
-<span id="cb114-6"><a href="데이터-시각화.html#cb114-6" tabindex="-1"></a></span>
-<span id="cb114-7"><a href="데이터-시각화.html#cb114-7" tabindex="-1"></a><span class="co"># cut 및 clarity에 따른 막대 그래프</span></span>
-<span id="cb114-8"><a href="데이터-시각화.html#cb114-8" tabindex="-1"></a><span class="fu">ggplot</span>(diamonds, <span class="fu">aes</span>(<span class="at">x =</span> cut, <span class="at">fill =</span> clarity)) <span class="sc">+</span> <span class="fu">geom_bar</span>()                <span class="co"># 누적 막대 그래프</span></span>
-<span id="cb114-9"><a href="데이터-시각화.html#cb114-9" tabindex="-1"></a><span class="fu">ggplot</span>(diamonds, <span class="fu">aes</span>(<span class="at">x =</span> cut, <span class="at">fill =</span> clarity)) <span class="sc">+</span> <span class="fu">geom_bar</span>(<span class="at">position=</span><span class="st">&quot;fill&quot;</span>) <span class="co"># 100% 누적 막대 그래프</span></span>
-<span id="cb114-10"><a href="데이터-시각화.html#cb114-10" tabindex="-1"></a><span class="fu">ggplot</span>(diamonds, <span class="fu">aes</span>(<span class="at">x =</span> cut, <span class="at">fill =</span> clarity)) <span class="sc">+</span> <span class="fu">geom_bar</span>(<span class="at">position=</span><span class="st">&quot;dodge&quot;</span>)</span>
-<span id="cb114-11"><a href="데이터-시각화.html#cb114-11" tabindex="-1"></a><span class="fu">ggplot</span>(diamonds, <span class="fu">aes</span>(<span class="at">x =</span> cut, <span class="at">fill =</span> clarity)) <span class="sc">+</span> <span class="fu">geom_bar</span>(<span class="at">position=</span><span class="st">&quot;identity&quot;</span>, <span class="at">alpha =</span> <span class="fl">0.2</span>)</span></code></pre></div>
-<div class="sourceCode" id="cb115"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb115-1"><a href="데이터-시각화.html#cb115-1" tabindex="-1"></a><span class="do">## Example 2</span></span>
-<span id="cb115-2"><a href="데이터-시각화.html#cb115-2" tabindex="-1"></a><span class="fu">library</span>(forcats)</span>
-<span id="cb115-3"><a href="데이터-시각화.html#cb115-3" tabindex="-1"></a>gss_cat <span class="sc">%&gt;%</span> </span>
-<span id="cb115-4"><a href="데이터-시각화.html#cb115-4" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">race =</span> <span class="fu">fct_infreq</span>(race)) <span class="sc">%&gt;%</span>           <span class="co"># 각 수준의 빈도에 대해 내림차순 재정렬</span></span>
-<span id="cb115-5"><a href="데이터-시각화.html#cb115-5" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(race, <span class="at">fill =</span> race)) <span class="sc">+</span></span>
-<span id="cb115-6"><a href="데이터-시각화.html#cb115-6" tabindex="-1"></a>    <span class="fu">geom_bar</span>() <span class="sc">+</span></span>
-<span id="cb115-7"><a href="데이터-시각화.html#cb115-7" tabindex="-1"></a>    <span class="fu">scale_x_discrete</span>(<span class="at">drop =</span> <span class="cn">FALSE</span>) <span class="sc">+</span>            <span class="co"># 값이 없는 팩터의 수준(labels)을 표시</span></span>
-<span id="cb115-8"><a href="데이터-시각화.html#cb115-8" tabindex="-1"></a>    <span class="fu">scale_fill_manual</span>(<span class="at">values =</span> <span class="fu">c</span>(<span class="st">&quot;#d1495b&quot;</span>, <span class="st">&quot;#edae49&quot;</span>, <span class="st">&quot;#66a182&quot;</span>, <span class="st">&quot;#2389da&quot;</span>)) <span class="sc">+</span></span>
-<span id="cb115-9"><a href="데이터-시각화.html#cb115-9" tabindex="-1"></a>    <span class="fu">theme</span>(<span class="at">axis.title =</span> <span class="fu">element_text</span>(<span class="at">size =</span> <span class="dv">10</span>),</span>
-<span id="cb115-10"><a href="데이터-시각화.html#cb115-10" tabindex="-1"></a>          <span class="at">axis.text =</span> <span class="fu">element_text</span>(<span class="at">size =</span> <span class="dv">10</span>)) <span class="sc">+</span></span>
-<span id="cb115-11"><a href="데이터-시각화.html#cb115-11" tabindex="-1"></a>    <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">&quot;&quot;</span>, <span class="at">y =</span> <span class="st">&quot;frequency&quot;</span>)</span></code></pre></div>
-<div class="sourceCode" id="cb116"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb116-1"><a href="데이터-시각화.html#cb116-1" tabindex="-1"></a><span class="do">## Example 3</span></span>
-<span id="cb116-2"><a href="데이터-시각화.html#cb116-2" tabindex="-1"></a><span class="fu">library</span>(lubridate)</span>
-<span id="cb116-3"><a href="데이터-시각화.html#cb116-3" tabindex="-1"></a>make_datetime_100 <span class="ot">&lt;-</span> <span class="cf">function</span>(year, month, day, time) {</span>
-<span id="cb116-4"><a href="데이터-시각화.html#cb116-4" tabindex="-1"></a>  <span class="fu">make_datetime</span>(year, month, day, time <span class="sc">%/%</span> <span class="dv">100</span>, time <span class="sc">%%</span> <span class="dv">100</span>)</span>
-<span id="cb116-5"><a href="데이터-시각화.html#cb116-5" tabindex="-1"></a>}</span>
-<span id="cb116-6"><a href="데이터-시각화.html#cb116-6" tabindex="-1"></a></span>
-<span id="cb116-7"><a href="데이터-시각화.html#cb116-7" tabindex="-1"></a><span class="fu">library</span>(nycflights13)</span>
-<span id="cb116-8"><a href="데이터-시각화.html#cb116-8" tabindex="-1"></a>flights_dt <span class="ot">&lt;-</span> flights <span class="sc">%&gt;%</span> </span>
-<span id="cb116-9"><a href="데이터-시각화.html#cb116-9" tabindex="-1"></a>  <span class="fu">filter</span>(<span class="sc">!</span><span class="fu">is.na</span>(dep_time), <span class="sc">!</span><span class="fu">is.na</span>(arr_time)) <span class="sc">%&gt;%</span> </span>
-<span id="cb116-10"><a href="데이터-시각화.html#cb116-10" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">dep_time =</span> <span class="fu">make_datetime_100</span>(year, month, day, dep_time),</span>
-<span id="cb116-11"><a href="데이터-시각화.html#cb116-11" tabindex="-1"></a>         <span class="at">arr_time =</span> <span class="fu">make_datetime_100</span>(year, month, day, arr_time),</span>
-<span id="cb116-12"><a href="데이터-시각화.html#cb116-12" tabindex="-1"></a>         <span class="at">sched_dep_time =</span> <span class="fu">make_datetime_100</span>(year, month, day, sched_dep_time),</span>
-<span id="cb116-13"><a href="데이터-시각화.html#cb116-13" tabindex="-1"></a>         <span class="at">sched_arr_time =</span> <span class="fu">make_datetime_100</span>(year, month, day, sched_arr_time)) <span class="sc">%&gt;%</span> </span>
-<span id="cb116-14"><a href="데이터-시각화.html#cb116-14" tabindex="-1"></a>  <span class="fu">select</span>(origin, dest, <span class="fu">ends_with</span>(<span class="st">&quot;delay&quot;</span>), <span class="fu">ends_with</span>(<span class="st">&quot;time&quot;</span>))</span>
-<span id="cb116-15"><a href="데이터-시각화.html#cb116-15" tabindex="-1"></a></span>
-<span id="cb116-16"><a href="데이터-시각화.html#cb116-16" tabindex="-1"></a><span class="do">## 출발 요일에 대한 분포</span></span>
-<span id="cb116-17"><a href="데이터-시각화.html#cb116-17" tabindex="-1"></a><span class="fu">library</span>(RColorBrewer)</span>
-<span id="cb116-18"><a href="데이터-시각화.html#cb116-18" tabindex="-1"></a>flights_dt <span class="sc">%&gt;%</span> </span>
-<span id="cb116-19"><a href="데이터-시각화.html#cb116-19" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">wday =</span> <span class="fu">wday</span>(dep_time, <span class="at">label =</span> <span class="cn">TRUE</span>)) <span class="sc">%&gt;%</span> </span>
-<span id="cb116-20"><a href="데이터-시각화.html#cb116-20" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> wday, <span class="at">fill =</span> wday)) <span class="sc">+</span></span>
-<span id="cb116-21"><a href="데이터-시각화.html#cb116-21" tabindex="-1"></a>    <span class="fu">geom_bar</span>() <span class="sc">+</span></span>
-<span id="cb116-22"><a href="데이터-시각화.html#cb116-22" tabindex="-1"></a>    <span class="fu">scale_fill_manual</span>(<span class="at">values =</span> <span class="fu">brewer.pal</span>(<span class="dv">7</span>, <span class="st">&quot;Spectral&quot;</span>))</span></code></pre></div>
+<div class="sourceCode" id="cb115"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb115-1"><a href="데이터-시각화.html#cb115-1" tabindex="-1"></a><span class="do">## Example 1</span></span>
+<span id="cb115-2"><a href="데이터-시각화.html#cb115-2" tabindex="-1"></a><span class="fu">library</span>(ggplot2)</span>
+<span id="cb115-3"><a href="데이터-시각화.html#cb115-3" tabindex="-1"></a><span class="fu">ggplot</span>(diamonds, <span class="fu">aes</span>(<span class="at">x =</span> cut)) <span class="sc">+</span> <span class="fu">geom_bar</span>()</span>
+<span id="cb115-4"><a href="데이터-시각화.html#cb115-4" tabindex="-1"></a><span class="fu">ggplot</span>(diamonds, <span class="fu">aes</span>(<span class="at">x =</span> cut)) <span class="sc">+</span> <span class="fu">geom_bar</span>(<span class="at">fill =</span><span class="st">&quot;orange&quot;</span>)</span>
+<span id="cb115-5"><a href="데이터-시각화.html#cb115-5" tabindex="-1"></a><span class="fu">ggplot</span>(diamonds, <span class="fu">aes</span>(<span class="at">x =</span> cut, <span class="at">fill =</span> cut)) <span class="sc">+</span> <span class="fu">geom_bar</span>()</span>
+<span id="cb115-6"><a href="데이터-시각화.html#cb115-6" tabindex="-1"></a></span>
+<span id="cb115-7"><a href="데이터-시각화.html#cb115-7" tabindex="-1"></a><span class="co"># cut 및 clarity에 따른 막대 그래프</span></span>
+<span id="cb115-8"><a href="데이터-시각화.html#cb115-8" tabindex="-1"></a><span class="fu">ggplot</span>(diamonds, <span class="fu">aes</span>(<span class="at">x =</span> cut, <span class="at">fill =</span> clarity)) <span class="sc">+</span> <span class="fu">geom_bar</span>()                <span class="co"># 누적 막대 그래프</span></span>
+<span id="cb115-9"><a href="데이터-시각화.html#cb115-9" tabindex="-1"></a><span class="fu">ggplot</span>(diamonds, <span class="fu">aes</span>(<span class="at">x =</span> cut, <span class="at">fill =</span> clarity)) <span class="sc">+</span> <span class="fu">geom_bar</span>(<span class="at">position=</span><span class="st">&quot;fill&quot;</span>) <span class="co"># 100% 누적 막대 그래프</span></span>
+<span id="cb115-10"><a href="데이터-시각화.html#cb115-10" tabindex="-1"></a><span class="fu">ggplot</span>(diamonds, <span class="fu">aes</span>(<span class="at">x =</span> cut, <span class="at">fill =</span> clarity)) <span class="sc">+</span> <span class="fu">geom_bar</span>(<span class="at">position=</span><span class="st">&quot;dodge&quot;</span>)</span>
+<span id="cb115-11"><a href="데이터-시각화.html#cb115-11" tabindex="-1"></a><span class="fu">ggplot</span>(diamonds, <span class="fu">aes</span>(<span class="at">x =</span> cut, <span class="at">fill =</span> clarity)) <span class="sc">+</span> <span class="fu">geom_bar</span>(<span class="at">position=</span><span class="st">&quot;identity&quot;</span>, <span class="at">alpha =</span> <span class="fl">0.2</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb116"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb116-1"><a href="데이터-시각화.html#cb116-1" tabindex="-1"></a><span class="do">## Example 2</span></span>
+<span id="cb116-2"><a href="데이터-시각화.html#cb116-2" tabindex="-1"></a><span class="fu">library</span>(forcats)</span>
+<span id="cb116-3"><a href="데이터-시각화.html#cb116-3" tabindex="-1"></a>gss_cat <span class="sc">%&gt;%</span> </span>
+<span id="cb116-4"><a href="데이터-시각화.html#cb116-4" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">race =</span> <span class="fu">fct_infreq</span>(race)) <span class="sc">%&gt;%</span>           <span class="co"># 각 수준의 빈도에 대해 내림차순 재정렬</span></span>
+<span id="cb116-5"><a href="데이터-시각화.html#cb116-5" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(race, <span class="at">fill =</span> race)) <span class="sc">+</span></span>
+<span id="cb116-6"><a href="데이터-시각화.html#cb116-6" tabindex="-1"></a>    <span class="fu">geom_bar</span>() <span class="sc">+</span></span>
+<span id="cb116-7"><a href="데이터-시각화.html#cb116-7" tabindex="-1"></a>    <span class="fu">scale_x_discrete</span>(<span class="at">drop =</span> <span class="cn">FALSE</span>) <span class="sc">+</span>            <span class="co"># 값이 없는 팩터의 수준(labels)을 표시</span></span>
+<span id="cb116-8"><a href="데이터-시각화.html#cb116-8" tabindex="-1"></a>    <span class="fu">scale_fill_manual</span>(<span class="at">values =</span> <span class="fu">c</span>(<span class="st">&quot;#d1495b&quot;</span>, <span class="st">&quot;#edae49&quot;</span>, <span class="st">&quot;#66a182&quot;</span>, <span class="st">&quot;#2389da&quot;</span>)) <span class="sc">+</span></span>
+<span id="cb116-9"><a href="데이터-시각화.html#cb116-9" tabindex="-1"></a>    <span class="fu">theme</span>(<span class="at">axis.title =</span> <span class="fu">element_text</span>(<span class="at">size =</span> <span class="dv">10</span>),</span>
+<span id="cb116-10"><a href="데이터-시각화.html#cb116-10" tabindex="-1"></a>          <span class="at">axis.text =</span> <span class="fu">element_text</span>(<span class="at">size =</span> <span class="dv">10</span>)) <span class="sc">+</span></span>
+<span id="cb116-11"><a href="데이터-시각화.html#cb116-11" tabindex="-1"></a>    <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">&quot;&quot;</span>, <span class="at">y =</span> <span class="st">&quot;frequency&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb117"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb117-1"><a href="데이터-시각화.html#cb117-1" tabindex="-1"></a><span class="do">## Example 3</span></span>
+<span id="cb117-2"><a href="데이터-시각화.html#cb117-2" tabindex="-1"></a><span class="fu">library</span>(lubridate)</span>
+<span id="cb117-3"><a href="데이터-시각화.html#cb117-3" tabindex="-1"></a>make_datetime_100 <span class="ot">&lt;-</span> <span class="cf">function</span>(year, month, day, time) {</span>
+<span id="cb117-4"><a href="데이터-시각화.html#cb117-4" tabindex="-1"></a>  <span class="fu">make_datetime</span>(year, month, day, time <span class="sc">%/%</span> <span class="dv">100</span>, time <span class="sc">%%</span> <span class="dv">100</span>)</span>
+<span id="cb117-5"><a href="데이터-시각화.html#cb117-5" tabindex="-1"></a>}</span>
+<span id="cb117-6"><a href="데이터-시각화.html#cb117-6" tabindex="-1"></a></span>
+<span id="cb117-7"><a href="데이터-시각화.html#cb117-7" tabindex="-1"></a><span class="fu">library</span>(nycflights13)</span>
+<span id="cb117-8"><a href="데이터-시각화.html#cb117-8" tabindex="-1"></a>flights_dt <span class="ot">&lt;-</span> flights <span class="sc">%&gt;%</span> </span>
+<span id="cb117-9"><a href="데이터-시각화.html#cb117-9" tabindex="-1"></a>  <span class="fu">filter</span>(<span class="sc">!</span><span class="fu">is.na</span>(dep_time), <span class="sc">!</span><span class="fu">is.na</span>(arr_time)) <span class="sc">%&gt;%</span> </span>
+<span id="cb117-10"><a href="데이터-시각화.html#cb117-10" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">dep_time =</span> <span class="fu">make_datetime_100</span>(year, month, day, dep_time),</span>
+<span id="cb117-11"><a href="데이터-시각화.html#cb117-11" tabindex="-1"></a>         <span class="at">arr_time =</span> <span class="fu">make_datetime_100</span>(year, month, day, arr_time),</span>
+<span id="cb117-12"><a href="데이터-시각화.html#cb117-12" tabindex="-1"></a>         <span class="at">sched_dep_time =</span> <span class="fu">make_datetime_100</span>(year, month, day, sched_dep_time),</span>
+<span id="cb117-13"><a href="데이터-시각화.html#cb117-13" tabindex="-1"></a>         <span class="at">sched_arr_time =</span> <span class="fu">make_datetime_100</span>(year, month, day, sched_arr_time)) <span class="sc">%&gt;%</span> </span>
+<span id="cb117-14"><a href="데이터-시각화.html#cb117-14" tabindex="-1"></a>  <span class="fu">select</span>(origin, dest, <span class="fu">ends_with</span>(<span class="st">&quot;delay&quot;</span>), <span class="fu">ends_with</span>(<span class="st">&quot;time&quot;</span>))</span>
+<span id="cb117-15"><a href="데이터-시각화.html#cb117-15" tabindex="-1"></a></span>
+<span id="cb117-16"><a href="데이터-시각화.html#cb117-16" tabindex="-1"></a><span class="do">## 출발 요일에 대한 분포</span></span>
+<span id="cb117-17"><a href="데이터-시각화.html#cb117-17" tabindex="-1"></a><span class="fu">library</span>(RColorBrewer)</span>
+<span id="cb117-18"><a href="데이터-시각화.html#cb117-18" tabindex="-1"></a>flights_dt <span class="sc">%&gt;%</span> </span>
+<span id="cb117-19"><a href="데이터-시각화.html#cb117-19" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">wday =</span> <span class="fu">wday</span>(dep_time, <span class="at">label =</span> <span class="cn">TRUE</span>)) <span class="sc">%&gt;%</span> </span>
+<span id="cb117-20"><a href="데이터-시각화.html#cb117-20" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> wday, <span class="at">fill =</span> wday)) <span class="sc">+</span></span>
+<span id="cb117-21"><a href="데이터-시각화.html#cb117-21" tabindex="-1"></a>    <span class="fu">geom_bar</span>() <span class="sc">+</span></span>
+<span id="cb117-22"><a href="데이터-시각화.html#cb117-22" tabindex="-1"></a>    <span class="fu">scale_fill_manual</span>(<span class="at">values =</span> <span class="fu">brewer.pal</span>(<span class="dv">7</span>, <span class="st">&quot;Spectral&quot;</span>))</span></code></pre></div>
 </div>
 <div id="히스토그램histogram" class="section level3 hasAnchor" number="7.3.4">
 <h3><span class="header-section-number">7.3.4</span> 히스토그램(histogram)<a href="데이터-시각화.html#히스토그램histogram" class="anchor-section" aria-label="Anchor link to header"></a></h3>
@@ -545,20 +545,20 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li>bwt : birth weight in grams</li>
 </ul></li>
 </ul>
-<div class="sourceCode" id="cb117"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb117-1"><a href="데이터-시각화.html#cb117-1" tabindex="-1"></a><span class="fu">library</span>(MASS)</span>
-<span id="cb117-2"><a href="데이터-시각화.html#cb117-2" tabindex="-1"></a><span class="fu">ggplot</span>(birthwt, <span class="fu">aes</span>(<span class="at">x =</span> bwt)) <span class="sc">+</span></span>
-<span id="cb117-3"><a href="데이터-시각화.html#cb117-3" tabindex="-1"></a>  <span class="fu">geom_histogram</span>(<span class="at">fill =</span> <span class="st">&quot;darkgreen&quot;</span>) <span class="sc">+</span></span>
-<span id="cb117-4"><a href="데이터-시각화.html#cb117-4" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title=</span><span class="st">&quot;Histogram of birthweigth&quot;</span>, <span class="at">x =</span> <span class="st">&quot;Birthweight(in gram)&quot;</span>, <span class="at">y =</span><span class="st">&quot;&quot;</span>) <span class="sc">+</span></span>
-<span id="cb117-5"><a href="데이터-시각화.html#cb117-5" tabindex="-1"></a>  <span class="fu">theme_classic</span>()</span>
-<span id="cb117-6"><a href="데이터-시각화.html#cb117-6" tabindex="-1"></a></span>
-<span id="cb117-7"><a href="데이터-시각화.html#cb117-7" tabindex="-1"></a></span>
-<span id="cb117-8"><a href="데이터-시각화.html#cb117-8" tabindex="-1"></a>labels <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&quot;1&quot;</span> <span class="ot">=</span> <span class="st">&quot;Smoker&quot;</span>, <span class="st">&quot;0&quot;</span> <span class="ot">=</span> <span class="st">&quot;Nonsmoker&quot;</span>)</span>
-<span id="cb117-9"><a href="데이터-시각화.html#cb117-9" tabindex="-1"></a><span class="fu">ggplot</span>(birthwt, <span class="fu">aes</span>(<span class="at">x =</span> bwt, <span class="at">fill =</span> smoke)) <span class="sc">+</span></span>
-<span id="cb117-10"><a href="데이터-시각화.html#cb117-10" tabindex="-1"></a>  <span class="fu">geom_histogram</span>(<span class="at">binwidth =</span> <span class="dv">200</span>) <span class="sc">+</span></span>
-<span id="cb117-11"><a href="데이터-시각화.html#cb117-11" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title=</span><span class="st">&quot;Histogram of birthweigth&quot;</span>, <span class="at">x =</span> <span class="st">&quot;Birthweight(in gram)&quot;</span>, <span class="at">y =</span><span class="st">&quot;&quot;</span>) <span class="sc">+</span></span>
-<span id="cb117-12"><a href="데이터-시각화.html#cb117-12" tabindex="-1"></a>  <span class="fu">facet_grid</span>(smoke <span class="sc">~</span> ., <span class="at">labeller =</span> <span class="fu">labeller</span>(<span class="at">smoke =</span> labels)) <span class="sc">+</span>             <span class="co"># 화면 분할</span></span>
-<span id="cb117-13"><a href="데이터-시각화.html#cb117-13" tabindex="-1"></a>  <span class="fu">theme</span>(<span class="at">plot.title =</span> <span class="fu">element_text</span>(<span class="at">hjust =</span> <span class="fl">0.5</span>),                            <span class="co"># 제목 가운데 정렬</span></span>
-<span id="cb117-14"><a href="데이터-시각화.html#cb117-14" tabindex="-1"></a>        <span class="at">legend.position =</span> <span class="st">&quot;none&quot;</span>)                                          <span class="co"># 범례 제거</span></span></code></pre></div>
+<div class="sourceCode" id="cb118"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb118-1"><a href="데이터-시각화.html#cb118-1" tabindex="-1"></a><span class="fu">library</span>(MASS)</span>
+<span id="cb118-2"><a href="데이터-시각화.html#cb118-2" tabindex="-1"></a><span class="fu">ggplot</span>(birthwt, <span class="fu">aes</span>(<span class="at">x =</span> bwt)) <span class="sc">+</span></span>
+<span id="cb118-3"><a href="데이터-시각화.html#cb118-3" tabindex="-1"></a>  <span class="fu">geom_histogram</span>(<span class="at">fill =</span> <span class="st">&quot;darkgreen&quot;</span>) <span class="sc">+</span></span>
+<span id="cb118-4"><a href="데이터-시각화.html#cb118-4" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title=</span><span class="st">&quot;Histogram of birthweigth&quot;</span>, <span class="at">x =</span> <span class="st">&quot;Birthweight(in gram)&quot;</span>, <span class="at">y =</span><span class="st">&quot;&quot;</span>) <span class="sc">+</span></span>
+<span id="cb118-5"><a href="데이터-시각화.html#cb118-5" tabindex="-1"></a>  <span class="fu">theme_classic</span>()</span>
+<span id="cb118-6"><a href="데이터-시각화.html#cb118-6" tabindex="-1"></a></span>
+<span id="cb118-7"><a href="데이터-시각화.html#cb118-7" tabindex="-1"></a></span>
+<span id="cb118-8"><a href="데이터-시각화.html#cb118-8" tabindex="-1"></a>labels <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&quot;1&quot;</span> <span class="ot">=</span> <span class="st">&quot;Smoker&quot;</span>, <span class="st">&quot;0&quot;</span> <span class="ot">=</span> <span class="st">&quot;Nonsmoker&quot;</span>)</span>
+<span id="cb118-9"><a href="데이터-시각화.html#cb118-9" tabindex="-1"></a><span class="fu">ggplot</span>(birthwt, <span class="fu">aes</span>(<span class="at">x =</span> bwt, <span class="at">fill =</span> smoke)) <span class="sc">+</span></span>
+<span id="cb118-10"><a href="데이터-시각화.html#cb118-10" tabindex="-1"></a>  <span class="fu">geom_histogram</span>(<span class="at">binwidth =</span> <span class="dv">200</span>) <span class="sc">+</span></span>
+<span id="cb118-11"><a href="데이터-시각화.html#cb118-11" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title=</span><span class="st">&quot;Histogram of birthweigth&quot;</span>, <span class="at">x =</span> <span class="st">&quot;Birthweight(in gram)&quot;</span>, <span class="at">y =</span><span class="st">&quot;&quot;</span>) <span class="sc">+</span></span>
+<span id="cb118-12"><a href="데이터-시각화.html#cb118-12" tabindex="-1"></a>  <span class="fu">facet_grid</span>(smoke <span class="sc">~</span> ., <span class="at">labeller =</span> <span class="fu">labeller</span>(<span class="at">smoke =</span> labels)) <span class="sc">+</span>             <span class="co"># 화면 분할</span></span>
+<span id="cb118-13"><a href="데이터-시각화.html#cb118-13" tabindex="-1"></a>  <span class="fu">theme</span>(<span class="at">plot.title =</span> <span class="fu">element_text</span>(<span class="at">hjust =</span> <span class="fl">0.5</span>),                            <span class="co"># 제목 가운데 정렬</span></span>
+<span id="cb118-14"><a href="데이터-시각화.html#cb118-14" tabindex="-1"></a>        <span class="at">legend.position =</span> <span class="st">&quot;none&quot;</span>)                                          <span class="co"># 범례 제거</span></span></code></pre></div>
 </div>
 <div id="상자-그림box-plot" class="section level3 hasAnchor" number="7.3.5">
 <h3><span class="header-section-number">7.3.5</span> 상자 그림(box plot)<a href="데이터-시각화.html#상자-그림box-plot" class="anchor-section" aria-label="Anchor link to header"></a></h3>
@@ -590,21 +590,21 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li>bwt : birth weight in grams</li>
 </ul></li>
 </ul>
-<div class="sourceCode" id="cb118"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb118-1"><a href="데이터-시각화.html#cb118-1" tabindex="-1"></a><span class="fu">ggplot</span>(birthwt, <span class="fu">aes</span>(<span class="at">x =</span> <span class="fu">factor</span>(race), <span class="at">y =</span> bwt)) <span class="sc">+</span></span>
-<span id="cb118-2"><a href="데이터-시각화.html#cb118-2" tabindex="-1"></a>  <span class="fu">geom_boxplot</span>() <span class="sc">+</span></span>
-<span id="cb118-3"><a href="데이터-시각화.html#cb118-3" tabindex="-1"></a>  <span class="fu">coord_flip</span>()</span>
-<span id="cb118-4"><a href="데이터-시각화.html#cb118-4" tabindex="-1"></a></span>
-<span id="cb118-5"><a href="데이터-시각화.html#cb118-5" tabindex="-1"></a></span>
-<span id="cb118-6"><a href="데이터-시각화.html#cb118-6" tabindex="-1"></a>bp <span class="ot">&lt;-</span> birthwt <span class="sc">%&gt;%</span> </span>
-<span id="cb118-7"><a href="데이터-시각화.html#cb118-7" tabindex="-1"></a>        <span class="fu">mutate</span>(<span class="at">smoke =</span> <span class="fu">fct_recode</span>(<span class="fu">as_factor</span>(smoke), <span class="st">&quot;Smoker&quot;</span> <span class="ot">=</span> <span class="st">&quot;1&quot;</span>, <span class="st">&quot;Nonsmoker&quot;</span> <span class="ot">=</span> <span class="st">&quot;0&quot;</span>),</span>
-<span id="cb118-8"><a href="데이터-시각화.html#cb118-8" tabindex="-1"></a>               <span class="at">ui =</span> <span class="fu">fct_recode</span>(<span class="fu">as_factor</span>(ui), <span class="st">&quot;Presence&quot;</span> <span class="ot">=</span> <span class="st">&quot;1&quot;</span>, <span class="st">&quot;None&quot;</span> <span class="ot">=</span> <span class="st">&quot;0&quot;</span>)) <span class="sc">%&gt;%</span> </span>
-<span id="cb118-9"><a href="데이터-시각화.html#cb118-9" tabindex="-1"></a>        <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> <span class="fu">factor</span>(race), <span class="at">y =</span> bwt)) <span class="sc">+</span></span>
-<span id="cb118-10"><a href="데이터-시각화.html#cb118-10" tabindex="-1"></a>          <span class="fu">geom_boxplot</span>() <span class="sc">+</span></span>
-<span id="cb118-11"><a href="데이터-시각화.html#cb118-11" tabindex="-1"></a>          <span class="fu">facet_grid</span>(ui <span class="sc">~</span> smoke)</span>
-<span id="cb118-12"><a href="데이터-시각화.html#cb118-12" tabindex="-1"></a></span>
-<span id="cb118-13"><a href="데이터-시각화.html#cb118-13" tabindex="-1"></a></span>
-<span id="cb118-14"><a href="데이터-시각화.html#cb118-14" tabindex="-1"></a>bp <span class="sc">+</span> <span class="fu">geom_point</span>(<span class="at">color =</span> <span class="st">&quot;red&quot;</span>, <span class="at">alpha =</span> <span class="fl">0.5</span>)</span>
-<span id="cb118-15"><a href="데이터-시각화.html#cb118-15" tabindex="-1"></a>bp <span class="sc">+</span> <span class="fu">geom_jitter</span>(<span class="at">color =</span> <span class="st">&quot;red&quot;</span>, <span class="at">alpha =</span> <span class="fl">0.5</span>)  <span class="co"># 관측값을 상자 그림 위에 겹쳐서 나타냄</span></span></code></pre></div>
+<div class="sourceCode" id="cb119"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb119-1"><a href="데이터-시각화.html#cb119-1" tabindex="-1"></a><span class="fu">ggplot</span>(birthwt, <span class="fu">aes</span>(<span class="at">x =</span> <span class="fu">factor</span>(race), <span class="at">y =</span> bwt)) <span class="sc">+</span></span>
+<span id="cb119-2"><a href="데이터-시각화.html#cb119-2" tabindex="-1"></a>  <span class="fu">geom_boxplot</span>() <span class="sc">+</span></span>
+<span id="cb119-3"><a href="데이터-시각화.html#cb119-3" tabindex="-1"></a>  <span class="fu">coord_flip</span>()</span>
+<span id="cb119-4"><a href="데이터-시각화.html#cb119-4" tabindex="-1"></a></span>
+<span id="cb119-5"><a href="데이터-시각화.html#cb119-5" tabindex="-1"></a></span>
+<span id="cb119-6"><a href="데이터-시각화.html#cb119-6" tabindex="-1"></a>bp <span class="ot">&lt;-</span> birthwt <span class="sc">%&gt;%</span> </span>
+<span id="cb119-7"><a href="데이터-시각화.html#cb119-7" tabindex="-1"></a>        <span class="fu">mutate</span>(<span class="at">smoke =</span> <span class="fu">fct_recode</span>(<span class="fu">as_factor</span>(smoke), <span class="st">&quot;Smoker&quot;</span> <span class="ot">=</span> <span class="st">&quot;1&quot;</span>, <span class="st">&quot;Nonsmoker&quot;</span> <span class="ot">=</span> <span class="st">&quot;0&quot;</span>),</span>
+<span id="cb119-8"><a href="데이터-시각화.html#cb119-8" tabindex="-1"></a>               <span class="at">ui =</span> <span class="fu">fct_recode</span>(<span class="fu">as_factor</span>(ui), <span class="st">&quot;Presence&quot;</span> <span class="ot">=</span> <span class="st">&quot;1&quot;</span>, <span class="st">&quot;None&quot;</span> <span class="ot">=</span> <span class="st">&quot;0&quot;</span>)) <span class="sc">%&gt;%</span> </span>
+<span id="cb119-9"><a href="데이터-시각화.html#cb119-9" tabindex="-1"></a>        <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> <span class="fu">factor</span>(race), <span class="at">y =</span> bwt)) <span class="sc">+</span></span>
+<span id="cb119-10"><a href="데이터-시각화.html#cb119-10" tabindex="-1"></a>          <span class="fu">geom_boxplot</span>() <span class="sc">+</span></span>
+<span id="cb119-11"><a href="데이터-시각화.html#cb119-11" tabindex="-1"></a>          <span class="fu">facet_grid</span>(ui <span class="sc">~</span> smoke)</span>
+<span id="cb119-12"><a href="데이터-시각화.html#cb119-12" tabindex="-1"></a></span>
+<span id="cb119-13"><a href="데이터-시각화.html#cb119-13" tabindex="-1"></a></span>
+<span id="cb119-14"><a href="데이터-시각화.html#cb119-14" tabindex="-1"></a>bp <span class="sc">+</span> <span class="fu">geom_point</span>(<span class="at">color =</span> <span class="st">&quot;red&quot;</span>, <span class="at">alpha =</span> <span class="fl">0.5</span>)</span>
+<span id="cb119-15"><a href="데이터-시각화.html#cb119-15" tabindex="-1"></a>bp <span class="sc">+</span> <span class="fu">geom_jitter</span>(<span class="at">color =</span> <span class="st">&quot;red&quot;</span>, <span class="at">alpha =</span> <span class="fl">0.5</span>)  <span class="co"># 관측값을 상자 그림 위에 겹쳐서 나타냄</span></span></code></pre></div>
 </div>
 <div id="산점도scatter-plot" class="section level3 hasAnchor" number="7.3.6">
 <h3><span class="header-section-number">7.3.6</span> 산점도(scatter plot)<a href="데이터-시각화.html#산점도scatter-plot" class="anchor-section" aria-label="Anchor link to header"></a></h3>
@@ -629,25 +629,25 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li>bwt : birth weight in grams</li>
 </ul></li>
 </ul>
-<div class="sourceCode" id="cb119"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb119-1"><a href="데이터-시각화.html#cb119-1" tabindex="-1"></a><span class="fu">ggplot</span>(birthwt, <span class="fu">aes</span>(<span class="at">x =</span> age, <span class="at">y =</span> bwt)) <span class="sc">+</span></span>
-<span id="cb119-2"><a href="데이터-시각화.html#cb119-2" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="at">size =</span> <span class="dv">3</span>, <span class="at">color =</span> <span class="st">&quot;red&quot;</span>, <span class="at">alpha =</span> <span class="fl">0.5</span>, <span class="at">pch =</span> <span class="dv">17</span>) <span class="sc">+</span></span>
-<span id="cb119-3"><a href="데이터-시각화.html#cb119-3" tabindex="-1"></a>  <span class="fu">geom_rug</span>(<span class="at">position =</span> <span class="st">&quot;jitter&quot;</span>, <span class="at">size =</span> <span class="fl">0.2</span>) <span class="sc">+</span>         <span class="co"># rug plot 추가</span></span>
-<span id="cb119-4"><a href="데이터-시각화.html#cb119-4" tabindex="-1"></a>  <span class="fu">geom_smooth</span>(<span class="at">method =</span> lm) <span class="sc">+</span>                          <span class="co"># 선형 추세선 추가</span></span>
-<span id="cb119-5"><a href="데이터-시각화.html#cb119-5" tabindex="-1"></a>  <span class="fu">theme_classic</span>()</span>
-<span id="cb119-6"><a href="데이터-시각화.html#cb119-6" tabindex="-1"></a></span>
-<span id="cb119-7"><a href="데이터-시각화.html#cb119-7" tabindex="-1"></a></span>
-<span id="cb119-8"><a href="데이터-시각화.html#cb119-8" tabindex="-1"></a><span class="fu">ggplot</span>(birthwt, <span class="fu">aes</span>(<span class="at">x =</span> age, <span class="at">y =</span> bwt)) <span class="sc">+</span></span>
-<span id="cb119-9"><a href="데이터-시각화.html#cb119-9" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="fu">aes</span>(<span class="at">color =</span> lwt), <span class="at">size =</span> <span class="dv">4</span>, <span class="at">alpha =</span> <span class="fl">0.7</span>, <span class="at">pch =</span> <span class="dv">19</span>) <span class="sc">+</span></span>
-<span id="cb119-10"><a href="데이터-시각화.html#cb119-10" tabindex="-1"></a>  <span class="fu">scale_color_gradient</span>(<span class="at">low =</span> <span class="st">&quot;#FFF59D&quot;</span>, <span class="at">high =</span> <span class="st">&quot;#388E3C&quot;</span>) <span class="sc">+</span></span>
-<span id="cb119-11"><a href="데이터-시각화.html#cb119-11" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">color =</span> <span class="st">&quot;mother&#39;s weight&quot;</span>) <span class="sc">+</span></span>
-<span id="cb119-12"><a href="데이터-시각화.html#cb119-12" tabindex="-1"></a>  <span class="fu">theme_classic</span>()</span>
-<span id="cb119-13"><a href="데이터-시각화.html#cb119-13" tabindex="-1"></a></span>
-<span id="cb119-14"><a href="데이터-시각화.html#cb119-14" tabindex="-1"></a></span>
-<span id="cb119-15"><a href="데이터-시각화.html#cb119-15" tabindex="-1"></a><span class="fu">ggplot</span>(birthwt, <span class="fu">aes</span>(<span class="at">x =</span> age, <span class="at">y =</span> bwt,</span>
-<span id="cb119-16"><a href="데이터-시각화.html#cb119-16" tabindex="-1"></a>                    <span class="at">color =</span> <span class="fu">factor</span>(smoke), <span class="at">size =</span> lwt)) <span class="sc">+</span></span>
-<span id="cb119-17"><a href="데이터-시각화.html#cb119-17" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="at">alpha =</span> <span class="fl">0.5</span>) <span class="sc">+</span></span>
-<span id="cb119-18"><a href="데이터-시각화.html#cb119-18" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">color =</span> <span class="st">&quot;Smoking&quot;</span>, <span class="at">size =</span> <span class="st">&quot;Mother&#39;s weight&quot;</span>) <span class="sc">+</span></span>
-<span id="cb119-19"><a href="데이터-시각화.html#cb119-19" tabindex="-1"></a>  <span class="fu">scale_color_discrete</span>(<span class="at">labels =</span> <span class="fu">c</span>(<span class="st">&quot;No&quot;</span>, <span class="st">&quot;Yes&quot;</span>))</span></code></pre></div>
+<div class="sourceCode" id="cb120"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb120-1"><a href="데이터-시각화.html#cb120-1" tabindex="-1"></a><span class="fu">ggplot</span>(birthwt, <span class="fu">aes</span>(<span class="at">x =</span> age, <span class="at">y =</span> bwt)) <span class="sc">+</span></span>
+<span id="cb120-2"><a href="데이터-시각화.html#cb120-2" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="at">size =</span> <span class="dv">3</span>, <span class="at">color =</span> <span class="st">&quot;red&quot;</span>, <span class="at">alpha =</span> <span class="fl">0.5</span>, <span class="at">pch =</span> <span class="dv">17</span>) <span class="sc">+</span></span>
+<span id="cb120-3"><a href="데이터-시각화.html#cb120-3" tabindex="-1"></a>  <span class="fu">geom_rug</span>(<span class="at">position =</span> <span class="st">&quot;jitter&quot;</span>, <span class="at">size =</span> <span class="fl">0.2</span>) <span class="sc">+</span>         <span class="co"># rug plot 추가</span></span>
+<span id="cb120-4"><a href="데이터-시각화.html#cb120-4" tabindex="-1"></a>  <span class="fu">geom_smooth</span>(<span class="at">method =</span> lm) <span class="sc">+</span>                          <span class="co"># 선형 추세선 추가</span></span>
+<span id="cb120-5"><a href="데이터-시각화.html#cb120-5" tabindex="-1"></a>  <span class="fu">theme_classic</span>()</span>
+<span id="cb120-6"><a href="데이터-시각화.html#cb120-6" tabindex="-1"></a></span>
+<span id="cb120-7"><a href="데이터-시각화.html#cb120-7" tabindex="-1"></a></span>
+<span id="cb120-8"><a href="데이터-시각화.html#cb120-8" tabindex="-1"></a><span class="fu">ggplot</span>(birthwt, <span class="fu">aes</span>(<span class="at">x =</span> age, <span class="at">y =</span> bwt)) <span class="sc">+</span></span>
+<span id="cb120-9"><a href="데이터-시각화.html#cb120-9" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="fu">aes</span>(<span class="at">color =</span> lwt), <span class="at">size =</span> <span class="dv">4</span>, <span class="at">alpha =</span> <span class="fl">0.7</span>, <span class="at">pch =</span> <span class="dv">19</span>) <span class="sc">+</span></span>
+<span id="cb120-10"><a href="데이터-시각화.html#cb120-10" tabindex="-1"></a>  <span class="fu">scale_color_gradient</span>(<span class="at">low =</span> <span class="st">&quot;#FFF59D&quot;</span>, <span class="at">high =</span> <span class="st">&quot;#388E3C&quot;</span>) <span class="sc">+</span></span>
+<span id="cb120-11"><a href="데이터-시각화.html#cb120-11" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">color =</span> <span class="st">&quot;mother&#39;s weight&quot;</span>) <span class="sc">+</span></span>
+<span id="cb120-12"><a href="데이터-시각화.html#cb120-12" tabindex="-1"></a>  <span class="fu">theme_classic</span>()</span>
+<span id="cb120-13"><a href="데이터-시각화.html#cb120-13" tabindex="-1"></a></span>
+<span id="cb120-14"><a href="데이터-시각화.html#cb120-14" tabindex="-1"></a></span>
+<span id="cb120-15"><a href="데이터-시각화.html#cb120-15" tabindex="-1"></a><span class="fu">ggplot</span>(birthwt, <span class="fu">aes</span>(<span class="at">x =</span> age, <span class="at">y =</span> bwt,</span>
+<span id="cb120-16"><a href="데이터-시각화.html#cb120-16" tabindex="-1"></a>                    <span class="at">color =</span> <span class="fu">factor</span>(smoke), <span class="at">size =</span> lwt)) <span class="sc">+</span></span>
+<span id="cb120-17"><a href="데이터-시각화.html#cb120-17" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="at">alpha =</span> <span class="fl">0.5</span>) <span class="sc">+</span></span>
+<span id="cb120-18"><a href="데이터-시각화.html#cb120-18" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">color =</span> <span class="st">&quot;Smoking&quot;</span>, <span class="at">size =</span> <span class="st">&quot;Mother&#39;s weight&quot;</span>) <span class="sc">+</span></span>
+<span id="cb120-19"><a href="데이터-시각화.html#cb120-19" tabindex="-1"></a>  <span class="fu">scale_color_discrete</span>(<span class="at">labels =</span> <span class="fu">c</span>(<span class="st">&quot;No&quot;</span>, <span class="st">&quot;Yes&quot;</span>))</span></code></pre></div>
 </div>
 <div id="선-그래프line-plot" class="section level3 hasAnchor" number="7.3.7">
 <h3><span class="header-section-number">7.3.7</span> 선 그래프(line plot)<a href="데이터-시각화.html#선-그래프line-plot" class="anchor-section" aria-label="Anchor link to header"></a></h3>
@@ -659,14 +659,14 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li>범주형 변수는 순서가 있는 경우에만 가능</li>
 </ul></li>
 </ul>
-<div class="sourceCode" id="cb120"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb120-1"><a href="데이터-시각화.html#cb120-1" tabindex="-1"></a><span class="do">## Example 1</span></span>
-<span id="cb120-2"><a href="데이터-시각화.html#cb120-2" tabindex="-1"></a><span class="co"># 시간에 따른 이름에 &quot;x&quot;가 포함되는 아기의 비율 변화</span></span>
-<span id="cb120-3"><a href="데이터-시각화.html#cb120-3" tabindex="-1"></a><span class="fu">library</span>(babynames)</span>
-<span id="cb120-4"><a href="데이터-시각화.html#cb120-4" tabindex="-1"></a>babynames <span class="sc">%&gt;%</span> </span>
-<span id="cb120-5"><a href="데이터-시각화.html#cb120-5" tabindex="-1"></a>  <span class="fu">group_by</span>(year) <span class="sc">%&gt;%</span> </span>
-<span id="cb120-6"><a href="데이터-시각화.html#cb120-6" tabindex="-1"></a>  <span class="fu">summarise</span>(<span class="at">prop_x =</span> <span class="fu">mean</span>(<span class="fu">str_detect</span>(name, <span class="st">&quot;x&quot;</span>))) <span class="sc">%&gt;%</span> </span>
-<span id="cb120-7"><a href="데이터-시각화.html#cb120-7" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(year, prop_x)) <span class="sc">+</span> </span>
-<span id="cb120-8"><a href="데이터-시각화.html#cb120-8" tabindex="-1"></a>    <span class="fu">geom_line</span>()</span></code></pre></div>
+<div class="sourceCode" id="cb121"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb121-1"><a href="데이터-시각화.html#cb121-1" tabindex="-1"></a><span class="do">## Example 1</span></span>
+<span id="cb121-2"><a href="데이터-시각화.html#cb121-2" tabindex="-1"></a><span class="co"># 시간에 따른 이름에 &quot;x&quot;가 포함되는 아기의 비율 변화</span></span>
+<span id="cb121-3"><a href="데이터-시각화.html#cb121-3" tabindex="-1"></a><span class="fu">library</span>(babynames)</span>
+<span id="cb121-4"><a href="데이터-시각화.html#cb121-4" tabindex="-1"></a>babynames <span class="sc">%&gt;%</span> </span>
+<span id="cb121-5"><a href="데이터-시각화.html#cb121-5" tabindex="-1"></a>  <span class="fu">group_by</span>(year) <span class="sc">%&gt;%</span> </span>
+<span id="cb121-6"><a href="데이터-시각화.html#cb121-6" tabindex="-1"></a>  <span class="fu">summarise</span>(<span class="at">prop_x =</span> <span class="fu">mean</span>(<span class="fu">str_detect</span>(name, <span class="st">&quot;x&quot;</span>))) <span class="sc">%&gt;%</span> </span>
+<span id="cb121-7"><a href="데이터-시각화.html#cb121-7" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(year, prop_x)) <span class="sc">+</span> </span>
+<span id="cb121-8"><a href="데이터-시각화.html#cb121-8" tabindex="-1"></a>    <span class="fu">geom_line</span>()</span></code></pre></div>
 <p><br></p>
 <ul>
 <li>[예제] gapminder 데이터셋
@@ -676,15 +676,15 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li>lifeExp : life expectancy at birth, in years</li>
 </ul></li>
 </ul>
-<div class="sourceCode" id="cb121"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb121-1"><a href="데이터-시각화.html#cb121-1" tabindex="-1"></a><span class="do">## Example 2</span></span>
-<span id="cb121-2"><a href="데이터-시각화.html#cb121-2" tabindex="-1"></a><span class="co"># 시간에 따른 대륙별 평균 수명의 중앙값 변화</span></span>
-<span id="cb121-3"><a href="데이터-시각화.html#cb121-3" tabindex="-1"></a><span class="fu">library</span>(gapminder)</span>
-<span id="cb121-4"><a href="데이터-시각화.html#cb121-4" tabindex="-1"></a>gapminder <span class="sc">%&gt;%</span></span>
-<span id="cb121-5"><a href="데이터-시각화.html#cb121-5" tabindex="-1"></a>  <span class="fu">group_by</span>(continent, year) <span class="sc">%&gt;%</span></span>
-<span id="cb121-6"><a href="데이터-시각화.html#cb121-6" tabindex="-1"></a>  <span class="fu">summarise</span>(<span class="at">lifeExp =</span> <span class="fu">median</span>(lifeExp)) <span class="sc">%&gt;%</span></span>
-<span id="cb121-7"><a href="데이터-시각화.html#cb121-7" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> year, <span class="at">y =</span> lifeExp, <span class="at">color =</span> continent)) <span class="sc">+</span></span>
-<span id="cb121-8"><a href="데이터-시각화.html#cb121-8" tabindex="-1"></a>    <span class="fu">geom_line</span>(<span class="at">size=</span><span class="dv">1</span>) <span class="sc">+</span></span>
-<span id="cb121-9"><a href="데이터-시각화.html#cb121-9" tabindex="-1"></a>    <span class="fu">geom_point</span>(<span class="at">size=</span><span class="fl">1.5</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb122"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb122-1"><a href="데이터-시각화.html#cb122-1" tabindex="-1"></a><span class="do">## Example 2</span></span>
+<span id="cb122-2"><a href="데이터-시각화.html#cb122-2" tabindex="-1"></a><span class="co"># 시간에 따른 대륙별 평균 수명의 중앙값 변화</span></span>
+<span id="cb122-3"><a href="데이터-시각화.html#cb122-3" tabindex="-1"></a><span class="fu">library</span>(gapminder)</span>
+<span id="cb122-4"><a href="데이터-시각화.html#cb122-4" tabindex="-1"></a>gapminder <span class="sc">%&gt;%</span></span>
+<span id="cb122-5"><a href="데이터-시각화.html#cb122-5" tabindex="-1"></a>  <span class="fu">group_by</span>(continent, year) <span class="sc">%&gt;%</span></span>
+<span id="cb122-6"><a href="데이터-시각화.html#cb122-6" tabindex="-1"></a>  <span class="fu">summarise</span>(<span class="at">lifeExp =</span> <span class="fu">median</span>(lifeExp)) <span class="sc">%&gt;%</span></span>
+<span id="cb122-7"><a href="데이터-시각화.html#cb122-7" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> year, <span class="at">y =</span> lifeExp, <span class="at">color =</span> continent)) <span class="sc">+</span></span>
+<span id="cb122-8"><a href="데이터-시각화.html#cb122-8" tabindex="-1"></a>    <span class="fu">geom_line</span>(<span class="at">size=</span><span class="dv">1</span>) <span class="sc">+</span></span>
+<span id="cb122-9"><a href="데이터-시각화.html#cb122-9" tabindex="-1"></a>    <span class="fu">geom_point</span>(<span class="at">size=</span><span class="fl">1.5</span>)</span></code></pre></div>
 
 </div>
 </div>

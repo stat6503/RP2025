@@ -238,7 +238,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="5.4" data-path="tidyverse-통합-패키지.html"><a href="tidyverse-통합-패키지.html#파이프pipe-연산자"><i class="fa fa-check"></i><b>5.4</b> 파이프(pipe) 연산자</a></li>
 <li class="chapter" data-level="5.5" data-path="tidyverse-통합-패키지.html"><a href="tidyverse-통합-패키지.html#tibble-패키지"><i class="fa fa-check"></i><b>5.5</b> tibble 패키지</a>
 <ul>
-<li class="chapter" data-level="5.5.1" data-path="tidyverse-통합-패키지.html"><a href="tidyverse-통합-패키지.html#tibble-object"><i class="fa fa-check"></i><b>5.5.1</b> tibble object</a></li>
+<li class="chapter" data-level="5.5.1" data-path="tidyverse-통합-패키지.html"><a href="tidyverse-통합-패키지.html#tibble"><i class="fa fa-check"></i><b>5.5.1</b> tibble</a></li>
 <li class="chapter" data-level="5.5.2" data-path="tidyverse-통합-패키지.html"><a href="tidyverse-통합-패키지.html#tibble-이해"><i class="fa fa-check"></i><b>5.5.2</b> tibble 이해</a></li>
 </ul></li>
 <li class="chapter" data-level="5.6" data-path="tidyverse-통합-패키지.html"><a href="tidyverse-통합-패키지.html#readr-패키지"><i class="fa fa-check"></i><b>5.6</b> readr 패키지</a>
@@ -492,7 +492,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div id="벡터-산술연산" class="section level3 hasAnchor" number="3.3.3">
 <h3><span class="header-section-number">3.3.3</span> 벡터 산술연산<a href="데이터와-자료구조.html#벡터-산술연산" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <ul>
-<li>단일값과 벡터의 산술연산은 벡터의 모든 원소에 동일한 연산이 적용됨</li>
+<li>단일 값과 벡터의 산술연산은 벡터의 모든 원소에 동일한 연산이 적용됨</li>
 <li>벡터 간 산술연산은 대응되는 위치에 있는 원소들끼리 연산이 이루어짐</li>
 </ul>
 <div class="sourceCode" id="cb9"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb9-1"><a href="데이터와-자료구조.html#cb9-1" tabindex="-1"></a>v9 <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">3</span>, <span class="dv">7</span>, <span class="dv">6</span>)</span>
@@ -644,19 +644,21 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li>비교연산자를 행렬에 적용하면 행렬의 각 원소에 대한 연산으로 바뀌어 실행됨</li>
 </ul>
 <div class="sourceCode" id="cb15"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb15-1"><a href="데이터와-자료구조.html#cb15-1" tabindex="-1"></a>m <span class="ot">&lt;-</span> <span class="fu">matrix</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">15</span>, <span class="at">nrow =</span> <span class="dv">3</span>, <span class="at">ncol =</span> <span class="dv">5</span>)</span>
-<span id="cb15-2"><a href="데이터와-자료구조.html#cb15-2" tabindex="-1"></a>m[<span class="dv">2</span>, <span class="dv">4</span>]                                     <span class="co"># 2행 4열에 위치한 값 11</span></span>
-<span id="cb15-3"><a href="데이터와-자료구조.html#cb15-3" tabindex="-1"></a>m[<span class="dv">3</span>, ]                                      <span class="co"># 3행에 있는 모든 값</span></span>
-<span id="cb15-4"><a href="데이터와-자료구조.html#cb15-4" tabindex="-1"></a>m[, <span class="dv">1</span>]                                      <span class="co"># 1열에 있는 모든 값</span></span>
-<span id="cb15-5"><a href="데이터와-자료구조.html#cb15-5" tabindex="-1"></a></span>
-<span id="cb15-6"><a href="데이터와-자료구조.html#cb15-6" tabindex="-1"></a>m <span class="sc">&gt;</span> <span class="dv">7</span>                                       <span class="co"># 각 원소가 7 초과면 TRUE, 아니면 FALSE</span></span>
-<span id="cb15-7"><a href="데이터와-자료구조.html#cb15-7" tabindex="-1"></a>m[m <span class="sc">&gt;</span> <span class="dv">7</span>]                                    <span class="co"># 7 초과인 값 추출(벡터)</span></span></code></pre></div>
+<span id="cb15-2"><a href="데이터와-자료구조.html#cb15-2" tabindex="-1"></a>m[<span class="dv">2</span>, <span class="dv">4</span>]                                     <span class="co"># 2행 4열에 위치한 값 추출</span></span>
+<span id="cb15-3"><a href="데이터와-자료구조.html#cb15-3" tabindex="-1"></a>m[<span class="dv">3</span>, ]                                      <span class="co"># 3행에 있는 모든 값 추출</span></span>
+<span id="cb15-4"><a href="데이터와-자료구조.html#cb15-4" tabindex="-1"></a>m[, <span class="dv">1</span>]                                      <span class="co"># 1열에 있는 모든 값 추출</span></span>
+<span id="cb15-5"><a href="데이터와-자료구조.html#cb15-5" tabindex="-1"></a>m[, <span class="dv">1</span><span class="sc">:</span><span class="dv">3</span>]                                    <span class="co"># 1~3열에 있는 모든 값 추출</span></span>
+<span id="cb15-6"><a href="데이터와-자료구조.html#cb15-6" tabindex="-1"></a>m[<span class="sc">-</span><span class="dv">2</span>, ]                                     <span class="co"># 2행만 제외한 나머지 모든 값 추출</span></span>
+<span id="cb15-7"><a href="데이터와-자료구조.html#cb15-7" tabindex="-1"></a></span>
+<span id="cb15-8"><a href="데이터와-자료구조.html#cb15-8" tabindex="-1"></a>m <span class="sc">&gt;</span> <span class="dv">7</span>                                       <span class="co"># 각 원소가 7 초과면 TRUE, 아니면 FALSE</span></span>
+<span id="cb15-9"><a href="데이터와-자료구조.html#cb15-9" tabindex="-1"></a>m[m <span class="sc">&gt;</span> <span class="dv">7</span>]                                    <span class="co"># 7 초과인 값 추출(벡터)</span></span></code></pre></div>
 <p><img src="img/fig3-4.png" style="width:50.0%" /></p>
 <p><br></p>
 </div>
 <div id="행렬-산술연산" class="section level3 hasAnchor" number="3.4.3">
 <h3><span class="header-section-number">3.4.3</span> 행렬 산술연산<a href="데이터와-자료구조.html#행렬-산술연산" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <ul>
-<li>단일값과 행렬의 산술연산은 행렬의 모든 원소에 동일한 연산이 적용됨</li>
+<li>단일 값과 행렬의 산술연산은 행렬의 모든 원소에 동일한 연산이 적용됨</li>
 <li>행렬 간 산술연산은 대응되는 위치에 있는 원소들끼리 연산이 이루어짐
 <ul>
 <li><strong>두 행렬의 크기(행과 열의 개수)가 같아야</strong> 함</li>
@@ -840,7 +842,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </ul>
 <div class="sourceCode" id="cb25"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb25-1"><a href="데이터와-자료구조.html#cb25-1" tabindex="-1"></a>df1 <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="at">name =</span> <span class="fu">c</span>(<span class="st">&quot;Kim&quot;</span>, <span class="st">&quot;Lee&quot;</span>, <span class="st">&quot;Park&quot;</span>, <span class="st">&quot;Choi&quot;</span>),</span>
 <span id="cb25-2"><a href="데이터와-자료구조.html#cb25-2" tabindex="-1"></a>                  <span class="at">age =</span> <span class="fu">c</span>(<span class="dv">24</span>, <span class="dv">25</span>, <span class="dv">22</span>, <span class="dv">27</span>),</span>
-<span id="cb25-3"><a href="데이터와-자료구조.html#cb25-3" tabindex="-1"></a>                  <span class="at">btype =</span> <span class="fu">factor</span>(<span class="fu">c</span>(<span class="st">&quot;A&quot;</span>, <span class="st">&quot;B&quot;</span>, <span class="st">&quot;O&quot;</span>, <span class="st">&quot;B&quot;</span>)),</span>
+<span id="cb25-3"><a href="데이터와-자료구조.html#cb25-3" tabindex="-1"></a>                  <span class="at">btype =</span> <span class="fu">factor</span>(<span class="fu">c</span>(<span class="st">&quot;A&quot;</span>, <span class="st">&quot;B&quot;</span>, <span class="st">&quot;O&quot;</span>, <span class="st">&quot;B&quot;</span>), <span class="at">levels =</span> <span class="fu">c</span>(<span class="st">&quot;A&quot;</span>, <span class="st">&quot;B&quot;</span>, <span class="st">&quot;O&quot;</span>, <span class="st">&quot;AB&quot;</span>)),</span>
 <span id="cb25-4"><a href="데이터와-자료구조.html#cb25-4" tabindex="-1"></a>                  <span class="at">smoking =</span> <span class="fu">c</span>(<span class="cn">TRUE</span>, <span class="cn">FALSE</span>, <span class="cn">TRUE</span>, <span class="cn">TRUE</span>))</span>
 <span id="cb25-5"><a href="데이터와-자료구조.html#cb25-5" tabindex="-1"></a>df1</span></code></pre></div>
 <pre><code>##   name age btype smoking
@@ -884,15 +886,15 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <tbody>
 <tr class="odd">
 <td align="center">head()</td>
-<td align="left">객체의 처음 몇 개의 요소를 반환</td>
+<td align="left">처음 몇 개의 원소를 반환</td>
 </tr>
 <tr class="even">
 <td align="center">tail()</td>
-<td align="left">객체의 마지막 몇 개의 요소를 반환</td>
+<td align="left">마지막 몇 개의 원소를 반환</td>
 </tr>
 <tr class="odd">
 <td align="center">str()</td>
-<td align="left">객체의 구조와 각 요소의 데이터 유형 및 미리보기 출력</td>
+<td align="left">자료구조와 각 원소의 자료형, 미리보기 출력</td>
 </tr>
 <tr class="even">
 <td align="center">unique()</td>

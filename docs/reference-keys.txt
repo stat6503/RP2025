@@ -65,7 +65,7 @@ tidyverse-작업-흐름
 타이디-데이터tidy-data
 파이프pipe-연산자
 tibble-패키지
-tibble-object
+tibble
 tibble-이해
 readr-패키지
 readr-패키지-소개
