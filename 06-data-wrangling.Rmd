@@ -1,16 +1,55 @@
-# 데이터 전처리
+# 데이터 랭글링
+
+## readr 패키지
+
+### readr 패키지 소개
++ **tibble**로 외부 파일을 불러오거나 저장하는 함수를 제공하는 패키지
+
+|함수|설명|
+|:---:|:------------|
+|read_csv()|쉼표로 구분된 파일 불러오기|
+|read_tsv()|탭으로 구분된 파일 불러오기|
+|read_delim()|임의의 구분자로 구분된 파일 불러오기|
+|read_table()|공백으로 구분된 파일 불러오기|
+|read_spss()|spss 데이터 파일 불러오기|
+|read_sas()|sas 데이터 파일 불러오기(haven 패키지)|
+
+
+<br>
+
+### read_csv() 함수
++ ```read.csv()``` 함수에 비해 약 10배 정도 빠르며, 좀 더 재현성이 뛰어남
++ 첫 번째 행은 변수 이름(header)으로 사용
++ 매개변수 ```col_names``` - 변수명(header)이 없는 경우 사용
+  + ```col_names = FALSE``` - 변수명을 X1부터 Xn까지 순차적으로 붙여줌
+  + ```col_names = c("x", "y", "z")```와 같이 변수명으로 사용할 문자형 벡터를 입력 가능
++ 매개변수 ```skip``` - 파일의 첫 n행 생략
++ 매개변수 ```na``` - 특정 값을 결측값으로 지정
++ 예제 - [StudentSurvey.csv](./dataset/StudentSurvey.csv)
+
+```{r eval = FALSE}
+library(readr)
+data <- read_csv("StudentSurvey.csv")
+data
+```
+
+<br>
+
+
+----------------------------------------------------------------------
 
 
 ## dplyr 패키지
 
-
 ### dplyr 패키지 소개
-+ 탐색적 자료분석, 데이터 가공에 매우 유용하고 편리한 함수 제공
++ 데이터 가공, 탐색적 자료분석 등에 매우 유용하고 편리한 함수 제공하는 패키지
 + 적용 대상에 따른 dplyr 함수
   + **행**: filter(), arrange()
-  + **열**: select(), rename(), mutate(), relocate()
-  + **그룹**: summarise(), group_by()
-  + **테이블**
+  + **열**: select(), mutate(), rename(), relocate()
+  + **집단**: summarise(), group_by()
+  
+<br>
+
 + [예제] 2013년 뉴욕시 출발 항공편 데이터셋 flights
 
 |변수|설명|
@@ -38,40 +77,43 @@
 ```{r eval = FALSE}
 library(dplyr)
 library(nycflights13)
-glimpse(flights)
+flights %>% glimpse
 ```
 
+<br>
 
 ### 행 관련 함수
 
-
 #### filter() 함수
 + 조건에 맞는 행 추출
-+ ```%in%``` 연산자 - 왼쪽의 값이 오른쪽에 있는 값들 중 어느 하나와 같으면 TRUE
++ ```%in%``` 연산자 - 벡터의 원소가 다른 벡터에 포함되어 있는지 확인
 
 ```{r eval = FALSE}
-flights %>% filter(arr_delay >= 120)                    # 120분 이상 연착한 항공편
-flights %>% filter(month == 1 & day == 1)               # 1월 1일에 출발한 항공편
-flights %>% filter(month %in% c(3,5,8))                 # 3,5,8월에 출발한 항공편
+flights %>% filter(arr_delay >= 120)                  # 120분 이상 연착한 항공편
+flights %>% filter(month == 1 & day == 1)             # 1월 1일에 출발한 항공편
+flights %>% filter(month == 1, day == 1)              # 여러 인자는 and로 결합됨
+flights %>% filter(month %in% c(3,5,8))               # 3,5,8월에 출발한 항공편
 ```
 
+<br>
 
 #### arrange() 함수
 + 특정 변수를 기준으로 행 정렬, 기본값(default)은 오름차순
+  + 결측값(NA)은 항상 마지막에 정렬됨
 + 정렬 기준 변수가 여러 개인 경우 순차적으로 적용
 + ```desc()``` 함수 - 내림차순 정렬
 
 ```{r eval = FALSE}
 flights %>% arrange(year, month, day, dep_time)
-filghts %>% arrange(desc(dep_delay))                    # 가장 늦게 출발한 항공편 확인
+filghts %>% arrange(desc(dep_delay))                  # 가장 늦게 출발한 항공편 확인
 flights %>%
-  filter(dep_delay <= 10 & dep_dalay >= -10) %>%        # 대략 정시에 출발한 항공편 중에서 
-  arrange(desc(arr_delay))                              # 가장 늦게 도착한 항공편 확인
+  filter(dep_delay <= 10 & dep_dalay >= -10) %>%      # 대략 정시에 출발한 항공편 중에서 
+  arrange(desc(arr_delay))                            # 가장 늦게 도착한 항공편 확인
 ```
 
+<br>
 
 ### 열 관련 함수
-
 
 #### select() 함수
 + 특정 변수 추출
@@ -87,27 +129,19 @@ flights %>% select(year, month, day)                  # 출발 연월일 변수 
 flights %>% select(year:day)
 flights %>% select(-(year:day))                       # 출발 연월일 변수 제외
 flights %>%
-  select(dep.time = dep_time, arr.time = arr_time)    # 변수명 변경
-flights %>% select(starts_with("sched"))              # 변수명 "sched"로 시작하는 경우
-flights %>% select(ends_with("time"))                 # 변수명 "time"으로 끝나는 경우
-flights %>% select(contains("arr"))                   # 변수명 "arr"를 포함하는 경우
+  select(dep.time = dep_time, arr.time = arr_time)    # 변수 이름 변경
+flights %>% select(starts_with("sched"))              # 변수 이름이 "sched"로 시작하는 경우
+flights %>% select(ends_with("time"))                 # 변수 이름이 "time"으로 끝나는 경우
+flights %>% select(contains("arr"))                   # 변수 이름이 "arr"를 포함하는 경우
 ```
 
-
-#### rename() 함수
-+ 특정 변수명 변경
-+ 명시적으로 언급하지 않은 모든 변수를 유지함
-
-```{r eval = FALSE}
-flights %>% rename(dep.time = dep_time, arr.time = arr_time)
-```
-
+<br>
 
 #### mutate() 함수
 + 데이터셋에 존재하는 변수로부터 새로운 변수 생성
 + 새로운 변수는 항상 데이터셋 마지막 열에 추가됨
-  + 매개변수 ```.before``` - 새로운 변수를 특정 위치의 앞에 추가
-  + 매개변수 ```.after``` - 새로운 변수를 특정 위치의 뒤에 추가
+  + 매개변수 ```.before``` - 새로운 변수를 특정 위치 앞에 추가
+  + 매개변수 ```.after``` - 새로운 변수를 특정 위치 뒤에 추가
 
 ```{r eval = FALSE}
 flights %>% mutate(gain = dep_delay - arr_delay)                      # 출발 지연 - 도착 지연(분)
@@ -115,6 +149,61 @@ flights %>% mutate(speed = distance / (air_time/60), .before = 1)     # 첫번�
 flights %>% mutate(hour = air_time / 60, .after = air_time)           # air_time 변수 뒤에 추가
 ```
 
++ mutate()와 자주 쓰이는 함수
+
+|함수|설명|
+|:---:|:------------|
+|lead(), lag()|이전/다음 행 값 가져오기
+|row_number()|행 번호 반환|
+|min_rank()|순위 부여(동순위 발생 시 건너뜀)|
+|dense_rank()|순위 부여(동순위 발생 시 연속된 값 부여)|
+|na_if()|특정 값을 결측값(NA)으로 변환|
+|coalesce()|결측값(NA)을 여러 열 중 첫 번째 비결측값으로 변환)|
+|if_else()|단순 조건문(이분법적 분류)|
+|case_when()|여러 개의 조건을 처리|
+|recode()|특정 값을 새로운 값으로 변환|
+
+```{r eval=FALSE}
+flights %>% mutate(prev_dep = lag(dep_delay))                         # 이전 비행기의 출발 지연 시간
+flights %>% mutate(next_dep = lead(dep_delay))                        # 다음 비행기의 출발 지연 시간
+flights %>% mutate(flight_order = row_number())                       # 비행기 순서대로 번호 부여
+flights %>% mutate(delay_rank = min_rank(dep_delay))                  # 출발 지연 시간의 순위(동순위 건너뛰기)
+flights %>% mutate(delay_dense = dense_rank(dep_delay))               # 출발 지연 시간의 순위(동순위 연속)
+flights %>% mutate(dep_delay_na = na_if(dep_delay, 0))                # 출발 지연 시간이 0이면 NA로 변환
+flights %>% mutate(first_non_na = coalesce(dep_delay, arr_delay))     # 출발 지연 시간이 NA인 경우 도착 지연 시간 사용
+
+# 비행 시간이 3시간 이상이면 Long Flight, 아니면 Short Flight로 구분
+flights %>% mutate(flight_length = if_else(air_time >= 180, "Long Flight", "Short Flight"))
+
+# 비행 거리가 500마일 미만이면 Short-haul,
+# 500~1500마일 미만이면 Medium-haul,
+# 1500마일 이상이면 Long-haul로 구분
+flights %>%
+  mutate(flight_grade = case_when(
+    distance < 500 ~ "Short-haul",
+    distance >= 500 & distance < 1500 ~ "Medium-haul",
+    distance >= 1500 ~ "Long-haul"
+  ))
+
+# 항공사 이름 변경
+flights %>%
+  mutate(carrier_name = recode(carrier,
+                               "AA" = "American Airlines",
+                               "DL" = "Delta Airlines",
+                               "UA" = "United Airlines"))
+```
+
+<br>
+
+#### rename() 함수
++ 특정 변수 이름 변경
++ 명시적으로 언급하지 않은 모든 변수를 유지함
+
+```{r eval = FALSE}
+flights %>% rename(dep.time = dep_time, arr.time = arr_time)
+```
+
+<br>
 
 #### relocate() 함수
 + 변수 위치 변경, 기본값(default)은 첫번째 열
@@ -125,6 +214,7 @@ flights %>% relocate(air_time, distance)
 flights %>% relocate(carrier:tailnum, .before = day)
 ```
 
+<br>
 
 ### 그룹 관련 함수
 
@@ -139,6 +229,7 @@ flights %>% summarise(mean = mean(air_time, na.rm = TRUE),           # 평균
                       n = n())                                       # 데이터 개수
 ```
 
+<br>
 
 #### group_by() 함수
 + 특정 변수를 기준으로 그룹화
@@ -154,12 +245,13 @@ flights %>% group_by(year, month, day) %>% summarise(n = n())
 flights %>% group_by(month) %>% ungroup() %>% summarise(n = n())     # 그룹화 제거
 ```
 
+<br>
+
 
 ----------------------------------------------------------------------
 
 
 ## tidyr 패키지
-
 
 ### wide format과 long format
 + wide format

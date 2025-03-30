@@ -67,10 +67,10 @@ tidyverse-작업-흐름
 tibble-패키지
 tibble
 tibble-이해
+데이터-랭글링
 readr-패키지
 readr-패키지-소개
 read_csv-함수
-데이터-전처리
 dplyr-패키지
 dplyr-패키지-소개
 행-관련-함수
@@ -78,8 +78,8 @@ filter-함수
 arrange-함수
 열-관련-함수
 select-함수
-rename-함수
 mutate-함수
+rename-함수
 relocate-함수
 그룹-관련-함수
 summarise-함수
