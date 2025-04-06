@@ -254,7 +254,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="6.2.1" data-path="데이터-랭글링.html"><a href="데이터-랭글링.html#dplyr-패키지-소개"><i class="fa fa-check"></i><b>6.2.1</b> dplyr 패키지 소개</a></li>
 <li class="chapter" data-level="6.2.2" data-path="데이터-랭글링.html"><a href="데이터-랭글링.html#행-관련-함수"><i class="fa fa-check"></i><b>6.2.2</b> 행 관련 함수</a></li>
 <li class="chapter" data-level="6.2.3" data-path="데이터-랭글링.html"><a href="데이터-랭글링.html#열-관련-함수"><i class="fa fa-check"></i><b>6.2.3</b> 열 관련 함수</a></li>
-<li class="chapter" data-level="6.2.4" data-path="데이터-랭글링.html"><a href="데이터-랭글링.html#그룹-관련-함수"><i class="fa fa-check"></i><b>6.2.4</b> 그룹 관련 함수</a></li>
+<li class="chapter" data-level="6.2.4" data-path="데이터-랭글링.html"><a href="데이터-랭글링.html#집단-관련-함수"><i class="fa fa-check"></i><b>6.2.4</b> 집단 관련 함수</a></li>
+<li class="chapter" data-level="6.2.5" data-path="데이터-랭글링.html"><a href="데이터-랭글링.html#관계형-데이터"><i class="fa fa-check"></i><b>6.2.5</b> 관계형 데이터</a></li>
 </ul></li>
 <li class="chapter" data-level="6.3" data-path="데이터-랭글링.html"><a href="데이터-랭글링.html#tidyr-패키지"><i class="fa fa-check"></i><b>6.3</b> tidyr 패키지</a>
 <ul>
@@ -485,9 +486,9 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ## [1] &quot;*&quot;
 ## [1] &quot;*&quot;</code></pre>
 <div class="sourceCode" id="cb45"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb45-1"><a href="프로그래밍-구조.html#cb45-1" tabindex="-1"></a><span class="do">## 구구단 2단 출력</span></span>
-<span id="cb45-2"><a href="프로그래밍-구조.html#cb45-2" tabindex="-1"></a><span class="co"># print() 함수 : 하나의 값을 출력</span></span>
-<span id="cb45-3"><a href="프로그래밍-구조.html#cb45-3" tabindex="-1"></a><span class="co"># cat() 함수 : 한 줄에 여러 개의 값을 결합하여 출력</span></span>
-<span id="cb45-4"><a href="프로그래밍-구조.html#cb45-4" tabindex="-1"></a><span class="co"># \n : 줄바꿈을 하도록 하는 특수문자</span></span>
+<span id="cb45-2"><a href="프로그래밍-구조.html#cb45-2" tabindex="-1"></a><span class="co"># print() 함수: 하나의 값을 출력</span></span>
+<span id="cb45-3"><a href="프로그래밍-구조.html#cb45-3" tabindex="-1"></a><span class="co"># cat() 함수: 한 줄에 여러 개의 값을 결합하여 출력</span></span>
+<span id="cb45-4"><a href="프로그래밍-구조.html#cb45-4" tabindex="-1"></a><span class="co"># \n: 줄바꿈을 하도록 하는 특수문자</span></span>
 <span id="cb45-5"><a href="프로그래밍-구조.html#cb45-5" tabindex="-1"></a><span class="cf">for</span>(i <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">9</span>) {</span>
 <span id="cb45-6"><a href="프로그래밍-구조.html#cb45-6" tabindex="-1"></a>  <span class="fu">cat</span>(<span class="st">&quot;2 *&quot;</span>, i, <span class="st">&quot;=&quot;</span>, <span class="dv">2</span><span class="sc">*</span>i, <span class="st">&quot;</span><span class="sc">\n</span><span class="st">&quot;</span>)</span>
 <span id="cb45-7"><a href="프로그래밍-구조.html#cb45-7" tabindex="-1"></a>}</span></code></pre></div>
@@ -535,7 +536,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li>조건문과 반복문이 결합한 형태임</li>
 </ul>
 <blockquote>
-<p>※ 주의 : 영원히 실행되는 반복문을 ’무한루프(infinite loop)’라 하며, 컴퓨터의 작동을 멈출 수 있음</p>
+<p>※ 주의: 영원히 실행되는 반복문을 ’무한루프(infinite loop)’라 하며, 컴퓨터의 작동을 멈출 수 있음</p>
 </blockquote>
 <p><img src="img/fig4-4.png" /></p>
 <div class="sourceCode" id="cb51"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb51-1"><a href="프로그래밍-구조.html#cb51-1" tabindex="-1"></a><span class="cf">while</span>(조건) {</span>
@@ -558,8 +559,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div id="break-문와-next-문" class="section level3 hasAnchor" number="4.3.3">
 <h3><span class="header-section-number">4.3.3</span> break 문와 next 문<a href="프로그래밍-구조.html#break-문와-next-문" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <ul>
-<li>break 문 : 반복문을 중단시키고, 반복문 이후의 첫 번째 명령문으로 이동시킴</li>
-<li>next 문 : 현재 반복을 건너뛰고, 반복문의 시작 지점으로 되돌려 다음 반복을 진행함</li>
+<li>break 문: 반복문을 중단시키고, 반복문 이후의 첫 번째 명령문으로 이동시킴</li>
+<li>next 문: 현재 반복을 건너뛰고, 반복문의 시작 지점으로 되돌려 다음 반복을 진행함</li>
 </ul>
 <div class="sourceCode" id="cb54"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb54-1"><a href="프로그래밍-구조.html#cb54-1" tabindex="-1"></a><span class="do">## 1~5 사이의 숫자의 합계 출력 - break 문</span></span>
 <span id="cb54-2"><a href="프로그래밍-구조.html#cb54-2" tabindex="-1"></a>sum <span class="ot">&lt;-</span> <span class="dv">0</span></span>
@@ -627,23 +628,28 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </tr>
 </tbody>
 </table>
-<div class="sourceCode" id="cb58"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb58-1"><a href="프로그래밍-구조.html#cb58-1" tabindex="-1"></a><span class="co"># apply() 예제: 행렬에서 각 열의 평균 계산</span></span>
+<div class="sourceCode" id="cb58"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb58-1"><a href="프로그래밍-구조.html#cb58-1" tabindex="-1"></a><span class="do">## apply() 예제: 행렬에서 각 열의 평균 계산</span></span>
 <span id="cb58-2"><a href="프로그래밍-구조.html#cb58-2" tabindex="-1"></a><span class="fu">apply</span>(iris[, <span class="dv">1</span><span class="sc">:</span><span class="dv">4</span>], <span class="dv">2</span>, mean)</span>
 <span id="cb58-3"><a href="프로그래밍-구조.html#cb58-3" tabindex="-1"></a></span>
-<span id="cb58-4"><a href="프로그래밍-구조.html#cb58-4" tabindex="-1"></a><span class="co"># lapply() 예제: 각 열의 요약 통계량 계산</span></span>
-<span id="cb58-5"><a href="프로그래밍-구조.html#cb58-5" tabindex="-1"></a><span class="fu">lapply</span>(iris[, <span class="dv">1</span><span class="sc">:</span><span class="dv">4</span>], summary)</span>
-<span id="cb58-6"><a href="프로그래밍-구조.html#cb58-6" tabindex="-1"></a></span>
-<span id="cb58-7"><a href="프로그래밍-구조.html#cb58-7" tabindex="-1"></a><span class="co"># sapply() 예제: 각 열의 요약 통계량 계산 (벡터로 반환)</span></span>
-<span id="cb58-8"><a href="프로그래밍-구조.html#cb58-8" tabindex="-1"></a><span class="fu">sapply</span>(iris[, <span class="dv">1</span><span class="sc">:</span><span class="dv">4</span>], summary)</span>
-<span id="cb58-9"><a href="프로그래밍-구조.html#cb58-9" tabindex="-1"></a></span>
-<span id="cb58-10"><a href="프로그래밍-구조.html#cb58-10" tabindex="-1"></a><span class="co"># vapply() 예제: 각 열의 평균을 숫자로 반환</span></span>
-<span id="cb58-11"><a href="프로그래밍-구조.html#cb58-11" tabindex="-1"></a><span class="fu">vapply</span>(iris[, <span class="dv">1</span><span class="sc">:</span><span class="dv">4</span>], mean, <span class="fu">numeric</span>(<span class="dv">1</span>))</span>
+<span id="cb58-4"><a href="프로그래밍-구조.html#cb58-4" tabindex="-1"></a></span>
+<span id="cb58-5"><a href="프로그래밍-구조.html#cb58-5" tabindex="-1"></a><span class="do">## lapply() 예제: 각 열의 요약 통계량 계산</span></span>
+<span id="cb58-6"><a href="프로그래밍-구조.html#cb58-6" tabindex="-1"></a><span class="fu">lapply</span>(iris[, <span class="dv">1</span><span class="sc">:</span><span class="dv">4</span>], summary)</span>
+<span id="cb58-7"><a href="프로그래밍-구조.html#cb58-7" tabindex="-1"></a></span>
+<span id="cb58-8"><a href="프로그래밍-구조.html#cb58-8" tabindex="-1"></a></span>
+<span id="cb58-9"><a href="프로그래밍-구조.html#cb58-9" tabindex="-1"></a><span class="do">## sapply() 예제: 각 열의 요약 통계량 계산 (벡터로 반환)</span></span>
+<span id="cb58-10"><a href="프로그래밍-구조.html#cb58-10" tabindex="-1"></a><span class="fu">sapply</span>(iris[, <span class="dv">1</span><span class="sc">:</span><span class="dv">4</span>], summary)</span>
+<span id="cb58-11"><a href="프로그래밍-구조.html#cb58-11" tabindex="-1"></a></span>
 <span id="cb58-12"><a href="프로그래밍-구조.html#cb58-12" tabindex="-1"></a></span>
-<span id="cb58-13"><a href="프로그래밍-구조.html#cb58-13" tabindex="-1"></a><span class="co"># tapply() 예제: Species별로 Sepal.Length의 평균 계산</span></span>
-<span id="cb58-14"><a href="프로그래밍-구조.html#cb58-14" tabindex="-1"></a><span class="fu">tapply</span>(iris<span class="sc">$</span>Sepal.Length, iris<span class="sc">$</span>Species, mean)</span>
+<span id="cb58-13"><a href="프로그래밍-구조.html#cb58-13" tabindex="-1"></a><span class="do">## vapply() 예제: 각 열의 평균을 숫자로 반환</span></span>
+<span id="cb58-14"><a href="프로그래밍-구조.html#cb58-14" tabindex="-1"></a><span class="fu">vapply</span>(iris[, <span class="dv">1</span><span class="sc">:</span><span class="dv">4</span>], mean, <span class="fu">numeric</span>(<span class="dv">1</span>))</span>
 <span id="cb58-15"><a href="프로그래밍-구조.html#cb58-15" tabindex="-1"></a></span>
-<span id="cb58-16"><a href="프로그래밍-구조.html#cb58-16" tabindex="-1"></a><span class="co"># mapply() 예제: Sepal.Length와 Sepal.Width의 합을 구하는 함수 적용</span></span>
-<span id="cb58-17"><a href="프로그래밍-구조.html#cb58-17" tabindex="-1"></a><span class="fu">mapply</span>(sum, iris<span class="sc">$</span>Sepal.Length, iris<span class="sc">$</span>Sepal.Width)</span></code></pre></div>
+<span id="cb58-16"><a href="프로그래밍-구조.html#cb58-16" tabindex="-1"></a></span>
+<span id="cb58-17"><a href="프로그래밍-구조.html#cb58-17" tabindex="-1"></a><span class="do">## tapply() 예제: Species별로 Sepal.Length의 평균 계산</span></span>
+<span id="cb58-18"><a href="프로그래밍-구조.html#cb58-18" tabindex="-1"></a><span class="fu">tapply</span>(iris<span class="sc">$</span>Sepal.Length, iris<span class="sc">$</span>Species, mean)</span>
+<span id="cb58-19"><a href="프로그래밍-구조.html#cb58-19" tabindex="-1"></a></span>
+<span id="cb58-20"><a href="프로그래밍-구조.html#cb58-20" tabindex="-1"></a></span>
+<span id="cb58-21"><a href="프로그래밍-구조.html#cb58-21" tabindex="-1"></a><span class="do">## mapply() 예제: Sepal.Length와 Sepal.Width의 합을 구하는 함수 적용</span></span>
+<span id="cb58-22"><a href="프로그래밍-구조.html#cb58-22" tabindex="-1"></a><span class="fu">mapply</span>(sum, iris<span class="sc">$</span>Sepal.Length, iris<span class="sc">$</span>Sepal.Width)</span></code></pre></div>
 <p><br></p>
 <hr />
 </div>
@@ -656,7 +662,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </ul>
 <div class="sourceCode" id="cb59"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb59-1"><a href="프로그래밍-구조.html#cb59-1" tabindex="-1"></a>함수명 <span class="ot">&lt;-</span> <span class="cf">function</span>(매개변수 목록) {</span>
 <span id="cb59-2"><a href="프로그래밍-구조.html#cb59-2" tabindex="-1"></a>  실행할 명령문</span>
-<span id="cb59-3"><a href="프로그래밍-구조.html#cb59-3" tabindex="-1"></a>  <span class="fu">return</span>(반환 값)</span>
+<span id="cb59-3"><a href="프로그래밍-구조.html#cb59-3" tabindex="-1"></a>  <span class="fu">return</span>(반환값)</span>
 <span id="cb59-4"><a href="프로그래밍-구조.html#cb59-4" tabindex="-1"></a>}</span></code></pre></div>
 <p><br></p>
 <div class="sourceCode" id="cb60"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb60-1"><a href="프로그래밍-구조.html#cb60-1" tabindex="-1"></a><span class="do">## 두 개의 값을 입력받아 큰 수를 반환하는 함수</span></span>
@@ -719,7 +725,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </thead>
 <tbody>
 <tr class="odd">
-<td align="center">.lib()</td>
+<td align="center">.libPaths()</td>
 <td align="left">- 현재 설정된 패키지 저장 경로 확인 및 지정</td>
 </tr>
 <tr class="even">

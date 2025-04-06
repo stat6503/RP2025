@@ -152,9 +152,9 @@ for(i in 1:5) {
 
 ```{r}
 ## 구구단 2단 출력
-# print() 함수 : 하나의 값을 출력
-# cat() 함수 : 한 줄에 여러 개의 값을 결합하여 출력
-# \n : 줄바꿈을 하도록 하는 특수문자
+# print() 함수: 하나의 값을 출력
+# cat() 함수: 한 줄에 여러 개의 값을 결합하여 출력
+# \n: 줄바꿈을 하도록 하는 특수문자
 for(i in 1:9) {
   cat("2 *", i, "=", 2*i, "\n")
 }
@@ -187,7 +187,7 @@ print(sum)
 + 조건이 참(TRUE)일 동안 코드블록을 계속 반복 실행하는 명령문
 + 조건문과 반복문이 결합한 형태임
 
-> ※ 주의 :  영원히 실행되는 반복문을 '무한루프(infinite loop)'라 하며, 컴퓨터의 작동을 멈출 수 있음
+> ※ 주의: 영원히 실행되는 반복문을 '무한루프(infinite loop)'라 하며, 컴퓨터의 작동을 멈출 수 있음
 
 ![](./img/fig4-4.png)
 
@@ -215,8 +215,8 @@ print(sum)
 <br>
 
 ### break 문와 next 문
-+ break 문 : 반복문을 중단시키고, 반복문 이후의 첫 번째 명령문으로 이동시킴
-+ next 문 : 현재 반복을 건너뛰고, 반복문의 시작 지점으로 되돌려 다음 반복을 진행함
++ break 문: 반복문을 중단시키고, 반복문 이후의 첫 번째 명령문으로 이동시킴
++ next 문: 현재 반복을 건너뛰고, 반복문의 시작 지점으로 되돌려 다음 반복을 진행함
 
 ```{r}
 ## 1~5 사이의 숫자의 합계 출력 - break 문
@@ -258,22 +258,27 @@ print(sum)
 |mapply()|- 여러 입력 벡터에 함수를 병렬로 적용하고 결과를 반환|
 
 ```{r eval = FALSE}
-# apply() 예제: 행렬에서 각 열의 평균 계산
+## apply() 예제: 행렬에서 각 열의 평균 계산
 apply(iris[, 1:4], 2, mean)
 
-# lapply() 예제: 각 열의 요약 통계량 계산
+
+## lapply() 예제: 각 열의 요약 통계량 계산
 lapply(iris[, 1:4], summary)
 
-# sapply() 예제: 각 열의 요약 통계량 계산 (벡터로 반환)
+
+## sapply() 예제: 각 열의 요약 통계량 계산 (벡터로 반환)
 sapply(iris[, 1:4], summary)
 
-# vapply() 예제: 각 열의 평균을 숫자로 반환
+
+## vapply() 예제: 각 열의 평균을 숫자로 반환
 vapply(iris[, 1:4], mean, numeric(1))
 
-# tapply() 예제: Species별로 Sepal.Length의 평균 계산
+
+## tapply() 예제: Species별로 Sepal.Length의 평균 계산
 tapply(iris$Sepal.Length, iris$Species, mean)
 
-# mapply() 예제: Sepal.Length와 Sepal.Width의 합을 구하는 함수 적용
+
+## mapply() 예제: Sepal.Length와 Sepal.Width의 합을 구하는 함수 적용
 mapply(sum, iris$Sepal.Length, iris$Sepal.Width)
 ```
 
@@ -290,7 +295,7 @@ mapply(sum, iris$Sepal.Length, iris$Sepal.Width)
 ```{r eval = FALSE}
 함수명 <- function(매개변수 목록) {
   실행할 명령문
-  return(반환 값)
+  return(반환값)
 }
 ```
 
@@ -355,7 +360,7 @@ result$mul                                  # 5, 8의 곱
 
 |함수|설명|
 |:---:|:------------|
-|.lib()|- 현재 설정된 패키지 저장 경로 확인 및 지정|
+|.libPaths()|- 현재 설정된 패키지 저장 경로 확인 및 지정|
 |install.packages()|- 패키지 설치 <br>- 패키지는 최초 한 번만 설치하면 됨|
 |library()|- 설치된 패키지 로드 <br>- R Studio를 새로 시작할 때마다 패키지를 불러와야 함|
 

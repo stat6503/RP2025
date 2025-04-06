@@ -81,9 +81,15 @@ select-함수
 mutate-함수
 rename-함수
 relocate-함수
-그룹-관련-함수
+집단-관련-함수
 summarise-함수
 group_by-함수
+count-함수
+관계형-데이터
+관계형-데이터-소개
+키key
+뮤테이팅-조인mutating-join
+필터링-조인filtering-join
 tidyr-패키지
 wide-format과-long-format
 long-format으로-변환

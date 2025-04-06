@@ -1,3 +1,8 @@
+```{r include = FALSE}
+library(tidyverse)
+library(nycflights13)
+```
+
 # 데이터 랭글링
 
 ## readr 패키지
@@ -11,7 +16,7 @@
 |read_tsv()|탭으로 구분된 파일 불러오기|
 |read_delim()|임의의 구분자로 구분된 파일 불러오기|
 |read_table()|공백으로 구분된 파일 불러오기|
-|read_spss()|spss 데이터 파일 불러오기|
+|read_spss()|spss 데이터 파일 불러오기(haven 패키지)|
 |read_sas()|sas 데이터 파일 불러오기(haven 패키지)|
 
 
@@ -117,12 +122,15 @@ flights %>%
 
 #### select() 함수
 + 특정 변수 추출
-+ 추출한 변수명을 바꿀 수 있음
++ 추출한 변수 이름을 바꿀 수 있음
 + 도우미(helpers) 함수
-  + ```starts_with()``` 함수 - 특정 문자열로 시작하는 이름 매칭
-  + ```ends_with()``` 함수 - 특정 문자열로 끝나는 이름 매칭
-  + ```contains()``` 함수 - 특정 문자열을 포함하는 이름 매칭
-  + ```num_range("x", 1:3)``` 함수 - x1, x2, x3 매칭
+
+|함수|설명|
+|:---:|:------------|
+|starts_with()|특정 문자열로 시작하는 이름 매칭|
+|ends_with()|특정 문자열로 끝나는 이름 매칭|
+|contains()|특정 문자열을 포함하는 이름 매칭|
+|num_range(prefix, range)|숫자 접미사를 가지는 일련의 이름 매칭|
 
 ```{r eval = FALSE}
 flights %>% select(year, month, day)                  # 출발 연월일 변수 추출
@@ -149,11 +157,12 @@ flights %>% mutate(speed = distance / (air_time/60), .before = 1)     # 첫번�
 flights %>% mutate(hour = air_time / 60, .after = air_time)           # air_time 변수 뒤에 추가
 ```
 
+<br>
+
 + mutate()와 자주 쓰이는 함수
 
 |함수|설명|
 |:---:|:------------|
-|lead(), lag()|이전/다음 행 값 가져오기
 |row_number()|행 번호 반환|
 |min_rank()|순위 부여(동순위 발생 시 건너뜀)|
 |dense_rank()|순위 부여(동순위 발생 시 연속된 값 부여)|
@@ -164,8 +173,6 @@ flights %>% mutate(hour = air_time / 60, .after = air_time)           # air_time
 |recode()|특정 값을 새로운 값으로 변환|
 
 ```{r eval=FALSE}
-flights %>% mutate(prev_dep = lag(dep_delay))                         # 이전 비행기의 출발 지연 시간
-flights %>% mutate(next_dep = lead(dep_delay))                        # 다음 비행기의 출발 지연 시간
 flights %>% mutate(flight_order = row_number())                       # 비행기 순서대로 번호 부여
 flights %>% mutate(delay_rank = min_rank(dep_delay))                  # 출발 지연 시간의 순위(동순위 건너뛰기)
 flights %>% mutate(delay_dense = dense_rank(dep_delay))               # 출발 지연 시간의 순위(동순위 연속)
@@ -188,9 +195,8 @@ flights %>%
 # 항공사 이름 변경
 flights %>%
   mutate(carrier_name = recode(carrier,
-                               "AA" = "American Airlines",
-                               "DL" = "Delta Airlines",
-                               "UA" = "United Airlines"))
+                               "AA" = "American Airlines Inc.",
+                               "DL" = "Delta Air Lines Inc."))
 ```
 
 <br>
@@ -216,17 +222,32 @@ flights %>% relocate(carrier:tailnum, .before = day)
 
 <br>
 
-### 그룹 관련 함수
+### 집단 관련 함수
 
 #### summarise() 함수
-+ 통계량 계산하여 하나의 행으로 요약
-+ 여러 개의 다양한 요약함수 사용 가능
-+ ```n()``` 함수 - 그룹별 크기 계산
++ 통계량을 계산하여 하나의 행으로 요약
++ 여러 개의 다양한 요약 함수를 사용할 수 있음
+
+|함수|설명|
+|:---:|:------------|
+|n()|관측값 개수|
+|n_distinct()|유일한 값의 개수|
+|sum()|합계|
+|mean()|평균|
+|sd()|표준편차|
+|median()|중앙값|
+|IQR()|사분위수범위|
+|min()|최소값|
+|max()|최대값|
+|quantile()|분위수|
+|first()|첫 번째 값|
+|nth()|n 번째 값|
+|last|마지막 값|
 
 ```{r eval = FALSE}
-flights %>% summarise(mean = mean(air_time, na.rm = TRUE),           # 평균
-                      std_dev = sd(air_time, na.rm = TRUE),          # 표준편차
-                      n = n())                                       # 데이터 개수
+flights %>% summarise(mean = mean(air_time, na.rm = TRUE),            # 평균
+                      std_dev = sd(air_time, na.rm = TRUE),           # 표준편차
+                      n = n())                                        # 데이터 개수
 ```
 
 <br>
@@ -238,11 +259,160 @@ flights %>% summarise(mean = mean(air_time, na.rm = TRUE),           # 평균
 + ```ungroup()``` 함수 - 그룹화 제거
 
 ```{r eval = FALSE}
-flights %>% group_by(month)                           # 데이터 변화 x, 그룹화되어 있음
-flights %>% group_by(month) %>%                       # 월별 평균 출발 지연 시간, 그룹 크기
-              summarise(delay = mean(dep_delay, na.rm = TRUE), n = n())
+flights %>% group_by(month)                                           # 데이터 변화 x, 그룹화되어 있음
+flights %>% group_by(month) %>%                                       # 월별 평균 출발 지연 시간, 그룹 크기
+  summarise(delay = mean(dep_delay, na.rm = TRUE), n = n())
 flights %>% group_by(year, month, day) %>% summarise(n = n())
-flights %>% group_by(month) %>% ungroup() %>% summarise(n = n())     # 그룹화 제거
+flights %>% group_by(month) %>% ungroup() %>% summarise(n = n())      # 그룹화 제거
+```
+
+<br>
+
+#### count() 함수
+  + 변수의 고유값별로 관측값 개수를 계산(빈도표 생성)
+  + `group_by()` + `summarise(n = n())`를 간결하게 표현한 도우미 함수
+  + 매개변수 `wt` - 집계 기준이 되는 가중 변수를 지정하며, 해당 변수의 합계를 산출(가중합)
+
+```{r eval = FALSE}
+flights %>% count(carrier)                                            # 항공사별 항공편 개수
+flights %>% count(carrier, wt = air_time)                             # 항공사별 비행 시간 총합
+```
+  
+
+<br>
+
+### 관계형 데이터
+
+#### 관계형 데이터 소개
++ 관계형 데이터
+  + 일반적으로 데이터 테이블이 많이 있고, 관심있는 질문에 대답하기 위해 이들을 결합해야 함
+  + 여러 데이터 테이블을 총칭하여 **관계형 데이터**라고 함
+
+<br>
+
++ [예제] nycflights13 패키지에서 flights와 관련된 4개의 데이터 테이블
+
+```{r}
+# airlines 테이블: 항공사 약어 코드와 전체 항공사 이름 정보
+airlines
+```
+
+```{r}
+# airports 테이블: 각 공항에 대한 정보가 faa 공항 코드로 식별됨
+airports
+```
+
+```{r}
+# planes 테이블: 각 여객기에 대한 정보가 tailnum으로 식별됨
+planes
+```
+
+```{r}
+# weather 테이블: 각 NYC 공항의 매 시각 날씨 정보
+weather
+```
+
+<br>
+
+![](./img/fig6-1.png)
+
+<br>
+
+#### 키(key)
++ <u>두 테이블을 연결할 때 사용</u>하는 변수로, 관측값을 고유하게 식별하는 역할을 함
++ 두 가지 주요 키 유형이 있음:
+  + **기본키(primary key)**
+    + 한 테이블 내에서 각 관측값을 고유하게 식별하는 변수(또는 변수 집합)
+    + 예 : planes\$tailnum은  planes 테이블에서 각 비행기를 고유하게 구분함
+  + **외래키(foreign key)**
+    + 다른 테이블의 기본키를 참조하여 두 테이블을 연결하는 변수(또는 변수 집합)
+    + 예 : flights\$tailnum은 flights 테이블에서 각 항공편을 planes 테이블의 비행기와 연결함
++ 기본키는 반드시 모든 관측값을 유일하게 식별해야 하므로, 실제로 중복이 없는지 확인하는 것이 중요
++ 일부 테이블은 명시적으로 기본키가 정의되어 있지 않기도 함
++ 일반적으로 기본키와 외래키는 일대다(one-to-many) 관계를 형성함
+  + 예 : 하나의 비행기(tailnum)는 여러 항공편(flights)에 사용될 수 있음
+
+```{r}
+# 기본키 중복 확인1
+planes %>% count(tailnum) %>% filter(n > 1)
+
+# 기본키 중복 확인2
+weather %>% count(year, month, day, hour, origin) %>% filter(n > 1)
+```
+
+<br>
+
+#### 뮤테이팅 조인(mutating join)
++ 관측값을 키로 매칭한 후, 한 테이블의 변수를 다른 테이블에 복사하여 결합함
++ 1개의 내부 조인(inner join)과 3개의 외부 조인(outer join) 방식이 있음
+
+<br>
+
+![](./img/fig6-2.png)
+
+|함수|설명|
+|:---:|:------------|
+|inner_join(x, y)|키가 일치하는 관측값만 결합(x, y 모두에 존재하는 값만 유지)|
+|left_join(x, y)|x의 모든 관측값을 유지하고, 일치하는 y의 값을 결합|
+|right_join(x, y)|y의 모든 관측값을 유지하고, 일치하는 x의 값을 결합|
+|full_join(x, y)|x와 y의 모든 관측값을 유지하고, 가능한 부분은 결합|
+
+![](./img/fig6-3.png)
+
+```{r eval = FALSE}
+x <- tibble(key = c(1, 2, 3), value_x = c("x1", "x2", "x3"))
+y <- tibble(key = c(1, 2, 4), value_y = c("y1", "y2", "x3"))
+```
+
+```{r eval = FALSE}
+x %>% inner_join(y, by = "key")                       # inner join
+x %>% left_join(y, by = "key")                        # left join
+x %>% right_join(y, by = "key")                       # right join
+x %>% full_join(y, by = "key")                        # full join
+```
+
+```{r eval = FALSE}
+## flights 데이터셋 일부 추출
+flights2 <- flights %>% 
+  select(year:day, hour, origin, dest, tailnum, carrier)
+
+
+## by = NULL (기본값) : 두 테이블에 있는 모든 변수를 사용하여 조인(natural join)
+flights2 %>% left_join(weather)
+
+
+## by = "x" : 일부 공통 변수 x만 사용하여 조인
+# flights와 planes에는 year 변수가 있지만 서로 다른 의미이므로, tailnum 변수로만 조인
+# year 변수는 접미사가 붙어 출력에서 헷갈리지 않음
+flights2 %>% left_join(planes, by = "tailnum")
+
+
+## by = c("a" = b") : 테이블 x의 a 변수와 테이블 y의 b 변수를 매칭
+flights2 %>% left_join(airports, by = c("dest" = "faa"))
+flights2 %>% left_join(airports, by = c("origin" = "faa"))
+
+```
+
+<br>
+
+#### 필터링 조인(filtering join)
++ 뮤테이팅 조인처럼 키를 기준으로 관측값을 매칭하지만, 변수를 결합하지 않고 관측값 자체를 필터링함
++ 매칭 여부만 중요하며, 어떤 관측값이 매칭되었는지는 중요하지 않음
+
+|함수|설명|
+|:---:|:------------|
+|semi_join(x, y)|x의 관측값 중 y와 키가 일치하는 값만 유지(결합 ×)|
+|anti_join(x, y)|x의 관측값 중 y와 키가 일치하지 않는 값만 반환(결합 ×)|
+
+```{r eval = FALSE}
+# 가장 인기있는 상위 10개 도착지
+top_dest <- flights %>% count(dest, sort = TRUE) %>% head(10)
+
+# 목적지 중 한 곳으로 운행항 항공편 필터링
+flights %>% semi_join(top_dest)
+
+# 여객기에 매칭되지 않는 항공편 필터링
+flights %>% anti_join(planes, by = "tailnum") %>% count(tailnum, sort = TRUE)
 ```
 
 <br>
@@ -261,25 +431,41 @@ flights %>% group_by(month) %>% ungroup() %>% summarise(n = n())     # 그룹화
 + long format
   + 컴퓨터가 이해하기 편한 데이터 구조
   + 각 행은 wide format에서 특정 셀의 정보를 반영하며, 각 열은 요인(factor)으로 표현된 형태
-  + wide format보다 유연하여 데이터 추가 및 삭제 용이
+  + wide format보다 유연하여 데이터 추가 및 삭제가 용이함
 
-![](./img/fig6-1.png)
-
+![](./img/fig6-4.png)
 
 <br>
 
 + [예제] WHO에서 발표한 1999~2000년 3개 국가(아프가니스탄, 브라질, 중국)의 결핵 사례 수
   + 동일한 데이터셋을 다양한 format으로 보여줌
 
-```{r eval = FALSE}
+```{r}
 library(tidyr)
-table1
+table1                                                # tidy data
+```
+
+```{r}
 table2
+```
+
+```{r}
 table3
+```
+
+```{r}
 table4a
+```
+
+```{r}
 table4b
 ```
 
+```{r}
+table5
+```
+
+<br>
 
 ### long format으로 변환
 + wide format을 long format으로 변환 - ```pivot_longer()``` 함수(권장)
@@ -287,68 +473,82 @@ table4b
   + long format으로 변환하고자 하는 열을 지정하는 방법은 ```dplyr::select()``` 함수와 동일
   + [참고] ```gather()```, ```reshape2::melt()``` 함수
 
-```{r eval = FALSE}
-## Example 1
+```{r}
+## long format 변환1
 table4a %>%
   pivot_longer(c(`1999`, `2000`), names_to = "year", values_to = "cases") %>% 
-  mutate(year = parse_integer(year))                 # year 변수를 정수형으로 변경
+  mutate(year = parse_integer(year))                  # year 변수를 정수형으로 변경
+```
 
+```{r}
+## long format 변환2
 table4b %>% 
   pivot_longer(c(`1999`, `2000`), names_to = "year", values_to = "population") %>% 
-  mutate(year = parse_integer(year))                 # year 변수를 정수형으로 변경
+  mutate(year = parse_integer(year))                  # year 변수를 정수형으로 변경
+```
 
-
-## Example 2
+```{r eval = FALSE}
+## long format 변환3
 relig_income %>%
   pivot_longer(-religion, names_to = "income", values_to = "count")
 
-
-## Example 3
+## long format 변환4
 billboard %>%
-  pivot_longer(cols = starts_with("wk"),             # dplyr::select()의 helpers 함수 사용
+  pivot_longer(cols = starts_with("wk"),              # dplyr::select()의 helpers 함수 사용
                names_to = "week",
                names_prefix = "wk",
                values_to = "rank",
-               values_drop_na = TRUE)                # 결측값(NA) 제거
+               values_drop_na = TRUE)                 # 결측값(NA) 제거
 ```
 
+<br>
 
 ### wide format으로 변환
 + long format을 wide format으로 변환 - ```pivot_wider()``` 함수(권장)
   + 관측값이 여러 행에 흩어져 있을 때 사용
   + [참고] ```spread()```, ```reshape2::dcast()``` 함수
 
-```{r eval = FALSE}
-## Example 1
+```{r}
+## wide format 변환1
 table2 %>%
   pivot_wider(names_from = type,
-              values_from = count) %>%                            # type에 대한 wide format
-  mutate(rate = cases/population*100000) %>%                      # 인구 10만 명당 결핵 건수
-  pivot_wider(names_from = year,                                  # year에 대한 wide format
+              values_from = count) %>%                                # type에 대한 wide format
+  mutate(rate = cases/population*100000) %>%                          # 인구 10만 명당 결핵 건수
+  pivot_wider(names_from = year,                                      # year에 대한 wide format
               values_from = c(cases, population, rate)) %>%
-  relocate(country, contains("1999"))                             # 변수 위치 변경
+  relocate(country, contains("1999"))                                 # 변수 위치 변경
+```
 
-
-## Example 2
+```{r eval = FALSE}
+## wide format 변환2
 fish_encounters %>%
   pivot_wider(names_from = station,
               values_from = seen,
-              values_fill = 0)                                    # 결측값(NA)은 0으로 대체
+              values_fill = 0)                                        # 결측값(NA)은 0으로 대체
 ```
 
+<br>
 
 ### 열의 분리 및 결합
 + 하나의 열에 저장되어 있는 여러 개의 변수를 분리 - ```separate()``` 함수
 + 여러 개의 열을 하나의 열로 결합 - ```unite()``` 함수
 
-```{r eval = FALSE}
+```{r}
+## 열의 분리
 table3 %>% separate(col = rate, into = c("cases", "population"), sep = "/")
-table5 %>% unite(col = new_year, century, year)
 ```
 
+```{r}
+## 열의 결합
+table5 %>%
+  unite(col = new_year, century, year, sep = "") %>% 
+  mutate(new_year = parse_integer(new_year))          # new_year 변수를 정수형으로 변경
+```
+
+<br>
 
 ### 결측값(missing value) 처리
-+ 결측값 ```NA```은 누락된 값(not availables)을 나타냄
++ 결측값 ```NA```은 누락된 값(not available)을 나타냄
 + 결측값은 알 수 없으므로, 전염성(contagious)을 가짐
   + 결측값에 대한 산술연산, 비교연산 결과도 알 수 없음(NA)
 + 결측값 확인 - ```is.na()``` 함수
@@ -367,7 +567,6 @@ NA == NA
 is.na(NA)
 ```
 
-
 <br>
 
 + 명시적 결측값(explicitly missing value) - ```NA```로 표시된 값
@@ -382,10 +581,10 @@ stocks <- tibble(
   return = c(1.88, 0.59, 0.35,   NA, 0.92, 0.17, 2.66))
 
 stocks %>%
-  pivot_wider(names_from = year,                     # year를 열로 pivot하여 명시적으로 만듬
+  pivot_wider(names_from = year,                      # year를 열로 pivot하여 명시적으로 만듬
               values_from = return) %>%
-  pivot_longer(cols = c(`2015`, `2016`),             # 명시적 결측값이 중요하지 않다면
-               names_to = "year",                    # 암묵적으로 만듬(NA 제거)
+  pivot_longer(cols = c(`2015`, `2016`),              # 명시적 결측값이 중요하지 않다면
+               names_to = "year",                     # 암묵적으로 만듬(NA 제거)
                values_to = "return",
                values_drop_na = TRUE)
 ```
@@ -393,29 +592,31 @@ stocks %>%
 
 <br>
 
-+ 입력한 열의 고유한 모든 조합을 찾은 후, 필요한 경우 명시적 결측값을 채움 - ```complete()``` 함수
-+ 결측값을 가장 최근에 존재하는 값(이월된 마지막 관측값)으로 대체 - ```fill()``` 함수
-+ 결측값이 존재하는 행 제거 - ```drop_na()``` 함수
-+ 결측값을 특정 값으로 대체 - ```replace_na()``` 함수
+|함수|설명|
+|:---:|:------------|
+|complete()|지정한 열의 모든 고유 조합을 생성한 후, 필요한 경우 결측값을 명시적으로 추가|
+|fill()|결측값을 가장 최근에 존재하는 값(이월된 마지막 관측값)으로 대체|
+|drop_na()|결측값이 포함된 행 제거|
+|replace_na()|결측값을 사용자가 지정한 값으로 대체|
 
 ```{r eval = FALSE}
-## Example for complete()
+## complete() 예제
 stocks %>% complete(year, qtr)
 
 
-## Example for fill()
+## fill() 예제
 tibble(person = c("Derrick Whitmore", NA, NA, "Katherine Burke"),
        treatment = c(1, 2, 3, 1), response = c(7, 10, 9, 4)) %>% 
   fill(person)
 
 
-## Example for drop_na()
+## drop_na() 예제
 mytbl <- tibble(x = c(1, 2, NA), y = c("a", NA, "b"))
-mytbl %>% drop_na(x)                                # x 변수에서 결측값이 있는 행 제거
-mytbl %>% drop_na()                                 # 모든 변수에 대해 결측값이 있는 행 제거
+mytbl %>% drop_na(x)                                  # x 변수에서 결측값이 있는 행 제거
+mytbl %>% drop_na()                                   # 모든 변수에 대해 결측값이 있는 행 제거
 
 
-## Example 1 for replace_na()
+## replace_na() 예제
 # 데이터 프레임에 있는 결측값을 대체하는 경우, 매개변수 replace는 list로 입력
 # x 변수의 결측값은 0, y 변수의 결측값은 "unknown"으로 대체
 mytbl %>% replace_na(list(x = 0, y = "unknown"))
@@ -426,20 +627,21 @@ mytbl$y %>% replace_na("unknown")
 mytbl %>% mutate(x = replace_na(x, 0), y = replace_na(y, "unknown"))
 ```
 
+<br>
+
 
 ----------------------------------------------------------------------
 
 
 ## stringr 패키지
 
-
 ### stringr 패키지 소개
 + 문자열(string)을 다루는 함수 제공
 + 모든 함수가 ```str_```로 시작하여 일관성있게 설계됨
 
+<br>
 
 ### 문자열 기초
-
 
 #### str_length() 함수
 + 문자열에서 문자의 개수(길이) 확인
@@ -463,6 +665,7 @@ babynames %>%
   count(name, wt = n, sort = TRUE)
 ```
 
+<br>
 
 #### str_sub() 함수
 + 문자열에서 특정 위치의 문자 추출
@@ -482,6 +685,7 @@ babynames %>%
          last = str_sub(name, -1, -1))   # 이름의 마지막 문자 추출
 ```
 
+<br>
 
 #### str_to_lower(), str_to_upper() 함수
 + 대소문자 변환
@@ -492,9 +696,9 @@ str_to_lower(c("Apple", "Banana", "Pear"))
 str_to_upper(c("Apple", "Banana", "Pear"))
 ```
 
+<br>
 
 ### 데이터에서 문자열 생성
-
 
 #### str_c() 함수
 + 두 개 이상의 벡터에 대해 원소별로 결합하여 단일 문자형 벡터(single character vector)로 만듬
@@ -521,6 +725,7 @@ info <- tibble(name = c("Kim", "Lee", "Park"))
 info %>% mutate(greeting = str_c("Hi, ", name, "!"))
 ```
 
+<br>
 
 #### str_glue() 함수
 + 고정 문자열과 변수 문자열을 결합할 때 ```""```를 반복적으로 타이핑하는 것을 방지하여 가독성을 높임
@@ -531,6 +736,7 @@ info <- tibble(name = c("Kim", "Lee", "Park"))
 info %>% mutate(greeting = str_glue("Hi, {name}!"))
 ```
 
+<br>
 
 #### str_flatten() 함수
 + 벡터의 각 요소를 하나의 문자열로 결합
@@ -551,9 +757,9 @@ mytbl %>%
   summarize(fruits = str_flatten(fruit, ", "))
 ```
 
+<br>
 
 ### 정규 표현식을 이용한 패턴 매칭
-
 
 #### 정규 표현식(regular expression; regex, regexp)
 + 주어진 문자열에 특정한 패턴이 있는 경우, 해당 패턴을 일반화(수식화)한 문자열
@@ -583,7 +789,6 @@ str_view_all(x, "CC+")
 str_view_all(x, "CC*")
 ```
 
-
 <br>
 
 + ```[]```을 사용하여 문자 집합을 매칭함
@@ -596,7 +801,6 @@ str_view_all(names, "[aeiou]")
 str_view_all(names, "[^aeiou]")
 str_view_all(names, "[^aeiou]+")         # 같은 문자가 매칭되었지만 매칭 개수가 다름
 ```
-
 
 <br>
 
@@ -611,6 +815,7 @@ str_view(c("a\\b"), "\\\\")
 str_view(c("abc", "a.c", "bef"), "a\\.c")
 ```
 
+<br>
 
 #### str_detect() 함수
 + 패턴이 일치하면 TRUE 반환
@@ -635,6 +840,7 @@ babynames %>%
   summarise(prop_x = mean(str_detect(name, "x")))
 ```
 
+<br>
 
 #### str_count() 함수
 + ```str_detect()``` 함수의 변형으로, 일치하는 패턴의 개수 반환
@@ -649,7 +855,7 @@ babynames %>%
          consonants = str_count(name, "[^aeiou]"))                # 자음 개수 확인
 ```
 
-
+<br>
 
 #### str_replace(), str_replace_all() 함수
 + 일치하는 패턴을 새 문자열로 변경
@@ -667,12 +873,13 @@ x <- c("1 house", "2 cars", "3 people")
 str_replace_all(x, c("1" = "one", "2" = "two", "3" = "three"))
 ```
 
+<br>
+
 
 ----------------------------------------------------------------------
 
 
 ## forcats 패키지
-
 
 ### forcats 패키지 소개
 + 팩터(factor)를 다루는 함수 제공
@@ -699,6 +906,7 @@ library(stringr)
 gss_cat
 ```
 
+<br>
 
 ### 팩터 수준(levels) 재정렬
 + 처음 나타나는 순서대로 재정렬 - ```fct_inorder()``` 함수
@@ -724,7 +932,6 @@ gss_cat %>%
   mutate(marital = marital %>% fct_infreq() %>% fct_rev()) %>%
   ggplot(aes(marital)) + geom_bar()
 ```
-
 
 <br>
 
@@ -763,6 +970,7 @@ ggplot(summary2, aes(age, fct_reorder(rincome, age))) + geom_point()
 ggplot(summary2, aes(age, fct_relevel(rincome, "Not applicable"))) + geom_point()
 ```
 
+<br>
 
 ### 팩터 수준(levels) 변경
 + ```fct_recode()``` 함수
@@ -827,20 +1035,21 @@ gss_cat %>%
   print(n = Inf)
 ```
 
+<br>
+
 
 ----------------------------------------------------------------------
 
 
 ## lubridate 패키지
 
-
 ### lubridate 패키지 소개
 + 날짜, 시간을 다루는 함수 제공
 + 핵심 tidyverse에 포함되지 않으므로 별도로 불러와야 함
 
+<br>
 
 ### 날짜/시간 object
-
 
 #### 날짜/시간 object 유형
 + **date** object - 날짜를 나타내며, tibble에서 \<date\>로 출력
@@ -852,6 +1061,7 @@ today()                                  # 오늘 날짜(date object)
 now()                                    # 현재 날짜 및 시간(date-time object)
 ```
 
+<br>
 
 #### 문자열(string)로부터 날짜/시간 object 생성
 + 문자열에서 연(year), 월(month), 일(day)의 순서를 확인한 후, 함수명 "y", "m", "d"를 같은 순서로 배치
@@ -867,6 +1077,7 @@ ymd_hms("2017-01-31 20:11:59")
 mdy_hm("01/31/2017 08:01")
 ```
 
+<br>
 
 #### 개별 구성요소로부터 날짜/시간 object 생성
 + 날짜/시간과 관련된 개별 구성요소들이 여러 열(변수)에 저장되어 있는 경우
@@ -899,6 +1110,7 @@ flights_dt <- flights %>%
   select(origin, dest, ends_with("delay"), ends_with("time"))
 ```
 
+<br>
 
 #### 기존의 날짜/시간 object로부터 날짜/시간 object 생성
 + date object와 date-time object의 상호 전환 - ```as_datetime()```, ```as_date()``` 함수
@@ -908,6 +1120,7 @@ as_datetime(today())
 as_date(now())
 ```
 
+<br>
 
 ### 날짜/시간 구성요소
 + 개별 구성요소 가져오기 - ```year()```, ```month()```, ```week()```, ```day()```, ```hour()```, ```minute()```, ```second()``` 함수
@@ -936,15 +1149,16 @@ wday(datetime)
 wday(datetime, label = TRUE, abbr = FALSE)
 ```
 
+<br>
 
 ### 시간 범위(time spans) object
-
 
 #### 시간 범위 object 유형
 + **duration** object : 정확한 초(second)를 나타냄
 + **period** object : 주(week)와 월(month)과 같이 사람의 단위(human units)로 표현함
 + **interval** object : 시작 시점과 종료 시점을 나타냄
 
+<br>
 
 #### duration object
 + date object에 뺄셈을 적용하면 difftime object가 생성되며, 이는 초(second), 분(minute), 시(hour), 일(day) 또는 주(week) 단위로 시간 범위를 기록하므로 작업이 어려움
@@ -953,7 +1167,6 @@ wday(datetime, label = TRUE, abbr = FALSE)
 + duration object는 덧셈, 뺄셈, 곱셈을 적용할 수 있음
   + 윤년, 일광 절약 시간제(daylight saving time) 같은 규칙의 영향을 받기 때문에 시간(hour), 월(month), 연(year)과 같은 큰 시간 단위로 측정한 값에 대해 연산 결과가 실제와 항상 일치하지 않음
   + [참고] 일광 절약 시간제 - 하절기에 표준시를 원래 시간보다 한 시간 앞당긴 시간을 쓰는 것으로, 미국과 캐나다는 각 시간대의 지역 시간을 기준으로 3월 두 번째주 일요일 오전 2시부터 11월 첫 번째주 일요일 오전 2시까지에 적용함
-
 
 ```{r eval = FALSE}
 ## duration object 생성
@@ -982,6 +1195,7 @@ one_pm                                        # "2016-03-12 13:00:00 EST"
 one_pm + ddays(1)                             # "2016-03-13 14:00:00 EDT"
 ```
 
+<br>
 
 #### period object
 + 지정된 단위로 period object 생성
@@ -1025,6 +1239,7 @@ flights_dt %>%
   filter(overnight, arr_time < dep_time)
 ```
 
+<br>
 
 #### interval object
 + interval object는 시작 시점과 종료 시점을 나타내므로, 정확한 시간 범위를 확인할 수 있음
