@@ -47,7 +47,7 @@ data
 ## dplyr 패키지
 
 ### dplyr 패키지 소개
-+ 데이터 가공, 탐색적 자료분석 등에 매우 유용하고 편리한 함수 제공하는 패키지
++ 데이터 가공, 탐색적 자료분석 등에 매우 유용하고 편리한 함수를 제공하는 패키지
 + 적용 대상에 따른 dplyr 함수
   + **행**: filter(), arrange()
   + **열**: select(), mutate(), rename(), relocate()
@@ -110,10 +110,10 @@ flights %>% filter(month %in% c(3,5,8))               # 3,5,8월에 출발한 �
 
 ```{r eval = FALSE}
 flights %>% arrange(year, month, day, dep_time)
-filghts %>% arrange(desc(dep_delay))                  # 가장 늦게 출발한 항공편 확인
+filghts %>% arrange(desc(dep_delay))                  # 출발 지연 시간이 가장 긴 항공편 확인
 flights %>%
-  filter(dep_delay <= 10 & dep_dalay >= -10) %>%      # 대략 정시에 출발한 항공편 중에서 
-  arrange(desc(arr_delay))                            # 가장 늦게 도착한 항공편 확인
+  filter(dep_delay <= 10 & dep_dalay >= -10) %>%      # 대체로 정시에 출발한 항공편 중에서 
+  arrange(desc(arr_delay))                            # 도착 지연 시간이 가장 긴 항공편 확인
 ```
 
 <br>
@@ -180,16 +180,16 @@ flights %>% mutate(dep_delay_na = na_if(dep_delay, 0))                # 출발 �
 flights %>% mutate(first_non_na = coalesce(dep_delay, arr_delay))     # 출발 지연 시간이 NA인 경우 도착 지연 시간 사용
 
 # 비행 시간이 3시간 이상이면 Long Flight, 아니면 Short Flight로 구분
-flights %>% mutate(flight_length = if_else(air_time >= 180, "Long Flight", "Short Flight"))
+flights %>% mutate(flight_duration = if_else(air_time >= 180, "Long Flight", "Short Flight"))
 
 # 비행 거리가 500마일 미만이면 Short-haul,
 # 500~1500마일 미만이면 Medium-haul,
 # 1500마일 이상이면 Long-haul로 구분
 flights %>%
-  mutate(flight_grade = case_when(
+  mutate(flight_distance = case_when(
     distance < 500 ~ "Short-haul",
-    distance >= 500 & distance < 1500 ~ "Medium-haul",
-    distance >= 1500 ~ "Long-haul"
+    distance < 1500 ~ "Medium-haul",
+    TRUE ~ "Long-haul"
   ))
 
 # 항공사 이름 변경
@@ -217,7 +217,7 @@ flights %>% rename(dep.time = dep_time, arr.time = arr_time)
 
 ```{r eval = FALSE}
 flights %>% relocate(air_time, distance)
-flights %>% relocate(carrier:tailnum, .before = day)
+flights %>% relocate(carrier:tailnum, .after = day)
 ```
 
 <br>
@@ -408,7 +408,7 @@ flights2 %>% left_join(airports, by = c("origin" = "faa"))
 # 가장 인기있는 상위 10개 도착지
 top_dest <- flights %>% count(dest, sort = TRUE) %>% head(10)
 
-# 목적지 중 한 곳으로 운행항 항공편 필터링
+# 목적지 중 한 곳으로 운행한 항공편 필터링
 flights %>% semi_join(top_dest)
 
 # 여객기에 매칭되지 않는 항공편 필터링
@@ -589,7 +589,6 @@ stocks %>%
                values_drop_na = TRUE)
 ```
 
-
 <br>
 
 |함수|설명|
@@ -636,7 +635,7 @@ mytbl %>% mutate(x = replace_na(x, 0), y = replace_na(y, "unknown"))
 ## stringr 패키지
 
 ### stringr 패키지 소개
-+ 문자열(string)을 다루는 함수 제공
++ 문자열(string)을 다루는 함수를 제공하는 패키지
 + 모든 함수가 ```str_```로 시작하여 일관성있게 설계됨
 
 <br>
@@ -653,15 +652,15 @@ str_length(c("a", "R for data science", NA))
 
 
 ## Example 2
-# dplyr::count() 함수 - 그룹별 빈도 값 산출
-#        매개변수 wt - 기본값은 NULL로 각 그룹의 행 개수 계산,
-#                      변수를 입력하면 각 그룹에 대한 합계 계산
+# dplyr::count() 함수 - 변수의 고유값별로 관측값 개수를 계산
+#        매개변수 wt - 기본값은 NULL로 집단별 관측값 개수(행의 개수) 산출,
+#                      가중 변수를 입력하면 집단별 합계 산출(가중합)
 library(babynames)
 babynames%>% 
-  count(length = str_length(name), wt = n)          # 이름 길이의 분포
+  count(length = str_length(name), wt = n)            # 이름 길이의 분포
 
 babynames %>% 
-  filter(str_length(name) == 15) %>%                # 가장 긴 이름 찾기
+  filter(str_length(name) == 15) %>%                  # 가장 긴 이름 찾기
   count(name, wt = n, sort = TRUE)
 ```
 
@@ -672,17 +671,17 @@ babynames %>%
 + 매개변수 ```start```, ```end```도 포함되기 때문에 반환되는 문자열의 길이는 end - start + 1임
 
 ```{r eval = FALSE}
-# Example 1
+## Example 1
 x <- c("Apple", "Banana", "Pear")
-str_sub(x, 1, 3)                         # 문자열의 1번째 문자부터 3번째 문자까지 추출
-str_sub(x, -3, -1)                       # 문자열의 마지막에서 3번째 문자부터 마지막 문자까지 추출
-str_sub("a", 1, 5)                       # 문자열이 너무 짧을 때도 에러는 발생하지 않음!
+str_sub(x, 1, 3)                            # 1번째 문자부터 3번째 문자까지 추출
+str_sub(x, -3, -1)                          # 끝에서 3번째 문자부터 마지막 문자까지 추출
+str_sub("a", 1, 5)                          # 문자열이 너무 짧을 때도 에러는 발생하지 않음!
 
 
-# Example 2
+## Example 2
 babynames %>% 
-  mutate(first = str_sub(name, 1, 1),    # 이름의 첫번째 문자 추출
-         last = str_sub(name, -1, -1))   # 이름의 마지막 문자 추출
+  mutate(first = str_sub(name, 1, 1),       # 이름의 첫번째 문자 추출
+         last = str_sub(name, -1, -1))      # 이름의 마지막 문자 추출
 ```
 
 <br>
@@ -701,25 +700,34 @@ str_to_upper(c("Apple", "Banana", "Pear"))
 ### 데이터에서 문자열 생성
 
 #### str_c() 함수
-+ 두 개 이상의 벡터에 대해 원소별로 결합하여 단일 문자형 벡터(single character vector)로 만듬
-+ 매개변수 ```sep``` - 입력된 벡터 결합할 때 사용하는 문자
-+ 매개변수 ```collapse``` - 입력된 벡터를 단일 문자열(single string)로 결합할 때 사용하는 문자
-+ 결측값(NA)에 대한 결과는 결측값임
-+ ```dplyr::mutate()``` 함수와 함께 사용
++ 두 개 이상의 문자 벡터를 원소별로 결합하여 하나의 문자형 벡터(single character vector) 생성
++ 매개변수 ```sep``` - 각 원소를 결합할 때 사용할 구분자
++ 매개변수 ```collapse``` - 전체 벡터를 하나의 문자열로 합칠 때 사용할 구분자
++ 결측값(NA)이 포함된 경우, 해당 결과도 NA로 반환됨
++ ```dplyr::mutate()``` 함수와 함께 사용하면 열 단위 문자열 생성이 가능함
 
 ```{r eval = FALSE}
+## Example 1
 str_c("Letter: ", letters)
 str_c("Letter", letters, sep = ": ")
 str_c(letters, " is for", "...")
 str_c(letters[-26], " comes before ", letters[-1])
 
+
+## Example 2
 # 단일 문자열(single string)로 결합
 str_c(letters, collapse = "")
 str_c(letters, collapse = ", ")
 
-# 결측값(NA)이 있는 경우
-str_c(c("a", NA, "b"), "-d")
 
+## Example 3
+# 결측값(NA)이 있는 경우
+x <- c("a", NA, "b")
+str_c(x, "-d")
+str_c(str_replace_na(x), "-d")              # 결측값을 "NA" 그대로 출력
+
+
+## Example 4
 # dplyr::mutate()와 함께 사용
 info <- tibble(name = c("Kim", "Lee", "Park"))
 info %>% mutate(greeting = str_c("Hi, ", name, "!"))
@@ -728,19 +736,74 @@ info %>% mutate(greeting = str_c("Hi, ", name, "!"))
 <br>
 
 #### str_glue() 함수
-+ 고정 문자열과 변수 문자열을 결합할 때 ```""```를 반복적으로 타이핑하는 것을 방지하여 가독성을 높임
-+ ```{}```안에 작성된 코드는 문자열 외부에 있는 것처럼 실행
++ 고정 문자열과 변수를 직관적으로 결합할 수 있도록 지원
++ 반복적인 ```""``` 사용 없이 가독성이 높은 코드 작성 가능
++ ```{}```안에 작성한 표현식은 문자열 외부처럼 평가되어 값으로 치환됨
 
 ```{r eval = FALSE}
+## Example 1
+name <- "Park"
+str_glue("Hello, {name}!")
+
+str_glue("2 + 2 = {2 + 2}")
+str_glue("Today is {toupper('monday')}.")
+
+
+## Example 2
+# 특수문자 \n가 없어도 자연스럽게 줄바꿈을 포함
+name <- "Kim"
+str_glue("Hello, {name}!
+          Welcome to the team.")
+
+
+## Example 3
+# 결측값(NA)이 있으면 지정한 문자열로 대체
+names <- c("Kim", NA, "Park")
+str_glue("Hi, {names}!", .na = "Friend")
+
+
+## Example 4
 info <- tibble(name = c("Kim", "Lee", "Park"))
 info %>% mutate(greeting = str_glue("Hi, {name}!"))
 ```
 
 <br>
 
+#### str_glue_data() 함수
++ ```str_glue()``` 함수와 유사하지만, 데이터프레임을 명시적으로 참조하여 문자열을 생성
++ ```str_glue()``` 함수보다 더 빠르고 메모리 효율적이며, 벡터화된 처리로 대규모 데이터 처리에 적합
++ ```dplyr::mutate()``` 함수와 함께 사용하면 열(column) 값을 활용한 문자열 결합에 매우 유용함
+
+```{r eval = FALSE}
+## Example 1
+info <- tibble(name = c("Kim", "Lee", "Park"),
+               age = c(25, 30, 42),
+               city = c("Seoul", "Jeonbuk", "Gwangju"))
+str_glue_data(info, "{name} is {age} years old and lives in {city}.")
+
+
+## Example 2
+info2 <- tibble(name = c("Kim", NA, "Park"),
+                age = c(25, 30, NA),
+                city = c("Seoul", "Jeonbuk", "Gwangju"))
+str_glue_data(info2, "{name} lives in {city}.", .na = "Unknown")
+
+
+## Example 3
+info <- tibble(name = c("Kim", "Lee", "Park"),
+               age = c(25, 30, 42),
+               city = c("Seoul", "Jeonbuk", "Gwangju"))
+info %>%
+  mutate(message = str_glue_data(info, "{name} ({age} years old) lives in {city}."))
+```
+
+<br>
+
 #### str_flatten() 함수
-+ 벡터의 각 요소를 하나의 문자열로 결합
-+ ```dplyr::summarise()``` 함수와 함께 사용
++ 문자 벡터의 각 원소를 하나의 문자열로 결합
++ ```dplyr::summarise()``` 함수와 함께 사용하면 집단별 문자열 요약에 활용 가능
++ 매개변수 ```collapse``` - 전체 벡터를 하나의 문자열로 합칠 때 사용할 구분자
++ 매개변수 ```last``` - 마지막 원소 앞에 사용할 접속어
 
 ```{r eval = FALSE}
 ## Example 1

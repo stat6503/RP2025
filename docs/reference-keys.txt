@@ -105,6 +105,7 @@ str_to_lower-str_to_upper-함수
 데이터에서-문자열-생성
 str_c-함수
 str_glue-함수
+str_glue_data-함수
 str_flatten-함수
 정규-표현식을-이용한-패턴-매칭
 정규-표현식regular-expression-regex-regexp
