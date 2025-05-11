@@ -111,7 +111,9 @@ str_flatten-함수
 정규-표현식regular-expression-regex-regexp
 str_detect-함수
 str_count-함수
+str_extract-str_extract_all-함수
 str_replace-str_replace_all-함수
+str_split-함수
 forcats-패키지
 forcats-패키지-소개
 팩터-수준levels-재정렬
