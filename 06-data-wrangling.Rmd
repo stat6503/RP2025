@@ -703,7 +703,7 @@ str_to_upper(c("Apple", "Banana", "Pear"))
 + 두 개 이상의 문자 벡터를 원소별로 결합하여 하나의 문자형 벡터(single character vector) 생성
 + 매개변수 ```sep``` - 각 원소를 결합할 때 사용할 구분자
 + 매개변수 ```collapse``` - 전체 벡터를 하나의 문자열로 합칠 때 사용할 구분자
-+ 결측값(NA)이 포함된 경우, 해당 결과도 NA로 반환됨
++ 결측값(NA)이 포함된 경우 해당 결과도 NA로 반환됨
 + ```dplyr::mutate()``` 함수와 함께 사용하면 열 단위 문자열 생성이 가능함
 
 ```{r eval = FALSE}
@@ -1044,12 +1044,12 @@ str_view(x, boundary("character"))
 ## forcats 패키지
 
 ### forcats 패키지 소개
-+ 팩터(factor)를 다루는 함수 제공
++ 팩터(factor)를 다루는 함수를 제공하는 패키지
   + 팩터는 범주형 변수에 사용하는 데이터 객체로, 문자형보다 다루기 더 쉬움
   + 범주형 변수는 가질 수 있는 값이 미리 고정되고 알려져 있음
   + 문자형 벡터를 알파벳순이 아닌 순서로 표현하고 싶을 때 유용
-+ [예제] General Social Survey
-  + 시카고 대학교의 독립연구기관 NORC에서 장기간 수행한 General Social Survey의 샘플 테이터
++ [예제] 종합사회조사(General Social Survey) 데이터셋 gss_cat
+  + 시카고 대학교 독립연구기관 NORC에서 장기간 수행한 General Social Survey의 샘플 데이터
 
 |변수|설명|
 |:---:|:------------|
@@ -1065,31 +1065,39 @@ str_view(x, boundary("character"))
 
 ```{r eval = FALSE}
 library(stringr)
-gss_cat
+gss_cat %>% glimpse
 ```
 
 <br>
 
 ### 팩터 수준(levels) 재정렬
-+ 처음 나타나는 순서대로 재정렬 - ```fct_inorder()``` 함수
-+ 각 수준의 빈도가 큰 순서대로 재정렬 - ```fct_infreq()``` 함수
-+ 수준의 수치 값(numeric value) 순서대로 재정렬 - ```fct_inseq()``` 함수
-+ 팩터 수준을 반대로 재정렬 - ```fct_rev()``` 함수
+
+|함수|설명|
+|:---:|:------------|
+|fct_inorder()|데이터에 나타난 순서대로 팩터 수준을 재정렬|
+|fct_infreq()|빈도가 높은 수준부터 순서대로 재정렬|
+|fct_inseq()|수준을 숫자로 변환 가능한 경우, 작은 수부터 재정렬|
+|fct_rev()|팩터 수준의 순서를 반대로 뒤집어 재정렬|
 
 ```{r eval = FALSE}
+## fct_inorder(), fct_infreq() 예제
 fct1 <- factor(c("b", "b", "a", "c", "c", "c"))
-fct_inorder(fct1)                                    # Levels: b a c
-fct_infreq(fct2)                                     # Levels: c b a
+fct_inorder(fct1)                                     # Levels: b a c
+fct_infreq(fct1)                                      # Levels: c b a
 
 
+## inseq() 예제
 fct2 <- factor(1:3, levels = c("2", "3", "1"))
-fct_inseq(fct2)                                      # Levels : 1 2 3
+fct_inseq(fct2)                                       # Levels : 1 2 3
 
-fct_rev(fct1)
-fct_rev(fct2)
 
-# fct_infreq(), fct_rev()는 조합해서 사용 가능
-# marital 수준은 각 수준의 빈도에 대해 오름차순으로 재정렬됨
+## inrev() 예제
+fct_rev(fct1)                                         # Levels : c b a
+fct_rev(fct2)                                         # Levels : 1 3 2
+
+
+## Excample
+# fct_infreq(), fct_rev() 함수를 조합하여 marital 수준을 빈도 기준으로 내림차순 정렬
 gss_cat %>%
   mutate(marital = marital %>% fct_infreq() %>% fct_rev()) %>%
   ggplot(aes(marital)) + geom_bar()
@@ -1097,11 +1105,14 @@ gss_cat %>%
 
 <br>
 
-+ 특정 변수를 기준으로 재정렬 - ```fct_reorder()``` 함수
-+ 특정 수준을 맨 앞으로 배치 - ```fct_relevel()``` 함수
+|함수|설명|
+|:---:|:------------|
+|fct_reorder()|특정 변수를 기준으로 팩터 수준을 재정렬|
+|fct_relevel()|지정한 수준을 앞쪽(처음)으로 이동하여 재정렬|
+
 
 ```{r eval = FALSE}
-## Example for fct_reorder()
+## fct_reorder() 예제
 # 결혼 상태에 따른 하루 평균 TV 시청 시간
 summary1 <- gss_cat %>% 
               group_by(marital) %>% 
@@ -1118,7 +1129,7 @@ ggplot(summary1, aes(tvhours, marital)) +
         axis.text = element_text(size = 15))
 
 
-## Example for fct_relevel()
+## fct_relevel() 예제
 # 소득에 따른 평균 연령
 summary2 <- gss_cat %>%
               group_by(rincome) %>%
@@ -1127,7 +1138,7 @@ summary2 <- gss_cat %>%
 ## [그래프를 통한 확인]
 # reorder() 함수를 사용하면 어떤 소득 집단이 평균 연령이 가장 높고 낮은지 파악하기 쉬우나,
 # rincome 변수는 순서형 변수(ordinal variable)이기 때문에 이는 바람직하지 않음
-# relevel() 함수를 사용하여 "Not applicable" 수준을 맨 앞으로 배치할 수 있음
+# relevel() 함수를 사용하여 "Not applicable" 수준을 앞쪽(처음)으로 이동할 수 있음
 ggplot(summary2, aes(age, fct_reorder(rincome, age))) + geom_point()
 ggplot(summary2, aes(age, fct_relevel(rincome, "Not applicable"))) + geom_point()
 ```
@@ -1135,19 +1146,15 @@ ggplot(summary2, aes(age, fct_relevel(rincome, "Not applicable"))) + geom_point(
 <br>
 
 ### 팩터 수준(levels) 변경
-+ ```fct_recode()``` 함수
-  + 명시적으로 언급되지 않은 수준은 그대로 유지함
-  + 그룹으로 결합하려면 이전 수준을 동일한 새로운 수준에 할당
-  + ※ 주의 : 서로 같지 않은 범주를 함께 묶는다면 잘못된 결과를 도출할 수 있음
-+ ```fct_collapse()``` 함수
-  + 여러 개의 수준을 하나로 병합
-  + 새로운 수준에 대해 이전 수준으로 이루어진 벡터를 제공
-+ ```fct_lump()``` 함수
-  + 상대적으로 빈도가 낮은 소규모 그룹을 하나로 병합
-  + 매개변수 ```n``` - Other를 제외한 그룹 개수 지정
+
+|함수|설명|
+|:---:|:------------|
+|fct_recode()|- 명시적으로 언급되지 않은 수준은 그대로 유지됨 <br>- 여러 수준을 하나로 묶으려면 동일한 새 수준에 할당 <br>※ [주의] 서로 다른 범주를 잘못 묶으면 결과가 왜곡될 수 있음|
+|fct_collapse()|- 여러 수준을 하나의 집단으로 병합 <br>- 새 수준에 대해 기존 수준들의 벡터를 지정|
+|fct_lump()|- 상대적으로 빈도가 낮은 수준을 묶어 ```"Other"```로 병합 <br>- 매개변수 ```n``` \- ```"Other"```를 제외한 수준의 개수 설정 <br>- 매개변수 ```prop``` \- ```"Other"```로 묶을 수준의 전체 비중 기준을 설정|
 
 ```{r eval = FALSE}
-## Example 1 for fct_recode()
+## fct_recode() 예제1
 gss_cat %>%
   mutate(partyid = fct_recode(partyid,
                               "Republican, strong"    = "Strong republican",
@@ -1159,7 +1166,7 @@ gss_cat %>%
   count(partyid)
 
 
-## Example 2 for fct_recode()
+## fct_recode() 예제2
 gss_cat %>%
   mutate(partyid = fct_recode(partyid,
                               "Republican, strong"    = "Strong republican",
@@ -1174,7 +1181,7 @@ gss_cat %>%
   count(partyid)
 
 
-## Example for fct_collapse()
+## fct_collapse() 예제1
 gss_cat %>%
   mutate(partyid = fct_collapse(partyid,
                                 other = c("No answer", "Don't know", "Other party"),
@@ -1184,15 +1191,22 @@ gss_cat %>%
   count(partyid)
 
 
-## Example 1 for fct_lump()
+## fct_lump() 예제1
 gss_cat %>%
   mutate(relig = fct_lump(relig)) %>%
   count(relig)
 
 
-## Example 2 for fct_lump()
+## fct_lump() 예제2
 gss_cat %>%
   mutate(relig = fct_lump(relig, n = 10)) %>%
+  count(relig, sort = TRUE) %>%
+  print(n = Inf)
+
+
+## fct_lump() 예제3
+gss_cat %>%
+  mutate(relig = fct_lump(relig, prop = 0.05)) %>%
   count(relig, sort = TRUE) %>%
   print(n = Inf)
 ```
@@ -1206,28 +1220,33 @@ gss_cat %>%
 ## lubridate 패키지
 
 ### lubridate 패키지 소개
-+ 날짜, 시간을 다루는 함수 제공
-+ 핵심 tidyverse에 포함되지 않으므로 별도로 불러와야 함
++ 날짜, 시간을 다루는 함수를 제공하는 패키지
++ 핵심 ```tidyverse```에 포함되지 않으므로 별도로 불러와야 함
++ 시간 정보만 다루고 싶을 때는 ```hms``` 패키지를 사용
 
 <br>
 
-### 날짜/시간 object
+### 날짜/시간 생성
 
-#### 날짜/시간 object 유형
-+ **date** object - 날짜를 나타내며, tibble에서 \<date\>로 출력
-+ **time** object - 하루 중 시간을 나타내며, tibble에서 \<time\>로 출력
-+ **date-time** object - 날짜와 시간을 나타내므로 시점을 고유하게 식별함, tibble에서 \<dttm\>로 출력
+#### 날짜/시간 유형
+
+|유형|설명|
+|:---:|:------------|
+|date|- 날짜를 나타내며, tibble에서 \<date\>로 출력|
+|time|- 하루 중 시간을 나타내며, tibble에서 \<time\>로 출력|
+|date-time|- 날짜와 시간을 나타내며, tibble에서 \<dttm\>로 출력 <br>- 시점을 고유하게 식별|
+
 
 ```{r eval = FALSE}
-today()                                  # 오늘 날짜(date object)
-now()                                    # 현재 날짜 및 시간(date-time object)
+today()                                 # 오늘 날짜(date)
+now()                                   # 현재 날짜 및 시간(date-time)
 ```
 
 <br>
 
-#### 문자열(string)로부터 날짜/시간 object 생성
-+ 문자열에서 연(year), 월(month), 일(day)의 순서를 확인한 후, 함수명 "y", "m", "d"를 같은 순서로 배치
-+ date-time object를 생성하려면 ```_```와 "h", "m", "s" 중 하나 이상을 추가
+#### 문자열(string)로부터 생성
++ 문자열에서 연(year), 월(month), 일(day)의 순서를 파악한 후, "y", "m", "d"를 그 순서대로 함수 이름에 사용
++ ```date-time```을 생성하려면 함수 이름에 ```_```와 "h", "m", "s" 중 하나 이상을 추가함
 
 ```{r eval = FALSE}
 library(lubridate)
@@ -1241,28 +1260,27 @@ mdy_hm("01/31/2017 08:01")
 
 <br>
 
-#### 개별 구성요소로부터 날짜/시간 object 생성
-+ 날짜/시간과 관련된 개별 구성요소들이 여러 열(변수)에 저장되어 있는 경우
-+ date object - ```make_date()```  함수
-+ date-time object - ```make_datetime()``` 함수
+#### 개별 구성요소로부터 생성
++ 날짜/시간의 개별 구성요소들이 여러 열(변수)에 저장되어 있는 경우 ```make_date()```, ```make_datetime()``` 함수 사용
 
 ```{r eval = FALSE}
 library(nycflights13)
 
-# 예정된 출발 일시
+## Example 1
+# 예정된 출발 일시를 date-time 형식으로 생성
 flights %>% 
   select(year, month, day, hour, minute) %>% 
   mutate(departure = make_datetime(year, month, day, hour, minute))
-```
 
-```{r eval = FALSE}
-# 시간에 대해 HHMM 또는 HMM으로 저장된 값은 시(hour)와 분(minute)으로 나누는 사용자 정의 함수
-# [참고] %/% 나눗셈의 몫, %% 나눗셈의 나머지
+
+## Example2
+# 예정된 도착 일시, 실제 출발 일시, 실제 도착 일시를 date-time 형식으로 생성
+# → sched_arr_time, dep_time, arr_time은 HHMM 또는 HMM 형식으로 되어 있어,
+#   시(hour)와 분(minute)을 각각 분리하여 추출해야 함
 make_datetime_100 <- function(year, month, day, time) {
   make_datetime(year, month, day, time %/% 100, time %% 100)
 }
 
-# 실제 출발 일시, 실제 도착 일시, 예정된 출발 일시, 예정된 도착 일시 생성
 flights_dt <- flights %>% 
   filter(!is.na(dep_time), !is.na(arr_time)) %>% 
   mutate(dep_time = make_datetime_100(year, month, day, dep_time),
@@ -1274,8 +1292,8 @@ flights_dt <- flights %>%
 
 <br>
 
-#### 기존의 날짜/시간 object로부터 날짜/시간 object 생성
-+ date object와 date-time object의 상호 전환 - ```as_datetime()```, ```as_date()``` 함수
+#### 기존의 날짜/시간로부터 생성
++ ```date```와 ```date-time``` 간 상호 전환이 필요한 경우 ```as_datetime()```, ```as_date()``` 함수 사용
 
 ```{r eval = FALSE}
 as_datetime(today())
@@ -1285,17 +1303,28 @@ as_date(now())
 <br>
 
 ### 날짜/시간 구성요소
-+ 개별 구성요소 가져오기 - ```year()```, ```month()```, ```week()```, ```day()```, ```hour()```, ```minute()```, ```second()``` 함수
-+ 해당 연(year)을 기준으로 몇 번째 일(day)인지 반환 - ```yday()```
-+ 해당 월(month)을 기준으로 몇 번째 일(day)인지 반환 - ```mday()```
-+ 해당 주(week)에서 무슨 요일인지 반환 - ```wday()```
-  + 1은 일요일, 7은 토요일을 의미
+
+|함수|설명|
+|:---:|:------------|
+|year()|연도(year) 추출|
+|month()|월(month) 추출|
+|week()|주(week) 추출|
+|day()|일(day) 추출|
+|hour()|시(hour) 추출|
+|minute()|분(minute) 추출|
+|second()|초(second) 추출|
+|yday()|해당 연도의 몇 번째 일(day)인지 반환|
+|mday()|해당 월의 몇 번째 일(day)인지 반환|
+|wday()|해당 주의 무슨 요일(1=일요일, 7=토요일)인지 반환|
+
+<br>
+
 + ```month()```, ```wday()``` 함수 관련 매개변수
   + 매개변수 ```label``` - TRUE이면 문자열, FALSE이면 숫자로 표시
   + 매개변수 ```abbr``` - FALSE이면 이름 전체 반환(label이 FALSE인 경우 무시)
 
 ```{r eval = FALSE}
-datetime <- ymd_hms("2016-07-08 12:34:56")
+datetime <- ymd_hms("2025-05-19 12:34:56")
 
 year(datetime)
 month(datetime)
@@ -1313,26 +1342,30 @@ wday(datetime, label = TRUE, abbr = FALSE)
 
 <br>
 
-### 시간 범위(time spans) object
+### 시간 범위(time spans)
 
-#### 시간 범위 object 유형
-+ **duration** object : 정확한 초(second)를 나타냄
-+ **period** object : 주(week)와 월(month)과 같이 사람의 단위(human units)로 표현함
-+ **interval** object : 시작 시점과 종료 시점을 나타냄
+#### 시간 범위 유형
+
+|유형|설명|
+|:---:|:------------|
+|duration|초(second) 단위의 정확한 시간 길이를 나타냄|
+|period|주(week), 월(month) 등 사람의 단위(human units)로 표현함|
+|interval|시작 시점과 종료 시점을 나타냄|
 
 <br>
 
-#### duration object
-+ date object에 뺄셈을 적용하면 difftime object가 생성되며, 이는 초(second), 분(minute), 시(hour), 일(day) 또는 주(week) 단위로 시간 범위를 기록하므로 작업이 어려움
-+ 이를 보완하기 위한 duration object는 항상 **초(second) 단위**를 사용하여 시간 범위를 나타냄
+#### duration
++ ```date```에 뺄셈을 적용하면 ```difftime```이 생성되며, 이는 초(second), 분(minute), 시(hour), 일(day) 또는 주(week) 단위로 시간 범위를 기록하므로 작업이 어려움
++ 이를 보완하기 위한 ```duration```은 항상 **초(second) 단위**를 사용하여 시간 범위를 나타냄
   + 1분 = 60초, 1시간 = 3600초(60분), 1일 = 86400초(24시간), 1주일 = 604800초(7일)
-+ duration object는 덧셈, 뺄셈, 곱셈을 적용할 수 있음
-  + 윤년, 일광 절약 시간제(daylight saving time) 같은 규칙의 영향을 받기 때문에 시간(hour), 월(month), 연(year)과 같은 큰 시간 단위로 측정한 값에 대해 연산 결과가 실제와 항상 일치하지 않음
-  + [참고] 일광 절약 시간제 - 하절기에 표준시를 원래 시간보다 한 시간 앞당긴 시간을 쓰는 것으로, 미국과 캐나다는 각 시간대의 지역 시간을 기준으로 3월 두 번째주 일요일 오전 2시부터 11월 첫 번째주 일요일 오전 2시까지에 적용함
++ ```duration```은 덧셈, 뺄셈, 곱셈 연산이 가능함
+  + 윤년, 일광 절약 시간제(daylight saving time) 같은 규칙의 영향을 받기 때문에 시간(hour), 월(month), 연(year)과 같은 큰 시간 단위로 측정한 값에 대해 연산 결과가 실제와 항상 일치하지 않을 수 있음
+  + [참고] 일광 절약 시간제 - 하절기에 표준시를 원래 시간보다 한 시간 앞당긴 시간을 쓰는 제도로, 미국과 캐나다에서는 각 시간대의 지역 시간을 기준으로 3월 두 번째 주 일요일 오전 2시부터 11월 첫 번째 주 일요일 오전 2시까지에 적용됨
 
 ```{r eval = FALSE}
-## duration object 생성
-dday <- today() - ymd(19990113)
+## Example 1
+# duration 생성
+dday <- today() - ymd(20250302)
 as.duration(dday)
 
 dseconds(15)
@@ -1344,27 +1377,31 @@ dmonths(1:6)
 dyears(1)
 
 
-## 산술 연산
-2 * dyears(1)
+## Example 2
+# 덧셈, 뺄셈, 곱셈 연산
 dyears(1) + dweeks(12) + dhours(15)
+2 * dyears(1)
 
 tomorrow <- today() + ddays(1)
 last_year <- today() - dyears(1)
 
-# daylight saving time
-one_pm <- ymd_hms("2016-03-12 13:00:00", tz = "America/New_York")
-one_pm                                        # "2016-03-12 13:00:00 EST"
-one_pm + ddays(1)                             # "2016-03-13 14:00:00 EDT"
+
+## Example 3
+# 일광 절약 시간제
+one_pm <- ymd_hms("2025-03-08 13:00:00", tz = "America/New_York")
+one_pm                                  # "2025-03-08 13:00:00 EST"
+one_pm + ddays(1)                       # "2025-03-09 14:00:00 EDT"
 ```
 
 <br>
 
-#### period object
-+ 지정된 단위로 period object 생성
-+ 사람이 인식하는 단위로, 작동 방식이 보다 직관적임
+#### period
++ 지정된 시간 단위로 ```period``` 생성
++ 사람이 인식하는 단위를 사용하므로, 작동 방식이 더 직관적임
 
 ```{r eval = FALSE}
-## period object 생성
+## Example 1
+# period 생성
 seconds(15)
 minutes(10)
 hours(c(12, 24))
@@ -1374,21 +1411,27 @@ months(1:6)
 years(1)
 
 
-## 산술 연산
+## Example 2
+# 덧셈, 뺄셈, 곱셈 연산
 10 * (months(6) + days(1))
 days(50) + hours(25) + minutes(2)
 
+
+## Example 3
 # 윤년
-ymd("2016-01-01") + dyears(1)
-ymd("2016-01-01") + years(1)
-
-# daylight saving time
-one_pm <- ymd_hms("2016-03-12 13:00:00", tz = "America/New_York")
-one_pm                                        # "2016-03-12 13:00:00 EST"
-one_pm + days(1)                              # "2016-03-13 13:00:00 EDT"
+ymd("2024-01-01") + dyears(1)
+ymd("2024-01-01") + years(1)
 
 
-## 심야 항공편의 도착 일시에 days(1)을 더해줌
+## Example 4
+# 일광 절약 시간제
+one_pm <- ymd_hms("2025-03-08 13:00:00", tz = "America/New_York")
+one_pm                                  # "2025-03-08 13:00:00 EST"
+one_pm + days(1)                        # "2025-03-09 13:00:00 EDT"
+
+
+## Example 5
+# 자정 이후 도착한 항공편(심야 항공편)의 도착 일시에 하루(days(1))를 더해 정확한 시점을 보정
 flights_dt %>% 
   filter(arr_time < dep_time)
 
@@ -1403,17 +1446,24 @@ flights_dt %>%
 
 <br>
 
-#### interval object
-+ interval object는 시작 시점과 종료 시점을 나타내므로, 정확한 시간 범위를 확인할 수 있음
-+ interval object 생성 - ```ineterval()``` 함수, ```%--%``` 연산자
-+ 정수 나눗셈을 이용하여 interval object의 기간을 확인할 수 있음
+#### interval
++ ```interval```은 시작 시점과 종료 시점을 나타내며, 정확한 시간 범위를 확인할 수 있음
++ ```interval``` 생성 - ```ineterval()``` 함수, ```%--%``` 연산자
++ ```duration```과의 나눗셈 연산을 통해 ```interval``` 기간을 확인할 수 있음
 
 ```{r eval = FALSE}
-## interval object 생성
+## Example 1
+# interval 생성
 next_year <- today() + years(1)
-interval(start = today(), end = next_year)    # today() %--% next_year
+interval(start = today(), end = next_year)            # today() %--% next_year
 
-# interval object 기간 확인
-(today() %--% next_year) / ddays(1)
+
+## Example 2
+# interval 기간 확인
+years(1) / days(1)                                    # 365.25
+dyears(1) / ddays(1)                                  # 365
+
+(today() %--% next_year) / ddays(1)                   # 365
+(ymd("2024-01-01") %--% ymd("2025-01-01")) / ddays(1) # 366(윤년)
 ```
 
