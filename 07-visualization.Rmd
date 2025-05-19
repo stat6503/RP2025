@@ -115,7 +115,7 @@ p + geom_bar(position="dodge")
 p + geom_bar(position="identity", alpha = 0.2)
 ```
 
-```{r eval = FALSE}
+```{r}
 ## Example 3
 # 인종의 빈도가 큰 순서대로 시각화
 library(forcats)
