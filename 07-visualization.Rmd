@@ -115,7 +115,7 @@ p + geom_bar(position="dodge")
 p + geom_bar(position="identity", alpha = 0.2)
 ```
 
-```{r}
+```{r eval = TRUE}
 ## Example 3
 # 인종의 빈도가 큰 순서대로 시각화
 library(forcats)
@@ -132,7 +132,7 @@ gss_cat %>%
           legend.position = "none")
 ```
 
-```{r eval = FALSE}
+```{r eval = TRUE}
 ## Example 4
 # 항공편 출발 요일의 분포 시각화
 library(lubridate)
@@ -170,7 +170,7 @@ flights_dt %>%
   + smoke : 임신 중 흡연 여부(1=Yes, 0=No)
   + bwt : 출생 체중(g)
 
-```{r eval = FALSE}
+```{r eval = TRUE}
 ## Example 1
 # 출생 체중에 대한 히스토그램
 library(MASS)
@@ -180,7 +180,7 @@ ggplot(birthwt, aes(x = bwt)) +
   theme_classic()
 ```
 
-```{r eval = FALSE}
+```{r eval = TRUE}
 ## Example 2
 # 임신 중 흡연 여부에 따른 출생 체중의 분포 비교
 labels <- c("1" = "Smoker", "0" = "Nonsmoker")
