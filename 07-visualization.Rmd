@@ -159,37 +159,41 @@ flights_dt %>%
     geom_bar() +
     scale_fill_manual(values = brewer.pal(7, "Spectral")) +
     labs(x = "", y = "Frequency") +
-    theme(legend.position = "none")
+    theme(legend.position = "none") +
+    theme(axis.title.y = element_text(size = 15, margin = margin(r=10)),
+          axis.text.x = element_text(size = 12),
+          legend.position = "none")
 ```
 
 <br>
 
 ### 히스토그램(histogram)
 + 수치형 데이터를 일정 구간으로 나눈 후, 각 구간별 빈도를 막대로 나타낸 그래프
-+ [예제] 저체중 출생아 관련 데이터셋 birthwt
-  + smoke : 임신 중 흡연 여부(1=Yes, 0=No)
-  + bwt : 출생 체중(g)
++ [예제] 식물 성장 실험 데이터셋 PlantGrowth
+  + weight : 식물의 건조 중량
+  + group : 처리 집단(ctrl, trt1, trt2)
 
 ```{r eval = TRUE}
 ## Example 1
-# 출생 체중에 대한 히스토그램
-library(MASS)
-ggplot(birthwt, aes(x = bwt)) +
-  geom_histogram(fill = "darkgreen") +
-  labs(title="Histogram of birthweigth", x = "Birthweight(in gram)", y ="") +
+# 건조 중량에 대한 히스토그램
+ggplot(PlantGrowth, aes(x = weight)) +
+  geom_histogram(fill = "#2389da", bins=10) +
+  labs(title="Histogram of the dried weight of plants", x = "Weight", y ="") +
   theme_classic()
 ```
 
 ```{r eval = TRUE}
 ## Example 2
-# 임신 중 흡연 여부에 따른 출생 체중의 분포 비교
-labels <- c("1" = "Smoker", "0" = "Nonsmoker")
-ggplot(birthwt, aes(x = bwt, fill = smoke)) +
-  geom_histogram(binwidth = 200) +
-  labs(title="Histogram of birthweigth", x = "Birthweight(in gram)", y ="") +
-  facet_grid(smoke ~ ., labeller = labeller(smoke = labels)) +
-  theme(plot.title = element_text(hjust = 0.5),
-        legend.position = "none")
+# 처리 집단에 따른 건조 중량의 분포 비교
+labels <- c("ctrl" = "대조군", "trt1" = "실험군 A", "trt2" = "실험군 B")
+ggplot(PlantGrowth, aes(x = weight, fill = group)) +
+  geom_histogram(binwidth = 0.5) +
+  labs(title="Histogram of the dried weight of plants", x = "Weight", y ="") +
+  facet_grid(group ~ ., labeller = labeller(group = labels)) +
+  theme(plot.title = element_text(size = 20, margin = margin(b=10), hjust = 0.5),
+        axis.title.x = element_text(size = 15, margin = margin(t=10)),
+        axis.text = element_text(size = 12),
+        strip.text =  element_text(size = 15, face="bold"))
 ```
 
 <br>
@@ -213,34 +217,51 @@ ggplot(birthwt, aes(x = bwt, fill = smoke)) +
 
 <br>
 
-+ [예제] birthwt 데이터셋
-  + race : mother’s race (1 = white, 2 = black, 3 = other)
-  + smoke : smoking status during pregnancy (1=Yes, 0=No)
-  + ui : presence of uterine irritability (1=Yes, 0=No)
-  + bwt : birth weight in grams
++ [예제] 펭귄 데이터셋 penguins
+  + species : 품종(Adelie, Gentoo, Chinstrap)
+  + island : 서식지(Biscoe, Dream, Torgersen)
+  + body_mass_g : 체중(g)
+  + sex : 성별(male, female)
 
-```{r eval = FALSE}
-ggplot(birthwt, aes(x = factor(race), y = bwt)) +
+```{r}
+## Example 1
+# 품종에 따른 체중에 대한 상자그림
+library(palmerpenguins)
+ggplot(penguins, aes(x = factor(species), y = body_mass_g)) +
   geom_boxplot() +
-  coord_flip()
+  coord_flip() +
+  labs(title="Boxplot of Body Mass by Species", x = "", y ="Weight (g)") +
+  theme_classic() +
+  theme(plot.title = element_text(size = 20, margin = margin(b=10)),
+        axis.title.x = element_text(size = 15, margin = margin(t=10)),
+        axis.text = element_text(size = 12))
+```
 
+```{r}
+## Example 2
+# 서식지, 품종, 성별에 따른 체중 분포 비교
+pg <- penguins %>% 
+        drop_na() %>% 
+        ggplot(aes(x = island, y = body_mass_g)) +
+        geom_boxplot() +
+        facet_grid(sex ~ species) +
+        labs(x = "", y ="Weight (g)") +
+        theme_bw() +
+        theme(axis.title.y = element_text(size = 15, margin = margin(r=10)),
+              axis.text = element_text(size = 12),
+              strip.text =  element_text(size = 15, face="bold"),
+              legend.position = "none",
+              panel.grid.major.x = element_blank(),
+              panel.grid.minor = element_blank())
 
-bp <- birthwt %>% 
-        mutate(smoke = fct_recode(as_factor(smoke), "Smoker" = "1", "Nonsmoker" = "0"),
-               ui = fct_recode(as_factor(ui), "Presence" = "1", "None" = "0")) %>% 
-        ggplot(aes(x = factor(race), y = bwt)) +
-          geom_boxplot() +
-          facet_grid(ui ~ smoke)
-
-
-bp + geom_point(color = "steelblue", alpha = 0.5)
-bp + geom_jitter(color = "steelblue", alpha = 0.5)
+#pg + geom_point(color = "#2389da", alpha = 0.5)
+pg + geom_jitter(color = "#2389da", alpha = 0.5, width=0.2)
 ```
 
 <br>
 
 ### 산점도(scatter plot)
-+ 두 연속형 변수의 관측 순서쌍을 이차원 평면 상에 점(point)으로 나타낸 그래프
++ 두 수치형 데이터의 관측 순서쌍을 이차원 평면 상에 점(point)으로 나타낸 그래프
 + 한 변수의 변화에 따른 다른 변수의 변화(trend)를 파악하는데 용이
 + ```pch``` - 점(point) 유형
   + 0~14 : 채우기 없음, 테두리 색상만 ```color```로 설정
@@ -252,42 +273,70 @@ bp + geom_jitter(color = "steelblue", alpha = 0.5)
 
 <br>
 
-+ [예제] birthwt 데이터셋
-  + age : mother's age in years
-  + lwt : mother's weight in pounds at last menstrual period
-  + smoke : smoking status during pregnancy (1=Yes, 0=No)
-  + bwt : birth weight in grams
++ [예제] 펭귄 데이터셋 penguins
+  + species : 품종(Adelie, Gentoo, Chinstrap)
+  + island : 서식지(Biscoe, Dream, Torgersen)
+  + bill_length_mm : 부리 길이(mm)
+  + flipper_length_mm : 지느러미 길이(mm)
+  + body_mass_g : 체중(g)
+  + sex : 성별(male, female)
 
-```{r eval = FALSE}
-ggplot(birthwt, aes(x = age, y = bwt)) +
-  geom_point(size = 3, color = "red", alpha = 0.5, pch = 17) +
-  geom_rug(position = "jitter", size = 0.2) +         # rug plot 추가
-  geom_smooth(method = lm) +                          # 선형 추세선 추가
-  theme_classic()
+```{r}
+## Example 1
+# 지느러미 길이와 체중에 대한 산점도 및 회귀선
+penguins %>%
+  drop_na() %>% 
+  ggplot(aes(x = flipper_length_mm, y = body_mass_g)) +
+    geom_point(size = 4, color = "#2389da", alpha = 0.5, pch = 18) +
+    geom_rug(size = 0.2) +                            # 러그(작은 선)
+    geom_smooth(method = lm, color = "red") +         # 회귀선
+    labs(x = "Flipper Length (mm)", y = "Weight (g)") +
+    theme_classic() +
+    theme(axis.title.x = element_text(size = 15, margin = margin(t=10)),
+          axis.title.y = element_text(size = 15, margin = margin(r=10)),
+          axis.text = element_text(size = 12))
+```
 
+```{r}
+## Example 2
+# 지느러미 길이와 체중에 대한 산점도 + 부리 길이(색상)
+penguins %>%
+  drop_na() %>% 
+  ggplot(aes(x = flipper_length_mm, y = body_mass_g)) +
+    geom_point(aes(color = bill_length_mm), size = 4, alpha = 0.7, pch = 19) +
+    scale_color_gradient(low = "#FFF59D", high = "#388E3C") +
+    labs(x = "Flipper Length (mm)", y = "Weight (g)", color = "Bill Length (mm)") +
+    theme_classic() +
+    theme(axis.title.x = element_text(size = 15, margin = margin(t=10)),
+          axis.title.y = element_text(size = 15, margin = margin(r=10)),
+          axis.text = element_text(size = 12))
+```
 
-ggplot(birthwt, aes(x = age, y = bwt)) +
-  geom_point(aes(color = lwt), size = 4, alpha = 0.7, pch = 19) +
-  scale_color_gradient(low = "#FFF59D", high = "#388E3C") +
-  labs(color = "mother's weight") +
-  theme_classic()
-
-
-ggplot(birthwt, aes(x = age, y = bwt,
-                    color = factor(smoke), size = lwt)) +
-  geom_point(alpha = 0.5) +
-  labs(color = "Smoking", size = "Mother's weight") +
-  scale_color_discrete(labels = c("No", "Yes"))
+```{r}
+## Example 3
+# 지느러미 길이와 체중에 대한 산점도 + 부리 길이(크기), 성별(색상)
+penguins %>%
+  drop_na() %>% 
+  ggplot(aes(x = flipper_length_mm, y = body_mass_g)) +
+  geom_point(aes(color = sex, size = bill_length_mm), alpha = 0.5) +
+  labs(x = "Flipper Length (mm)", y = "Weight (g)", color = "Sex", size = "Bill Length (mm)") +
+  theme_classic() +
+  theme(axis.title.x = element_text(size = 15, margin = margin(t=10)),
+        axis.title.y = element_text(size = 15, margin = margin(r=10)),
+        axis.text = element_text(size = 12),
+        legend.title = element_text(size = 15),
+        legend.text = element_text(size = 15)) +
+  guides(color = guide_legend(override.aes = list(size = 3))) +
+  scale_size_continuous(breaks = c(35, 40, 45, 50))
 ```
 
 <br>
 
 ### 선 그래프(line plot)
 + 한 변수의 변화에 따른 다른 변수의 변화를 선(line)으로 연결하여 나타낸 그래프
-+ 일반적으로 x축에는 시간 변수가 종종 사용됨
-  + 연속형 변수는 보통 몇 개의 이산적인 값을 취하는 경우를 다룸
-  + 범주형 변수는 순서가 있는 경우에만 가능
-
++ 일반적으로 x축에는 시계열 데이터가 자주 사용됨
+  + 범주형 데이터 : 순서가 있는 경우에만 표현 가능
+  + 연속형 데이터 : 몇 개의 이산적인 값으로 표현되는 경우가 많음
 
 ```{r eval = FALSE}
 ## Example 1
@@ -297,25 +346,37 @@ babynames %>%
   group_by(year) %>% 
   summarise(prop_x = mean(str_detect(name, "x"))) %>% 
   ggplot(aes(year, prop_x)) + 
-    geom_line()
+    geom_line(size = 1.2, color = "#66a182") +
+    labs(x = "", y = "Proportion of Names Containing \"x\"") +
+    theme_classic() +
+    theme(axis.title.y = element_text(size = 15, margin = margin(r=10)),
+          axis.text = element_text(size = 12))
 ```
 
 <br>
 
-+ [예제] gapminder 데이터셋
-  + continent : factor with 5 levels
-  + year : ranges from 1952 to 2007 in increments of 5 years
-  + lifeExp : life expectancy at birth, in years
++ [예제] 국가별 사회·경제지표 시계열 데이터셋 gapminder
+  + continent : 대륙 이름
+  + year : 연도(1952 ~ 2007년, 5년 단위)
+  + lifeExp : 기대 수명
 
 ```{r eval = FALSE}
 ## Example 2
-# 시간에 따른 대륙별 평균 수명의 중앙값 변화
+# 시간에 따른 대륙별 기대 수명의 중앙값 변화
 library(gapminder)
+library(wesanderson)
 gapminder %>%
   group_by(continent, year) %>%
   summarise(lifeExp = median(lifeExp)) %>%
   ggplot(aes(x = year, y = lifeExp, color = continent)) +
-    geom_line(size=1) +
-    geom_point(size=1.5)
+    geom_line(size = 1) +
+    geom_point(size = 2.5) +
+    labs(x = "", y = "Median Life Expectancy (years)") +
+    theme(axis.title.y = element_text(size = 15, margin = margin(r=10)),
+          axis.text = element_text(size = 12),
+          legend.title = element_text(size = 15),
+          legend.text = element_text(size = 12)) +
+    #scale_color_brewer(palette = "Set1")
+    scale_color_manual(values = wes_palette("Darjeeling1"))
 ```
 
