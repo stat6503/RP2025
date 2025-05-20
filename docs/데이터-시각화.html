@@ -546,7 +546,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <span id="cb160-14"><a href="데이터-시각화.html#cb160-14" tabindex="-1"></a>         <span class="at">arr_time =</span> <span class="fu">make_datetime_100</span>(year, month, day, arr_time),</span>
 <span id="cb160-15"><a href="데이터-시각화.html#cb160-15" tabindex="-1"></a>         <span class="at">sched_dep_time =</span> <span class="fu">make_datetime_100</span>(year, month, day, sched_dep_time),</span>
 <span id="cb160-16"><a href="데이터-시각화.html#cb160-16" tabindex="-1"></a>         <span class="at">sched_arr_time =</span> <span class="fu">make_datetime_100</span>(year, month, day, sched_arr_time)) <span class="sc">%&gt;%</span> </span>
-<span id="cb160-17"><a href="데이터-시각화.html#cb160-17" tabindex="-1"></a>  dplyr<span class="sc">::</span><span class="fu">select</span>(origin, dest, <span class="fu">ends_with</span>(<span class="st">&quot;delay&quot;</span>), <span class="fu">ends_with</span>(<span class="st">&quot;time&quot;</span>))</span>
+<span id="cb160-17"><a href="데이터-시각화.html#cb160-17" tabindex="-1"></a>  <span class="fu">select</span>(origin, dest, <span class="fu">ends_with</span>(<span class="st">&quot;delay&quot;</span>), <span class="fu">ends_with</span>(<span class="st">&quot;time&quot;</span>))</span>
 <span id="cb160-18"><a href="데이터-시각화.html#cb160-18" tabindex="-1"></a></span>
 <span id="cb160-19"><a href="데이터-시각화.html#cb160-19" tabindex="-1"></a><span class="co"># 시각화</span></span>
 <span id="cb160-20"><a href="데이터-시각화.html#cb160-20" tabindex="-1"></a><span class="fu">library</span>(RColorBrewer)</span>

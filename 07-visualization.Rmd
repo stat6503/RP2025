@@ -149,7 +149,7 @@ flights_dt <- flights %>%
          arr_time = make_datetime_100(year, month, day, arr_time),
          sched_dep_time = make_datetime_100(year, month, day, sched_dep_time),
          sched_arr_time = make_datetime_100(year, month, day, sched_arr_time)) %>% 
-  dplyr::select(origin, dest, ends_with("delay"), ends_with("time"))
+  select(origin, dest, ends_with("delay"), ends_with("time"))
 
 # 시각화
 library(RColorBrewer)
