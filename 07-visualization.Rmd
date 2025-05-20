@@ -338,7 +338,7 @@ penguins %>%
   + 범주형 데이터 : 순서가 있는 경우에만 표현 가능
   + 연속형 데이터 : 몇 개의 이산적인 값으로 표현되는 경우가 많음
 
-```{r eval = FALSE}
+```{r}
 ## Example 1
 # 시간에 따른 이름에 "x"가 포함되는 아기의 비율 변화
 library(babynames)
@@ -360,7 +360,7 @@ babynames %>%
   + year : 연도(1952 ~ 2007년, 5년 단위)
   + lifeExp : 기대 수명
 
-```{r eval = FALSE}
+```{r}
 ## Example 2
 # 시간에 따른 대륙별 기대 수명의 중앙값 변화
 library(gapminder)
