@@ -1250,12 +1250,12 @@ now()                                   # 현재 날짜 및 시간(date-time)
 
 ```{r eval = FALSE}
 library(lubridate)
-ymd("2017-01-31")
-mdy("January 31st, 2017")
-dmy("31-Jan-2017")
+ymd("2025-03-02")
+mdy("March 2nd, 2025")
+dmy("02-Mar-2025")
 
-ymd_hms("2017-01-31 20:11:59")
-mdy_hm("01/31/2017 08:01")
+ymd_hms("2025-03-02 12:34:59")
+mdy_hm("03/31/2025 18:30")
 ```
 
 <br>
