@@ -227,14 +227,16 @@ ggplot(PlantGrowth, aes(x = weight, fill = group)) +
 ## Example 1
 # 품종에 따른 체중에 대한 상자그림
 library(palmerpenguins)
-ggplot(penguins, aes(x = factor(species), y = body_mass_g)) +
-  geom_boxplot() +
-  coord_flip() +
-  labs(title="Boxplot of Body Mass by Species", x = "", y ="Weight (g)") +
-  theme_classic() +
-  theme(plot.title = element_text(size = 20, margin = margin(b=10)),
-        axis.title.x = element_text(size = 15, margin = margin(t=10)),
-        axis.text = element_text(size = 12))
+penguins %>%
+  drop_na() %>%
+  ggplot(aes(x = factor(species), y = body_mass_g)) +
+    geom_boxplot() +
+    coord_flip() +
+    labs(title="Boxplot of Body Mass by Species", x = "", y ="Weight (g)") +
+    theme_classic() +
+    theme(plot.title = element_text(size = 20, margin = margin(b=10)),
+          axis.title.x = element_text(size = 15, margin = margin(t=10)),
+          axis.text = element_text(size = 12))
 ```
 
 ```{r}
