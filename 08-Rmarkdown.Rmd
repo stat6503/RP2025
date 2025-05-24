@@ -85,7 +85,6 @@ output:
    - "isoslides_presentation"
    - "slidy_presentation"
    - "beamer_presentation"
-...
 ---
 ```
 
