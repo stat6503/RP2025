@@ -25,7 +25,9 @@
   + [참고] [R Markdown Reference Guide](./file/rmarkdown-reference.pdf)
   + [참고] [R Markdown: The Definitive Guide (2022)](https://bookdown.org/yihui/rmarkdown/)
 
+
 <br>
+
 
 ### R Markdown 시작하기
 
@@ -36,18 +38,24 @@
   + **Knit** 아이콘
   + 단축키 ```ctrl``` + ```shift``` + ```k```
 
+
 <br>
+
 
 #### R Markdown 구조
 + ```---```으로 둘러싼 **YAML** (option)
 + **Markdown 텍스트**
 + ``` ` ```(backtick)으로 둘러싼 **R 코드 청크(code chunk)**
 
+
 <br>
+
 
 ![](img/fig8-1.png)
 
+
 <br>
+
 
 #### R Markdown 작업 흐름
 1. R Markdown 파일(.Rmd) 생성
@@ -55,9 +63,12 @@
 3. ```knitr```는 코드 청크(code chunk)를 모두 실행하고, 코드와 그 출력을 포함하는 새로운 Markdown 파일(.md) 생성
 4. 생성된 .md 파일은 pandoc 문서 변환기를 통해 다양한 형식(HTML, PDF, MS Word 등)으로 변환됨
 
+
 <br>
 
+
 ![](img/fig8-2.png)
+
 
 <br>
 
@@ -70,6 +81,7 @@
 + 문서의 제목, 저자, 작성 날짜, 출력 형식 등의 정보를 포함
 + 사용하는 R 패키지(bookdown, rticles 등)에 따라 포함할 수 있는 항목이 달라질 수 있음
 + 기본적으로 ```key: value``` 형식이며, ``:``` 바로 뒤에는 반드시 공백(space)이 있어야 함
+
 
 ```
 ---
@@ -88,6 +100,7 @@ output:
 ---
 ```
 
+
 <br>
 
 
@@ -101,22 +114,28 @@ output:
   + 이탤릭체 - *italic*, _italic_
   + 굵은글씨 - **bold**, __bold__
 
+
 ```
 *italic*     _italic_
 **bold**     __bold__
 ```
 
+
 <br>
 
 + 인라인 코드(inline code) : ``` ` ```(backtick)으로 둘러쌈
+
 
 ```
 We defined the `add` function to compute the sum of two numbers.
 ```
 
+
 <br>
 
+
 + 고정된 코드 블록(plain code blocks) : ```` ``` ````(backticks)으로 둘러쌈
+
 
 ````
 ```
@@ -124,7 +143,9 @@ This text is displayed verbatim / preformatted
 ```
 ````
 
+
 <br>
+
 
 + 줄 바꿈(manual line breks) : 줄 마지막에 두 개 이상의 공백(space) 입력
 + 가로줄(horizontal rule) : 세 개 이상의 ```***```(asterisks), ```---```(dashes) 입력
@@ -141,7 +162,9 @@ This text is displayed verbatim / preformatted
 ------
 ```
 
+
 <br>
+
 
 + 표(tables)
 
@@ -157,12 +180,15 @@ This text is displayed verbatim / preformatted
  Content Cell |  Content Cell   |  Content Cell
 ```
 
+
 <br>
+
 
 + 그 외 서식(miscellaneous)
   + 위 첨자 : superscript^2^
   + 아래 첨자 : subscript~2~
   + 삭제 표시 : ~~strikethrough~~
+
 
 ```
 superscript^2^
@@ -170,10 +196,13 @@ subscript~2~
 ~~strikethrough~~
 ```
 
+
 <br>
+
 
 ### 블록 요소(block-level elements)
 + 장/절(headers) : ```#```기호의 숫자로 표시하며, 최대 6단계까지 있음
+
 
 ```
 # First-level header
@@ -181,11 +210,14 @@ subscript~2~
 ### Third-level header
 ```
 
+
 <br>
+
 
 + 목록(list)
   + 순서가 없는 목록 : ```-```, ```+```, ```*``` 기호 중 하나를 사용
   + 순서가 있는 목록 : 숫자로 표현
+
 
 ```
 * Item 1
@@ -200,7 +232,9 @@ subscript~2~
     + Item 3b
 ```
 
+
 <br>
+
 
 + 인용구(blockquotes) : ```>``` 기호로 표시
 
@@ -208,11 +242,13 @@ subscript~2~
 >
 > ---Luisa Sigea de Velasco(1521~1577)
 
+
 ```
 > "Blaze with the fire that is never extinguished."
 >
 > ---Luisa Sigea de Velasco(1521~1577)
 ```
+
 
 <br>
 
@@ -220,19 +256,25 @@ subscript~2~
 
 ![R logo](img/fig8-3.png){width=30%}
 
+
 ```
 ![R logo](r-logo.png)
 ```
 
+
 <br>
 
+
 + 링크(links) : [The Comprehensive R Archive Network](https://cran.r-project.org/)
+
 
 ```
 [The Comprehensive R Archive Network](https://cran.r-project.org/)
 ```
 
+
 <br>
+
 
 ### 수학 표현식(math expressions)
 + 인라인 수식(inline equation) : 문장 중간에 삽입되는 수식으로, ```$```으로 둘러쌈
@@ -240,9 +282,11 @@ subscript~2~
 + 수학 표현식은 LaTeX 문법을 따름
 $$f(k) = {n \choose k} p^{k} (1-p)^{n-k}$$
 
+
 ```
 $$f(k) = {n \choose k} p^{k} (1-p)^{n-k}$$
 ```
+
 
 <br>
 
@@ -268,13 +312,16 @@ codes
 
 <br>
 
+
 ### 청크 이름(chunk name)
 + 청크 이름 사용의 3가지 이점
   1. 편집(script) 영역 왼쪽 하단의 드롭다운 코드 탐색기를 통해 특정 청크로 쉽게 이동할 수 있음
   2. 청크에서 생성된 그래프가 의미 있는 이름을 가져 다른 곳에서 쉽게 활용 가능
   3. 캐시된 청크 네트워크 설정 시 불필요한 계산을 줄일 수 있음
 
+
 <br>
+
 
 ### 청크 옵션(chunk options)
 + [참고] [Options (2020)](https://yihui.org/knitr/options/)
@@ -291,6 +338,7 @@ codes
 
 
 <br>
+
 
 + 청크 옵션이 제어 가능한 출력 유형
 
@@ -323,6 +371,7 @@ cat("I'm raw **Markdown** content.\n")
 
 <br>
 
+
 ### 표(table) 삽입
 + 간단한 형태의 표 생성 - ```knitr::kable()``` 함수
 
@@ -330,6 +379,9 @@ cat("I'm raw **Markdown** content.\n")
 head(iris)
 kable(head(iris))
 ```
+
+
+<br>
 
 
 ### 전역 옵션(global option)
@@ -368,6 +420,7 @@ as.numeric(c(1, 2, "a"))
 
 
 <br>
+
 
 ### 인라인 코드(inline code)
 + 텍스트 중간에 R 코드를 직접 입력할 수 있음
