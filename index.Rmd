@@ -32,7 +32,6 @@ link-citations: yes
 + website: [R 프로그래밍(개정판)](https://kilhwan.github.io/rprogramming/)
 
 
-
 ```{r include = FALSE}
 # automatically create a bib database for R packages
 knitr::write_bib(c(

@@ -221,7 +221,7 @@ subscript~2~
 
 + 이미지(images)
 
-![R logo](img/fig8-3.png){width=50%}
+![R logo](img/fig8-3.png){width=30%}
 
 ```
 ![R logo](r-logo.png)

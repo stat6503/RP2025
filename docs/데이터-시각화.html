@@ -702,17 +702,13 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <span id="cb169-11"><a href="데이터-시각화.html#cb169-11" tabindex="-1"></a>    <span class="fu">theme</span>(<span class="at">axis.title.x =</span> <span class="fu">element_text</span>(<span class="at">size =</span> <span class="dv">15</span>, <span class="at">margin =</span> <span class="fu">margin</span>(<span class="at">t=</span><span class="dv">10</span>)),</span>
 <span id="cb169-12"><a href="데이터-시각화.html#cb169-12" tabindex="-1"></a>          <span class="at">axis.title.y =</span> <span class="fu">element_text</span>(<span class="at">size =</span> <span class="dv">15</span>, <span class="at">margin =</span> <span class="fu">margin</span>(<span class="at">r=</span><span class="dv">10</span>)),</span>
 <span id="cb169-13"><a href="데이터-시각화.html#cb169-13" tabindex="-1"></a>          <span class="at">axis.text =</span> <span class="fu">element_text</span>(<span class="at">size =</span> <span class="dv">12</span>))</span></code></pre></div>
-<pre><code>## Warning: Using `size` aesthetic for lines was
-## deprecated in ggplot2 3.4.0.
+<pre><code>## Warning: Using `size` aesthetic for lines was deprecated in
+## ggplot2 3.4.0.
 ## ℹ Please use `linewidth` instead.
-## This warning is displayed once every 8
-## hours.
-## Call
-## `lifecycle::last_lifecycle_warnings()`
-## to see where this warning was
-## generated.</code></pre>
-<pre><code>## `geom_smooth()` using formula = &#39;y ~
-## x&#39;</code></pre>
+## This warning is displayed once every 8 hours.
+## Call `lifecycle::last_lifecycle_warnings()` to see where
+## this warning was generated.</code></pre>
+<pre><code>## `geom_smooth()` using formula = &#39;y ~ x&#39;</code></pre>
 <p><img src="_main_files/figure-html/unnamed-chunk-134-1.png" width="672" /></p>
 <div class="sourceCode" id="cb172"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb172-1"><a href="데이터-시각화.html#cb172-1" tabindex="-1"></a><span class="do">## Example 2</span></span>
 <span id="cb172-2"><a href="데이터-시각화.html#cb172-2" tabindex="-1"></a><span class="co"># 지느러미 길이와 체중에 대한 산점도 + 부리 길이(색상)</span></span>
@@ -794,9 +790,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <span id="cb175-15"><a href="데이터-시각화.html#cb175-15" tabindex="-1"></a>          <span class="at">legend.text =</span> <span class="fu">element_text</span>(<span class="at">size =</span> <span class="dv">12</span>)) <span class="sc">+</span></span>
 <span id="cb175-16"><a href="데이터-시각화.html#cb175-16" tabindex="-1"></a>    <span class="co">#scale_color_brewer(palette = &quot;Set1&quot;)</span></span>
 <span id="cb175-17"><a href="데이터-시각화.html#cb175-17" tabindex="-1"></a>    <span class="fu">scale_color_manual</span>(<span class="at">values =</span> <span class="fu">wes_palette</span>(<span class="st">&quot;Darjeeling1&quot;</span>))</span></code></pre></div>
-<pre><code>## `summarise()` has grouped output by
-## &#39;continent&#39;. You can override using
-## the `.groups` argument.</code></pre>
+<pre><code>## `summarise()` has grouped output by &#39;continent&#39;. You can
+## override using the `.groups` argument.</code></pre>
 <p><img src="_main_files/figure-html/unnamed-chunk-138-1.png" width="672" /></p>
 
 </div>
