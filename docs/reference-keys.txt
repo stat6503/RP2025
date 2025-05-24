@@ -151,7 +151,7 @@ r-markdown-시작하기
 r-markdown-파일-생성
 r-markdown-구조
 r-markdown-작업-흐름
-yaml-header
+yaml-헤더
 markdown-문법
 인라인-서식inline-formatting
 블록-요소block-level-elements

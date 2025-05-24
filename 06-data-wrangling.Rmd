@@ -1111,7 +1111,7 @@ gss_cat %>%
 |fct_relevel()|지정한 수준을 앞쪽(처음)으로 이동하여 재정렬|
 
 
-```{r eval = FALSE}
+```{r}
 ## fct_reorder() 예제
 # 결혼 상태에 따른 하루 평균 TV 시청 시간
 summary1 <- gss_cat %>% 
@@ -1124,11 +1124,10 @@ summary1 <- gss_cat %>%
 # 하루 평균 TV 시청 시간을 기준으로 marital 수준이 재정렬됨
 library(ggplot2)
 ggplot(summary1, aes(tvhours, marital)) +
-  geom_point(size = 3) +
-  theme(axis.title = element_text(size = 15),
-        axis.text = element_text(size = 15))
+  geom_bar(stat = "identity")
+```
 
-
+```{r}
 ## fct_relevel() 예제
 # 소득에 따른 평균 연령
 summary2 <- gss_cat %>%
@@ -1139,7 +1138,7 @@ summary2 <- gss_cat %>%
 # reorder() 함수를 사용하면 어떤 소득 집단이 평균 연령이 가장 높고 낮은지 파악하기 쉬우나,
 # rincome 변수는 순서형 변수(ordinal variable)이기 때문에 이는 바람직하지 않음
 # relevel() 함수를 사용하여 "Not applicable" 수준을 앞쪽(처음)으로 이동할 수 있음
-ggplot(summary2, aes(age, fct_reorder(rincome, age))) + geom_point()
+#ggplot(summary2, aes(age, fct_reorder(rincome, age))) + geom_point()
 ggplot(summary2, aes(age, fct_relevel(rincome, "Not applicable"))) + geom_point()
 ```
 
@@ -1149,7 +1148,7 @@ ggplot(summary2, aes(age, fct_relevel(rincome, "Not applicable"))) + geom_point(
 
 |함수|설명|
 |:---:|:------------|
-|fct_recode()|- 명시적으로 언급되지 않은 수준은 그대로 유지됨 <br>- 여러 수준을 하나로 묶으려면 동일한 새 수준에 할당 <br>※ [주의] 서로 다른 범주를 잘못 묶으면 결과가 왜곡될 수 있음|
+|fct_recode()|- 명시적으로 언급되지 않은 수준은 그대로 유지됨 <br>- 여러 수준을 하나로 묶으려면 동일한 새 수준에 할당 <br>※ 주의: 서로 다른 범주를 잘못 묶으면 결과가 왜곡될 수 있음|
 |fct_collapse()|- 여러 수준을 하나의 집단으로 병합 <br>- 새 수준에 대해 기존 수준들의 벡터를 지정|
 |fct_lump()|- 상대적으로 빈도가 낮은 수준을 묶어 ```"Other"```로 병합 <br>- 매개변수 ```n``` \- ```"Other"```를 제외한 수준의 개수 설정 <br>- 매개변수 ```prop``` \- ```"Other"```로 묶을 수준의 전체 비중 기준을 설정|
 
