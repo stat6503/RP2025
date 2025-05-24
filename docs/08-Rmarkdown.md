@@ -173,8 +173,6 @@ subscript~2~
 <br>
 
 ### 블록 요소(block-level elements)
-
-
 + 장/절(headers) : ```#```기호의 숫자로 표시하며, 최대 6단계까지 있음
 
 ```
@@ -235,7 +233,6 @@ subscript~2~
 ```
 
 <br>
-
 
 ### 수학 표현식(math expressions)
 + 인라인 수식(inline equation) : 문장 중간에 삽입되는 수식으로, ```$```으로 둘러쌈
