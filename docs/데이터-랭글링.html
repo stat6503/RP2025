@@ -843,54 +843,52 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div class="sourceCode" id="cb86"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb86-1"><a href="데이터-랭글링.html#cb86-1" tabindex="-1"></a><span class="co"># airports 테이블: 각 공항에 대한 정보가 faa 공항 코드로 식별됨</span></span>
 <span id="cb86-2"><a href="데이터-랭글링.html#cb86-2" tabindex="-1"></a>airports</span></code></pre></div>
 <pre><code>## # A tibble: 1,458 × 8
-##    faa   name          lat    lon   alt    tz dst   tzone
-##    &lt;chr&gt; &lt;chr&gt;       &lt;dbl&gt;  &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;chr&gt; &lt;chr&gt;
-##  1 04G   Lansdowne …  41.1  -80.6  1044    -5 A     Amer…
-##  2 06A   Moton Fiel…  32.5  -85.7   264    -6 A     Amer…
-##  3 06C   Schaumburg…  42.0  -88.1   801    -6 A     Amer…
-##  4 06N   Randall Ai…  41.4  -74.4   523    -5 A     Amer…
-##  5 09J   Jekyll Isl…  31.1  -81.4    11    -5 A     Amer…
-##  6 0A9   Elizabetht…  36.4  -82.2  1593    -5 A     Amer…
-##  7 0G6   Williams C…  41.5  -84.5   730    -5 A     Amer…
-##  8 0G7   Finger Lak…  42.9  -76.8   492    -5 A     Amer…
-##  9 0P2   Shoestring…  39.8  -76.6  1000    -5 U     Amer…
-## 10 0S9   Jefferson …  48.1 -123.    108    -8 A     Amer…
+##    faa   name                             lat    lon   alt    tz dst   tzone    
+##    &lt;chr&gt; &lt;chr&gt;                          &lt;dbl&gt;  &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;chr&gt; &lt;chr&gt;    
+##  1 04G   Lansdowne Airport               41.1  -80.6  1044    -5 A     America/…
+##  2 06A   Moton Field Municipal Airport   32.5  -85.7   264    -6 A     America/…
+##  3 06C   Schaumburg Regional             42.0  -88.1   801    -6 A     America/…
+##  4 06N   Randall Airport                 41.4  -74.4   523    -5 A     America/…
+##  5 09J   Jekyll Island Airport           31.1  -81.4    11    -5 A     America/…
+##  6 0A9   Elizabethton Municipal Airport  36.4  -82.2  1593    -5 A     America/…
+##  7 0G6   Williams County Airport         41.5  -84.5   730    -5 A     America/…
+##  8 0G7   Finger Lakes Regional Airport   42.9  -76.8   492    -5 A     America/…
+##  9 0P2   Shoestring Aviation Airfield    39.8  -76.6  1000    -5 U     America/…
+## 10 0S9   Jefferson County Intl           48.1 -123.    108    -8 A     America/…
 ## # ℹ 1,448 more rows</code></pre>
 <div class="sourceCode" id="cb88"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb88-1"><a href="데이터-랭글링.html#cb88-1" tabindex="-1"></a><span class="co"># planes 테이블: 각 여객기에 대한 정보가 tailnum으로 식별됨</span></span>
 <span id="cb88-2"><a href="데이터-랭글링.html#cb88-2" tabindex="-1"></a>planes</span></code></pre></div>
 <pre><code>## # A tibble: 3,322 × 9
-##    tailnum  year type    manufacturer model engines seats
-##    &lt;chr&gt;   &lt;int&gt; &lt;chr&gt;   &lt;chr&gt;        &lt;chr&gt;   &lt;int&gt; &lt;int&gt;
-##  1 N10156   2004 Fixed … EMBRAER      EMB-…       2    55
-##  2 N102UW   1998 Fixed … AIRBUS INDU… A320…       2   182
-##  3 N103US   1999 Fixed … AIRBUS INDU… A320…       2   182
-##  4 N104UW   1999 Fixed … AIRBUS INDU… A320…       2   182
-##  5 N10575   2002 Fixed … EMBRAER      EMB-…       2    55
-##  6 N105UW   1999 Fixed … AIRBUS INDU… A320…       2   182
-##  7 N107US   1999 Fixed … AIRBUS INDU… A320…       2   182
-##  8 N108UW   1999 Fixed … AIRBUS INDU… A320…       2   182
-##  9 N109UW   1999 Fixed … AIRBUS INDU… A320…       2   182
-## 10 N110UW   1999 Fixed … AIRBUS INDU… A320…       2   182
-## # ℹ 3,312 more rows
-## # ℹ 2 more variables: speed &lt;int&gt;, engine &lt;chr&gt;</code></pre>
+##    tailnum  year type              manufacturer model engines seats speed engine
+##    &lt;chr&gt;   &lt;int&gt; &lt;chr&gt;             &lt;chr&gt;        &lt;chr&gt;   &lt;int&gt; &lt;int&gt; &lt;int&gt; &lt;chr&gt; 
+##  1 N10156   2004 Fixed wing multi… EMBRAER      EMB-…       2    55    NA Turbo…
+##  2 N102UW   1998 Fixed wing multi… AIRBUS INDU… A320…       2   182    NA Turbo…
+##  3 N103US   1999 Fixed wing multi… AIRBUS INDU… A320…       2   182    NA Turbo…
+##  4 N104UW   1999 Fixed wing multi… AIRBUS INDU… A320…       2   182    NA Turbo…
+##  5 N10575   2002 Fixed wing multi… EMBRAER      EMB-…       2    55    NA Turbo…
+##  6 N105UW   1999 Fixed wing multi… AIRBUS INDU… A320…       2   182    NA Turbo…
+##  7 N107US   1999 Fixed wing multi… AIRBUS INDU… A320…       2   182    NA Turbo…
+##  8 N108UW   1999 Fixed wing multi… AIRBUS INDU… A320…       2   182    NA Turbo…
+##  9 N109UW   1999 Fixed wing multi… AIRBUS INDU… A320…       2   182    NA Turbo…
+## 10 N110UW   1999 Fixed wing multi… AIRBUS INDU… A320…       2   182    NA Turbo…
+## # ℹ 3,312 more rows</code></pre>
 <div class="sourceCode" id="cb90"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb90-1"><a href="데이터-랭글링.html#cb90-1" tabindex="-1"></a><span class="co"># weather 테이블: 각 NYC 공항의 매 시각 날씨 정보</span></span>
 <span id="cb90-2"><a href="데이터-랭글링.html#cb90-2" tabindex="-1"></a>weather</span></code></pre></div>
 <pre><code>## # A tibble: 26,115 × 15
-##    origin  year month   day  hour  temp  dewp humid
-##    &lt;chr&gt;  &lt;int&gt; &lt;int&gt; &lt;int&gt; &lt;int&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;
-##  1 EWR     2013     1     1     1  39.0  26.1  59.4
-##  2 EWR     2013     1     1     2  39.0  27.0  61.6
-##  3 EWR     2013     1     1     3  39.0  28.0  64.4
-##  4 EWR     2013     1     1     4  39.9  28.0  62.2
-##  5 EWR     2013     1     1     5  39.0  28.0  64.4
-##  6 EWR     2013     1     1     6  37.9  28.0  67.2
-##  7 EWR     2013     1     1     7  39.0  28.0  64.4
-##  8 EWR     2013     1     1     8  39.9  28.0  62.2
-##  9 EWR     2013     1     1     9  39.9  28.0  62.2
-## 10 EWR     2013     1     1    10  41    28.0  59.6
+##    origin  year month   day  hour  temp  dewp humid wind_dir wind_speed
+##    &lt;chr&gt;  &lt;int&gt; &lt;int&gt; &lt;int&gt; &lt;int&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;    &lt;dbl&gt;      &lt;dbl&gt;
+##  1 EWR     2013     1     1     1  39.0  26.1  59.4      270      10.4 
+##  2 EWR     2013     1     1     2  39.0  27.0  61.6      250       8.06
+##  3 EWR     2013     1     1     3  39.0  28.0  64.4      240      11.5 
+##  4 EWR     2013     1     1     4  39.9  28.0  62.2      250      12.7 
+##  5 EWR     2013     1     1     5  39.0  28.0  64.4      260      12.7 
+##  6 EWR     2013     1     1     6  37.9  28.0  67.2      240      11.5 
+##  7 EWR     2013     1     1     7  39.0  28.0  64.4      240      15.0 
+##  8 EWR     2013     1     1     8  39.9  28.0  62.2      250      10.4 
+##  9 EWR     2013     1     1     9  39.9  28.0  62.2      260      15.0 
+## 10 EWR     2013     1     1    10  41    28.0  59.6      260      13.8 
 ## # ℹ 26,105 more rows
-## # ℹ 7 more variables: wind_dir &lt;dbl&gt;, wind_speed &lt;dbl&gt;,
-## #   wind_gust &lt;dbl&gt;, precip &lt;dbl&gt;, pressure &lt;dbl&gt;,
+## # ℹ 5 more variables: wind_gust &lt;dbl&gt;, precip &lt;dbl&gt;, pressure &lt;dbl&gt;,
 ## #   visib &lt;dbl&gt;, time_hour &lt;dttm&gt;</code></pre>
 <p><br></p>
 <p><img src="img/fig6-1.png" /></p>
@@ -1192,13 +1190,12 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <span id="cb117-7"><a href="데이터-랭글링.html#cb117-7" tabindex="-1"></a>              <span class="at">values_from =</span> <span class="fu">c</span>(cases, population, rate)) <span class="sc">%&gt;%</span></span>
 <span id="cb117-8"><a href="데이터-랭글링.html#cb117-8" tabindex="-1"></a>  <span class="fu">relocate</span>(country, <span class="fu">contains</span>(<span class="st">&quot;1999&quot;</span>))                                 <span class="co"># 변수 위치 변경</span></span></code></pre></div>
 <pre><code>## # A tibble: 3 × 7
-##   country cases_1999 population_1999 rate_1999 cases_2000
-##   &lt;chr&gt;        &lt;dbl&gt;           &lt;dbl&gt;     &lt;dbl&gt;      &lt;dbl&gt;
-## 1 Afghan…        745        19987071      3.73       2666
-## 2 Brazil       37737       172006362     21.9       80488
-## 3 China       212258      1272915272     16.7      213766
-## # ℹ 2 more variables: population_2000 &lt;dbl&gt;,
-## #   rate_2000 &lt;dbl&gt;</code></pre>
+##   country     cases_1999 population_1999 rate_1999 cases_2000 population_2000
+##   &lt;chr&gt;            &lt;dbl&gt;           &lt;dbl&gt;     &lt;dbl&gt;      &lt;dbl&gt;           &lt;dbl&gt;
+## 1 Afghanistan        745        19987071      3.73       2666        20595360
+## 2 Brazil           37737       172006362     21.9       80488       174504898
+## 3 China           212258      1272915272     16.7      213766      1280428583
+## # ℹ 1 more variable: rate_2000 &lt;dbl&gt;</code></pre>
 <div class="sourceCode" id="cb119"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb119-1"><a href="데이터-랭글링.html#cb119-1" tabindex="-1"></a><span class="do">## wide format 변환2</span></span>
 <span id="cb119-2"><a href="데이터-랭글링.html#cb119-2" tabindex="-1"></a>fish_encounters <span class="sc">%&gt;%</span></span>
 <span id="cb119-3"><a href="데이터-랭글링.html#cb119-3" tabindex="-1"></a>  <span class="fu">pivot_wider</span>(<span class="at">names_from =</span> station,</span>
@@ -1905,7 +1902,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <span id="cb147-11"><a href="데이터-랭글링.html#cb147-11" tabindex="-1"></a><span class="fu">library</span>(ggplot2)</span>
 <span id="cb147-12"><a href="데이터-랭글링.html#cb147-12" tabindex="-1"></a><span class="fu">ggplot</span>(summary1, <span class="fu">aes</span>(tvhours, marital)) <span class="sc">+</span></span>
 <span id="cb147-13"><a href="데이터-랭글링.html#cb147-13" tabindex="-1"></a>  <span class="fu">geom_bar</span>(<span class="at">stat =</span> <span class="st">&quot;identity&quot;</span>)</span></code></pre></div>
-<p><img src="_main_files/figure-html/unnamed-chunk-115-1.png" width="672" /></p>
+<p><img src="06-data-wrangling_files/figure-html/unnamed-chunk-59-1.png" width="672" /></p>
 <div class="sourceCode" id="cb148"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb148-1"><a href="데이터-랭글링.html#cb148-1" tabindex="-1"></a><span class="do">## fct_relevel() 예제</span></span>
 <span id="cb148-2"><a href="데이터-랭글링.html#cb148-2" tabindex="-1"></a><span class="co"># 소득에 따른 평균 연령</span></span>
 <span id="cb148-3"><a href="데이터-랭글링.html#cb148-3" tabindex="-1"></a>summary2 <span class="ot">&lt;-</span> gss_cat <span class="sc">%&gt;%</span></span>
@@ -1918,7 +1915,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <span id="cb148-10"><a href="데이터-랭글링.html#cb148-10" tabindex="-1"></a><span class="co"># relevel() 함수를 사용하여 &quot;Not applicable&quot; 수준을 앞쪽(처음)으로 이동할 수 있음</span></span>
 <span id="cb148-11"><a href="데이터-랭글링.html#cb148-11" tabindex="-1"></a><span class="co">#ggplot(summary2, aes(age, fct_reorder(rincome, age))) + geom_point()</span></span>
 <span id="cb148-12"><a href="데이터-랭글링.html#cb148-12" tabindex="-1"></a><span class="fu">ggplot</span>(summary2, <span class="fu">aes</span>(age, <span class="fu">fct_relevel</span>(rincome, <span class="st">&quot;Not applicable&quot;</span>))) <span class="sc">+</span> <span class="fu">geom_point</span>()</span></code></pre></div>
-<p><img src="_main_files/figure-html/unnamed-chunk-116-1.png" width="672" /></p>
+<p><img src="06-data-wrangling_files/figure-html/unnamed-chunk-60-1.png" width="672" /></p>
 <p><br></p>
 </div>
 <div id="팩터-수준levels-변경" class="section level3 hasAnchor" number="6.5.3">
