@@ -261,11 +261,13 @@ $$f(k) = {n \choose k} p^{k} (1-p)^{n-k}$$
 + 단축키 ```ctrl``` + ```alt``` + ```i```
 + 청크 옵션을 사용하여 코드 출력 여부, 결과 형식, 그래프 크기 등 다양한 설정 가능
 
+
 ````markdown
 ```{r, chunk_name, chunk_options, ...}
 codes
 ```
 ````
+
 
 <br>
 
@@ -308,6 +310,7 @@ codes
 
 <br>
 
+
 ````markdown
 # results = "markup"(default)
 ```{r, results = "markup"}
@@ -319,6 +322,7 @@ cat("I'm raw **Markdown** content.\n")
 cat("I'm raw **Markdown** content.\n")
 ```
 ````
+
 
 <br>
 
@@ -349,6 +353,7 @@ opts_chunk$restore()
 opts_chunk$get("warning")
 ```
 
+
 ````markdown
 # 전역 옵션 설정 : warning = FALSE
 ```{r setup, include = FALSE}
@@ -365,6 +370,7 @@ as.numeric(c(1, 2, "a"))
 as.numeric(c(1, 2, "a"))
 ```
 ````
+
 
 <br>
 
