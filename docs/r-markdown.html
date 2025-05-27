@@ -605,9 +605,9 @@ subscript~2~
 <li>단축키 <code>ctrl</code> + <code>alt</code> + <code>i</code></li>
 <li>청크 옵션을 사용하여 코드 출력 여부, 결과 형식, 그래프 크기 등 다양한 설정 가능</li>
 </ul>
-<div class="sourceCode" id="cb187"><pre class="sourceCode markdown"><code class="sourceCode markdown"><span id="cb187-1"><a href="r-markdown.html#cb187-1" tabindex="-1"></a><span class="in">```{r, chunk_name, chunk_options, ...}</span></span>
-<span id="cb187-2"><a href="r-markdown.html#cb187-2" tabindex="-1"></a><span class="in">codes</span></span>
-<span id="cb187-3"><a href="r-markdown.html#cb187-3" tabindex="-1"></a><span class="in">```</span></span></code></pre></div>
+<div class="sourceCode" id="cb188"><pre class="sourceCode markdown"><code class="sourceCode markdown"><span id="cb188-1"><a href="r-markdown.html#cb188-1" tabindex="-1"></a><span class="in">```{r, chunk_name, chunk_options, ...}</span></span>
+<span id="cb188-2"><a href="r-markdown.html#cb188-2" tabindex="-1"></a><span class="in">codes</span></span>
+<span id="cb188-3"><a href="r-markdown.html#cb188-3" tabindex="-1"></a><span class="in">```</span></span></code></pre></div>
 <p><br></p>
 </div>
 <div id="청크-이름chunk-name" class="section level3 hasAnchor" number="8.4.2">
@@ -770,15 +770,15 @@ subscript~2~
 </tbody>
 </table>
 <p><br></p>
-<div class="sourceCode" id="cb188"><pre class="sourceCode markdown"><code class="sourceCode markdown"><span id="cb188-1"><a href="r-markdown.html#cb188-1" tabindex="-1"></a><span class="fu"># results = &quot;markup&quot;(default)</span></span>
-<span id="cb188-2"><a href="r-markdown.html#cb188-2" tabindex="-1"></a><span class="in">```{r, results = &quot;markup&quot;}</span></span>
-<span id="cb188-3"><a href="r-markdown.html#cb188-3" tabindex="-1"></a><span class="in">cat(&quot;I&#39;m raw **Markdown** content.\n&quot;)</span></span>
-<span id="cb188-4"><a href="r-markdown.html#cb188-4" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb188-5"><a href="r-markdown.html#cb188-5" tabindex="-1"></a></span>
-<span id="cb188-6"><a href="r-markdown.html#cb188-6" tabindex="-1"></a><span class="fu"># results = &quot;asis&quot;</span></span>
-<span id="cb188-7"><a href="r-markdown.html#cb188-7" tabindex="-1"></a><span class="in">```{r, results = &quot;asis&quot;}</span></span>
-<span id="cb188-8"><a href="r-markdown.html#cb188-8" tabindex="-1"></a><span class="in">cat(&quot;I&#39;m raw **Markdown** content.\n&quot;)</span></span>
-<span id="cb188-9"><a href="r-markdown.html#cb188-9" tabindex="-1"></a><span class="in">```</span></span></code></pre></div>
+<div class="sourceCode" id="cb189"><pre class="sourceCode markdown"><code class="sourceCode markdown"><span id="cb189-1"><a href="r-markdown.html#cb189-1" tabindex="-1"></a><span class="fu"># results = &quot;markup&quot;(default)</span></span>
+<span id="cb189-2"><a href="r-markdown.html#cb189-2" tabindex="-1"></a><span class="in">```{r, results = &quot;markup&quot;}</span></span>
+<span id="cb189-3"><a href="r-markdown.html#cb189-3" tabindex="-1"></a><span class="in">cat(&quot;I&#39;m raw **Markdown** content.\n&quot;)</span></span>
+<span id="cb189-4"><a href="r-markdown.html#cb189-4" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb189-5"><a href="r-markdown.html#cb189-5" tabindex="-1"></a></span>
+<span id="cb189-6"><a href="r-markdown.html#cb189-6" tabindex="-1"></a><span class="fu"># results = &quot;asis&quot;</span></span>
+<span id="cb189-7"><a href="r-markdown.html#cb189-7" tabindex="-1"></a><span class="in">```{r, results = &quot;asis&quot;}</span></span>
+<span id="cb189-8"><a href="r-markdown.html#cb189-8" tabindex="-1"></a><span class="in">cat(&quot;I&#39;m raw **Markdown** content.\n&quot;)</span></span>
+<span id="cb189-9"><a href="r-markdown.html#cb189-9" tabindex="-1"></a><span class="in">```</span></span></code></pre></div>
 <p><br></p>
 </div>
 <div id="표table-삽입" class="section level3 hasAnchor" number="8.4.4">
@@ -786,8 +786,8 @@ subscript~2~
 <ul>
 <li>간단한 형태의 표 생성 - <code>knitr::kable()</code> 함수</li>
 </ul>
-<div class="sourceCode" id="cb189"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb189-1"><a href="r-markdown.html#cb189-1" tabindex="-1"></a><span class="fu">head</span>(iris)</span>
-<span id="cb189-2"><a href="r-markdown.html#cb189-2" tabindex="-1"></a><span class="fu">kable</span>(<span class="fu">head</span>(iris))</span></code></pre></div>
+<div class="sourceCode" id="cb190"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb190-1"><a href="r-markdown.html#cb190-1" tabindex="-1"></a><span class="fu">head</span>(iris)</span>
+<span id="cb190-2"><a href="r-markdown.html#cb190-2" tabindex="-1"></a><span class="fu">kable</span>(<span class="fu">head</span>(iris))</span></code></pre></div>
 <p><br></p>
 </div>
 <div id="전역-옵션global-option" class="section level3 hasAnchor" number="8.4.5">
@@ -802,25 +802,25 @@ subscript~2~
 </ul></li>
 <li>일반적으로 YAML 헤더 바로 아래, <code>setup</code>이라는 이름의 코드 청크에 작성</li>
 </ul>
-<div class="sourceCode" id="cb190"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb190-1"><a href="r-markdown.html#cb190-1" tabindex="-1"></a>opts_chunk<span class="sc">$</span><span class="fu">get</span>(<span class="st">&quot;warning&quot;</span>)</span>
-<span id="cb190-2"><a href="r-markdown.html#cb190-2" tabindex="-1"></a>opts_chunk<span class="sc">$</span><span class="fu">set</span>(<span class="st">&quot;warning&quot;</span> <span class="ot">=</span> <span class="cn">FALSE</span>)</span>
-<span id="cb190-3"><a href="r-markdown.html#cb190-3" tabindex="-1"></a>opts_chunk<span class="sc">$</span><span class="fu">get</span>(<span class="st">&quot;warning&quot;</span>)</span>
-<span id="cb190-4"><a href="r-markdown.html#cb190-4" tabindex="-1"></a>opts_chunk<span class="sc">$</span><span class="fu">restore</span>()</span>
-<span id="cb190-5"><a href="r-markdown.html#cb190-5" tabindex="-1"></a>opts_chunk<span class="sc">$</span><span class="fu">get</span>(<span class="st">&quot;warning&quot;</span>)</span></code></pre></div>
-<div class="sourceCode" id="cb191"><pre class="sourceCode markdown"><code class="sourceCode markdown"><span id="cb191-1"><a href="r-markdown.html#cb191-1" tabindex="-1"></a><span class="fu"># 전역 옵션 설정 : warning = FALSE</span></span>
-<span id="cb191-2"><a href="r-markdown.html#cb191-2" tabindex="-1"></a><span class="in">```{r setup, include = FALSE}</span></span>
-<span id="cb191-3"><a href="r-markdown.html#cb191-3" tabindex="-1"></a><span class="in">opts_chunk$set(warning = FALSE)</span></span>
-<span id="cb191-4"><a href="r-markdown.html#cb191-4" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb191-5"><a href="r-markdown.html#cb191-5" tabindex="-1"></a></span>
-<span id="cb191-6"><a href="r-markdown.html#cb191-6" tabindex="-1"></a><span class="fu"># 개별 청크에서 warning 옵션을 설정하지 않은 경우, 전역 옵션 설정을 따름</span></span>
-<span id="cb191-7"><a href="r-markdown.html#cb191-7" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb191-8"><a href="r-markdown.html#cb191-8" tabindex="-1"></a><span class="in">as.numeric(c(1, 2, &quot;a&quot;))</span></span>
-<span id="cb191-9"><a href="r-markdown.html#cb191-9" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb191-10"><a href="r-markdown.html#cb191-10" tabindex="-1"></a></span>
-<span id="cb191-11"><a href="r-markdown.html#cb191-11" tabindex="-1"></a><span class="fu"># 개별 청크에서 warning 옵션을 설정하는 경우, 해당 옵션 설정을 따름</span></span>
-<span id="cb191-12"><a href="r-markdown.html#cb191-12" tabindex="-1"></a><span class="in">```{r, warning = TRUE}</span></span>
-<span id="cb191-13"><a href="r-markdown.html#cb191-13" tabindex="-1"></a><span class="in">as.numeric(c(1, 2, &quot;a&quot;))</span></span>
-<span id="cb191-14"><a href="r-markdown.html#cb191-14" tabindex="-1"></a><span class="in">```</span></span></code></pre></div>
+<div class="sourceCode" id="cb191"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb191-1"><a href="r-markdown.html#cb191-1" tabindex="-1"></a>opts_chunk<span class="sc">$</span><span class="fu">get</span>(<span class="st">&quot;warning&quot;</span>)</span>
+<span id="cb191-2"><a href="r-markdown.html#cb191-2" tabindex="-1"></a>opts_chunk<span class="sc">$</span><span class="fu">set</span>(<span class="st">&quot;warning&quot;</span> <span class="ot">=</span> <span class="cn">FALSE</span>)</span>
+<span id="cb191-3"><a href="r-markdown.html#cb191-3" tabindex="-1"></a>opts_chunk<span class="sc">$</span><span class="fu">get</span>(<span class="st">&quot;warning&quot;</span>)</span>
+<span id="cb191-4"><a href="r-markdown.html#cb191-4" tabindex="-1"></a>opts_chunk<span class="sc">$</span><span class="fu">restore</span>()</span>
+<span id="cb191-5"><a href="r-markdown.html#cb191-5" tabindex="-1"></a>opts_chunk<span class="sc">$</span><span class="fu">get</span>(<span class="st">&quot;warning&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb192"><pre class="sourceCode markdown"><code class="sourceCode markdown"><span id="cb192-1"><a href="r-markdown.html#cb192-1" tabindex="-1"></a><span class="fu"># 전역 옵션 설정 : warning = FALSE</span></span>
+<span id="cb192-2"><a href="r-markdown.html#cb192-2" tabindex="-1"></a><span class="in">```{r setup, include = FALSE}</span></span>
+<span id="cb192-3"><a href="r-markdown.html#cb192-3" tabindex="-1"></a><span class="in">opts_chunk$set(warning = FALSE)</span></span>
+<span id="cb192-4"><a href="r-markdown.html#cb192-4" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb192-5"><a href="r-markdown.html#cb192-5" tabindex="-1"></a></span>
+<span id="cb192-6"><a href="r-markdown.html#cb192-6" tabindex="-1"></a><span class="fu"># 개별 청크에서 warning 옵션을 설정하지 않은 경우, 전역 옵션 설정을 따름</span></span>
+<span id="cb192-7"><a href="r-markdown.html#cb192-7" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb192-8"><a href="r-markdown.html#cb192-8" tabindex="-1"></a><span class="in">as.numeric(c(1, 2, &quot;a&quot;))</span></span>
+<span id="cb192-9"><a href="r-markdown.html#cb192-9" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb192-10"><a href="r-markdown.html#cb192-10" tabindex="-1"></a></span>
+<span id="cb192-11"><a href="r-markdown.html#cb192-11" tabindex="-1"></a><span class="fu"># 개별 청크에서 warning 옵션을 설정하는 경우, 해당 옵션 설정을 따름</span></span>
+<span id="cb192-12"><a href="r-markdown.html#cb192-12" tabindex="-1"></a><span class="in">```{r, warning = TRUE}</span></span>
+<span id="cb192-13"><a href="r-markdown.html#cb192-13" tabindex="-1"></a><span class="in">as.numeric(c(1, 2, &quot;a&quot;))</span></span>
+<span id="cb192-14"><a href="r-markdown.html#cb192-14" tabindex="-1"></a><span class="in">```</span></span></code></pre></div>
 <p><br></p>
 </div>
 <div id="인라인-코드inline-code" class="section level3 hasAnchor" number="8.4.6">
@@ -835,7 +835,7 @@ subscript~2~
 <blockquote>
 <p>iris 데이터셋에는 150개의 관측값과 5개의 변수가 있습니다.</p>
 </blockquote>
-<div class="sourceCode" id="cb192"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb192-1"><a href="r-markdown.html#cb192-1" tabindex="-1"></a><span class="sc">&gt;</span> iris 데이터셋에는 <span class="st">`</span><span class="at">r nrow(iris)</span><span class="st">`</span>개의 관측값과 <span class="st">`</span><span class="at">r ncol(iris)</span><span class="st">`</span>개의 변수가 있습니다.</span></code></pre></div>
+<div class="sourceCode" id="cb193"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb193-1"><a href="r-markdown.html#cb193-1" tabindex="-1"></a><span class="sc">&gt;</span> iris 데이터셋에는 <span class="st">`</span><span class="at">r nrow(iris)</span><span class="st">`</span>개의 관측값과 <span class="st">`</span><span class="at">r ncol(iris)</span><span class="st">`</span>개의 변수가 있습니다.</span></code></pre></div>
 
 </div>
 </div>

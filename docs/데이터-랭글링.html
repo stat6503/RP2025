@@ -1899,7 +1899,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <span id="cb147-11"><a href="데이터-랭글링.html#cb147-11" tabindex="-1"></a><span class="fu">library</span>(ggplot2)</span>
 <span id="cb147-12"><a href="데이터-랭글링.html#cb147-12" tabindex="-1"></a><span class="fu">ggplot</span>(summary1, <span class="fu">aes</span>(tvhours, marital)) <span class="sc">+</span></span>
 <span id="cb147-13"><a href="데이터-랭글링.html#cb147-13" tabindex="-1"></a>  <span class="fu">geom_bar</span>(<span class="at">stat =</span> <span class="st">&quot;identity&quot;</span>)</span></code></pre></div>
-<p><img src="_main_files/figure-html/unnamed-chunk-115-1.png" width="672" /></p>
+<p><img src="_main_files/figure-html/unnamed-chunk-116-1.png" width="672" /></p>
 <div class="sourceCode" id="cb148"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb148-1"><a href="데이터-랭글링.html#cb148-1" tabindex="-1"></a><span class="do">## fct_relevel() 예제</span></span>
 <span id="cb148-2"><a href="데이터-랭글링.html#cb148-2" tabindex="-1"></a><span class="co"># 소득에 따른 평균 연령</span></span>
 <span id="cb148-3"><a href="데이터-랭글링.html#cb148-3" tabindex="-1"></a>summary2 <span class="ot">&lt;-</span> gss_cat <span class="sc">%&gt;%</span></span>
@@ -1912,7 +1912,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <span id="cb148-10"><a href="데이터-랭글링.html#cb148-10" tabindex="-1"></a><span class="co"># relevel() 함수를 사용하여 &quot;Not applicable&quot; 수준을 앞쪽(처음)으로 이동할 수 있음</span></span>
 <span id="cb148-11"><a href="데이터-랭글링.html#cb148-11" tabindex="-1"></a><span class="co">#ggplot(summary2, aes(age, fct_reorder(rincome, age))) + geom_point()</span></span>
 <span id="cb148-12"><a href="데이터-랭글링.html#cb148-12" tabindex="-1"></a><span class="fu">ggplot</span>(summary2, <span class="fu">aes</span>(age, <span class="fu">fct_relevel</span>(rincome, <span class="st">&quot;Not applicable&quot;</span>))) <span class="sc">+</span> <span class="fu">geom_point</span>()</span></code></pre></div>
-<p><img src="_main_files/figure-html/unnamed-chunk-116-1.png" width="672" /></p>
+<p><img src="_main_files/figure-html/unnamed-chunk-117-1.png" width="672" /></p>
 <p><br></p>
 </div>
 <div id="팩터-수준levels-변경" class="section level3 hasAnchor" number="6.5.3">
