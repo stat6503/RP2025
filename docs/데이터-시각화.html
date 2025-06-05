@@ -411,7 +411,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <h3><span class="header-section-number">7.3.1</span> ggplot2 패키지 소개<a href="데이터-시각화.html#ggplot2-패키지-소개" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <ul>
 <li>범용성, 명료함, 일관성 있는 인터페이스, 미적인 그래픽 결과를 제공하는 패키지</li>
-<li>Leland Wilkinson(2005)이 제한한 그래픽 문법(grammar of graphics)을 구현함</li>
+<li>Leland Wilkinson(2005)이 제안한 그래픽 문법(grammar of graphics)을 구현함</li>
 <li>현재 R을 활용한 데이터 시각화의 표준으로 자리 잡고 있음</li>
 <li><strong>독립적인 시각적 구성요소</strong>를 정의하고, 이를 <strong>층층이 쌓아올리는 방식</strong>으로 그래프를 생성
 <ul>
@@ -525,7 +525,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <span id="cb160-9"><a href="데이터-시각화.html#cb160-9" tabindex="-1"></a>        <span class="at">axis.title.y =</span> <span class="fu">element_text</span>(<span class="at">size =</span> <span class="dv">15</span>, <span class="at">margin =</span> <span class="fu">margin</span>(<span class="at">r=</span><span class="dv">10</span>)),</span>
 <span id="cb160-10"><a href="데이터-시각화.html#cb160-10" tabindex="-1"></a>        <span class="at">axis.text.x =</span> <span class="fu">element_text</span>(<span class="at">size =</span> <span class="dv">12</span>),</span>
 <span id="cb160-11"><a href="데이터-시각화.html#cb160-11" tabindex="-1"></a>        <span class="at">legend.position =</span> <span class="st">&quot;none&quot;</span>)</span></code></pre></div>
-<p><img src="_main_files/figure-html/unnamed-chunk-129-1.png" width="672" /></p>
+<p><img src="_main_files/figure-html/unnamed-chunk-128-1.png" width="672" /></p>
 <div class="sourceCode" id="cb161"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb161-1"><a href="데이터-시각화.html#cb161-1" tabindex="-1"></a><span class="do">## Example 4</span></span>
 <span id="cb161-2"><a href="데이터-시각화.html#cb161-2" tabindex="-1"></a><span class="co"># 인종의 빈도가 큰 순서대로 시각화</span></span>
 <span id="cb161-3"><a href="데이터-시각화.html#cb161-3" tabindex="-1"></a><span class="fu">library</span>(forcats)</span>
@@ -540,7 +540,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <span id="cb161-12"><a href="데이터-시각화.html#cb161-12" tabindex="-1"></a>    <span class="fu">theme</span>(<span class="at">axis.title.y =</span> <span class="fu">element_text</span>(<span class="at">size =</span> <span class="dv">15</span>, <span class="at">margin =</span> <span class="fu">margin</span>(<span class="at">r=</span><span class="dv">10</span>)),</span>
 <span id="cb161-13"><a href="데이터-시각화.html#cb161-13" tabindex="-1"></a>          <span class="at">axis.text.x =</span> <span class="fu">element_text</span>(<span class="at">size =</span> <span class="dv">12</span>),</span>
 <span id="cb161-14"><a href="데이터-시각화.html#cb161-14" tabindex="-1"></a>          <span class="at">legend.position =</span> <span class="st">&quot;none&quot;</span>)</span></code></pre></div>
-<p><img src="_main_files/figure-html/unnamed-chunk-130-1.png" width="672" /></p>
+<p><img src="_main_files/figure-html/unnamed-chunk-129-1.png" width="672" /></p>
 <div class="sourceCode" id="cb162"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb162-1"><a href="데이터-시각화.html#cb162-1" tabindex="-1"></a><span class="do">## Example 5</span></span>
 <span id="cb162-2"><a href="데이터-시각화.html#cb162-2" tabindex="-1"></a><span class="co"># 항공편 출발 요일의 분포 시각화</span></span>
 <span id="cb162-3"><a href="데이터-시각화.html#cb162-3" tabindex="-1"></a><span class="fu">library</span>(lubridate)</span>
@@ -571,7 +571,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <span id="cb162-28"><a href="데이터-시각화.html#cb162-28" tabindex="-1"></a>    <span class="fu">theme</span>(<span class="at">axis.title.y =</span> <span class="fu">element_text</span>(<span class="at">size =</span> <span class="dv">15</span>, <span class="at">margin =</span> <span class="fu">margin</span>(<span class="at">r=</span><span class="dv">10</span>)),</span>
 <span id="cb162-29"><a href="데이터-시각화.html#cb162-29" tabindex="-1"></a>          <span class="at">axis.text.x =</span> <span class="fu">element_text</span>(<span class="at">size =</span> <span class="dv">12</span>),</span>
 <span id="cb162-30"><a href="데이터-시각화.html#cb162-30" tabindex="-1"></a>          <span class="at">legend.position =</span> <span class="st">&quot;none&quot;</span>)</span></code></pre></div>
-<p><img src="_main_files/figure-html/unnamed-chunk-131-1.png" width="672" /></p>
+<p><img src="_main_files/figure-html/unnamed-chunk-130-1.png" width="672" /></p>
 <p><br></p>
 </div>
 <div id="히스토그램histogram" class="section level3 hasAnchor" number="7.3.4">
@@ -590,7 +590,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <span id="cb163-4"><a href="데이터-시각화.html#cb163-4" tabindex="-1"></a>  <span class="fu">geom_histogram</span>(<span class="at">fill =</span> <span class="st">&quot;#2389DA&quot;</span>, <span class="at">bins=</span><span class="dv">10</span>) <span class="sc">+</span></span>
 <span id="cb163-5"><a href="데이터-시각화.html#cb163-5" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title=</span><span class="st">&quot;Histogram of the dried weight of plants&quot;</span>, <span class="at">x =</span> <span class="st">&quot;Weight&quot;</span>, <span class="at">y =</span><span class="st">&quot;&quot;</span>) <span class="sc">+</span></span>
 <span id="cb163-6"><a href="데이터-시각화.html#cb163-6" tabindex="-1"></a>  <span class="fu">theme_classic</span>()</span></code></pre></div>
-<p><img src="_main_files/figure-html/unnamed-chunk-132-1.png" width="672" /></p>
+<p><img src="_main_files/figure-html/unnamed-chunk-131-1.png" width="672" /></p>
 <div class="sourceCode" id="cb164"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb164-1"><a href="데이터-시각화.html#cb164-1" tabindex="-1"></a><span class="do">## Example 2</span></span>
 <span id="cb164-2"><a href="데이터-시각화.html#cb164-2" tabindex="-1"></a><span class="co"># 처리 집단에 따른 건조 중량의 분포 비교</span></span>
 <span id="cb164-3"><a href="데이터-시각화.html#cb164-3" tabindex="-1"></a>labels <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&quot;ctrl&quot;</span> <span class="ot">=</span> <span class="st">&quot;대조군&quot;</span>, <span class="st">&quot;trt1&quot;</span> <span class="ot">=</span> <span class="st">&quot;실험군 A&quot;</span>, <span class="st">&quot;trt2&quot;</span> <span class="ot">=</span> <span class="st">&quot;실험군 B&quot;</span>)</span>
@@ -603,7 +603,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <span id="cb164-10"><a href="데이터-시각화.html#cb164-10" tabindex="-1"></a>        <span class="at">axis.text =</span> <span class="fu">element_text</span>(<span class="at">size =</span> <span class="dv">12</span>),</span>
 <span id="cb164-11"><a href="데이터-시각화.html#cb164-11" tabindex="-1"></a>        <span class="at">strip.text =</span>  <span class="fu">element_text</span>(<span class="at">size =</span> <span class="dv">15</span>, <span class="at">face=</span><span class="st">&quot;bold&quot;</span>),</span>
 <span id="cb164-12"><a href="데이터-시각화.html#cb164-12" tabindex="-1"></a>        <span class="at">legend.position =</span> <span class="st">&quot;none&quot;</span>)</span></code></pre></div>
-<p><img src="_main_files/figure-html/unnamed-chunk-133-1.png" width="672" /></p>
+<p><img src="_main_files/figure-html/unnamed-chunk-132-1.png" width="672" /></p>
 <p><br></p>
 </div>
 <div id="상자-그림box-plot" class="section level3 hasAnchor" number="7.3.5">
@@ -649,7 +649,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <span id="cb165-11"><a href="데이터-시각화.html#cb165-11" tabindex="-1"></a>    <span class="fu">theme</span>(<span class="at">plot.title =</span> <span class="fu">element_text</span>(<span class="at">size =</span> <span class="dv">20</span>, <span class="at">margin =</span> <span class="fu">margin</span>(<span class="at">b=</span><span class="dv">10</span>)),</span>
 <span id="cb165-12"><a href="데이터-시각화.html#cb165-12" tabindex="-1"></a>          <span class="at">axis.title.x =</span> <span class="fu">element_text</span>(<span class="at">size =</span> <span class="dv">15</span>, <span class="at">margin =</span> <span class="fu">margin</span>(<span class="at">t=</span><span class="dv">10</span>)),</span>
 <span id="cb165-13"><a href="데이터-시각화.html#cb165-13" tabindex="-1"></a>          <span class="at">axis.text =</span> <span class="fu">element_text</span>(<span class="at">size =</span> <span class="dv">12</span>))</span></code></pre></div>
-<p><img src="_main_files/figure-html/unnamed-chunk-134-1.png" width="672" /></p>
+<p><img src="_main_files/figure-html/unnamed-chunk-133-1.png" width="672" /></p>
 <div class="sourceCode" id="cb166"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb166-1"><a href="데이터-시각화.html#cb166-1" tabindex="-1"></a><span class="do">## Example 2</span></span>
 <span id="cb166-2"><a href="데이터-시각화.html#cb166-2" tabindex="-1"></a><span class="co"># 서식지, 품종, 성별에 따른 체중 분포 비교</span></span>
 <span id="cb166-3"><a href="데이터-시각화.html#cb166-3" tabindex="-1"></a>pg <span class="ot">&lt;-</span> penguins <span class="sc">%&gt;%</span> </span>
@@ -668,7 +668,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <span id="cb166-16"><a href="데이터-시각화.html#cb166-16" tabindex="-1"></a></span>
 <span id="cb166-17"><a href="데이터-시각화.html#cb166-17" tabindex="-1"></a><span class="co">#pg + geom_point(color = &quot;#2389DA&quot;, alpha = 0.5)</span></span>
 <span id="cb166-18"><a href="데이터-시각화.html#cb166-18" tabindex="-1"></a>pg <span class="sc">+</span> <span class="fu">geom_jitter</span>(<span class="at">color =</span> <span class="st">&quot;#2389DA&quot;</span>, <span class="at">alpha =</span> <span class="fl">0.5</span>, <span class="at">width=</span><span class="fl">0.2</span>)</span></code></pre></div>
-<p><img src="_main_files/figure-html/unnamed-chunk-135-1.png" width="672" /></p>
+<p><img src="_main_files/figure-html/unnamed-chunk-134-1.png" width="672" /></p>
 <p><br></p>
 </div>
 <div id="산점도scatter-plot" class="section level3 hasAnchor" number="7.3.6">
@@ -714,7 +714,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ## This warning is displayed once every 8 hours.
 ## Call `lifecycle::last_lifecycle_warnings()` to see where this warning was generated.</code></pre>
 <pre><code>## `geom_smooth()` using formula = &#39;y ~ x&#39;</code></pre>
-<p><img src="_main_files/figure-html/unnamed-chunk-136-1.png" width="672" /></p>
+<p><img src="_main_files/figure-html/unnamed-chunk-135-1.png" width="672" /></p>
 <div class="sourceCode" id="cb170"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb170-1"><a href="데이터-시각화.html#cb170-1" tabindex="-1"></a><span class="do">## Example 2</span></span>
 <span id="cb170-2"><a href="데이터-시각화.html#cb170-2" tabindex="-1"></a><span class="co"># 지느러미 길이와 체중에 대한 산점도 + 부리 길이(색상)</span></span>
 <span id="cb170-3"><a href="데이터-시각화.html#cb170-3" tabindex="-1"></a>penguins <span class="sc">%&gt;%</span></span>
@@ -727,7 +727,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <span id="cb170-10"><a href="데이터-시각화.html#cb170-10" tabindex="-1"></a>    <span class="fu">theme</span>(<span class="at">axis.title.x =</span> <span class="fu">element_text</span>(<span class="at">size =</span> <span class="dv">15</span>, <span class="at">margin =</span> <span class="fu">margin</span>(<span class="at">t=</span><span class="dv">10</span>)),</span>
 <span id="cb170-11"><a href="데이터-시각화.html#cb170-11" tabindex="-1"></a>          <span class="at">axis.title.y =</span> <span class="fu">element_text</span>(<span class="at">size =</span> <span class="dv">15</span>, <span class="at">margin =</span> <span class="fu">margin</span>(<span class="at">r=</span><span class="dv">10</span>)),</span>
 <span id="cb170-12"><a href="데이터-시각화.html#cb170-12" tabindex="-1"></a>          <span class="at">axis.text =</span> <span class="fu">element_text</span>(<span class="at">size =</span> <span class="dv">12</span>))</span></code></pre></div>
-<p><img src="_main_files/figure-html/unnamed-chunk-137-1.png" width="672" /></p>
+<p><img src="_main_files/figure-html/unnamed-chunk-136-1.png" width="672" /></p>
 <div class="sourceCode" id="cb171"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb171-1"><a href="데이터-시각화.html#cb171-1" tabindex="-1"></a><span class="do">## Example 3</span></span>
 <span id="cb171-2"><a href="데이터-시각화.html#cb171-2" tabindex="-1"></a><span class="co"># 지느러미 길이와 체중에 대한 산점도 + 부리 길이(크기), 성별(색상)</span></span>
 <span id="cb171-3"><a href="데이터-시각화.html#cb171-3" tabindex="-1"></a>penguins <span class="sc">%&gt;%</span></span>
@@ -743,7 +743,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <span id="cb171-13"><a href="데이터-시각화.html#cb171-13" tabindex="-1"></a>        <span class="at">legend.text =</span> <span class="fu">element_text</span>(<span class="at">size =</span> <span class="dv">15</span>)) <span class="sc">+</span></span>
 <span id="cb171-14"><a href="데이터-시각화.html#cb171-14" tabindex="-1"></a>  <span class="fu">guides</span>(<span class="at">color =</span> <span class="fu">guide_legend</span>(<span class="at">override.aes =</span> <span class="fu">list</span>(<span class="at">size =</span> <span class="dv">3</span>))) <span class="sc">+</span></span>
 <span id="cb171-15"><a href="데이터-시각화.html#cb171-15" tabindex="-1"></a>  <span class="fu">scale_size_continuous</span>(<span class="at">breaks =</span> <span class="fu">c</span>(<span class="dv">35</span>, <span class="dv">40</span>, <span class="dv">45</span>, <span class="dv">50</span>))</span></code></pre></div>
-<p><img src="_main_files/figure-html/unnamed-chunk-138-1.png" width="672" /></p>
+<p><img src="_main_files/figure-html/unnamed-chunk-137-1.png" width="672" /></p>
 <p><br></p>
 </div>
 <div id="선-그래프line-plot" class="section level3 hasAnchor" number="7.3.7">
@@ -768,7 +768,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <span id="cb172-10"><a href="데이터-시각화.html#cb172-10" tabindex="-1"></a>    <span class="fu">theme_classic</span>() <span class="sc">+</span></span>
 <span id="cb172-11"><a href="데이터-시각화.html#cb172-11" tabindex="-1"></a>    <span class="fu">theme</span>(<span class="at">axis.title.y =</span> <span class="fu">element_text</span>(<span class="at">size =</span> <span class="dv">15</span>, <span class="at">margin =</span> <span class="fu">margin</span>(<span class="at">r=</span><span class="dv">10</span>)),</span>
 <span id="cb172-12"><a href="데이터-시각화.html#cb172-12" tabindex="-1"></a>          <span class="at">axis.text =</span> <span class="fu">element_text</span>(<span class="at">size =</span> <span class="dv">12</span>))</span></code></pre></div>
-<p><img src="_main_files/figure-html/unnamed-chunk-139-1.png" width="672" /></p>
+<p><img src="_main_files/figure-html/unnamed-chunk-138-1.png" width="672" /></p>
 <p><br></p>
 <ul>
 <li>[예제] 국가별 사회·경제지표 시계열 데이터셋 gapminder
@@ -796,7 +796,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <span id="cb173-16"><a href="데이터-시각화.html#cb173-16" tabindex="-1"></a>    <span class="co">#scale_color_brewer(palette = &quot;Set1&quot;)</span></span>
 <span id="cb173-17"><a href="데이터-시각화.html#cb173-17" tabindex="-1"></a>    <span class="fu">scale_color_manual</span>(<span class="at">values =</span> <span class="fu">wes_palette</span>(<span class="st">&quot;Darjeeling1&quot;</span>))</span></code></pre></div>
 <pre><code>## `summarise()` has grouped output by &#39;continent&#39;. You can override using the `.groups` argument.</code></pre>
-<p><img src="_main_files/figure-html/unnamed-chunk-140-1.png" width="672" /></p>
+<p><img src="_main_files/figure-html/unnamed-chunk-139-1.png" width="672" /></p>
 
 </div>
 </div>

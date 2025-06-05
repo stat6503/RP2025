@@ -168,16 +168,16 @@ This text is displayed verbatim / preformatted
 
 + 표(tables)
 
- First Header |  Second Header  | Third Header
-:-------------|:---------------:|--------------:
- Left-aligned |    Centered     | Right-aligned
- Content Cell |  Content Cell   |  Content Cell
+| First Header |  Second Header  | Third Header  |
+|:-------------|:---------------:|--------------:|
+| Left-aligned |    Centered     | Right-aligned |
+| Content Cell |  Content Cell   |  Content Cell |
 
 ```
- First Header |  Second Header  | Third Header
-:-------------|:---------------:|--------------:
- Left-aligned |    Centered     | Right-aligned
- Content Cell |  Content Cell   |  Content Cell
+| First Header |  Second Header  | Third Header  |
+|:-------------|:---------------:|--------------:|
+| Left-aligned |    Centered     | Right-aligned |
+| Content Cell |  Content Cell   |  Content Cell |
 ```
 
 
